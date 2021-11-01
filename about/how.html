@@ -69,7 +69,7 @@ var addUtterances = () => {
     script.src = "https://utteranc.es/client.js";
     script.async = "async";
 
-    script.setAttribute("repo", "xinetzone/sanstyle-starter");
+    script.setAttribute("repo", "SanstyleLab/pytorch-book");
     script.setAttribute("issue-term", "pathname");
     script.setAttribute("theme", "github-light");
     script.setAttribute("label", "💬 comment");
@@ -93,7 +93,7 @@ commentsRunWhenDOMLoaded(addUtterances);
         const thebe_selector_output = ".output,.cell_output"
     </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <link rel="canonical" href="https://xinetzone.github.io/sanstyle-starter/about/how.html" />
+    <link rel="canonical" href="https://SanstyleLab.github.io/sanstyle-starter/about/how.html" />
     <link rel="shortcut icon" href="../_static/page-logo.jfif"/>
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="搜索" href="../search.html" />
@@ -149,8 +149,23 @@ commentsRunWhenDOMLoaded(addUtterances);
   </label>
   <ul>
    <li class="toctree-l2">
+    <a class="reference internal" href="../start/dataset.html">
+     数据处理
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="../start/raw.html">
-     未定义
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       rcParams
+      </span>
+     </code>
+     &amp;
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       cycler
+      </span>
+     </code>
     </a>
    </li>
   </ul>
@@ -337,11 +352,11 @@ commentsRunWhenDOMLoaded(addUtterances);
         aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
     <div class="dropdown-buttons sourcebuttons">
         <a class="repository-button"
-            href="https://github.com/xinetzone/sanstyle-starter"><button type="button" class="btn btn-secondary topbarbtn"
+            href="https://github.com/SanstyleLab/pytorch-book"><button type="button" class="btn btn-secondary topbarbtn"
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/xinetzone/sanstyle-starter/issues/new?title=Issue%20on%20page%20%2Fabout/how.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/SanstyleLab/pytorch-book/issues/new?title=Issue%20on%20page%20%2Fabout/how.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -432,7 +447,7 @@ jupyter-book build .
     {
         requestKernel: true,
         binderOptions: {
-            repo: "xinetzone/sanstyle-starter",
+            repo: "SanstyleLab/pytorch-book",
             ref: "main",
         },
         codeMirrorConfig: {
