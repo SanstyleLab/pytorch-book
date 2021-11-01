@@ -1,0 +1,18 @@
+numpy
+pandas
+matplotlib
+ipywidgets
+nbclient
+jupyter-book
+ghp-import
+sphinx_inline_tabs
+sphinx-click
+# sphinxext-rediraffe
+# sympy
+# statsmodels
+jupyter-dash
+plotly
+# gunicorn
+# dash-xinet -i https://pypi.org/simple/
+sanstyle
+sphinx-intl
