@@ -5,7 +5,9 @@ author: "xinetzone"
 email: xinzone@outlook.com
 
 exclude_patterns:
-  [_build, Thumbs.db, .DS_Store, "**.ipynb_checkpoints", .github]
+  [_build, Thumbs.db, .DS_Store, 
+  "*.ipynb",
+  "**.ipynb_checkpoints", .github]
 
 execute:
   execute_notebooks: cache

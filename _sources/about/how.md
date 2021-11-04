@@ -30,8 +30,8 @@ python -m ipykernel install --user --name ai --display-name "ai"
 最后，构建书库：
 
 ```sh
-jupyter-book clean .
-jupyter-book build .
+jupyter-book clean docs
+jupyter-book build docs
 ```
 
 ## 自定义

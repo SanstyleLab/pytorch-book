@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>数据处理 &#8212; Sanstyle Demo</title>
+    <title>处理数据 &#8212; Sanstyle Demo</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
   <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -29,12 +29,12 @@
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="../_static/tabs.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/page.css" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/page.css" />
     <link rel="stylesheet" type="text/css" href="../_static/xin-css/main.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/w3css/4/w3.css" />
     <link rel="stylesheet" type="text/css" href="../_static/w3css/4/w3pro.css" />
     <link rel="stylesheet" type="text/css" href="../_static/w3css/4/w3mobile.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/w3css/4/w3.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
@@ -93,12 +93,12 @@ commentsRunWhenDOMLoaded(addUtterances);
         const thebe_selector_output = ".output,.cell_output"
     </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <link rel="canonical" href="https://SanstyleLab.github.io/sanstyle-starter/start/dataset.html" />
+    <link rel="canonical" href="https://SanstyleLab.github.io/sanstyle-starter/start/01_dataset.html" />
     <link rel="shortcut icon" href="../_static/page-logo.jfif"/>
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="搜索" href="../search.html" />
-    <link rel="next" title="rcParams &amp; cycler" href="raw.html" />
-    <link rel="prev" title="快速上手" href="index.html" />
+    <link rel="next" title="模型定义" href="02_train.html" />
+    <link rel="prev" title="解压数据集" href="00_extract.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -148,9 +148,19 @@ commentsRunWhenDOMLoaded(addUtterances);
    </i>
   </label>
   <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="00_extract.html">
+     解压数据集
+    </a>
+   </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     数据处理
+     处理数据
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02_train.html">
+     模型定义
     </a>
    </li>
    <li class="toctree-l2">
@@ -170,47 +180,6 @@ commentsRunWhenDOMLoaded(addUtterances);
    </li>
   </ul>
  </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../tutorials/index.html">
-   指南
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../tutorials/what.html">
-     What
-    </a>
-   </li>
-  </ul>
- </li>
-</ul>
-<p class="caption" role="heading">
- <span class="caption-text">
-  原理
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../principle/index.html">
-   解释
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-  <label for="toctree-checkbox-3">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../principle/topic.html">
-     高级教程
-    </a>
-   </li>
-  </ul>
- </li>
 </ul>
 <p class="caption" role="heading">
  <span class="caption-text">
@@ -222,8 +191,8 @@ commentsRunWhenDOMLoaded(addUtterances);
   <a class="reference internal" href="../about/index.html">
    关于
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
-  <label for="toctree-checkbox-4">
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -246,23 +215,6 @@ commentsRunWhenDOMLoaded(addUtterances);
    <li class="toctree-l2">
     <a class="reference internal" href="../CHANGELOG.html">
      变更日志
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../other/index.html">
-   外部资源
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
-  <label for="toctree-checkbox-5">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../other/topic.html">
-     话题
     </a>
    </li>
    <li class="toctree-l2">
@@ -336,7 +288,7 @@ commentsRunWhenDOMLoaded(addUtterances);
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/start/dataset.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/start/01_dataset.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
@@ -356,7 +308,7 @@ commentsRunWhenDOMLoaded(addUtterances);
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/SanstyleLab/pytorch-book/issues/new?title=Issue%20on%20page%20%2Fstart/dataset.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/SanstyleLab/pytorch-book/issues/new?title=Issue%20on%20page%20%2Fstart/01_dataset.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -372,11 +324,59 @@ commentsRunWhenDOMLoaded(addUtterances);
 
             <!-- Launch buttons -->
 
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/SanstyleLab/pytorch-book/main?urlpath=tree/docs/start/01_dataset.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/SanstyleLab/pytorch-book/blob/main/docs/start/01_dataset.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
+        
+    </div>
+</div>
+
         </div>
 
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show">
             
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   初始化数据配置
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   图片可视化
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#torch">
+   转换为 torch 数据
+  </a>
+ </li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -386,7 +386,198 @@ commentsRunWhenDOMLoaded(addUtterances);
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="id1">
-<h1>数据处理<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<h1>处理数据<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<p>进入代码目录：</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">../../</span><span class="n">apps</span><span class="o">/</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>e:\kaggle\pytorch-book\apps
+</pre></div>
+</div>
+</div>
+</div>
+<p>载入模块：</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="kn">from</span> <span class="nn">opt.dataset</span> <span class="kn">import</span> <span class="n">init_dataset</span>
+<span class="kn">from</span> <span class="nn">tools.toml</span> <span class="kn">import</span> <span class="n">load_option</span>
+<span class="kn">from</span> <span class="nn">utils.loader</span> <span class="kn">import</span> <span class="n">Record</span>
+<span class="kn">from</span> <span class="nn">utils.torch_loader</span> <span class="kn">import</span> <span class="n">Loader</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id2">
+<h2>初始化数据配置<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<p>每个类别均随机选择的图片 200 张：</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">init_dataset</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;E:/kaggle/datasets/building/中景村落风貌&#39;: 809, &#39;E:/kaggle/datasets/building/航拍总图&#39;: 281, &#39;E:/kaggle/datasets/building/近景建筑风貌&#39;: 583, &#39;E:/kaggle/datasets/building/远景村落风貌&#39;: 1349}
+</pre></div>
+</div>
+</div>
+</div>
+<p>载入初始化后的数据：</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bunch</span> <span class="o">=</span> <span class="n">load_option</span><span class="p">(</span><span class="s1">&#39;../result/dataset/all.toml&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bunch</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict_keys([&#39;中景村落风貌&#39;, &#39;航拍总图&#39;, &#39;近景建筑风貌&#39;, &#39;远景村落风貌&#39;])
+</pre></div>
+</div>
+</div>
+</div>
+<p>预览部分数据：</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">bunch</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>中景村落风貌</th>
+      <th>航拍总图</th>
+      <th>近景建筑风貌</th>
+      <th>远景村落风貌</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>E:/kaggle/datasets/building/中景村落风貌/DSC_5525.JPG</td>
+      <td>E:/kaggle/datasets/building/航拍总图/DJI_0254.JPG</td>
+      <td>E:/kaggle/datasets/building/近景建筑风貌/IMG_0092.JPG</td>
+      <td>E:/kaggle/datasets/building/远景村落风貌/DJI_0514.JPG</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>E:/kaggle/datasets/building/中景村落风貌/PANO0004.JPG</td>
+      <td>E:/kaggle/datasets/building/航拍总图/DJI_0370.JPG</td>
+      <td>E:/kaggle/datasets/building/近景建筑风貌/DSC_4597.JPG</td>
+      <td>E:/kaggle/datasets/building/远景村落风貌/DJI_0771.JPG</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>E:/kaggle/datasets/building/中景村落风貌/DJI_0541 Pa...</td>
+      <td>E:/kaggle/datasets/building/航拍总图/DJI_00141.JPG</td>
+      <td>E:/kaggle/datasets/building/近景建筑风貌/IMG_2205.JPG</td>
+      <td>E:/kaggle/datasets/building/远景村落风貌/DSC_4817.JPG</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>E:/kaggle/datasets/building/中景村落风貌/DSC_9202.JPG</td>
+      <td>E:/kaggle/datasets/building/航拍总图/DJI_0300.JPG</td>
+      <td>E:/kaggle/datasets/building/近景建筑风貌/IMG_1494.JPG</td>
+      <td>E:/kaggle/datasets/building/远景村落风貌/IMG_18351.JPG</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>E:/kaggle/datasets/building/中景村落风貌/DJI_0181.JPG</td>
+      <td>E:/kaggle/datasets/building/航拍总图/DJI_0826.JPG</td>
+      <td>E:/kaggle/datasets/building/近景建筑风貌/DJI_0106.JPG</td>
+      <td>E:/kaggle/datasets/building/远景村落风貌/IMG_1845.jpg</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="id3">
+<h2>图片可视化<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span> <span class="o">=</span> <span class="n">Record</span><span class="p">(</span><span class="n">bunch</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>获取第一张图片：</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">img</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">label</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">class_names</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;标签是：&#39;</span><span class="p">,</span> <span class="n">label</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>标签是： 中景村落风貌
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">img</span><span class="o">.</span><span class="n">resize</span><span class="p">((</span><span class="mi">280</span><span class="p">,</span> <span class="mi">200</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/01_dataset_16_0.png" src="../_images/01_dataset_16_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="torch">
+<h2>转换为 torch 数据<a class="headerlink" href="#torch" title="永久链接至标题">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mask_root</span> <span class="o">=</span> <span class="s1">&#39;D:/kaggle/dataset/mask/testing_mask_dataset&#39;</span>  <span class="c1"># mask 根目录</span>
+<span class="n">fine_size</span> <span class="o">=</span> <span class="mi">256</span>  <span class="c1"># image size</span>
+<span class="n">batch_size</span> <span class="o">=</span> <span class="mi">1</span>   <span class="c1"># Need to be set to 1</span>
+<span class="n">loader</span> <span class="o">=</span> <span class="n">Loader</span><span class="p">(</span><span class="n">fine_size</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">,</span> <span class="n">mask_root</span><span class="p">,</span> <span class="n">bunch</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">trainset</span> <span class="o">=</span> <span class="n">loader</span><span class="o">.</span><span class="n">trainset</span> <span class="c1"># 训练集</span>
+<span class="n">maskset</span> <span class="o">=</span> <span class="n">loader</span><span class="o">.</span><span class="n">maskset</span> <span class="c1"># mask 数据集</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -419,19 +610,19 @@ commentsRunWhenDOMLoaded(addUtterances);
 <div class='prev-next-bottom'>
     
     <div id="prev">
-        <a class="left-prev" href="index.html" title="上一页 页">
+        <a class="left-prev" href="00_extract.html" title="上一页 页">
             <i class="prevnext-label fas fa-angle-left"></i>
             <div class="prevnext-info">
                 <p class="prevnext-label">上一页</p>
-                <p class="prevnext-title">快速上手</p>
+                <p class="prevnext-title">解压数据集</p>
             </div>
         </a>
     </div>
      <div id="next">
-        <a class="right-next" href="raw.html" title="下一页 页">
+        <a class="right-next" href="02_train.html" title="下一页 页">
             <div class="prevnext-info">
                 <p class="prevnext-label">下一页</p>
-                <p class="prevnext-title"><code class="docutils literal notranslate"><span class="pre">rcParams</span></code> &amp; <code class="docutils literal notranslate"><span class="pre">cycler</span></code></p>
+                <p class="prevnext-title">模型定义</p>
             </div>
             <i class="prevnext-label fas fa-angle-right"></i>
         </a>

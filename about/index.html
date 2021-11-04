@@ -29,12 +29,12 @@
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="../_static/tabs.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/page.css" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/page.css" />
     <link rel="stylesheet" type="text/css" href="../_static/xin-css/main.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/w3css/4/w3.css" />
     <link rel="stylesheet" type="text/css" href="../_static/w3css/4/w3pro.css" />
     <link rel="stylesheet" type="text/css" href="../_static/w3css/4/w3mobile.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/w3css/4/w3.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
@@ -98,7 +98,7 @@ commentsRunWhenDOMLoaded(addUtterances);
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="搜索" href="../search.html" />
     <link rel="next" title="项目架构" href="architecture.html" />
-    <link rel="prev" title="高级教程" href="../principle/topic.html" />
+    <link rel="prev" title="rcParams &amp; cycler" href="../start/raw.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -149,8 +149,18 @@ commentsRunWhenDOMLoaded(addUtterances);
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../start/dataset.html">
-     数据处理
+    <a class="reference internal" href="../start/00_extract.html">
+     解压数据集
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../start/01_dataset.html">
+     处理数据
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../start/02_train.html">
+     模型定义
     </a>
    </li>
    <li class="toctree-l2">
@@ -170,47 +180,6 @@ commentsRunWhenDOMLoaded(addUtterances);
    </li>
   </ul>
  </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../tutorials/index.html">
-   指南
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../tutorials/what.html">
-     What
-    </a>
-   </li>
-  </ul>
- </li>
-</ul>
-<p class="caption" role="heading">
- <span class="caption-text">
-  原理
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../principle/index.html">
-   解释
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-  <label for="toctree-checkbox-3">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../principle/topic.html">
-     高级教程
-    </a>
-   </li>
-  </ul>
- </li>
 </ul>
 <p class="caption" role="heading">
  <span class="caption-text">
@@ -222,8 +191,8 @@ commentsRunWhenDOMLoaded(addUtterances);
   <a class="current reference internal" href="#">
    关于
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
-  <label for="toctree-checkbox-4">
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -246,23 +215,6 @@ commentsRunWhenDOMLoaded(addUtterances);
    <li class="toctree-l2">
     <a class="reference internal" href="../CHANGELOG.html">
      变更日志
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../other/index.html">
-   外部资源
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
-  <label for="toctree-checkbox-5">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../other/topic.html">
-     话题
     </a>
    </li>
    <li class="toctree-l2">
@@ -422,11 +374,11 @@ commentsRunWhenDOMLoaded(addUtterances);
 <div class='prev-next-bottom'>
     
     <div id="prev">
-        <a class="left-prev" href="../principle/topic.html" title="上一页 页">
+        <a class="left-prev" href="../start/raw.html" title="上一页 页">
             <i class="prevnext-label fas fa-angle-left"></i>
             <div class="prevnext-info">
                 <p class="prevnext-label">上一页</p>
-                <p class="prevnext-title">高级教程</p>
+                <p class="prevnext-title"><code class="docutils literal notranslate"><span class="pre">rcParams</span></code> &amp; <code class="docutils literal notranslate"><span class="pre">cycler</span></code></p>
             </div>
         </a>
     </div>

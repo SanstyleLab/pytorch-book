@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>话题 &#8212; Sanstyle Demo</title>
+    <title>解压数据集 &#8212; Sanstyle Demo</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
   <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -29,12 +29,12 @@
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="../_static/tabs.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/page.css" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/page.css" />
     <link rel="stylesheet" type="text/css" href="../_static/xin-css/main.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/w3css/4/w3.css" />
     <link rel="stylesheet" type="text/css" href="../_static/w3css/4/w3pro.css" />
     <link rel="stylesheet" type="text/css" href="../_static/w3css/4/w3mobile.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/w3css/4/w3.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
@@ -93,11 +93,12 @@ commentsRunWhenDOMLoaded(addUtterances);
         const thebe_selector_output = ".output,.cell_output"
     </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <link rel="canonical" href="https://SanstyleLab.github.io/sanstyle-starter/other/topic.html" />
+    <link rel="canonical" href="https://SanstyleLab.github.io/sanstyle-starter/start/00_extract.html" />
     <link rel="shortcut icon" href="../_static/page-logo.jfif"/>
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="搜索" href="../search.html" />
-    <link rel="prev" title="外部资源" href="index.html" />
+    <link rel="next" title="处理数据" href="01_dataset.html" />
+    <link rel="prev" title="快速上手" href="index.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -136,24 +137,34 @@ commentsRunWhenDOMLoaded(addUtterances);
   教程
  </span>
 </p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../start/index.html">
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="index.html">
    快速上手
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../start/dataset.html">
-     数据处理
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     解压数据集
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../start/raw.html">
+    <a class="reference internal" href="01_dataset.html">
+     处理数据
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02_train.html">
+     模型定义
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="raw.html">
      <code class="docutils literal notranslate">
       <span class="pre">
        rcParams
@@ -169,60 +180,19 @@ commentsRunWhenDOMLoaded(addUtterances);
    </li>
   </ul>
  </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../tutorials/index.html">
-   指南
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../tutorials/what.html">
-     What
-    </a>
-   </li>
-  </ul>
- </li>
-</ul>
-<p class="caption" role="heading">
- <span class="caption-text">
-  原理
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../principle/index.html">
-   解释
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-  <label for="toctree-checkbox-3">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../principle/topic.html">
-     高级教程
-    </a>
-   </li>
-  </ul>
- </li>
 </ul>
 <p class="caption" role="heading">
  <span class="caption-text">
   混沌
  </span>
 </p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../about/index.html">
    关于
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
-  <label for="toctree-checkbox-4">
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -245,23 +215,6 @@ commentsRunWhenDOMLoaded(addUtterances);
    <li class="toctree-l2">
     <a class="reference internal" href="../CHANGELOG.html">
      变更日志
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="index.html">
-   外部资源
-  </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
-  <label for="toctree-checkbox-5">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul class="current">
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
-     话题
     </a>
    </li>
    <li class="toctree-l2">
@@ -335,9 +288,9 @@ commentsRunWhenDOMLoaded(addUtterances);
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/other/topic.md"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/start/00_extract.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.md</button></a>
+                data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
             onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
@@ -355,7 +308,7 @@ commentsRunWhenDOMLoaded(addUtterances);
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/SanstyleLab/pytorch-book/issues/new?title=Issue%20on%20page%20%2Fother/topic.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/SanstyleLab/pytorch-book/issues/new?title=Issue%20on%20page%20%2Fstart/00_extract.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -371,6 +324,31 @@ commentsRunWhenDOMLoaded(addUtterances);
 
             <!-- Launch buttons -->
 
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/SanstyleLab/pytorch-book/main?urlpath=tree/docs/start/00_extract.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/SanstyleLab/pytorch-book/blob/main/docs/start/00_extract.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
+        
+    </div>
+</div>
+
         </div>
 
         <!-- Table of contents -->
@@ -385,7 +363,88 @@ commentsRunWhenDOMLoaded(addUtterances);
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="id1">
-<h1>话题<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<h1>解压数据集<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<p>载入压缩数据：</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span> <span class="nn">zipfile</span> <span class="kn">import</span> <span class="n">ZipFile</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">zip_root</span><span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;E:\kaggle\gan\zip&#39;</span> <span class="c1"># 数据压缩包所在目录</span>
+<span class="n">out_dir</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;E:\kaggle\datasets\building&#39;</span> <span class="c1"># 解压后的目录</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>打印压缩文件的名称：</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">print_zip_dataset</span><span class="p">(</span><span class="n">zip_root</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;打印压缩文件的名称&#39;&#39;&#39;</span>
+    <span class="k">for</span> <span class="n">zip_dir</span> <span class="ow">in</span> <span class="n">Path</span><span class="p">(</span><span class="n">zip_root</span><span class="p">)</span><span class="o">.</span><span class="n">iterdir</span><span class="p">():</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">zip_dir</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+
+<span class="n">print_zip_dataset</span><span class="p">(</span><span class="n">zip_root</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>中景村落风貌.zip
+生成用.zip
+航拍总图.zip
+近景建筑风貌.zip
+远景村落风貌.zip
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">decode_zip_path</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">path_name</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="n">path_name</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;437&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;gbk&#39;</span><span class="p">)</span>
+        <span class="n">path_name</span> <span class="o">=</span> <span class="n">path_name</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">path_name</span>
+
+
+<span class="k">def</span> <span class="nf">extract</span><span class="p">(</span><span class="n">zip_dir</span><span class="p">,</span> <span class="n">out_dir</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;解压单个数据集&#39;&#39;&#39;</span>
+    <span class="k">with</span> <span class="n">ZipFile</span><span class="p">(</span><span class="n">zip_dir</span><span class="p">,</span> <span class="n">allowZip64</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="k">as</span> <span class="n">Z</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">path</span> <span class="ow">in</span> <span class="n">Z</span><span class="o">.</span><span class="n">namelist</span><span class="p">():</span>
+            <span class="n">path</span> <span class="o">=</span> <span class="n">Z</span><span class="o">.</span><span class="n">extract</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">out_dir</span><span class="p">)</span>
+            <span class="n">path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+            <span class="n">name</span> <span class="o">=</span> <span class="n">decode_zip_path</span><span class="p">(</span><span class="n">path</span><span class="o">.</span><span class="n">as_posix</span><span class="p">())</span>
+            <span class="n">path</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">extract_all</span><span class="p">(</span><span class="n">zip_root</span><span class="p">,</span> <span class="n">out_dir</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;解压全部数据集&#39;&#39;&#39;</span>
+    <span class="k">for</span> <span class="n">zip_dir</span> <span class="ow">in</span> <span class="n">Path</span><span class="p">(</span><span class="n">zip_root</span><span class="p">)</span><span class="o">.</span><span class="n">iterdir</span><span class="p">():</span>
+        <span class="c1"># 解压单个数据集</span>
+        <span class="n">extract</span><span class="p">(</span><span class="n">zip_dir</span><span class="p">,</span> <span class="n">out_dir</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;全部解压完成！&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 解压全部数据集</span>
+<span class="n">extract_all</span><span class="p">(</span><span class="n">zip_root</span><span class="p">,</span> <span class="n">out_dir</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">注解</p>
+<p>需要删除空目录。</p>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -401,7 +460,7 @@ commentsRunWhenDOMLoaded(addUtterances);
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./other"
+            path: "./start"
         },
         predefinedOutput: true
     }
@@ -422,10 +481,19 @@ commentsRunWhenDOMLoaded(addUtterances);
             <i class="prevnext-label fas fa-angle-left"></i>
             <div class="prevnext-info">
                 <p class="prevnext-label">上一页</p>
-                <p class="prevnext-title">外部资源</p>
+                <p class="prevnext-title">快速上手</p>
             </div>
         </a>
     </div>
+     <div id="next">
+        <a class="right-next" href="01_dataset.html" title="下一页 页">
+            <div class="prevnext-info">
+                <p class="prevnext-label">下一页</p>
+                <p class="prevnext-title">处理数据</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
 
 </div>
         
