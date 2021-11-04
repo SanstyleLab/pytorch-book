@@ -1,0 +1,31 @@
+name = 'CSA'
+checkpoints_dir = '../result'
+gpu_ids = [0, 1]
+
+which_model_netD = 'basic'  # patch discriminator
+which_model_netF = 'feature'  # feature patch discriminator
+which_model_netG = 'unet_csa'  # seconde stage network
+which_model_netP = 'unet_256'  # first stage network
+which_epoch = ''
+batch_size = 1
+lambda_A = 100 # λ1=1
+
+is_train = true
+gan_type = 'lsgan'
+gan_weight = 0.2
+cosis = 1
+
+mask_type = 'center'
+ngf = 64  # inner channel
+ndf = 64  # inner channel
+
+continue_train = false
+epoch_count = 1
+overlap = 4
+
+niter = 20
+niter_decay = 100
+beta1 = 0.5
+lr = 0.0002
+lr_policy = 'lambda'
+lr_decay_iters = 50
