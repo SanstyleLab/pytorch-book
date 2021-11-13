@@ -9,7 +9,7 @@ def get_paths(bunch):
     # 获取全部数据的路径
     paths = [path.as_posix()
              for path in Path(bunch.root).iterdir()
-             if path.name != '生成用']
+             if path.name not in  ['生成用', '周边风景照片']]
     return paths
 
 

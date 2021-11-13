@@ -41,3 +41,28 @@ class Tree:
         index = np.arange(m)
         np.random.shuffle(index)
         return np.take(_names, index[:num]).tolist()
+
+
+class PathSet:
+    def __init__(self, root) -> None:
+        self.root = root
+
+    @property
+    def parent_paths(self):
+        # 获取全部数据的路径
+        _paths = [path.as_posix()
+                  for path in Path(self.root).iterdir()]
+        return _paths
+
+    @property
+    def bunch(self):
+        _bunch = {Path(name).name: Tree(name).names
+                  for name in self.parent_paths}
+        return _bunch
+
+    @property
+    def names(self):
+        _names = set()
+        for val in self.bunch.values():
+            _names = _names.union(val)
+        return _names

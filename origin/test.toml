@@ -1,4 +1,4 @@
-root = 'E:/kaggle/datasets/buildings' # 数据根目录
+root = 'E:/kaggle/datasets/tests' # 数据根目录
 mask = 'D:/kaggle/dataset/mask/testing_mask_dataset'  # mask 根目录
 fine_size = 512  # image size
 batch_size = 1   # Need to be set to 1
