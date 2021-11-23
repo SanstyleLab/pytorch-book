@@ -1,0 +1,1261 @@
+
+<!DOCTYPE html>
+
+<html lang="zh_CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>模型定义 &#8212; Sanstyle Demo</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/tabs.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/page.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/xin-css/main.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/w3css/4/w3mobile.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/w3css/4/w3pro.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/w3css/4/w3.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/tabs.js"></script>
+    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
+    <script kind="utterances">
+
+    var commentsRunWhenDOMLoaded = cb => {
+    if (document.readyState != 'loading') {
+        cb()
+    } else if (document.addEventListener) {
+        document.addEventListener('DOMContentLoaded', cb)
+    } else {
+        document.attachEvent('onreadystatechange', function() {
+        if (document.readyState == 'complete') cb()
+        })
+    }
+}
+
+var addUtterances = () => {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src = "https://utteranc.es/client.js";
+    script.async = "async";
+
+    script.setAttribute("repo", "SanstyleLab/pytorch-book");
+    script.setAttribute("issue-term", "pathname");
+    script.setAttribute("theme", "github-light");
+    script.setAttribute("label", "💬 comment");
+    script.setAttribute("crossorigin", "anonymous");
+
+    sections = document.querySelectorAll("div.section");
+    if (sections !== null) {
+        section = sections[sections.length-1];
+        section.appendChild(script);
+    }
+}
+commentsRunWhenDOMLoaded(addUtterances);
+</script>
+    <script src="../_static/translations.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="canonical" href="https://SanstyleLab.github.io/sanstyle-starter/start/02_train2.html" />
+    <link rel="shortcut icon" href="../_static/page-logo.jfif"/>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="处理数据" href="03_dataset-mix.html" />
+    <link rel="prev" title="模型定义" href="02_train.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="zh_CN">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.jpg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Sanstyle Demo</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  教程
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="index.html">
+   快速上手
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="00_extract.html">
+     解压数据集
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="01_dataset.html">
+     处理数据
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02_train.html">
+     模型定义
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     模型定义
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="03_dataset-mix.html">
+     处理数据
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="raw.html">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       rcParams
+      </span>
+     </code>
+     &amp;
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       cycler
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  混沌
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../about/index.html">
+   关于
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../about/architecture.html">
+     项目架构
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../about/how.html">
+     如何启动项目
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../about/zreferences.html">
+     参考文献
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../CHANGELOG.html">
+     变更日志
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference external" href="https://xinetzone.github.io/sanstyle-book/">
+     Sanstyle Book
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  <div class="w3-padding w3-card-4 w3-pale-green">
+  <a href="https://github.com/xinetzone" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub"
+      data-position="top" data-delay="50">
+      <i class="fab fa-github"></i>
+  </a>
+  <a href="mailto:q735613050@163.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top"
+      data-delay="50">
+      <i class="fas fa-envelope-open"></i>
+  </a>
+  <a href="tencent://AddContact/?fromId=50&amp;fromSubId=1&amp;subcmd=all&amp;uin=735613050" class="tooltipped"
+      target="_blank" data-tooltip="QQ联系我: 735613050" data-position="top" data-delay="50">
+      <i class="fab fa-qq"></i>
+  </a>
+  <a href="https://www.zhihu.com/people/liu-xin-wei-55" class="tooltipped" target="_blank"
+      data-tooltip="关注我的知乎: liu-xin-wei-55" data-position="top" data-delay="50">
+      <i class="fab fa-zhihu1">知</i>
+  </a>
+  <a target="_blank" rel="noopener" href="https://www.linkedin.com/in/xinet" class="tooltipped"
+      data-tooltip="领英联系我: xinet" data-position="top" data-delay="50">
+      <i class="fab fa-linkedin"></i>
+  </a>
+  <div><a href="https://github.com/xinetzone/sanstyle">上善若水</a> 版权所有</div>
+</div>
+
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/start/02_train2.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/SanstyleLab/pytorch-book"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/SanstyleLab/pytorch-book/issues/new?title=Issue%20on%20page%20%2Fstart/02_train2.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/SanstyleLab/pytorch-book/main?urlpath=tree/docs/start/02_train2.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/SanstyleLab/pytorch-book/blob/main/docs/start/02_train2.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">../../</span><span class="n">apps</span><span class="o">/</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>e:\kaggle\pytorch-book\apps
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+
+<span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">randint</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+
+<span class="kn">import</span> <span class="nn">torch</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">torchvision.utils</span> <span class="kn">import</span> <span class="n">save_image</span>
+
+<span class="kn">from</span> <span class="nn">models.CSA</span> <span class="kn">import</span> <span class="n">CSA</span>
+<span class="kn">from</span> <span class="nn">tools.toml</span> <span class="kn">import</span> <span class="n">load_option</span>
+<span class="kn">from</span> <span class="nn">opt.dataset</span> <span class="kn">import</span> <span class="n">init_dataset</span>
+
+<span class="kn">from</span> <span class="nn">tools.file</span> <span class="kn">import</span> <span class="n">mkdir</span>
+<span class="kn">from</span> <span class="nn">utils.torch_loader</span> <span class="kn">import</span> <span class="n">Loader</span>
+
+
+<span class="k">def</span> <span class="nf">array2image</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="n">x</span> <span class="o">*=</span> <span class="mi">255</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">detach</span><span class="p">()</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">x</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;uint8&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+
+<span class="k">def</span> <span class="nf">mask_op</span><span class="p">(</span><span class="n">mask</span><span class="p">):</span>
+    <span class="n">mask</span> <span class="o">=</span> <span class="n">mask</span><span class="o">.</span><span class="n">cuda</span><span class="p">()</span>
+    <span class="n">mask</span> <span class="o">=</span> <span class="n">mask</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">mask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="n">mask</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">mask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="n">mask</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">mask</span> <span class="o">=</span> <span class="n">mask</span><span class="o">.</span><span class="n">byte</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">mask</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id1">
+<h1>模型定义<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 超参数设定</span>
+<span class="c1">## 固定参数</span>
+<span class="n">epochs</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="n">display_freq</span> <span class="o">=</span> <span class="mi">200</span>
+<span class="n">save_epoch_freq</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="c1">## 模型参数</span>
+<span class="n">alpha</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">beta</span> <span class="o">=</span> <span class="mf">0.2</span>
+
+
+<span class="n">model_name</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;CSA-crop-</span><span class="si">{</span><span class="n">alpha</span><span class="si">}</span><span class="s1">-</span><span class="si">{</span><span class="n">beta</span><span class="si">}</span><span class="s1">&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">base_opt</span> <span class="o">=</span> <span class="n">load_option</span><span class="p">(</span><span class="s1">&#39;../options/base.toml&#39;</span><span class="p">)</span>
+<span class="n">opt</span> <span class="o">=</span> <span class="n">load_option</span><span class="p">(</span><span class="s1">&#39;../options/train-new.toml&#39;</span><span class="p">)</span>
+<span class="n">opt</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">base_opt</span><span class="p">)</span>
+<span class="n">opt</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">model_name</span><span class="p">})</span> <span class="c1"># 设定模型名称</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">CSA</span><span class="p">(</span><span class="n">beta</span><span class="p">,</span> <span class="o">**</span><span class="n">opt</span><span class="p">)</span>
+
+<span class="n">image_save_dir</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">save_dir</span> <span class="o">/</span> <span class="s1">&#39;images&#39;</span>
+<span class="n">mkdir</span><span class="p">(</span><span class="n">image_save_dir</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>initialize network with normal
+initialize network with normal
+initialize network with normal
+initialize network with normal
+---------- Networks initialized -------------
+UnetGeneratorCSA(
+  (model): UnetSkipConnectionBlock_3(
+    (model): Sequential(
+      (0): Conv2d(6, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (1): UnetSkipConnectionBlock_3(
+        (model): Sequential(
+          (0): LeakyReLU(negative_slope=0.2, inplace=True)
+          (1): Conv2d(64, 64, kernel_size=(4, 4), stride=(2, 2), padding=(3, 3), dilation=(2, 2))
+          (2): InstanceNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+          (3): LeakyReLU(negative_slope=0.2, inplace=True)
+          (4): Conv2d(64, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+          (5): InstanceNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+          (6): UnetSkipConnectionBlock_3(
+            (model): Sequential(
+              (0): LeakyReLU(negative_slope=0.2, inplace=True)
+              (1): Conv2d(128, 128, kernel_size=(4, 4), stride=(2, 2), padding=(3, 3), dilation=(2, 2))
+              (2): InstanceNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+              (3): LeakyReLU(negative_slope=0.2, inplace=True)
+              (4): Conv2d(128, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+              (5): InstanceNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+              (6): CSA(
+                (model): Sequential(
+                  (0): LeakyReLU(negative_slope=0.2, inplace=True)
+                  (1): Conv2d(256, 256, kernel_size=(4, 4), stride=(2, 2), padding=(3, 3), dilation=(2, 2))
+                  (2): InstanceNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+                  (3): LeakyReLU(negative_slope=0.2, inplace=True)
+                  (4): Conv2d(256, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                  (5): CSA_model(threshold: 0.3125 ,triple_weight 1)
+                  (6): InnerCos(skip: True ,strength: 1)
+                  (7): InstanceNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+                  (8): UnetSkipConnectionBlock_3(
+                    (model): Sequential(
+                      (0): LeakyReLU(negative_slope=0.2, inplace=True)
+                      (1): Conv2d(512, 512, kernel_size=(4, 4), stride=(2, 2), padding=(3, 3), dilation=(2, 2))
+                      (2): InstanceNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+                      (3): LeakyReLU(negative_slope=0.2, inplace=True)
+                      (4): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                      (5): InstanceNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+                      (6): UnetSkipConnectionBlock_3(
+                        (model): Sequential(
+                          (0): LeakyReLU(negative_slope=0.2, inplace=True)
+                          (1): Conv2d(512, 512, kernel_size=(4, 4), stride=(2, 2), padding=(3, 3), dilation=(2, 2))
+                          (2): InstanceNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+                          (3): LeakyReLU(negative_slope=0.2, inplace=True)
+                          (4): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                          (5): InstanceNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+                          (6): UnetSkipConnectionBlock_3(
+                            (model): Sequential(
+                              (0): LeakyReLU(negative_slope=0.2, inplace=True)
+                              (1): Conv2d(512, 512, kernel_size=(4, 4), stride=(2, 2), padding=(3, 3), dilation=(2, 2))
+                              (2): InstanceNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+                              (3): LeakyReLU(negative_slope=0.2, inplace=True)
+                              (4): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                              (5): InstanceNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+                              (6): UnetSkipConnectionBlock_3(
+                                (model): Sequential(
+                                  (0): LeakyReLU(negative_slope=0.2, inplace=True)
+                                  (1): Conv2d(512, 512, kernel_size=(4, 4), stride=(2, 2), padding=(3, 3), dilation=(2, 2))
+                                  (2): InstanceNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+                                  (3): LeakyReLU(negative_slope=0.2, inplace=True)
+                                  (4): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                                  (5): InstanceNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+                                  (6): UnetSkipConnectionBlock_3(
+                                    (model): Sequential(
+                                      (0): LeakyReLU(negative_slope=0.2, inplace=True)
+                                      (1): Conv2d(512, 512, kernel_size=(4, 4), stride=(2, 2), padding=(3, 3), dilation=(2, 2))
+                                      (2): ReLU(inplace=True)
+                                      (3): ConvTranspose2d(512, 512, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1))
+                                      (4): InstanceNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+                                    )
+                                  )
+                                  (7): ReLU(inplace=True)
+                                  (8): ConvTranspose2d(1024, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                                  (9): InstanceNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+                                  (10): ReLU(inplace=True)
+                                  (11): ConvTranspose2d(512, 512, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1))
+                                  (12): InstanceNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+                                )
+                              )
+                              (7): ReLU(inplace=True)
+                              (8): ConvTranspose2d(1024, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                              (9): InstanceNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+                              (10): ReLU(inplace=True)
+                              (11): ConvTranspose2d(512, 512, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1))
+                              (12): InstanceNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+                            )
+                          )
+                          (7): ReLU(inplace=True)
+                          (8): ConvTranspose2d(1024, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                          (9): InstanceNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+                          (10): ReLU(inplace=True)
+                          (11): ConvTranspose2d(512, 512, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1))
+                          (12): InstanceNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+                        )
+                      )
+                      (7): ReLU(inplace=True)
+                      (8): ConvTranspose2d(1024, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                      (9): InstanceNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+                      (10): ReLU(inplace=True)
+                      (11): ConvTranspose2d(512, 512, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1))
+                      (12): InstanceNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+                    )
+                  )
+                  (9): InnerCos2(skip: True ,strength: 1)
+                  (10): ReLU(inplace=True)
+                  (11): ConvTranspose2d(1024, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                  (12): InstanceNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+                  (13): ReLU(inplace=True)
+                  (14): ConvTranspose2d(256, 256, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1))
+                  (15): InstanceNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+                )
+              )
+              (7): ReLU(inplace=True)
+              (8): ConvTranspose2d(512, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+              (9): InstanceNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+              (10): ReLU(inplace=True)
+              (11): ConvTranspose2d(128, 128, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1))
+              (12): InstanceNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            )
+          )
+          (7): ReLU(inplace=True)
+          (8): ConvTranspose2d(256, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+          (9): InstanceNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+          (10): ReLU(inplace=True)
+          (11): ConvTranspose2d(64, 64, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1))
+          (12): InstanceNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+        )
+      )
+      (2): ReLU(inplace=True)
+      (3): ConvTranspose2d(128, 3, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    )
+  )
+)
+Total number of parameters: 77692291
+UnetGenerator(
+  (model): UnetSkipConnectionBlock(
+    (model): Sequential(
+      (0): Conv2d(3, 64, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1))
+      (1): UnetSkipConnectionBlock(
+        (model): Sequential(
+          (0): LeakyReLU(negative_slope=0.2, inplace=True)
+          (1): Conv2d(64, 128, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1))
+          (2): InstanceNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+          (3): UnetSkipConnectionBlock(
+            (model): Sequential(
+              (0): LeakyReLU(negative_slope=0.2, inplace=True)
+              (1): Conv2d(128, 256, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1))
+              (2): InstanceNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+              (3): UnetSkipConnectionBlock(
+                (model): Sequential(
+                  (0): LeakyReLU(negative_slope=0.2, inplace=True)
+                  (1): Conv2d(256, 512, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1))
+                  (2): InstanceNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+                  (3): UnetSkipConnectionBlock(
+                    (model): Sequential(
+                      (0): LeakyReLU(negative_slope=0.2, inplace=True)
+                      (1): Conv2d(512, 512, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1))
+                      (2): InstanceNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+                      (3): UnetSkipConnectionBlock(
+                        (model): Sequential(
+                          (0): LeakyReLU(negative_slope=0.2, inplace=True)
+                          (1): Conv2d(512, 512, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1))
+                          (2): InstanceNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+                          (3): UnetSkipConnectionBlock(
+                            (model): Sequential(
+                              (0): LeakyReLU(negative_slope=0.2, inplace=True)
+                              (1): Conv2d(512, 512, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1))
+                              (2): InstanceNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+                              (3): UnetSkipConnectionBlock(
+                                (model): Sequential(
+                                  (0): LeakyReLU(negative_slope=0.2, inplace=True)
+                                  (1): Conv2d(512, 512, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1))
+                                  (2): ReLU(inplace=True)
+                                  (3): ConvTranspose2d(512, 512, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1))
+                                  (4): InstanceNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+                                )
+                              )
+                              (4): ReLU(inplace=True)
+                              (5): ConvTranspose2d(1024, 512, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1))
+                              (6): InstanceNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+                            )
+                          )
+                          (4): ReLU(inplace=True)
+                          (5): ConvTranspose2d(1024, 512, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1))
+                          (6): InstanceNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+                        )
+                      )
+                      (4): ReLU(inplace=True)
+                      (5): ConvTranspose2d(1024, 512, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1))
+                      (6): InstanceNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+                    )
+                  )
+                  (4): ReLU(inplace=True)
+                  (5): ConvTranspose2d(1024, 256, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1))
+                  (6): InstanceNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+                )
+              )
+              (4): ReLU(inplace=True)
+              (5): ConvTranspose2d(512, 128, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1))
+              (6): InstanceNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            )
+          )
+          (4): ReLU(inplace=True)
+          (5): ConvTranspose2d(256, 64, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1))
+          (6): InstanceNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+        )
+      )
+      (2): ReLU(inplace=True)
+      (3): ConvTranspose2d(128, 3, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1))
+      (4): Tanh()
+    )
+  )
+)
+Total number of parameters: 54419459
+NLayerDiscriminator(
+  (model): Sequential(
+    (0): Conv2d(3, 64, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1))
+    (1): LeakyReLU(negative_slope=0.2, inplace=True)
+    (2): Conv2d(64, 128, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1))
+    (3): InstanceNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+    (4): LeakyReLU(negative_slope=0.2, inplace=True)
+    (5): Conv2d(128, 256, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1))
+    (6): InstanceNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+    (7): LeakyReLU(negative_slope=0.2, inplace=True)
+    (8): Conv2d(256, 512, kernel_size=(4, 4), stride=(1, 1), padding=(1, 1))
+    (9): InstanceNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+    (10): LeakyReLU(negative_slope=0.2, inplace=True)
+    (11): Conv2d(512, 1, kernel_size=(4, 4), stride=(1, 1), padding=(1, 1))
+  )
+)
+Total number of parameters: 2766529
+PFDiscriminator(
+  (model): Sequential(
+    (0): Conv2d(256, 512, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1))
+    (1): LeakyReLU(negative_slope=0.2, inplace=True)
+    (2): Conv2d(512, 512, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1))
+    (3): InstanceNorm2d(512, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+    (4): LeakyReLU(negative_slope=0.2, inplace=True)
+    (5): Conv2d(512, 512, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1))
+  )
+)
+Total number of parameters: 10487296
+-----------------------------------------------
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">opt</span> <span class="o">=</span> <span class="n">init_dataset</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span>
+<span class="n">loader</span> <span class="o">=</span> <span class="n">Loader</span><span class="p">(</span><span class="o">**</span><span class="n">opt</span><span class="p">)</span>
+<span class="n">trainset</span> <span class="o">=</span> <span class="n">loader</span><span class="o">.</span><span class="n">trainset</span> <span class="c1"># 训练集</span>
+<span class="n">maskset</span> <span class="o">=</span> <span class="n">loader</span><span class="o">.</span><span class="n">maskset</span> <span class="c1"># mask 数据集</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;E:/kaggle/datasets/building/╓╨╛░┤σ┬Σ╖τ├▓&#39;: 0, &#39;E:/kaggle/datasets/building/中景村落风貌&#39;: 809, &#39;E:/kaggle/datasets/building/航拍总图&#39;: 281, &#39;E:/kaggle/datasets/building/近景建筑风貌&#39;: 583, &#39;E:/kaggle/datasets/building/远景村落风貌&#39;: 1349}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 训练阶段</span>
+<span class="n">start_epoch</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">total_steps</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">iter_start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">start_epoch</span><span class="p">,</span> <span class="n">epochs</span><span class="p">):</span>
+    <span class="n">epoch_start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+    <span class="n">epoch_iter</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">batch</span><span class="p">,</span> <span class="n">mask</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">trainset</span><span class="p">,</span> <span class="n">maskset</span><span class="p">):</span>
+        <span class="n">image</span> <span class="o">=</span> <span class="n">batch</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">mask</span> <span class="o">=</span> <span class="n">mask_op</span><span class="p">(</span><span class="n">mask</span><span class="p">)</span>
+        <span class="n">total_steps</span> <span class="o">+=</span> <span class="n">model</span><span class="o">.</span><span class="n">batch_size</span>
+        <span class="n">epoch_iter</span> <span class="o">+=</span> <span class="n">model</span><span class="o">.</span><span class="n">batch_size</span>
+        <span class="c1"># it not only sets the input data with mask, but also sets the latent mask.</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">set_input</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">mask</span><span class="p">)</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">set_gt_latent</span><span class="p">()</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">optimize_parameters</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">total_steps</span> <span class="o">%</span> <span class="n">display_freq</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">real_A</span><span class="p">,</span> <span class="n">real_B</span><span class="p">,</span> <span class="n">fake_B</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">get_current_visuals</span><span class="p">()</span>
+            <span class="c1"># real_A=input, real_B=ground truth fake_b=output</span>
+            <span class="n">pic</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">cat</span><span class="p">([</span><span class="n">real_A</span><span class="p">,</span> <span class="n">real_B</span><span class="p">,</span> <span class="n">fake_B</span><span class="p">],</span> <span class="n">dim</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="mf">2.0</span>
+            <span class="n">image_name</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;epoch</span><span class="si">{</span><span class="n">epoch</span><span class="si">}</span><span class="s2">-</span><span class="si">{</span><span class="n">total_steps</span><span class="si">}</span><span class="s2">-</span><span class="si">{</span><span class="n">alpha</span><span class="si">}</span><span class="s2">.png&quot;</span>
+            <span class="n">save_image</span><span class="p">(</span><span class="n">pic</span><span class="p">,</span> <span class="n">image_save_dir</span><span class="o">/</span><span class="n">image_name</span><span class="p">,</span> <span class="n">ncol</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">total_steps</span> <span class="o">%</span> <span class="mi">100</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">errors</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">get_current_errors</span><span class="p">()</span>
+            <span class="n">t</span> <span class="o">=</span> <span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">iter_start_time</span><span class="p">)</span> <span class="o">/</span> <span class="n">model</span><span class="o">.</span><span class="n">batch_size</span>
+            <span class="nb">print</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;Epoch/total_steps/alpha-beta: </span><span class="si">{</span><span class="n">epoch</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">total_steps</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">alpha</span><span class="si">}</span><span class="s2">-</span><span class="si">{</span><span class="n">beta</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="nb">dict</span><span class="p">(</span><span class="n">errors</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">epoch</span> <span class="o">%</span> <span class="n">save_epoch_freq</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;保存模型 Epoch </span><span class="si">{</span><span class="n">epoch</span><span class="si">}</span><span class="s1">, iters </span><span class="si">{</span><span class="n">total_steps</span><span class="si">}</span><span class="s1"> 在 </span><span class="si">{</span><span class="n">model</span><span class="o">.</span><span class="n">save_dir</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">epoch</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span>
+        <span class="sa">f</span><span class="s1">&#39;Epoch/Epochs </span><span class="si">{</span><span class="n">epoch</span><span class="si">}</span><span class="s1">/</span><span class="si">{</span><span class="n">epochs</span><span class="o">-</span><span class="mi">1</span><span class="si">}</span><span class="s1"> 花费时间：</span><span class="si">{</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">epoch_start_time</span><span class="si">}</span><span class="s1">s&#39;</span><span class="p">)</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">update_learning_rate</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch/total_steps/alpha-beta: 0/100/1-0.2 {&#39;G_GAN&#39;: 5.518022537231445, &#39;G_L1&#39;: 55.588680267333984, &#39;D&#39;: 1.1141009330749512, &#39;F&#39;: 0.07483334094285965}
+Epoch/total_steps/alpha-beta: 0/200/1-0.2 {&#39;G_GAN&#39;: 5.759289741516113, &#39;G_L1&#39;: 55.08604049682617, &#39;D&#39;: 0.6345841288566589, &#39;F&#39;: 0.04530204087495804}
+Epoch/total_steps/alpha-beta: 0/300/1-0.2 {&#39;G_GAN&#39;: 6.937740325927734, &#39;G_L1&#39;: 59.467960357666016, &#39;D&#39;: 0.5065065026283264, &#39;F&#39;: 0.03301296383142471}
+Epoch/total_steps/alpha-beta: 0/400/1-0.2 {&#39;G_GAN&#39;: 6.193876266479492, &#39;G_L1&#39;: 38.149436950683594, &#39;D&#39;: 1.1900465488433838, &#39;F&#39;: 0.05299185961484909}
+Epoch/total_steps/alpha-beta: 0/500/1-0.2 {&#39;G_GAN&#39;: 7.556830406188965, &#39;G_L1&#39;: 39.45917892456055, &#39;D&#39;: 0.2415945678949356, &#39;F&#39;: 0.022815663367509842}
+Epoch/total_steps/alpha-beta: 0/600/1-0.2 {&#39;G_GAN&#39;: 6.890033721923828, &#39;G_L1&#39;: 65.72925567626953, &#39;D&#39;: 0.5194847583770752, &#39;F&#39;: 0.026784880086779594}
+Epoch/total_steps/alpha-beta: 0/700/1-0.2 {&#39;G_GAN&#39;: 7.203421592712402, &#39;G_L1&#39;: 55.98662567138672, &#39;D&#39;: 0.1983884871006012, &#39;F&#39;: 0.02233431488275528}
+Epoch/total_steps/alpha-beta: 0/800/1-0.2 {&#39;G_GAN&#39;: 8.526432037353516, &#39;G_L1&#39;: 60.987518310546875, &#39;D&#39;: 0.08916746079921722, &#39;F&#39;: 0.02979384921491146}
+保存模型 Epoch 0, iters 800 在 ..\result\CSA-crop-1-0.2
+Epoch/Epochs 0/999 花费时间：2294.4748616218567s
+learning rate = 0.0002
+Epoch/total_steps/alpha-beta: 1/900/1-0.2 {&#39;G_GAN&#39;: 7.642114639282227, &#39;G_L1&#39;: 78.49203491210938, &#39;D&#39;: 0.12604835629463196, &#39;F&#39;: 0.017340093851089478}
+Epoch/total_steps/alpha-beta: 1/1000/1-0.2 {&#39;G_GAN&#39;: 7.608176231384277, &#39;G_L1&#39;: 43.2374382019043, &#39;D&#39;: 0.14779514074325562, &#39;F&#39;: 0.015945453196763992}
+Epoch/total_steps/alpha-beta: 1/1100/1-0.2 {&#39;G_GAN&#39;: 6.903014659881592, &#39;G_L1&#39;: 78.60047912597656, &#39;D&#39;: 0.4338143765926361, &#39;F&#39;: 0.0416969358921051}
+Epoch/total_steps/alpha-beta: 1/1200/1-0.2 {&#39;G_GAN&#39;: 9.23589038848877, &#39;G_L1&#39;: 56.984107971191406, &#39;D&#39;: 0.5504209995269775, &#39;F&#39;: 0.018008030951023102}
+Epoch/total_steps/alpha-beta: 1/1300/1-0.2 {&#39;G_GAN&#39;: 6.421850204467773, &#39;G_L1&#39;: 61.57182312011719, &#39;D&#39;: 0.45247137546539307, &#39;F&#39;: 0.011279342696070671}
+Epoch/total_steps/alpha-beta: 1/1400/1-0.2 {&#39;G_GAN&#39;: 8.797816276550293, &#39;G_L1&#39;: 99.80023193359375, &#39;D&#39;: 0.23331935703754425, &#39;F&#39;: 0.020383726805448532}
+Epoch/total_steps/alpha-beta: 1/1500/1-0.2 {&#39;G_GAN&#39;: 6.7051191329956055, &#39;G_L1&#39;: 31.690582275390625, &#39;D&#39;: 0.2988111972808838, &#39;F&#39;: 0.028201300650835037}
+Epoch/total_steps/alpha-beta: 1/1600/1-0.2 {&#39;G_GAN&#39;: 7.0514116287231445, &#39;G_L1&#39;: 85.72132873535156, &#39;D&#39;: 0.1930747926235199, &#39;F&#39;: 0.013776193372905254}
+保存模型 Epoch 1, iters 1600 在 ..\result\CSA-crop-1-0.2
+Epoch/Epochs 1/999 花费时间：2240.1388833522797s
+learning rate = 0.0002
+Epoch/total_steps/alpha-beta: 2/1700/1-0.2 {&#39;G_GAN&#39;: 7.846583366394043, &#39;G_L1&#39;: 28.170692443847656, &#39;D&#39;: 0.0433167964220047, &#39;F&#39;: 0.01057925820350647}
+Epoch/total_steps/alpha-beta: 2/1800/1-0.2 {&#39;G_GAN&#39;: 8.019615173339844, &#39;G_L1&#39;: 104.96163177490234, &#39;D&#39;: 0.195338636636734, &#39;F&#39;: 0.010008035227656364}
+Epoch/total_steps/alpha-beta: 2/1900/1-0.2 {&#39;G_GAN&#39;: 6.936626434326172, &#39;G_L1&#39;: 50.2357063293457, &#39;D&#39;: 0.19125911593437195, &#39;F&#39;: 0.015196853317320347}
+Epoch/total_steps/alpha-beta: 2/2000/1-0.2 {&#39;G_GAN&#39;: 7.854140758514404, &#39;G_L1&#39;: 44.12738800048828, &#39;D&#39;: 0.07326505333185196, &#39;F&#39;: 0.007526670582592487}
+Epoch/total_steps/alpha-beta: 2/2100/1-0.2 {&#39;G_GAN&#39;: 8.623893737792969, &#39;G_L1&#39;: 38.90788650512695, &#39;D&#39;: 0.14280785620212555, &#39;F&#39;: 0.014848092570900917}
+Epoch/total_steps/alpha-beta: 2/2200/1-0.2 {&#39;G_GAN&#39;: 8.206073760986328, &#39;G_L1&#39;: 81.44075012207031, &#39;D&#39;: 0.07580943405628204, &#39;F&#39;: 0.012526793405413628}
+Epoch/total_steps/alpha-beta: 2/2300/1-0.2 {&#39;G_GAN&#39;: 7.689569473266602, &#39;G_L1&#39;: 25.71515655517578, &#39;D&#39;: 0.4364542067050934, &#39;F&#39;: 0.012514639645814896}
+Epoch/total_steps/alpha-beta: 2/2400/1-0.2 {&#39;G_GAN&#39;: 7.639985084533691, &#39;G_L1&#39;: 43.24721908569336, &#39;D&#39;: 0.1705082654953003, &#39;F&#39;: 0.009464604780077934}
+保存模型 Epoch 2, iters 2400 在 ..\result\CSA-crop-1-0.2
+Epoch/Epochs 2/999 花费时间：2245.288181066513s
+learning rate = 0.0002
+Epoch/total_steps/alpha-beta: 3/2500/1-0.2 {&#39;G_GAN&#39;: 8.486555099487305, &#39;G_L1&#39;: 61.935890197753906, &#39;D&#39;: 0.0932392105460167, &#39;F&#39;: 0.006783666554838419}
+Epoch/total_steps/alpha-beta: 3/2600/1-0.2 {&#39;G_GAN&#39;: 8.313750267028809, &#39;G_L1&#39;: 50.51845169067383, &#39;D&#39;: 0.05715663731098175, &#39;F&#39;: 0.010329971089959145}
+Epoch/total_steps/alpha-beta: 3/2700/1-0.2 {&#39;G_GAN&#39;: 8.266231536865234, &#39;G_L1&#39;: 92.46630096435547, &#39;D&#39;: 0.07510770857334137, &#39;F&#39;: 0.010331196710467339}
+Epoch/total_steps/alpha-beta: 3/2800/1-0.2 {&#39;G_GAN&#39;: 7.768562316894531, &#39;G_L1&#39;: 67.29666137695312, &#39;D&#39;: 0.08272166550159454, &#39;F&#39;: 0.00749179208651185}
+Epoch/total_steps/alpha-beta: 3/2900/1-0.2 {&#39;G_GAN&#39;: 6.214798927307129, &#39;G_L1&#39;: 84.63095092773438, &#39;D&#39;: 0.9830055236816406, &#39;F&#39;: 0.014948654919862747}
+Epoch/total_steps/alpha-beta: 3/3000/1-0.2 {&#39;G_GAN&#39;: 5.631191253662109, &#39;G_L1&#39;: 72.10906219482422, &#39;D&#39;: 0.9772655963897705, &#39;F&#39;: 0.016496559605002403}
+Epoch/total_steps/alpha-beta: 3/3100/1-0.2 {&#39;G_GAN&#39;: 8.428823471069336, &#39;G_L1&#39;: 33.1972541809082, &#39;D&#39;: 0.0724293440580368, &#39;F&#39;: 0.006524176802486181}
+Epoch/total_steps/alpha-beta: 3/3200/1-0.2 {&#39;G_GAN&#39;: 8.611396789550781, &#39;G_L1&#39;: 56.844627380371094, &#39;D&#39;: 0.06261860579252243, &#39;F&#39;: 0.017875824123620987}
+保存模型 Epoch 3, iters 3200 在 ..\result\CSA-crop-1-0.2
+Epoch/Epochs 3/999 花费时间：2243.4765717983246s
+learning rate = 0.0002
+Epoch/total_steps/alpha-beta: 4/3300/1-0.2 {&#39;G_GAN&#39;: 7.931173324584961, &#39;G_L1&#39;: 41.59771728515625, &#39;D&#39;: 0.10313476622104645, &#39;F&#39;: 0.010135823860764503}
+Epoch/total_steps/alpha-beta: 4/3400/1-0.2 {&#39;G_GAN&#39;: 7.9520063400268555, &#39;G_L1&#39;: 43.4984016418457, &#39;D&#39;: 0.1198870837688446, &#39;F&#39;: 0.010204552672803402}
+Epoch/total_steps/alpha-beta: 4/3500/1-0.2 {&#39;G_GAN&#39;: 8.522815704345703, &#39;G_L1&#39;: 41.00242614746094, &#39;D&#39;: 0.0628371387720108, &#39;F&#39;: 0.016017796471714973}
+Epoch/total_steps/alpha-beta: 4/3600/1-0.2 {&#39;G_GAN&#39;: 8.132135391235352, &#39;G_L1&#39;: 57.873714447021484, &#39;D&#39;: 0.06025378406047821, &#39;F&#39;: 0.004645512904971838}
+Epoch/total_steps/alpha-beta: 4/3700/1-0.2 {&#39;G_GAN&#39;: 7.538127422332764, &#39;G_L1&#39;: 40.998233795166016, &#39;D&#39;: 0.06881724298000336, &#39;F&#39;: 0.007610495667904615}
+Epoch/total_steps/alpha-beta: 4/3800/1-0.2 {&#39;G_GAN&#39;: 7.282956123352051, &#39;G_L1&#39;: 69.60569763183594, &#39;D&#39;: 0.40209025144577026, &#39;F&#39;: 0.009298296645283699}
+Epoch/total_steps/alpha-beta: 4/3900/1-0.2 {&#39;G_GAN&#39;: 7.546775817871094, &#39;G_L1&#39;: 60.51772689819336, &#39;D&#39;: 0.07164295017719269, &#39;F&#39;: 0.0063060675747692585}
+Epoch/total_steps/alpha-beta: 4/4000/1-0.2 {&#39;G_GAN&#39;: 8.293521881103516, &#39;G_L1&#39;: 94.56524658203125, &#39;D&#39;: 0.12158917635679245, &#39;F&#39;: 0.015506422147154808}
+保存模型 Epoch 4, iters 4000 在 ..\result\CSA-crop-1-0.2
+Epoch/Epochs 4/999 花费时间：2241.118743419647s
+learning rate = 0.0002
+Epoch/total_steps/alpha-beta: 5/4100/1-0.2 {&#39;G_GAN&#39;: 6.922964096069336, &#39;G_L1&#39;: 34.087669372558594, &#39;D&#39;: 0.3114049434661865, &#39;F&#39;: 0.010114545002579689}
+Epoch/total_steps/alpha-beta: 5/4200/1-0.2 {&#39;G_GAN&#39;: 7.922966003417969, &#39;G_L1&#39;: 33.881492614746094, &#39;D&#39;: 0.05237006023526192, &#39;F&#39;: 0.015073570422828197}
+Epoch/total_steps/alpha-beta: 5/4300/1-0.2 {&#39;G_GAN&#39;: 8.021566390991211, &#39;G_L1&#39;: 68.63485717773438, &#39;D&#39;: 0.025034595280885696, &#39;F&#39;: 0.006492625921964645}
+Epoch/total_steps/alpha-beta: 5/4400/1-0.2 {&#39;G_GAN&#39;: 7.8188276290893555, &#39;G_L1&#39;: 83.95376586914062, &#39;D&#39;: 0.05151453614234924, &#39;F&#39;: 0.008408254012465477}
+Epoch/total_steps/alpha-beta: 5/4500/1-0.2 {&#39;G_GAN&#39;: 7.6352033615112305, &#39;G_L1&#39;: 71.6593017578125, &#39;D&#39;: 0.17503702640533447, &#39;F&#39;: 0.00949680246412754}
+Epoch/total_steps/alpha-beta: 5/4600/1-0.2 {&#39;G_GAN&#39;: 8.145234107971191, &#39;G_L1&#39;: 67.17691040039062, &#39;D&#39;: 0.1828279346227646, &#39;F&#39;: 0.02732495218515396}
+Epoch/total_steps/alpha-beta: 5/4700/1-0.2 {&#39;G_GAN&#39;: 7.435663223266602, &#39;G_L1&#39;: 42.84819030761719, &#39;D&#39;: 0.6010628938674927, &#39;F&#39;: 0.01227540522813797}
+Epoch/total_steps/alpha-beta: 5/4800/1-0.2 {&#39;G_GAN&#39;: 8.041173934936523, &#39;G_L1&#39;: 38.21138381958008, &#39;D&#39;: 0.03405224531888962, &#39;F&#39;: 0.010650875978171825}
+保存模型 Epoch 5, iters 4800 在 ..\result\CSA-crop-1-0.2
+Epoch/Epochs 5/999 花费时间：2242.324235677719s
+learning rate = 0.0002
+Epoch/total_steps/alpha-beta: 6/4900/1-0.2 {&#39;G_GAN&#39;: 8.876985549926758, &#39;G_L1&#39;: 87.36048889160156, &#39;D&#39;: 0.27589648962020874, &#39;F&#39;: 0.02187078818678856}
+Epoch/total_steps/alpha-beta: 6/5000/1-0.2 {&#39;G_GAN&#39;: 7.427737236022949, &#39;G_L1&#39;: 61.41236877441406, &#39;D&#39;: 0.17753198742866516, &#39;F&#39;: 0.007680617272853851}
+Epoch/total_steps/alpha-beta: 6/5100/1-0.2 {&#39;G_GAN&#39;: 8.027284622192383, &#39;G_L1&#39;: 54.627288818359375, &#39;D&#39;: 0.022993054240942, &#39;F&#39;: 0.0039543695747852325}
+Epoch/total_steps/alpha-beta: 6/5200/1-0.2 {&#39;G_GAN&#39;: 8.459152221679688, &#39;G_L1&#39;: 36.08809280395508, &#39;D&#39;: 0.10983923077583313, &#39;F&#39;: 0.010778225027024746}
+Epoch/total_steps/alpha-beta: 6/5300/1-0.2 {&#39;G_GAN&#39;: 7.603835105895996, &#39;G_L1&#39;: 26.886764526367188, &#39;D&#39;: 0.05270100384950638, &#39;F&#39;: 0.00450096745043993}
+Epoch/total_steps/alpha-beta: 6/5400/1-0.2 {&#39;G_GAN&#39;: 8.0107421875, &#39;G_L1&#39;: 48.9970703125, &#39;D&#39;: 0.028950953856110573, &#39;F&#39;: 0.01580415666103363}
+Epoch/total_steps/alpha-beta: 6/5500/1-0.2 {&#39;G_GAN&#39;: 7.988877773284912, &#39;G_L1&#39;: 69.03587341308594, &#39;D&#39;: 0.20133550465106964, &#39;F&#39;: 0.010259244590997696}
+Epoch/total_steps/alpha-beta: 6/5600/1-0.2 {&#39;G_GAN&#39;: 6.994037628173828, &#39;G_L1&#39;: 71.26373291015625, &#39;D&#39;: 0.16854152083396912, &#39;F&#39;: 0.01484172884374857}
+保存模型 Epoch 6, iters 5600 在 ..\result\CSA-crop-1-0.2
+Epoch/Epochs 6/999 花费时间：2240.137642145157s
+learning rate = 0.0002
+Epoch/total_steps/alpha-beta: 7/5700/1-0.2 {&#39;G_GAN&#39;: 6.885168075561523, &#39;G_L1&#39;: 62.20435333251953, &#39;D&#39;: 0.961589515209198, &#39;F&#39;: 0.0072699678130447865}
+Epoch/total_steps/alpha-beta: 7/5800/1-0.2 {&#39;G_GAN&#39;: 7.218307971954346, &#39;G_L1&#39;: 20.928606033325195, &#39;D&#39;: 0.07665181159973145, &#39;F&#39;: 0.003944483585655689}
+Epoch/total_steps/alpha-beta: 7/5900/1-0.2 {&#39;G_GAN&#39;: 7.81699800491333, &#39;G_L1&#39;: 23.946985244750977, &#39;D&#39;: 0.027323318645358086, &#39;F&#39;: 0.003627028316259384}
+Epoch/total_steps/alpha-beta: 7/6000/1-0.2 {&#39;G_GAN&#39;: 8.140027046203613, &#39;G_L1&#39;: 65.03438568115234, &#39;D&#39;: 0.034796133637428284, &#39;F&#39;: 0.005481574684381485}
+Epoch/total_steps/alpha-beta: 7/6100/1-0.2 {&#39;G_GAN&#39;: 8.331938743591309, &#39;G_L1&#39;: 69.98379516601562, &#39;D&#39;: 0.04592915251851082, &#39;F&#39;: 0.00507495179772377}
+Epoch/total_steps/alpha-beta: 7/6200/1-0.2 {&#39;G_GAN&#39;: 7.60057258605957, &#39;G_L1&#39;: 32.59454345703125, &#39;D&#39;: 0.07134933769702911, &#39;F&#39;: 0.008418773300945759}
+Epoch/total_steps/alpha-beta: 7/6300/1-0.2 {&#39;G_GAN&#39;: 7.732146263122559, &#39;G_L1&#39;: 75.76055145263672, &#39;D&#39;: 0.14785771071910858, &#39;F&#39;: 0.007295622490346432}
+Epoch/total_steps/alpha-beta: 7/6400/1-0.2 {&#39;G_GAN&#39;: 7.556277751922607, &#39;G_L1&#39;: 23.25562286376953, &#39;D&#39;: 0.13163849711418152, &#39;F&#39;: 0.003834435250610113}
+保存模型 Epoch 7, iters 6400 在 ..\result\CSA-crop-1-0.2
+Epoch/Epochs 7/999 花费时间：2241.1717205047607s
+learning rate = 0.0002
+Epoch/total_steps/alpha-beta: 8/6500/1-0.2 {&#39;G_GAN&#39;: 6.904270172119141, &#39;G_L1&#39;: 29.733259201049805, &#39;D&#39;: 0.24396635591983795, &#39;F&#39;: 0.015811074525117874}
+Epoch/total_steps/alpha-beta: 8/6600/1-0.2 {&#39;G_GAN&#39;: 6.852598667144775, &#39;G_L1&#39;: 32.52655792236328, &#39;D&#39;: 0.16068589687347412, &#39;F&#39;: 0.00482404138892889}
+Epoch/total_steps/alpha-beta: 8/6700/1-0.2 {&#39;G_GAN&#39;: 8.325637817382812, &#39;G_L1&#39;: 28.302183151245117, &#39;D&#39;: 0.07767530530691147, &#39;F&#39;: 0.019099505618214607}
+Epoch/total_steps/alpha-beta: 8/6800/1-0.2 {&#39;G_GAN&#39;: 7.241868019104004, &#39;G_L1&#39;: 62.611324310302734, &#39;D&#39;: 0.1969233900308609, &#39;F&#39;: 0.007783173117786646}
+Epoch/total_steps/alpha-beta: 8/6900/1-0.2 {&#39;G_GAN&#39;: 7.982600212097168, &#39;G_L1&#39;: 26.386409759521484, &#39;D&#39;: 0.0458754301071167, &#39;F&#39;: 0.004691822454333305}
+Epoch/total_steps/alpha-beta: 8/7000/1-0.2 {&#39;G_GAN&#39;: 8.325735092163086, &#39;G_L1&#39;: 29.34808349609375, &#39;D&#39;: 0.06305962800979614, &#39;F&#39;: 0.011364387348294258}
+Epoch/total_steps/alpha-beta: 8/7100/1-0.2 {&#39;G_GAN&#39;: 8.178101539611816, &#39;G_L1&#39;: 88.96224212646484, &#39;D&#39;: 0.09584712982177734, &#39;F&#39;: 0.008572196587920189}
+Epoch/total_steps/alpha-beta: 8/7200/1-0.2 {&#39;G_GAN&#39;: 8.248159408569336, &#39;G_L1&#39;: 107.54080200195312, &#39;D&#39;: 0.04856514185667038, &#39;F&#39;: 0.004454158712178469}
+保存模型 Epoch 8, iters 7200 在 ..\result\CSA-crop-1-0.2
+Epoch/Epochs 8/999 花费时间：2244.0125229358673s
+learning rate = 0.0002
+Epoch/total_steps/alpha-beta: 9/7300/1-0.2 {&#39;G_GAN&#39;: 8.004782676696777, &#39;G_L1&#39;: 49.89494705200195, &#39;D&#39;: 0.06755077838897705, &#39;F&#39;: 0.004834933206439018}
+Epoch/total_steps/alpha-beta: 9/7400/1-0.2 {&#39;G_GAN&#39;: 7.031300067901611, &#39;G_L1&#39;: 73.3926773071289, &#39;D&#39;: 0.20230433344841003, &#39;F&#39;: 0.004211545921862125}
+Epoch/total_steps/alpha-beta: 9/7500/1-0.2 {&#39;G_GAN&#39;: 7.691649436950684, &#39;G_L1&#39;: 64.6584243774414, &#39;D&#39;: 0.08446256816387177, &#39;F&#39;: 0.014039777219295502}
+Epoch/total_steps/alpha-beta: 9/7600/1-0.2 {&#39;G_GAN&#39;: 6.891648292541504, &#39;G_L1&#39;: 41.867435455322266, &#39;D&#39;: 0.215430349111557, &#39;F&#39;: 0.0066726417280733585}
+Epoch/total_steps/alpha-beta: 9/7700/1-0.2 {&#39;G_GAN&#39;: 7.953327178955078, &#39;G_L1&#39;: 22.65772819519043, &#39;D&#39;: 0.019106190651655197, &#39;F&#39;: 0.005046420730650425}
+Epoch/total_steps/alpha-beta: 9/7800/1-0.2 {&#39;G_GAN&#39;: 7.656808853149414, &#39;G_L1&#39;: 25.489377975463867, &#39;D&#39;: 0.0362175852060318, &#39;F&#39;: 0.003918834030628204}
+Epoch/total_steps/alpha-beta: 9/7900/1-0.2 {&#39;G_GAN&#39;: 6.453868389129639, &#39;G_L1&#39;: 51.51165008544922, &#39;D&#39;: 0.3947092294692993, &#39;F&#39;: 0.004337526857852936}
+Epoch/total_steps/alpha-beta: 9/8000/1-0.2 {&#39;G_GAN&#39;: 7.0943732261657715, &#39;G_L1&#39;: 54.6630973815918, &#39;D&#39;: 0.15637212991714478, &#39;F&#39;: 0.006491351407021284}
+保存模型 Epoch 9, iters 8000 在 ..\result\CSA-crop-1-0.2
+Epoch/Epochs 9/999 花费时间：2237.490981578827s
+learning rate = 0.0002
+Epoch/total_steps/alpha-beta: 10/8100/1-0.2 {&#39;G_GAN&#39;: 8.006678581237793, &#39;G_L1&#39;: 63.01471710205078, &#39;D&#39;: 0.027080141007900238, &#39;F&#39;: 0.0049079111777246}
+Epoch/total_steps/alpha-beta: 10/8200/1-0.2 {&#39;G_GAN&#39;: 8.114480018615723, &#39;G_L1&#39;: 41.23532485961914, &#39;D&#39;: 0.040157005190849304, &#39;F&#39;: 0.006736353039741516}
+Epoch/total_steps/alpha-beta: 10/8300/1-0.2 {&#39;G_GAN&#39;: 6.68264102935791, &#39;G_L1&#39;: 76.90336608886719, &#39;D&#39;: 0.2736968398094177, &#39;F&#39;: 0.011744905263185501}
+Epoch/total_steps/alpha-beta: 10/8400/1-0.2 {&#39;G_GAN&#39;: 7.0265727043151855, &#39;G_L1&#39;: 87.83599090576172, &#39;D&#39;: 0.323846697807312, &#39;F&#39;: 0.01016068272292614}
+Epoch/total_steps/alpha-beta: 10/8500/1-0.2 {&#39;G_GAN&#39;: 6.810027122497559, &#39;G_L1&#39;: 64.69995880126953, &#39;D&#39;: 0.32319140434265137, &#39;F&#39;: 0.005467316135764122}
+Epoch/total_steps/alpha-beta: 10/8600/1-0.2 {&#39;G_GAN&#39;: 7.622931003570557, &#39;G_L1&#39;: 26.853879928588867, &#39;D&#39;: 0.04966985434293747, &#39;F&#39;: 0.0038053086027503014}
+Epoch/total_steps/alpha-beta: 10/8700/1-0.2 {&#39;G_GAN&#39;: 8.05148983001709, &#39;G_L1&#39;: 29.02484893798828, &#39;D&#39;: 0.02136853337287903, &#39;F&#39;: 0.004720240831375122}
+Epoch/total_steps/alpha-beta: 10/8800/1-0.2 {&#39;G_GAN&#39;: 7.915238380432129, &#39;G_L1&#39;: 32.80892562866211, &#39;D&#39;: 0.03601423278450966, &#39;F&#39;: 0.005002208054065704}
+保存模型 Epoch 10, iters 8800 在 ..\result\CSA-crop-1-0.2
+Epoch/Epochs 10/999 花费时间：2238.145895719528s
+learning rate = 0.0002
+Epoch/total_steps/alpha-beta: 11/8900/1-0.2 {&#39;G_GAN&#39;: 7.700460433959961, &#39;G_L1&#39;: 23.82728385925293, &#39;D&#39;: 0.034164849668741226, &#39;F&#39;: 0.0067907413467764854}
+Epoch/total_steps/alpha-beta: 11/9000/1-0.2 {&#39;G_GAN&#39;: 7.920692443847656, &#39;G_L1&#39;: 65.83428192138672, &#39;D&#39;: 0.03876937925815582, &#39;F&#39;: 0.010151698254048824}
+Epoch/total_steps/alpha-beta: 11/9100/1-0.2 {&#39;G_GAN&#39;: 6.110332012176514, &#39;G_L1&#39;: 29.21392059326172, &#39;D&#39;: 0.5502880811691284, &#39;F&#39;: 0.012250722385942936}
+Epoch/total_steps/alpha-beta: 11/9200/1-0.2 {&#39;G_GAN&#39;: 8.218901634216309, &#39;G_L1&#39;: 22.31521987915039, &#39;D&#39;: 0.011554563418030739, &#39;F&#39;: 0.003787385765463114}
+Epoch/total_steps/alpha-beta: 11/9300/1-0.2 {&#39;G_GAN&#39;: 7.857272148132324, &#39;G_L1&#39;: 62.92850875854492, &#39;D&#39;: 0.03000182844698429, &#39;F&#39;: 0.005410284735262394}
+Epoch/total_steps/alpha-beta: 11/9400/1-0.2 {&#39;G_GAN&#39;: 8.47511100769043, &#39;G_L1&#39;: 31.989320755004883, &#39;D&#39;: 0.03988601267337799, &#39;F&#39;: 0.004918222781270742}
+Epoch/total_steps/alpha-beta: 11/9500/1-0.2 {&#39;G_GAN&#39;: 7.151203155517578, &#39;G_L1&#39;: 76.63508605957031, &#39;D&#39;: 0.18310189247131348, &#39;F&#39;: 0.008669700473546982}
+Epoch/total_steps/alpha-beta: 11/9600/1-0.2 {&#39;G_GAN&#39;: 6.36863374710083, &#39;G_L1&#39;: 94.42879486083984, &#39;D&#39;: 0.631427526473999, &#39;F&#39;: 0.007443910464644432}
+保存模型 Epoch 11, iters 9600 在 ..\result\CSA-crop-1-0.2
+Epoch/Epochs 11/999 花费时间：2240.1046867370605s
+learning rate = 0.0002
+Epoch/total_steps/alpha-beta: 12/9700/1-0.2 {&#39;G_GAN&#39;: 7.861506462097168, &#39;G_L1&#39;: 84.15937805175781, &#39;D&#39;: 0.0563352070748806, &#39;F&#39;: 0.004658516962081194}
+Epoch/total_steps/alpha-beta: 12/9800/1-0.2 {&#39;G_GAN&#39;: 6.608602523803711, &#39;G_L1&#39;: 92.87541961669922, &#39;D&#39;: 0.7654603719711304, &#39;F&#39;: 0.006972730625420809}
+Epoch/total_steps/alpha-beta: 12/9900/1-0.2 {&#39;G_GAN&#39;: 7.899750709533691, &#39;G_L1&#39;: 43.30852127075195, &#39;D&#39;: 0.04299182817339897, &#39;F&#39;: 0.0033969406504184008}
+Epoch/total_steps/alpha-beta: 12/10000/1-0.2 {&#39;G_GAN&#39;: 7.106512069702148, &#39;G_L1&#39;: 43.74257278442383, &#39;D&#39;: 0.18593814969062805, &#39;F&#39;: 0.006359061226248741}
+Epoch/total_steps/alpha-beta: 12/10100/1-0.2 {&#39;G_GAN&#39;: 7.60139799118042, &#39;G_L1&#39;: 23.905370712280273, &#39;D&#39;: 0.1088247150182724, &#39;F&#39;: 0.004313391167670488}
+Epoch/total_steps/alpha-beta: 12/10200/1-0.2 {&#39;G_GAN&#39;: 8.557981491088867, &#39;G_L1&#39;: 59.30373001098633, &#39;D&#39;: 0.2433943748474121, &#39;F&#39;: 0.003985072020441294}
+Epoch/total_steps/alpha-beta: 12/10300/1-0.2 {&#39;G_GAN&#39;: 8.166728973388672, &#39;G_L1&#39;: 30.371713638305664, &#39;D&#39;: 0.14048510789871216, &#39;F&#39;: 0.0034568822011351585}
+Epoch/total_steps/alpha-beta: 12/10400/1-0.2 {&#39;G_GAN&#39;: 8.390424728393555, &#39;G_L1&#39;: 45.004878997802734, &#39;D&#39;: 0.05500246584415436, &#39;F&#39;: 0.006866150069981813}
+保存模型 Epoch 12, iters 10400 在 ..\result\CSA-crop-1-0.2
+Epoch/Epochs 12/999 花费时间：2244.182137489319s
+learning rate = 0.0002
+Epoch/total_steps/alpha-beta: 13/10500/1-0.2 {&#39;G_GAN&#39;: 7.24341344833374, &#39;G_L1&#39;: 28.59087562561035, &#39;D&#39;: 0.15088710188865662, &#39;F&#39;: 0.008901726454496384}
+Epoch/total_steps/alpha-beta: 13/10600/1-0.2 {&#39;G_GAN&#39;: 7.8488450050354, &#39;G_L1&#39;: 24.737346649169922, &#39;D&#39;: 0.020268578082323074, &#39;F&#39;: 0.005499770864844322}
+Epoch/total_steps/alpha-beta: 13/10700/1-0.2 {&#39;G_GAN&#39;: 7.92767858505249, &#39;G_L1&#39;: 25.854650497436523, &#39;D&#39;: 0.011605029925704002, &#39;F&#39;: 0.0026500700041651726}
+Epoch/total_steps/alpha-beta: 13/10800/1-0.2 {&#39;G_GAN&#39;: 6.1945295333862305, &#39;G_L1&#39;: 27.03152847290039, &#39;D&#39;: 0.5844617486000061, &#39;F&#39;: 0.008744369260966778}
+Epoch/total_steps/alpha-beta: 13/10900/1-0.2 {&#39;G_GAN&#39;: 7.308095455169678, &#39;G_L1&#39;: 44.71577835083008, &#39;D&#39;: 0.09405139088630676, &#39;F&#39;: 0.004695978946983814}
+Epoch/total_steps/alpha-beta: 13/11000/1-0.2 {&#39;G_GAN&#39;: 7.86174201965332, &#39;G_L1&#39;: 38.60090255737305, &#39;D&#39;: 0.014573521912097931, &#39;F&#39;: 0.0033063036389648914}
+Epoch/total_steps/alpha-beta: 13/11100/1-0.2 {&#39;G_GAN&#39;: 8.230925559997559, &#39;G_L1&#39;: 77.84384155273438, &#39;D&#39;: 0.10456274449825287, &#39;F&#39;: 0.004228030331432819}
+Epoch/total_steps/alpha-beta: 13/11200/1-0.2 {&#39;G_GAN&#39;: 6.953227996826172, &#39;G_L1&#39;: 60.15802764892578, &#39;D&#39;: 0.25015395879745483, &#39;F&#39;: 0.004833053797483444}
+保存模型 Epoch 13, iters 11200 在 ..\result\CSA-crop-1-0.2
+Epoch/Epochs 13/999 花费时间：2238.8006632328033s
+learning rate = 0.0002
+Epoch/total_steps/alpha-beta: 14/11300/1-0.2 {&#39;G_GAN&#39;: 6.169229507446289, &#39;G_L1&#39;: 52.740882873535156, &#39;D&#39;: 0.40432703495025635, &#39;F&#39;: 0.003645665245130658}
+Epoch/total_steps/alpha-beta: 14/11400/1-0.2 {&#39;G_GAN&#39;: 7.72521448135376, &#39;G_L1&#39;: 32.92009353637695, &#39;D&#39;: 0.020841024816036224, &#39;F&#39;: 0.002848017029464245}
+Epoch/total_steps/alpha-beta: 14/11500/1-0.2 {&#39;G_GAN&#39;: 7.729382514953613, &#39;G_L1&#39;: 43.7780876159668, &#39;D&#39;: 0.3486082851886749, &#39;F&#39;: 0.0023028897121548653}
+Epoch/total_steps/alpha-beta: 14/11600/1-0.2 {&#39;G_GAN&#39;: 7.579847812652588, &#39;G_L1&#39;: 56.63173294067383, &#39;D&#39;: 0.1492975652217865, &#39;F&#39;: 0.003988622222095728}
+Epoch/total_steps/alpha-beta: 14/11700/1-0.2 {&#39;G_GAN&#39;: 5.360779762268066, &#39;G_L1&#39;: 95.73617553710938, &#39;D&#39;: 1.116483449935913, &#39;F&#39;: 0.004185945726931095}
+Epoch/total_steps/alpha-beta: 14/11800/1-0.2 {&#39;G_GAN&#39;: 7.962145805358887, &#39;G_L1&#39;: 62.89451599121094, &#39;D&#39;: 0.011406878009438515, &#39;F&#39;: 0.0030127065256237984}
+Epoch/total_steps/alpha-beta: 14/11900/1-0.2 {&#39;G_GAN&#39;: 8.265068054199219, &#39;G_L1&#39;: 38.31330108642578, &#39;D&#39;: 0.04536934196949005, &#39;F&#39;: 0.0026476383209228516}
+Epoch/total_steps/alpha-beta: 14/12000/1-0.2 {&#39;G_GAN&#39;: 8.681221008300781, &#39;G_L1&#39;: 50.310302734375, &#39;D&#39;: 0.13753876090049744, &#39;F&#39;: 0.005655743181705475}
+保存模型 Epoch 14, iters 12000 在 ..\result\CSA-crop-1-0.2
+Epoch/Epochs 14/999 花费时间：2241.6083137989044s
+learning rate = 0.0002
+Epoch/total_steps/alpha-beta: 15/12100/1-0.2 {&#39;G_GAN&#39;: 7.299313068389893, &#39;G_L1&#39;: 37.13325119018555, &#39;D&#39;: 0.15664954483509064, &#39;F&#39;: 0.0029759001918137074}
+Epoch/total_steps/alpha-beta: 15/12200/1-0.2 {&#39;G_GAN&#39;: 8.090167999267578, &#39;G_L1&#39;: 61.605560302734375, &#39;D&#39;: 0.03971627727150917, &#39;F&#39;: 0.0037103830836713314}
+Epoch/total_steps/alpha-beta: 15/12300/1-0.2 {&#39;G_GAN&#39;: 7.322068214416504, &#39;G_L1&#39;: 31.381040573120117, &#39;D&#39;: 0.07610011100769043, &#39;F&#39;: 0.005929463542997837}
+Epoch/total_steps/alpha-beta: 15/12400/1-0.2 {&#39;G_GAN&#39;: 6.784774303436279, &#39;G_L1&#39;: 23.646774291992188, &#39;D&#39;: 0.22741521894931793, &#39;F&#39;: 0.004072674084454775}
+Epoch/total_steps/alpha-beta: 15/12500/1-0.2 {&#39;G_GAN&#39;: 8.442407608032227, &#39;G_L1&#39;: 51.77714920043945, &#39;D&#39;: 0.0912802517414093, &#39;F&#39;: 0.006001116242259741}
+Epoch/total_steps/alpha-beta: 15/12600/1-0.2 {&#39;G_GAN&#39;: 7.338435649871826, &#39;G_L1&#39;: 28.449954986572266, &#39;D&#39;: 0.05427326634526253, &#39;F&#39;: 0.0035091484896838665}
+Epoch/total_steps/alpha-beta: 15/12700/1-0.2 {&#39;G_GAN&#39;: 7.575613021850586, &#39;G_L1&#39;: 27.06997299194336, &#39;D&#39;: 0.023155365139245987, &#39;F&#39;: 0.0037070848047733307}
+Epoch/total_steps/alpha-beta: 15/12800/1-0.2 {&#39;G_GAN&#39;: 7.28108024597168, &#39;G_L1&#39;: 22.052270889282227, &#39;D&#39;: 0.07147093862295151, &#39;F&#39;: 0.004375500604510307}
+保存模型 Epoch 15, iters 12800 在 ..\result\CSA-crop-1-0.2
+Epoch/Epochs 15/999 花费时间：2239.5317149162292s
+learning rate = 0.0002
+Epoch/total_steps/alpha-beta: 16/12900/1-0.2 {&#39;G_GAN&#39;: 8.20433521270752, &#39;G_L1&#39;: 53.51478958129883, &#39;D&#39;: 0.05921521410346031, &#39;F&#39;: 0.00908408872783184}
+Epoch/total_steps/alpha-beta: 16/13000/1-0.2 {&#39;G_GAN&#39;: 7.548761367797852, &#39;G_L1&#39;: 30.75554656982422, &#39;D&#39;: 0.04906325042247772, &#39;F&#39;: 0.004870503209531307}
+Epoch/total_steps/alpha-beta: 16/13100/1-0.2 {&#39;G_GAN&#39;: 7.823489665985107, &#39;G_L1&#39;: 45.979736328125, &#39;D&#39;: 0.02384975552558899, &#39;F&#39;: 0.0062649790197610855}
+Epoch/total_steps/alpha-beta: 16/13200/1-0.2 {&#39;G_GAN&#39;: 7.724291801452637, &#39;G_L1&#39;: 38.099849700927734, &#39;D&#39;: 0.029030686244368553, &#39;F&#39;: 0.004051935859024525}
+Epoch/total_steps/alpha-beta: 16/13300/1-0.2 {&#39;G_GAN&#39;: 7.891463279724121, &#39;G_L1&#39;: 32.830230712890625, &#39;D&#39;: 0.015078023076057434, &#39;F&#39;: 0.00300413160584867}
+Epoch/total_steps/alpha-beta: 16/13400/1-0.2 {&#39;G_GAN&#39;: 8.276105880737305, &#39;G_L1&#39;: 33.14748764038086, &#39;D&#39;: 0.015881145372986794, &#39;F&#39;: 0.003197545651346445}
+Epoch/total_steps/alpha-beta: 16/13500/1-0.2 {&#39;G_GAN&#39;: 8.012789726257324, &#39;G_L1&#39;: 32.253944396972656, &#39;D&#39;: 0.011376485228538513, &#39;F&#39;: 0.0034923399798572063}
+Epoch/total_steps/alpha-beta: 16/13600/1-0.2 {&#39;G_GAN&#39;: 7.497161865234375, &#39;G_L1&#39;: 29.7363224029541, &#39;D&#39;: 0.048598550260066986, &#39;F&#39;: 0.0035320105962455273}
+保存模型 Epoch 16, iters 13600 在 ..\result\CSA-crop-1-0.2
+Epoch/Epochs 16/999 花费时间：2242.413316011429s
+learning rate = 0.0002
+Epoch/total_steps/alpha-beta: 17/13700/1-0.2 {&#39;G_GAN&#39;: 8.094002723693848, &#39;G_L1&#39;: 38.437049865722656, &#39;D&#39;: 0.11842149496078491, &#39;F&#39;: 0.005245475098490715}
+Epoch/total_steps/alpha-beta: 17/13800/1-0.2 {&#39;G_GAN&#39;: 7.873350143432617, &#39;G_L1&#39;: 26.96285629272461, &#39;D&#39;: 0.0317816361784935, &#39;F&#39;: 0.002844210946932435}
+Epoch/total_steps/alpha-beta: 17/13900/1-0.2 {&#39;G_GAN&#39;: 7.075848579406738, &#39;G_L1&#39;: 55.977787017822266, &#39;D&#39;: 0.22714312374591827, &#39;F&#39;: 0.005171992816030979}
+Epoch/total_steps/alpha-beta: 17/14000/1-0.2 {&#39;G_GAN&#39;: 7.493486404418945, &#39;G_L1&#39;: 42.420326232910156, &#39;D&#39;: 0.06659327447414398, &#39;F&#39;: 0.004259633366018534}
+Epoch/total_steps/alpha-beta: 17/14100/1-0.2 {&#39;G_GAN&#39;: 8.070931434631348, &#39;G_L1&#39;: 27.650165557861328, &#39;D&#39;: 0.01977536454796791, &#39;F&#39;: 0.004303794354200363}
+Epoch/total_steps/alpha-beta: 17/14200/1-0.2 {&#39;G_GAN&#39;: 8.381969451904297, &#39;G_L1&#39;: 50.86918640136719, &#39;D&#39;: 0.02925492823123932, &#39;F&#39;: 0.004127249121665955}
+Epoch/total_steps/alpha-beta: 17/14300/1-0.2 {&#39;G_GAN&#39;: 7.588492393493652, &#39;G_L1&#39;: 41.9941291809082, &#39;D&#39;: 0.03009391576051712, &#39;F&#39;: 0.004457810893654823}
+Epoch/total_steps/alpha-beta: 17/14400/1-0.2 {&#39;G_GAN&#39;: 7.858951091766357, &#39;G_L1&#39;: 29.688405990600586, &#39;D&#39;: 0.01135019026696682, &#39;F&#39;: 0.0039006900042295456}
+保存模型 Epoch 17, iters 14400 在 ..\result\CSA-crop-1-0.2
+Epoch/Epochs 17/999 花费时间：2239.8757491111755s
+learning rate = 0.0002
+Epoch/total_steps/alpha-beta: 18/14500/1-0.2 {&#39;G_GAN&#39;: 7.229364395141602, &#39;G_L1&#39;: 30.877859115600586, &#39;D&#39;: 0.09546893835067749, &#39;F&#39;: 0.008539246395230293}
+Epoch/total_steps/alpha-beta: 18/14600/1-0.2 {&#39;G_GAN&#39;: 7.134337425231934, &#39;G_L1&#39;: 68.59115600585938, &#39;D&#39;: 0.12337328493595123, &#39;F&#39;: 0.0027978983707726}
+Epoch/total_steps/alpha-beta: 18/14700/1-0.2 {&#39;G_GAN&#39;: 8.135141372680664, &#39;G_L1&#39;: 17.171323776245117, &#39;D&#39;: 0.07687912881374359, &#39;F&#39;: 0.00603462802246213}
+Epoch/total_steps/alpha-beta: 18/14800/1-0.2 {&#39;G_GAN&#39;: 8.242454528808594, &#39;G_L1&#39;: 30.793432235717773, &#39;D&#39;: 0.03066949173808098, &#39;F&#39;: 0.003347197314724326}
+Epoch/total_steps/alpha-beta: 18/14900/1-0.2 {&#39;G_GAN&#39;: 7.296627044677734, &#39;G_L1&#39;: 26.54770278930664, &#39;D&#39;: 0.07105697691440582, &#39;F&#39;: 0.007161422166973352}
+Epoch/total_steps/alpha-beta: 18/15000/1-0.2 {&#39;G_GAN&#39;: 8.229040145874023, &#39;G_L1&#39;: 24.8217830657959, &#39;D&#39;: 0.019135314971208572, &#39;F&#39;: 0.002629463095217943}
+Epoch/total_steps/alpha-beta: 18/15100/1-0.2 {&#39;G_GAN&#39;: 8.207392692565918, &#39;G_L1&#39;: 41.362701416015625, &#39;D&#39;: 0.03711078688502312, &#39;F&#39;: 0.004646832123398781}
+Epoch/total_steps/alpha-beta: 18/15200/1-0.2 {&#39;G_GAN&#39;: 7.175361633300781, &#39;G_L1&#39;: 73.15138244628906, &#39;D&#39;: 0.16095854341983795, &#39;F&#39;: 0.019632771611213684}
+保存模型 Epoch 18, iters 15200 在 ..\result\CSA-crop-1-0.2
+Epoch/Epochs 18/999 花费时间：2242.7799866199493s
+learning rate = 0.0001980198
+Epoch/total_steps/alpha-beta: 19/15300/1-0.2 {&#39;G_GAN&#39;: 8.825998306274414, &#39;G_L1&#39;: 87.97834014892578, &#39;D&#39;: 0.6945585608482361, &#39;F&#39;: 0.002806423231959343}
+Epoch/total_steps/alpha-beta: 19/15400/1-0.2 {&#39;G_GAN&#39;: 7.9934163093566895, &#39;G_L1&#39;: 55.88832092285156, &#39;D&#39;: 0.3847002387046814, &#39;F&#39;: 0.0022807884961366653}
+Epoch/total_steps/alpha-beta: 19/15500/1-0.2 {&#39;G_GAN&#39;: 7.383514404296875, &#39;G_L1&#39;: 22.17290496826172, &#39;D&#39;: 0.04608210176229477, &#39;F&#39;: 0.0025850986130535603}
+Epoch/total_steps/alpha-beta: 19/15600/1-0.2 {&#39;G_GAN&#39;: 7.475275993347168, &#39;G_L1&#39;: 30.380226135253906, &#39;D&#39;: 0.044136591255664825, &#39;F&#39;: 0.0041557843796908855}
+Epoch/total_steps/alpha-beta: 19/15700/1-0.2 {&#39;G_GAN&#39;: 7.986323833465576, &#39;G_L1&#39;: 61.470802307128906, &#39;D&#39;: 0.049010828137397766, &#39;F&#39;: 0.0036075019743293524}
+Epoch/total_steps/alpha-beta: 19/15800/1-0.2 {&#39;G_GAN&#39;: 8.234842300415039, &#39;G_L1&#39;: 57.826568603515625, &#39;D&#39;: 0.013362471014261246, &#39;F&#39;: 0.004108164459466934}
+Epoch/total_steps/alpha-beta: 19/15900/1-0.2 {&#39;G_GAN&#39;: 7.225225925445557, &#39;G_L1&#39;: 24.0756893157959, &#39;D&#39;: 0.08700612187385559, &#39;F&#39;: 0.005128690041601658}
+Epoch/total_steps/alpha-beta: 19/16000/1-0.2 {&#39;G_GAN&#39;: 6.504546642303467, &#39;G_L1&#39;: 52.17607116699219, &#39;D&#39;: 0.3415322005748749, &#39;F&#39;: 0.002316955244168639}
+保存模型 Epoch 19, iters 16000 在 ..\result\CSA-crop-1-0.2
+Epoch/Epochs 19/999 花费时间：2242.404953479767s
+learning rate = 0.0001960396
+Epoch/total_steps/alpha-beta: 20/16100/1-0.2 {&#39;G_GAN&#39;: 7.128078460693359, &#39;G_L1&#39;: 66.0529556274414, &#39;D&#39;: 0.10771150887012482, &#39;F&#39;: 0.002853887155652046}
+Epoch/total_steps/alpha-beta: 20/16200/1-0.2 {&#39;G_GAN&#39;: 5.142807483673096, &#39;G_L1&#39;: 47.03786849975586, &#39;D&#39;: 1.221718430519104, &#39;F&#39;: 0.003558424301445484}
+Epoch/total_steps/alpha-beta: 20/16300/1-0.2 {&#39;G_GAN&#39;: 7.904886245727539, &#39;G_L1&#39;: 39.72586441040039, &#39;D&#39;: 0.02436165325343609, &#39;F&#39;: 0.00712163420394063}
+Epoch/total_steps/alpha-beta: 20/16400/1-0.2 {&#39;G_GAN&#39;: 6.522970199584961, &#39;G_L1&#39;: 70.01412200927734, &#39;D&#39;: 0.21351367235183716, &#39;F&#39;: 0.00249650701880455}
+Epoch/total_steps/alpha-beta: 20/16500/1-0.2 {&#39;G_GAN&#39;: 8.220386505126953, &#39;G_L1&#39;: 33.55210876464844, &#39;D&#39;: 0.011556379497051239, &#39;F&#39;: 0.0034030417446047068}
+Epoch/total_steps/alpha-beta: 20/16600/1-0.2 {&#39;G_GAN&#39;: 6.961518287658691, &#39;G_L1&#39;: 46.76138687133789, &#39;D&#39;: 0.11727525293827057, &#39;F&#39;: 0.0034470849204808474}
+Epoch/total_steps/alpha-beta: 20/16700/1-0.2 {&#39;G_GAN&#39;: 7.414032936096191, &#39;G_L1&#39;: 62.36800003051758, &#39;D&#39;: 0.058432575315237045, &#39;F&#39;: 0.0026822336949408054}
+Epoch/total_steps/alpha-beta: 20/16800/1-0.2 {&#39;G_GAN&#39;: 8.353904724121094, &#39;G_L1&#39;: 29.624656677246094, &#39;D&#39;: 0.019816379994153976, &#39;F&#39;: 0.0035483012907207012}
+保存模型 Epoch 20, iters 16800 在 ..\result\CSA-crop-1-0.2
+Epoch/Epochs 20/999 花费时间：2244.7132070064545s
+learning rate = 0.0001940594
+Epoch/total_steps/alpha-beta: 21/16900/1-0.2 {&#39;G_GAN&#39;: 7.38734245300293, &#39;G_L1&#39;: 82.7057113647461, &#39;D&#39;: 0.08869419246912003, &#39;F&#39;: 0.005435818340629339}
+Epoch/total_steps/alpha-beta: 21/17000/1-0.2 {&#39;G_GAN&#39;: 7.907797336578369, &#39;G_L1&#39;: 69.67766571044922, &#39;D&#39;: 0.00910542719066143, &#39;F&#39;: 0.002864617155864835}
+Epoch/total_steps/alpha-beta: 21/17100/1-0.2 {&#39;G_GAN&#39;: 7.824112415313721, &#39;G_L1&#39;: 70.58577728271484, &#39;D&#39;: 0.04759104549884796, &#39;F&#39;: 0.00325974402949214}
+Epoch/total_steps/alpha-beta: 21/17200/1-0.2 {&#39;G_GAN&#39;: 8.028343200683594, &#39;G_L1&#39;: 49.27384948730469, &#39;D&#39;: 0.009767578914761543, &#39;F&#39;: 0.0029460359364748}
+Epoch/total_steps/alpha-beta: 21/17300/1-0.2 {&#39;G_GAN&#39;: 8.284825325012207, &#39;G_L1&#39;: 21.53055763244629, &#39;D&#39;: 0.020019259303808212, &#39;F&#39;: 0.0065833451226353645}
+Epoch/total_steps/alpha-beta: 21/17400/1-0.2 {&#39;G_GAN&#39;: 7.703704833984375, &#39;G_L1&#39;: 30.230886459350586, &#39;D&#39;: 0.01830604299902916, &#39;F&#39;: 0.0021412395872175694}
+Epoch/total_steps/alpha-beta: 21/17500/1-0.2 {&#39;G_GAN&#39;: 6.6705169677734375, &#39;G_L1&#39;: 55.950355529785156, &#39;D&#39;: 0.2863892912864685, &#39;F&#39;: 0.004841034300625324}
+Epoch/total_steps/alpha-beta: 21/17600/1-0.2 {&#39;G_GAN&#39;: 6.915993690490723, &#39;G_L1&#39;: 31.78998565673828, &#39;D&#39;: 0.171169251203537, &#39;F&#39;: 0.004243798553943634}
+保存模型 Epoch 21, iters 17600 在 ..\result\CSA-crop-1-0.2
+Epoch/Epochs 21/999 花费时间：2246.410421848297s
+learning rate = 0.0001920792
+Epoch/total_steps/alpha-beta: 22/17700/1-0.2 {&#39;G_GAN&#39;: 7.009700775146484, &#39;G_L1&#39;: 50.515220642089844, &#39;D&#39;: 0.20676347613334656, &#39;F&#39;: 0.0028297905810177326}
+Epoch/total_steps/alpha-beta: 22/17800/1-0.2 {&#39;G_GAN&#39;: 8.270477294921875, &#39;G_L1&#39;: 23.363441467285156, &#39;D&#39;: 0.0628054141998291, &#39;F&#39;: 0.0036528105847537518}
+Epoch/total_steps/alpha-beta: 22/17900/1-0.2 {&#39;G_GAN&#39;: 7.368780136108398, &#39;G_L1&#39;: 26.530593872070312, &#39;D&#39;: 0.05718117952346802, &#39;F&#39;: 0.0052513135597109795}
+Epoch/total_steps/alpha-beta: 22/18000/1-0.2 {&#39;G_GAN&#39;: 8.431781768798828, &#39;G_L1&#39;: 53.51021194458008, &#39;D&#39;: 0.06125590205192566, &#39;F&#39;: 0.0029941671527922153}
+Epoch/total_steps/alpha-beta: 22/18100/1-0.2 {&#39;G_GAN&#39;: 7.870539665222168, &#39;G_L1&#39;: 66.27178192138672, &#39;D&#39;: 0.014400158077478409, &#39;F&#39;: 0.005035104230046272}
+Epoch/total_steps/alpha-beta: 22/18200/1-0.2 {&#39;G_GAN&#39;: 6.951085567474365, &#39;G_L1&#39;: 64.40331268310547, &#39;D&#39;: 0.1704384684562683, &#39;F&#39;: 0.0034156772308051586}
+Epoch/total_steps/alpha-beta: 22/18300/1-0.2 {&#39;G_GAN&#39;: 8.28697681427002, &#39;G_L1&#39;: 52.01366424560547, &#39;D&#39;: 0.04828987270593643, &#39;F&#39;: 0.0022599599324166775}
+Epoch/total_steps/alpha-beta: 22/18400/1-0.2 {&#39;G_GAN&#39;: 6.673297882080078, &#39;G_L1&#39;: 43.930965423583984, &#39;D&#39;: 0.19179758429527283, &#39;F&#39;: 0.0028942618519067764}
+保存模型 Epoch 22, iters 18400 在 ..\result\CSA-crop-1-0.2
+Epoch/Epochs 22/999 花费时间：2243.9974060058594s
+learning rate = 0.000190099
+Epoch/total_steps/alpha-beta: 23/18500/1-0.2 {&#39;G_GAN&#39;: 7.1887617111206055, &#39;G_L1&#39;: 35.22029495239258, &#39;D&#39;: 0.07533498108386993, &#39;F&#39;: 0.0020688355434685946}
+Epoch/total_steps/alpha-beta: 23/18600/1-0.2 {&#39;G_GAN&#39;: 7.784102439880371, &#39;G_L1&#39;: 64.49046325683594, &#39;D&#39;: 0.04144997149705887, &#39;F&#39;: 0.004662686958909035}
+Epoch/total_steps/alpha-beta: 23/18700/1-0.2 {&#39;G_GAN&#39;: 7.735271453857422, &#39;G_L1&#39;: 63.74335861206055, &#39;D&#39;: 0.031427185982465744, &#39;F&#39;: 0.0019370903028175235}
+Epoch/total_steps/alpha-beta: 23/18800/1-0.2 {&#39;G_GAN&#39;: 8.745346069335938, &#39;G_L1&#39;: 22.079360961914062, &#39;D&#39;: 0.08367709815502167, &#39;F&#39;: 0.005594715476036072}
+Epoch/total_steps/alpha-beta: 23/18900/1-0.2 {&#39;G_GAN&#39;: 6.116710186004639, &#39;G_L1&#39;: 69.13908386230469, &#39;D&#39;: 0.4984710216522217, &#39;F&#39;: 0.0033354386687278748}
+Epoch/total_steps/alpha-beta: 23/19000/1-0.2 {&#39;G_GAN&#39;: 8.251775741577148, &#39;G_L1&#39;: 43.45522689819336, &#39;D&#39;: 0.014510093256831169, &#39;F&#39;: 0.001929991296492517}
+Epoch/total_steps/alpha-beta: 23/19100/1-0.2 {&#39;G_GAN&#39;: 8.819314002990723, &#39;G_L1&#39;: 62.17831802368164, &#39;D&#39;: 0.24065354466438293, &#39;F&#39;: 0.003155830316245556}
+Epoch/total_steps/alpha-beta: 23/19200/1-0.2 {&#39;G_GAN&#39;: 8.504386901855469, &#39;G_L1&#39;: 27.542579650878906, &#39;D&#39;: 0.030940650030970573, &#39;F&#39;: 0.006908769253641367}
+保存模型 Epoch 23, iters 19200 在 ..\result\CSA-crop-1-0.2
+Epoch/Epochs 23/999 花费时间：2241.1100900173187s
+learning rate = 0.0001881188
+Epoch/total_steps/alpha-beta: 24/19300/1-0.2 {&#39;G_GAN&#39;: 7.936385154724121, &#39;G_L1&#39;: 40.748207092285156, &#39;D&#39;: 0.0074166832491755486, &#39;F&#39;: 0.0034286866430193186}
+Epoch/total_steps/alpha-beta: 24/19400/1-0.2 {&#39;G_GAN&#39;: 8.228165626525879, &#39;G_L1&#39;: 25.445863723754883, &#39;D&#39;: 0.05360954999923706, &#39;F&#39;: 0.0028822387102991343}
+Epoch/total_steps/alpha-beta: 24/19500/1-0.2 {&#39;G_GAN&#39;: 8.33008861541748, &#39;G_L1&#39;: 20.84115982055664, &#39;D&#39;: 0.013825327157974243, &#39;F&#39;: 0.0021433676593005657}
+Epoch/total_steps/alpha-beta: 24/19600/1-0.2 {&#39;G_GAN&#39;: 6.618738651275635, &#39;G_L1&#39;: 34.16556930541992, &#39;D&#39;: 0.2462276667356491, &#39;F&#39;: 0.0021396935917437077}
+Epoch/total_steps/alpha-beta: 24/19700/1-0.2 {&#39;G_GAN&#39;: 7.551990985870361, &#39;G_L1&#39;: 24.816883087158203, &#39;D&#39;: 0.04307170584797859, &#39;F&#39;: 0.002858818508684635}
+Epoch/total_steps/alpha-beta: 24/19800/1-0.2 {&#39;G_GAN&#39;: 8.352903366088867, &#39;G_L1&#39;: 73.77073669433594, &#39;D&#39;: 0.038181934505701065, &#39;F&#39;: 0.00205042096786201}
+Epoch/total_steps/alpha-beta: 24/19900/1-0.2 {&#39;G_GAN&#39;: 8.032258987426758, &#39;G_L1&#39;: 47.5675048828125, &#39;D&#39;: 0.006485176272690296, &#39;F&#39;: 0.0014955683145672083}
+Epoch/total_steps/alpha-beta: 24/20000/1-0.2 {&#39;G_GAN&#39;: 7.927211761474609, &#39;G_L1&#39;: 28.317678451538086, &#39;D&#39;: 0.030939824879169464, &#39;F&#39;: 0.006028459407389164}
+保存模型 Epoch 24, iters 20000 在 ..\result\CSA-crop-1-0.2
+Epoch/Epochs 24/999 花费时间：2248.8287019729614s
+learning rate = 0.0001861386
+Epoch/total_steps/alpha-beta: 25/20100/1-0.2 {&#39;G_GAN&#39;: 7.878154277801514, &#39;G_L1&#39;: 38.26533889770508, &#39;D&#39;: 0.009690305218100548, &#39;F&#39;: 0.004098815843462944}
+Epoch/total_steps/alpha-beta: 25/20200/1-0.2 {&#39;G_GAN&#39;: 7.144864082336426, &#39;G_L1&#39;: 35.61701202392578, &#39;D&#39;: 0.11488281935453415, &#39;F&#39;: 0.0017591463401913643}
+Epoch/total_steps/alpha-beta: 25/20300/1-0.2 {&#39;G_GAN&#39;: 8.127372741699219, &#39;G_L1&#39;: 30.670583724975586, &#39;D&#39;: 0.005216977559030056, &#39;F&#39;: 0.0039797695353627205}
+Epoch/total_steps/alpha-beta: 25/20400/1-0.2 {&#39;G_GAN&#39;: 7.844820499420166, &#39;G_L1&#39;: 21.9989070892334, &#39;D&#39;: 0.006824478507041931, &#39;F&#39;: 0.00280158594250679}
+Epoch/total_steps/alpha-beta: 25/20500/1-0.2 {&#39;G_GAN&#39;: 7.7104034423828125, &#39;G_L1&#39;: 45.65074920654297, &#39;D&#39;: 0.013286659494042397, &#39;F&#39;: 0.002440476091578603}
+Epoch/total_steps/alpha-beta: 25/20600/1-0.2 {&#39;G_GAN&#39;: 8.163658142089844, &#39;G_L1&#39;: 22.62981605529785, &#39;D&#39;: 0.011498484760522842, &#39;F&#39;: 0.0023653078824281693}
+Epoch/total_steps/alpha-beta: 25/20700/1-0.2 {&#39;G_GAN&#39;: 8.32032585144043, &#39;G_L1&#39;: 18.226306915283203, &#39;D&#39;: 0.012844398617744446, &#39;F&#39;: 0.004530482925474644}
+Epoch/total_steps/alpha-beta: 25/20800/1-0.2 {&#39;G_GAN&#39;: 6.495295524597168, &#39;G_L1&#39;: 63.88811492919922, &#39;D&#39;: 0.27272820472717285, &#39;F&#39;: 0.0015016230754554272}
+保存模型 Epoch 25, iters 20800 在 ..\result\CSA-crop-1-0.2
+Epoch/Epochs 25/999 花费时间：2235.9144690036774s
+learning rate = 0.0001841584
+Epoch/total_steps/alpha-beta: 26/20900/1-0.2 {&#39;G_GAN&#39;: 6.722325801849365, &#39;G_L1&#39;: 55.520694732666016, &#39;D&#39;: 0.25681638717651367, &#39;F&#39;: 0.005036310758441687}
+Epoch/total_steps/alpha-beta: 26/21000/1-0.2 {&#39;G_GAN&#39;: 8.120389938354492, &#39;G_L1&#39;: 43.75154495239258, &#39;D&#39;: 0.009639542549848557, &#39;F&#39;: 0.0023084445856511593}
+Epoch/total_steps/alpha-beta: 26/21100/1-0.2 {&#39;G_GAN&#39;: 7.494899272918701, &#39;G_L1&#39;: 94.40898895263672, &#39;D&#39;: 0.06394319981336594, &#39;F&#39;: 0.0034542204812169075}
+Epoch/total_steps/alpha-beta: 26/21200/1-0.2 {&#39;G_GAN&#39;: 7.996854782104492, &#39;G_L1&#39;: 29.426755905151367, &#39;D&#39;: 0.01607539877295494, &#39;F&#39;: 0.0011919197859242558}
+Epoch/total_steps/alpha-beta: 26/21300/1-0.2 {&#39;G_GAN&#39;: 7.897091865539551, &#39;G_L1&#39;: 30.624181747436523, &#39;D&#39;: 0.005629442632198334, &#39;F&#39;: 0.0027661919593811035}
+Epoch/total_steps/alpha-beta: 26/21400/1-0.2 {&#39;G_GAN&#39;: 8.135284423828125, &#39;G_L1&#39;: 59.35556411743164, &#39;D&#39;: 0.056294187903404236, &#39;F&#39;: 0.0023196698166429996}
+Epoch/total_steps/alpha-beta: 26/21500/1-0.2 {&#39;G_GAN&#39;: 8.249577522277832, &#39;G_L1&#39;: 24.980527877807617, &#39;D&#39;: 0.033834610134363174, &#39;F&#39;: 0.0018140885513275862}
+Epoch/total_steps/alpha-beta: 26/21600/1-0.2 {&#39;G_GAN&#39;: 5.603236675262451, &#39;G_L1&#39;: 40.208580017089844, &#39;D&#39;: 1.2233703136444092, &#39;F&#39;: 0.004660166800022125}
+保存模型 Epoch 26, iters 21600 在 ..\result\CSA-crop-1-0.2
+Epoch/Epochs 26/999 花费时间：2236.9019520282745s
+learning rate = 0.0001821782
+Epoch/total_steps/alpha-beta: 27/21700/1-0.2 {&#39;G_GAN&#39;: 8.076769828796387, &#39;G_L1&#39;: 36.78916549682617, &#39;D&#39;: 0.035698916763067245, &#39;F&#39;: 0.0028610441368073225}
+Epoch/total_steps/alpha-beta: 27/21800/1-0.2 {&#39;G_GAN&#39;: 7.596101760864258, &#39;G_L1&#39;: 39.03799057006836, &#39;D&#39;: 0.051726341247558594, &#39;F&#39;: 0.0027363463304936886}
+Epoch/total_steps/alpha-beta: 27/21900/1-0.2 {&#39;G_GAN&#39;: 7.944169998168945, &#39;G_L1&#39;: 37.71663284301758, &#39;D&#39;: 0.041388411074876785, &#39;F&#39;: 0.0028344353195279837}
+Epoch/total_steps/alpha-beta: 27/22000/1-0.2 {&#39;G_GAN&#39;: 8.619795799255371, &#39;G_L1&#39;: 20.55194664001465, &#39;D&#39;: 0.048415396362543106, &#39;F&#39;: 0.0012166944798082113}
+Epoch/total_steps/alpha-beta: 27/22100/1-0.2 {&#39;G_GAN&#39;: 8.834108352661133, &#39;G_L1&#39;: 61.597900390625, &#39;D&#39;: 0.1330127716064453, &#39;F&#39;: 0.00851520150899887}
+Epoch/total_steps/alpha-beta: 27/22200/1-0.2 {&#39;G_GAN&#39;: 8.492298126220703, &#39;G_L1&#39;: 33.35374069213867, &#39;D&#39;: 0.03885803371667862, &#39;F&#39;: 0.004575077444314957}
+Epoch/total_steps/alpha-beta: 27/22300/1-0.2 {&#39;G_GAN&#39;: 7.3414835929870605, &#39;G_L1&#39;: 55.86278533935547, &#39;D&#39;: 0.06007916480302811, &#39;F&#39;: 0.002228633500635624}
+Epoch/total_steps/alpha-beta: 27/22400/1-0.2 {&#39;G_GAN&#39;: 8.329330444335938, &#39;G_L1&#39;: 40.72560501098633, &#39;D&#39;: 0.017307186499238014, &#39;F&#39;: 0.002368675544857979}
+保存模型 Epoch 27, iters 22400 在 ..\result\CSA-crop-1-0.2
+Epoch/Epochs 27/999 花费时间：2245.424254179001s
+learning rate = 0.000180198
+Epoch/total_steps/alpha-beta: 28/22500/1-0.2 {&#39;G_GAN&#39;: 8.699195861816406, &#39;G_L1&#39;: 66.82012939453125, &#39;D&#39;: 0.058796510100364685, &#39;F&#39;: 0.0025405113119632006}
+Epoch/total_steps/alpha-beta: 28/22600/1-0.2 {&#39;G_GAN&#39;: 7.9345173835754395, &#39;G_L1&#39;: 78.65081787109375, &#39;D&#39;: 0.018228482455015182, &#39;F&#39;: 0.002032086020335555}
+Epoch/total_steps/alpha-beta: 28/22700/1-0.2 {&#39;G_GAN&#39;: 7.631791591644287, &#39;G_L1&#39;: 55.65678405761719, &#39;D&#39;: 0.030407560989260674, &#39;F&#39;: 0.0020625197794288397}
+Epoch/total_steps/alpha-beta: 28/22800/1-0.2 {&#39;G_GAN&#39;: 7.669142246246338, &#39;G_L1&#39;: 48.89533615112305, &#39;D&#39;: 0.024406706914305687, &#39;F&#39;: 0.0022532606963068247}
+Epoch/total_steps/alpha-beta: 28/22900/1-0.2 {&#39;G_GAN&#39;: 5.767544269561768, &#39;G_L1&#39;: 23.03849220275879, &#39;D&#39;: 0.5869188904762268, &#39;F&#39;: 0.003424305934458971}
+Epoch/total_steps/alpha-beta: 28/23000/1-0.2 {&#39;G_GAN&#39;: 8.303125381469727, &#39;G_L1&#39;: 34.163665771484375, &#39;D&#39;: 0.029416248202323914, &#39;F&#39;: 0.0018054952379316092}
+Epoch/total_steps/alpha-beta: 28/23100/1-0.2 {&#39;G_GAN&#39;: 8.158636093139648, &#39;G_L1&#39;: 74.27262878417969, &#39;D&#39;: 0.01963939517736435, &#39;F&#39;: 0.0036374139599502087}
+Epoch/total_steps/alpha-beta: 28/23200/1-0.2 {&#39;G_GAN&#39;: 7.551119327545166, &#39;G_L1&#39;: 25.352590560913086, &#39;D&#39;: 0.035640645772218704, &#39;F&#39;: 0.001792275346815586}
+保存模型 Epoch 28, iters 23200 在 ..\result\CSA-crop-1-0.2
+Epoch/Epochs 28/999 花费时间：2243.9498064517975s
+learning rate = 0.0001782178
+Epoch/total_steps/alpha-beta: 29/23300/1-0.2 {&#39;G_GAN&#39;: 8.161771774291992, &#39;G_L1&#39;: 28.111188888549805, &#39;D&#39;: 0.007250278256833553, &#39;F&#39;: 0.0030810129828751087}
+Epoch/total_steps/alpha-beta: 29/23400/1-0.2 {&#39;G_GAN&#39;: 7.662878036499023, &#39;G_L1&#39;: 29.13936424255371, &#39;D&#39;: 0.03483784198760986, &#39;F&#39;: 0.0036559763830155134}
+Epoch/total_steps/alpha-beta: 29/23500/1-0.2 {&#39;G_GAN&#39;: 8.416187286376953, &#39;G_L1&#39;: 22.083412170410156, &#39;D&#39;: 0.015447132289409637, &#39;F&#39;: 0.0018566425424069166}
+Epoch/total_steps/alpha-beta: 29/23600/1-0.2 {&#39;G_GAN&#39;: 6.429597854614258, &#39;G_L1&#39;: 30.08060073852539, &#39;D&#39;: 0.2464236170053482, &#39;F&#39;: 0.002432726789265871}
+Epoch/total_steps/alpha-beta: 29/23700/1-0.2 {&#39;G_GAN&#39;: 8.03027057647705, &#39;G_L1&#39;: 18.990314483642578, &#39;D&#39;: 0.005123190116137266, &#39;F&#39;: 0.0017168023623526096}
+Epoch/total_steps/alpha-beta: 29/23800/1-0.2 {&#39;G_GAN&#39;: 7.746734619140625, &#39;G_L1&#39;: 45.38220977783203, &#39;D&#39;: 0.020565040409564972, &#39;F&#39;: 0.001739036408253014}
+Epoch/total_steps/alpha-beta: 29/23900/1-0.2 {&#39;G_GAN&#39;: 8.145263671875, &#39;G_L1&#39;: 22.485469818115234, &#39;D&#39;: 0.008120417594909668, &#39;F&#39;: 0.002415680792182684}
+Epoch/total_steps/alpha-beta: 29/24000/1-0.2 {&#39;G_GAN&#39;: 6.887392044067383, &#39;G_L1&#39;: 72.38180541992188, &#39;D&#39;: 0.15967223048210144, &#39;F&#39;: 0.002369710709899664}
+保存模型 Epoch 29, iters 24000 在 ..\result\CSA-crop-1-0.2
+Epoch/Epochs 29/999 花费时间：2241.8910686969757s
+learning rate = 0.0001762376
+Epoch/total_steps/alpha-beta: 30/24100/1-0.2 {&#39;G_GAN&#39;: 8.455358505249023, &#39;G_L1&#39;: 44.419620513916016, &#39;D&#39;: 0.057264987379312515, &#39;F&#39;: 0.004567265976220369}
+Epoch/total_steps/alpha-beta: 30/24200/1-0.2 {&#39;G_GAN&#39;: 8.731988906860352, &#39;G_L1&#39;: 28.390640258789062, &#39;D&#39;: 0.06632992625236511, &#39;F&#39;: 0.0016776493284851313}
+Epoch/total_steps/alpha-beta: 30/24300/1-0.2 {&#39;G_GAN&#39;: 7.621546268463135, &#39;G_L1&#39;: 39.21030807495117, &#39;D&#39;: 0.025209009647369385, &#39;F&#39;: 0.004008825868368149}
+Epoch/total_steps/alpha-beta: 30/24400/1-0.2 {&#39;G_GAN&#39;: 8.586206436157227, &#39;G_L1&#39;: 48.30557632446289, &#39;D&#39;: 0.09471330046653748, &#39;F&#39;: 0.0015354871284216642}
+Epoch/total_steps/alpha-beta: 30/24500/1-0.2 {&#39;G_GAN&#39;: 7.417546272277832, &#39;G_L1&#39;: 44.19021224975586, &#39;D&#39;: 0.03500431030988693, &#39;F&#39;: 0.0031865204218775034}
+Epoch/total_steps/alpha-beta: 30/24600/1-0.2 {&#39;G_GAN&#39;: 7.757794380187988, &#39;G_L1&#39;: 40.792240142822266, &#39;D&#39;: 0.012213332578539848, &#39;F&#39;: 0.008470403030514717}
+Epoch/total_steps/alpha-beta: 30/24700/1-0.2 {&#39;G_GAN&#39;: 7.540193557739258, &#39;G_L1&#39;: 21.742013931274414, &#39;D&#39;: 0.019589561969041824, &#39;F&#39;: 0.002744878875091672}
+Epoch/total_steps/alpha-beta: 30/24800/1-0.2 {&#39;G_GAN&#39;: 7.719584941864014, &#39;G_L1&#39;: 38.571990966796875, &#39;D&#39;: 0.027254346758127213, &#39;F&#39;: 0.005582602694630623}
+保存模型 Epoch 30, iters 24800 在 ..\result\CSA-crop-1-0.2
+Epoch/Epochs 30/999 花费时间：2240.4953978061676s
+learning rate = 0.0001742574
+Epoch/total_steps/alpha-beta: 31/24900/1-0.2 {&#39;G_GAN&#39;: 8.017459869384766, &#39;G_L1&#39;: 22.96689224243164, &#39;D&#39;: 0.003309932304546237, &#39;F&#39;: 0.0016904742224141955}
+Epoch/total_steps/alpha-beta: 31/25000/1-0.2 {&#39;G_GAN&#39;: 8.22296142578125, &#39;G_L1&#39;: 43.51144790649414, &#39;D&#39;: 0.024556394666433334, &#39;F&#39;: 0.0029970533214509487}
+Epoch/total_steps/alpha-beta: 31/25100/1-0.2 {&#39;G_GAN&#39;: 8.202264785766602, &#39;G_L1&#39;: 22.760787963867188, &#39;D&#39;: 0.011181453242897987, &#39;F&#39;: 0.0013762610033154488}
+Epoch/total_steps/alpha-beta: 31/25200/1-0.2 {&#39;G_GAN&#39;: 7.737740516662598, &#39;G_L1&#39;: 29.908117294311523, &#39;D&#39;: 0.011087203398346901, &#39;F&#39;: 0.0018069373909384012}
+Epoch/total_steps/alpha-beta: 31/25300/1-0.2 {&#39;G_GAN&#39;: 7.607811450958252, &#39;G_L1&#39;: 27.030330657958984, &#39;D&#39;: 0.02061172015964985, &#39;F&#39;: 0.002197978086769581}
+Epoch/total_steps/alpha-beta: 31/25400/1-0.2 {&#39;G_GAN&#39;: 7.859828948974609, &#39;G_L1&#39;: 23.269733428955078, &#39;D&#39;: 0.016604989767074585, &#39;F&#39;: 0.0020086471922695637}
+Epoch/total_steps/alpha-beta: 31/25500/1-0.2 {&#39;G_GAN&#39;: 7.176191329956055, &#39;G_L1&#39;: 25.43027114868164, &#39;D&#39;: 0.09436474740505219, &#39;F&#39;: 0.003587976098060608}
+Epoch/total_steps/alpha-beta: 31/25600/1-0.2 {&#39;G_GAN&#39;: 7.882669448852539, &#39;G_L1&#39;: 26.447750091552734, &#39;D&#39;: 0.007880685850977898, &#39;F&#39;: 0.003998642787337303}
+保存模型 Epoch 31, iters 25600 在 ..\result\CSA-crop-1-0.2
+Epoch/Epochs 31/999 花费时间：2247.6270802021027s
+learning rate = 0.0001722772
+Epoch/total_steps/alpha-beta: 32/25700/1-0.2 {&#39;G_GAN&#39;: 7.37361478805542, &#39;G_L1&#39;: 50.86867141723633, &#39;D&#39;: 0.052151940762996674, &#39;F&#39;: 0.0018901193980127573}
+Epoch/total_steps/alpha-beta: 32/25800/1-0.2 {&#39;G_GAN&#39;: 6.746369361877441, &#39;G_L1&#39;: 60.299827575683594, &#39;D&#39;: 0.1564328819513321, &#39;F&#39;: 0.0020164239685982466}
+Epoch/total_steps/alpha-beta: 32/25900/1-0.2 {&#39;G_GAN&#39;: 7.336899757385254, &#39;G_L1&#39;: 54.357784271240234, &#39;D&#39;: 0.058892495930194855, &#39;F&#39;: 0.003617411945015192}
+Epoch/total_steps/alpha-beta: 32/26000/1-0.2 {&#39;G_GAN&#39;: 8.493104934692383, &#39;G_L1&#39;: 23.42197608947754, &#39;D&#39;: 0.027886860072612762, &#39;F&#39;: 0.0010997793870046735}
+Epoch/total_steps/alpha-beta: 32/26100/1-0.2 {&#39;G_GAN&#39;: 6.479972839355469, &#39;G_L1&#39;: 25.710529327392578, &#39;D&#39;: 0.26717549562454224, &#39;F&#39;: 0.004488482140004635}
+Epoch/total_steps/alpha-beta: 32/26200/1-0.2 {&#39;G_GAN&#39;: 8.181245803833008, &#39;G_L1&#39;: 20.100704193115234, &#39;D&#39;: 0.018170606344938278, &#39;F&#39;: 0.004974279552698135}
+Epoch/total_steps/alpha-beta: 32/26300/1-0.2 {&#39;G_GAN&#39;: 5.9872870445251465, &#39;G_L1&#39;: 82.3907470703125, &#39;D&#39;: 0.5010002255439758, &#39;F&#39;: 0.0023362948559224606}
+Epoch/total_steps/alpha-beta: 32/26400/1-0.2 {&#39;G_GAN&#39;: 8.375683784484863, &#39;G_L1&#39;: 23.043020248413086, &#39;D&#39;: 0.01623411849141121, &#39;F&#39;: 0.000978397554717958}
+保存模型 Epoch 32, iters 26400 在 ..\result\CSA-crop-1-0.2
+Epoch/Epochs 32/999 花费时间：2275.732986688614s
+learning rate = 0.000170297
+Epoch/total_steps/alpha-beta: 33/26500/1-0.2 {&#39;G_GAN&#39;: 7.9573869705200195, &#39;G_L1&#39;: 35.2063102722168, &#39;D&#39;: 0.0062308465130627155, &#39;F&#39;: 0.0012718993239104748}
+Epoch/total_steps/alpha-beta: 33/26600/1-0.2 {&#39;G_GAN&#39;: 6.878335952758789, &#39;G_L1&#39;: 44.3088264465332, &#39;D&#39;: 0.15189921855926514, &#39;F&#39;: 0.0019176076166331768}
+Epoch/total_steps/alpha-beta: 33/26700/1-0.2 {&#39;G_GAN&#39;: 7.759462356567383, &#39;G_L1&#39;: 20.847213745117188, &#39;D&#39;: 0.009537670761346817, &#39;F&#39;: 0.0025901412591338158}
+Epoch/total_steps/alpha-beta: 33/26800/1-0.2 {&#39;G_GAN&#39;: 6.837032794952393, &#39;G_L1&#39;: 65.01419830322266, &#39;D&#39;: 0.16352999210357666, &#39;F&#39;: 0.0015054140239953995}
+Epoch/total_steps/alpha-beta: 33/26900/1-0.2 {&#39;G_GAN&#39;: 7.362067222595215, &#39;G_L1&#39;: 71.94444274902344, &#39;D&#39;: 0.06963425874710083, &#39;F&#39;: 0.0019400737946853042}
+Epoch/total_steps/alpha-beta: 33/27000/1-0.2 {&#39;G_GAN&#39;: 7.604213714599609, &#39;G_L1&#39;: 58.557857513427734, &#39;D&#39;: 0.043337590992450714, &#39;F&#39;: 0.0017693773843348026}
+Epoch/total_steps/alpha-beta: 33/27100/1-0.2 {&#39;G_GAN&#39;: 8.388092994689941, &#39;G_L1&#39;: 66.79051971435547, &#39;D&#39;: 0.04460863023996353, &#39;F&#39;: 0.002756285248324275}
+Epoch/total_steps/alpha-beta: 33/27200/1-0.2 {&#39;G_GAN&#39;: 7.951116561889648, &#39;G_L1&#39;: 26.81524658203125, &#39;D&#39;: 0.024190768599510193, &#39;F&#39;: 0.001771372277289629}
+保存模型 Epoch 33, iters 27200 在 ..\result\CSA-crop-1-0.2
+Epoch/Epochs 33/999 花费时间：2303.8208458423615s
+learning rate = 0.0001683168
+Epoch/total_steps/alpha-beta: 34/27300/1-0.2 {&#39;G_GAN&#39;: 7.875994682312012, &#39;G_L1&#39;: 25.477964401245117, &#39;D&#39;: 0.006411257199943066, &#39;F&#39;: 0.00386531138792634}
+Epoch/total_steps/alpha-beta: 34/27400/1-0.2 {&#39;G_GAN&#39;: 7.213046550750732, &#39;G_L1&#39;: 43.94091796875, &#39;D&#39;: 0.07668862491846085, &#39;F&#39;: 0.0018929485231637955}
+Epoch/total_steps/alpha-beta: 34/27500/1-0.2 {&#39;G_GAN&#39;: 7.252318382263184, &#39;G_L1&#39;: 30.42011833190918, &#39;D&#39;: 0.05034797266125679, &#39;F&#39;: 0.001807230757549405}
+Epoch/total_steps/alpha-beta: 34/27600/1-0.2 {&#39;G_GAN&#39;: 8.24752426147461, &#39;G_L1&#39;: 58.524600982666016, &#39;D&#39;: 0.018284127116203308, &#39;F&#39;: 0.0017263232730329037}
+Epoch/total_steps/alpha-beta: 34/27700/1-0.2 {&#39;G_GAN&#39;: 8.065179824829102, &#39;G_L1&#39;: 25.04204559326172, &#39;D&#39;: 0.007939932867884636, &#39;F&#39;: 0.0018257210031151772}
+Epoch/total_steps/alpha-beta: 34/27800/1-0.2 {&#39;G_GAN&#39;: 8.115760803222656, &#39;G_L1&#39;: 34.73466873168945, &#39;D&#39;: 0.009024995379149914, &#39;F&#39;: 0.002416804898530245}
+Epoch/total_steps/alpha-beta: 34/27900/1-0.2 {&#39;G_GAN&#39;: 8.071806907653809, &#39;G_L1&#39;: 23.847681045532227, &#39;D&#39;: 0.021876957267522812, &#39;F&#39;: 0.0038563059642910957}
+Epoch/total_steps/alpha-beta: 34/28000/1-0.2 {&#39;G_GAN&#39;: 8.148441314697266, &#39;G_L1&#39;: 29.521400451660156, &#39;D&#39;: 0.00792113970965147, &#39;F&#39;: 0.002031065756455064}
+保存模型 Epoch 34, iters 28000 在 ..\result\CSA-crop-1-0.2
+Epoch/Epochs 34/999 花费时间：2264.706836462021s
+learning rate = 0.0001663366
+Epoch/total_steps/alpha-beta: 35/28100/1-0.2 {&#39;G_GAN&#39;: 9.286863327026367, &#39;G_L1&#39;: 21.131092071533203, &#39;D&#39;: 0.13842421770095825, &#39;F&#39;: 0.0018789139576256275}
+Epoch/total_steps/alpha-beta: 35/28200/1-0.2 {&#39;G_GAN&#39;: 8.505218505859375, &#39;G_L1&#39;: 37.81462478637695, &#39;D&#39;: 0.058449480682611465, &#39;F&#39;: 0.0013020221376791596}
+Epoch/total_steps/alpha-beta: 35/28300/1-0.2 {&#39;G_GAN&#39;: 7.629211902618408, &#39;G_L1&#39;: 51.59615707397461, &#39;D&#39;: 0.026820950210094452, &#39;F&#39;: 0.0018706825794652104}
+Epoch/total_steps/alpha-beta: 35/28400/1-0.2 {&#39;G_GAN&#39;: 5.966914176940918, &#39;G_L1&#39;: 63.73518753051758, &#39;D&#39;: 0.4677260220050812, &#39;F&#39;: 0.0019567771814763546}
+Epoch/total_steps/alpha-beta: 35/28500/1-0.2 {&#39;G_GAN&#39;: 7.657004356384277, &#39;G_L1&#39;: 30.41579818725586, &#39;D&#39;: 0.02877647802233696, &#39;F&#39;: 0.0012610526755452156}
+Epoch/total_steps/alpha-beta: 35/28600/1-0.2 {&#39;G_GAN&#39;: 7.948775291442871, &#39;G_L1&#39;: 27.328908920288086, &#39;D&#39;: 0.004160258453339338, &#39;F&#39;: 0.001692614401690662}
+Epoch/total_steps/alpha-beta: 35/28700/1-0.2 {&#39;G_GAN&#39;: 5.842987060546875, &#39;G_L1&#39;: 77.45301818847656, &#39;D&#39;: 0.7266921997070312, &#39;F&#39;: 0.0047453660517930984}
+Epoch/total_steps/alpha-beta: 35/28800/1-0.2 {&#39;G_GAN&#39;: 7.69786262512207, &#39;G_L1&#39;: 90.14388275146484, &#39;D&#39;: 0.02010192908346653, &#39;F&#39;: 0.002731677610427141}
+保存模型 Epoch 35, iters 28800 在 ..\result\CSA-crop-1-0.2
+Epoch/Epochs 35/999 花费时间：2252.1114785671234s
+learning rate = 0.0001643564
+Epoch/total_steps/alpha-beta: 36/28900/1-0.2 {&#39;G_GAN&#39;: 8.16215991973877, &#39;G_L1&#39;: 60.4095573425293, &#39;D&#39;: 0.01852986589074135, &#39;F&#39;: 0.0020778735633939505}
+Epoch/total_steps/alpha-beta: 36/29000/1-0.2 {&#39;G_GAN&#39;: 7.182176113128662, &#39;G_L1&#39;: 41.9015007019043, &#39;D&#39;: 0.0819399282336235, &#39;F&#39;: 0.0024390127509832382}
+Epoch/total_steps/alpha-beta: 36/29100/1-0.2 {&#39;G_GAN&#39;: 7.702878952026367, &#39;G_L1&#39;: 28.158533096313477, &#39;D&#39;: 0.01701553910970688, &#39;F&#39;: 0.0028477925807237625}
+Epoch/total_steps/alpha-beta: 36/29200/1-0.2 {&#39;G_GAN&#39;: 8.494702339172363, &#39;G_L1&#39;: 43.88920211791992, &#39;D&#39;: 0.032209232449531555, &#39;F&#39;: 0.0017581216525286436}
+Epoch/total_steps/alpha-beta: 36/29300/1-0.2 {&#39;G_GAN&#39;: 9.025153160095215, &#39;G_L1&#39;: 58.69982147216797, &#39;D&#39;: 0.1241658627986908, &#39;F&#39;: 0.002193690277636051}
+Epoch/total_steps/alpha-beta: 36/29400/1-0.2 {&#39;G_GAN&#39;: 8.13463306427002, &#39;G_L1&#39;: 33.57855224609375, &#39;D&#39;: 0.00461883470416069, &#39;F&#39;: 0.001785267610102892}
+Epoch/total_steps/alpha-beta: 36/29500/1-0.2 {&#39;G_GAN&#39;: 7.844721794128418, &#39;G_L1&#39;: 37.07835388183594, &#39;D&#39;: 0.0057810829021036625, &#39;F&#39;: 0.00427527679130435}
+Epoch/total_steps/alpha-beta: 36/29600/1-0.2 {&#39;G_GAN&#39;: 7.794288158416748, &#39;G_L1&#39;: 55.677433013916016, &#39;D&#39;: 0.011163191869854927, &#39;F&#39;: 0.0032508838921785355}
+保存模型 Epoch 36, iters 29600 在 ..\result\CSA-crop-1-0.2
+Epoch/Epochs 36/999 花费时间：2297.8845319747925s
+learning rate = 0.0001623762
+Epoch/total_steps/alpha-beta: 37/29700/1-0.2 {&#39;G_GAN&#39;: 7.7387566566467285, &#39;G_L1&#39;: 38.53538131713867, &#39;D&#39;: 0.011235179379582405, &#39;F&#39;: 0.0015433173393830657}
+Epoch/total_steps/alpha-beta: 37/29800/1-0.2 {&#39;G_GAN&#39;: 8.627163887023926, &#39;G_L1&#39;: 26.8377742767334, &#39;D&#39;: 0.0671268180012703, &#39;F&#39;: 0.001791026326827705}
+Epoch/total_steps/alpha-beta: 37/29900/1-0.2 {&#39;G_GAN&#39;: 7.626511573791504, &#39;G_L1&#39;: 60.78753662109375, &#39;D&#39;: 0.10778381675481796, &#39;F&#39;: 0.0018895952962338924}
+Epoch/total_steps/alpha-beta: 37/30000/1-0.2 {&#39;G_GAN&#39;: 7.478549003601074, &#39;G_L1&#39;: 17.54232406616211, &#39;D&#39;: 0.030389655381441116, &#39;F&#39;: 0.001302587566897273}
+Epoch/total_steps/alpha-beta: 37/30100/1-0.2 {&#39;G_GAN&#39;: 8.228598594665527, &#39;G_L1&#39;: 60.54544448852539, &#39;D&#39;: 0.013345221057534218, &#39;F&#39;: 0.001516076736152172}
+Epoch/total_steps/alpha-beta: 37/30200/1-0.2 {&#39;G_GAN&#39;: 7.970338344573975, &#39;G_L1&#39;: 45.44022750854492, &#39;D&#39;: 0.012497944757342339, &#39;F&#39;: 0.0013308614725247025}
+Epoch/total_steps/alpha-beta: 37/30300/1-0.2 {&#39;G_GAN&#39;: 7.989448547363281, &#39;G_L1&#39;: 20.279512405395508, &#39;D&#39;: 0.0060158371925354, &#39;F&#39;: 0.001658424735069275}
+Epoch/total_steps/alpha-beta: 37/30400/1-0.2 {&#39;G_GAN&#39;: 7.671058654785156, &#39;G_L1&#39;: 25.4240779876709, &#39;D&#39;: 0.016341283917427063, &#39;F&#39;: 0.0012650436256080866}
+保存模型 Epoch 37, iters 30400 在 ..\result\CSA-crop-1-0.2
+Epoch/Epochs 37/999 花费时间：2241.747955560684s
+learning rate = 0.000160396
+Epoch/total_steps/alpha-beta: 38/30500/1-0.2 {&#39;G_GAN&#39;: 8.126453399658203, &#39;G_L1&#39;: 31.337350845336914, &#39;D&#39;: 0.006814325228333473, &#39;F&#39;: 0.0010628155432641506}
+Epoch/total_steps/alpha-beta: 38/30600/1-0.2 {&#39;G_GAN&#39;: 8.656627655029297, &#39;G_L1&#39;: 23.81717872619629, &#39;D&#39;: 0.05111401155591011, &#39;F&#39;: 0.0021094484254717827}
+Epoch/total_steps/alpha-beta: 38/30700/1-0.2 {&#39;G_GAN&#39;: 8.484375953674316, &#39;G_L1&#39;: 27.377342224121094, &#39;D&#39;: 0.016362421214580536, &#39;F&#39;: 0.005972051061689854}
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "SanstyleLab/pytorch-book",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./start"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="02_train.html" title="上一页 页">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">上一页</p>
+            <p class="prev-next-title">模型定义</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="03_dataset-mix.html" title="下一页 页">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">下一页</p>
+        <p class="prev-next-title">处理数据</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By xinetzone<br/>
+        
+          <div class="extra_footer">
+            <p class="w3-card w3-pale-blue w3-padding">
+  Copyright © 2021
+  <a href="https://sanstylelab.github.io/">SanstyleLab</a> | 
+  Powered by <a href="https://github.com/executablebooks/jupyter-book">Jupyter Book</a>.
+</p>
+
+          </div>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

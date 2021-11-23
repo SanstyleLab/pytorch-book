@@ -1,0 +1,1011 @@
+
+<!DOCTYPE html>
+
+<html lang="zh_CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>&lt;no title&gt; &#8212; Sanstyle Demo</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/tabs.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/page.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/xin-css/main.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/w3css/4/w3mobile.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/w3css/4/w3pro.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/w3css/4/w3.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/tabs.js"></script>
+    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
+    <script kind="utterances">
+
+    var commentsRunWhenDOMLoaded = cb => {
+    if (document.readyState != 'loading') {
+        cb()
+    } else if (document.addEventListener) {
+        document.addEventListener('DOMContentLoaded', cb)
+    } else {
+        document.attachEvent('onreadystatechange', function() {
+        if (document.readyState == 'complete') cb()
+        })
+    }
+}
+
+var addUtterances = () => {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src = "https://utteranc.es/client.js";
+    script.async = "async";
+
+    script.setAttribute("repo", "SanstyleLab/pytorch-book");
+    script.setAttribute("issue-term", "pathname");
+    script.setAttribute("theme", "github-light");
+    script.setAttribute("label", "💬 comment");
+    script.setAttribute("crossorigin", "anonymous");
+
+    sections = document.querySelectorAll("div.section");
+    if (sections !== null) {
+        section = sections[sections.length-1];
+        section.appendChild(script);
+    }
+}
+commentsRunWhenDOMLoaded(addUtterances);
+</script>
+    <script src="../_static/translations.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="canonical" href="https://SanstyleLab.github.io/sanstyle-starter/use/01_train-256.html" />
+    <link rel="shortcut icon" href="../_static/page-logo.jfif"/>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="zh_CN">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.jpg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Sanstyle Demo</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  教程
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../start/index.html">
+   快速上手
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../start/00_extract.html">
+     解压数据集
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../start/01_dataset.html">
+     处理数据
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../start/02_train.html">
+     模型定义
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../start/02_train2.html">
+     模型定义
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../start/03_dataset-mix.html">
+     处理数据
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../start/raw.html">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       rcParams
+      </span>
+     </code>
+     &amp;
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       cycler
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  混沌
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../about/index.html">
+   关于
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../about/architecture.html">
+     项目架构
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../about/how.html">
+     如何启动项目
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../about/zreferences.html">
+     参考文献
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../CHANGELOG.html">
+     变更日志
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference external" href="https://xinetzone.github.io/sanstyle-book/">
+     Sanstyle Book
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  <div class="w3-padding w3-card-4 w3-pale-green">
+  <a href="https://github.com/xinetzone" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub"
+      data-position="top" data-delay="50">
+      <i class="fab fa-github"></i>
+  </a>
+  <a href="mailto:q735613050@163.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top"
+      data-delay="50">
+      <i class="fas fa-envelope-open"></i>
+  </a>
+  <a href="tencent://AddContact/?fromId=50&amp;fromSubId=1&amp;subcmd=all&amp;uin=735613050" class="tooltipped"
+      target="_blank" data-tooltip="QQ联系我: 735613050" data-position="top" data-delay="50">
+      <i class="fab fa-qq"></i>
+  </a>
+  <a href="https://www.zhihu.com/people/liu-xin-wei-55" class="tooltipped" target="_blank"
+      data-tooltip="关注我的知乎: liu-xin-wei-55" data-position="top" data-delay="50">
+      <i class="fab fa-zhihu1">知</i>
+  </a>
+  <a target="_blank" rel="noopener" href="https://www.linkedin.com/in/xinet" class="tooltipped"
+      data-tooltip="领英联系我: xinet" data-position="top" data-delay="50">
+      <i class="fab fa-linkedin"></i>
+  </a>
+  <div><a href="https://github.com/xinetzone/sanstyle">上善若水</a> 版权所有</div>
+</div>
+
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/use/01_train-256.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/SanstyleLab/pytorch-book"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/SanstyleLab/pytorch-book/issues/new?title=Issue%20on%20page%20%2Fuse/01_train-256.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/SanstyleLab/pytorch-book/main?urlpath=tree/docs/use/01_train-256.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/SanstyleLab/pytorch-book/blob/main/docs/use/01_train-256.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="simple visible nav section-nav flex-column">
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">../../</span><span class="n">apps</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>e:\kaggle\pytorch-book\apps
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">torchvision.utils</span> <span class="kn">import</span> <span class="n">save_image</span>
+<span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span> 
+
+<span class="kn">from</span> <span class="nn">tools.file</span> <span class="kn">import</span> <span class="n">mkdir</span>
+<span class="kn">from</span> <span class="nn">utils.torch_loader_all</span> <span class="kn">import</span> <span class="n">Loader</span>
+<span class="kn">from</span> <span class="nn">tools.toml</span> <span class="kn">import</span> <span class="n">load_option</span>
+<span class="kn">from</span> <span class="nn">app</span> <span class="kn">import</span>  <span class="n">init</span><span class="p">,</span> <span class="n">mask_op</span><span class="p">,</span> <span class="n">array2image</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">opt</span> <span class="o">=</span> <span class="n">load_option</span><span class="p">(</span><span class="s1">&#39;../origin/train-256.toml&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">opt</span><span class="p">)</span>
+<span class="n">loader</span> <span class="o">=</span> <span class="n">Loader</span><span class="p">(</span><span class="o">**</span><span class="n">opt</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;root&#39;: &#39;E:/kaggle/datasets/buildings&#39;, &#39;mask&#39;: &#39;D:/kaggle/dataset/mask/testing_mask_dataset&#39;, &#39;fine_size&#39;: 256, &#39;batch_size&#39;: 1}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model_name</span> <span class="o">=</span> <span class="s1">&#39;CSA-256&#39;</span>
+<span class="n">beta</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">base_opt</span> <span class="o">=</span> <span class="n">load_option</span><span class="p">(</span><span class="s1">&#39;../options/base.toml&#39;</span><span class="p">)</span>
+<span class="n">model_opt</span> <span class="o">=</span> <span class="n">load_option</span><span class="p">(</span><span class="s1">&#39;../options/train-new.toml&#39;</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">init</span><span class="p">(</span><span class="n">model_name</span><span class="p">,</span> <span class="n">beta</span><span class="p">,</span> <span class="n">model_opt</span><span class="p">,</span> <span class="n">base_opt</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>initialize network with normal
+initialize network with normal
+initialize network with normal
+initialize network with normal
+---------- Networks initialized -------------
+UnetGeneratorCSA(
+  (model): UnetSkipConnectionBlock_3(
+    (model): Sequential(
+      (0): Conv2d(6, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (1): UnetSkipConnectionBlock_3(
+        (model): Sequential(
+          (0): LeakyReLU(negative_slope=0.2, inplace=True)
+          (1): Conv2d(64, 64, kernel_size=(4, 4), stride=(2, 2), padding=(3, 3), dilation=(2, 2))
+          (2): InstanceNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+          (3): LeakyReLU(negative_slope=0.2, inplace=True)
+          (4): Conv2d(64, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+          (5): InstanceNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+          (6): UnetSkipConnectionBlock_3(
+            (model): Sequential(
+              (0): LeakyReLU(negative_slope=0.2, inplace=True)
+              (1): Conv2d(128, 128, kernel_size=(4, 4), stride=(2, 2), padding=(3, 3), dilation=(2, 2))
+              (2): InstanceNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+              (3): LeakyReLU(negative_slope=0.2, inplace=True)
+              (4): Conv2d(128, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+              (5): InstanceNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+              (6): CSA(
+                (model): Sequential(
+                  (0): LeakyReLU(negative_slope=0.2, inplace=True)
+                  (1): Conv2d(256, 256, kernel_size=(4, 4), stride=(2, 2), padding=(3, 3), dilation=(2, 2))
+                  (2): InstanceNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+                  (3): LeakyReLU(negative_slope=0.2, inplace=True)
+                  (4): Conv2d(256, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                  (5): CSA_model(threshold: 0.3125 ,triple_weight 1)
+                  (6): InnerCos(skip: True ,strength: 1)
+                  (7): InstanceNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+                  (8): UnetSkipConnectionBlock_3(
+                    (model): Sequential(
+                      (0): LeakyReLU(negative_slope=0.2, inplace=True)
+                      (1): Conv2d(512, 512, kernel_size=(4, 4), stride=(2, 2), padding=(3, 3), dilation=(2, 2))
+                      (2): InstanceNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+                      (3): LeakyReLU(negative_slope=0.2, inplace=True)
+                      (4): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                      (5): InstanceNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+                      (6): UnetSkipConnectionBlock_3(
+                        (model): Sequential(
+                          (0): LeakyReLU(negative_slope=0.2, inplace=True)
+                          (1): Conv2d(512, 512, kernel_size=(4, 4), stride=(2, 2), padding=(3, 3), dilation=(2, 2))
+                          (2): InstanceNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+                          (3): LeakyReLU(negative_slope=0.2, inplace=True)
+                          (4): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                          (5): InstanceNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+                          (6): UnetSkipConnectionBlock_3(
+                            (model): Sequential(
+                              (0): LeakyReLU(negative_slope=0.2, inplace=True)
+                              (1): Conv2d(512, 512, kernel_size=(4, 4), stride=(2, 2), padding=(3, 3), dilation=(2, 2))
+                              (2): InstanceNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+                              (3): LeakyReLU(negative_slope=0.2, inplace=True)
+                              (4): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                              (5): InstanceNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+                              (6): UnetSkipConnectionBlock_3(
+                                (model): Sequential(
+                                  (0): LeakyReLU(negative_slope=0.2, inplace=True)
+                                  (1): Conv2d(512, 512, kernel_size=(4, 4), stride=(2, 2), padding=(3, 3), dilation=(2, 2))
+                                  (2): InstanceNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+                                  (3): LeakyReLU(negative_slope=0.2, inplace=True)
+                                  (4): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                                  (5): InstanceNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+                                  (6): UnetSkipConnectionBlock_3(
+                                    (model): Sequential(
+                                      (0): LeakyReLU(negative_slope=0.2, inplace=True)
+                                      (1): Conv2d(512, 512, kernel_size=(4, 4), stride=(2, 2), padding=(3, 3), dilation=(2, 2))
+                                      (2): ReLU(inplace=True)
+                                      (3): ConvTranspose2d(512, 512, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1))
+                                      (4): InstanceNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+                                    )
+                                  )
+                                  (7): ReLU(inplace=True)
+                                  (8): ConvTranspose2d(1024, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                                  (9): InstanceNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+                                  (10): ReLU(inplace=True)
+                                  (11): ConvTranspose2d(512, 512, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1))
+                                  (12): InstanceNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+                                )
+                              )
+                              (7): ReLU(inplace=True)
+                              (8): ConvTranspose2d(1024, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                              (9): InstanceNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+                              (10): ReLU(inplace=True)
+                              (11): ConvTranspose2d(512, 512, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1))
+                              (12): InstanceNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+                            )
+                          )
+                          (7): ReLU(inplace=True)
+                          (8): ConvTranspose2d(1024, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                          (9): InstanceNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+                          (10): ReLU(inplace=True)
+                          (11): ConvTranspose2d(512, 512, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1))
+                          (12): InstanceNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+                        )
+                      )
+                      (7): ReLU(inplace=True)
+                      (8): ConvTranspose2d(1024, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                      (9): InstanceNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+                      (10): ReLU(inplace=True)
+                      (11): ConvTranspose2d(512, 512, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1))
+                      (12): InstanceNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+                    )
+                  )
+                  (9): InnerCos2(skip: True ,strength: 1)
+                  (10): ReLU(inplace=True)
+                  (11): ConvTranspose2d(1024, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                  (12): InstanceNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+                  (13): ReLU(inplace=True)
+                  (14): ConvTranspose2d(256, 256, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1))
+                  (15): InstanceNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+                )
+              )
+              (7): ReLU(inplace=True)
+              (8): ConvTranspose2d(512, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+              (9): InstanceNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+              (10): ReLU(inplace=True)
+              (11): ConvTranspose2d(128, 128, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1))
+              (12): InstanceNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            )
+          )
+          (7): ReLU(inplace=True)
+          (8): ConvTranspose2d(256, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+          (9): InstanceNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+          (10): ReLU(inplace=True)
+          (11): ConvTranspose2d(64, 64, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1))
+          (12): InstanceNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+        )
+      )
+      (2): ReLU(inplace=True)
+      (3): ConvTranspose2d(128, 3, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    )
+  )
+)
+Total number of parameters: 77692291
+UnetGenerator(
+  (model): UnetSkipConnectionBlock(
+    (model): Sequential(
+      (0): Conv2d(3, 64, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1))
+      (1): UnetSkipConnectionBlock(
+        (model): Sequential(
+          (0): LeakyReLU(negative_slope=0.2, inplace=True)
+          (1): Conv2d(64, 128, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1))
+          (2): InstanceNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+          (3): UnetSkipConnectionBlock(
+            (model): Sequential(
+              (0): LeakyReLU(negative_slope=0.2, inplace=True)
+              (1): Conv2d(128, 256, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1))
+              (2): InstanceNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+              (3): UnetSkipConnectionBlock(
+                (model): Sequential(
+                  (0): LeakyReLU(negative_slope=0.2, inplace=True)
+                  (1): Conv2d(256, 512, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1))
+                  (2): InstanceNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+                  (3): UnetSkipConnectionBlock(
+                    (model): Sequential(
+                      (0): LeakyReLU(negative_slope=0.2, inplace=True)
+                      (1): Conv2d(512, 512, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1))
+                      (2): InstanceNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+                      (3): UnetSkipConnectionBlock(
+                        (model): Sequential(
+                          (0): LeakyReLU(negative_slope=0.2, inplace=True)
+                          (1): Conv2d(512, 512, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1))
+                          (2): InstanceNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+                          (3): UnetSkipConnectionBlock(
+                            (model): Sequential(
+                              (0): LeakyReLU(negative_slope=0.2, inplace=True)
+                              (1): Conv2d(512, 512, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1))
+                              (2): InstanceNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+                              (3): UnetSkipConnectionBlock(
+                                (model): Sequential(
+                                  (0): LeakyReLU(negative_slope=0.2, inplace=True)
+                                  (1): Conv2d(512, 512, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1))
+                                  (2): ReLU(inplace=True)
+                                  (3): ConvTranspose2d(512, 512, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1))
+                                  (4): InstanceNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+                                )
+                              )
+                              (4): ReLU(inplace=True)
+                              (5): ConvTranspose2d(1024, 512, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1))
+                              (6): InstanceNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+                            )
+                          )
+                          (4): ReLU(inplace=True)
+                          (5): ConvTranspose2d(1024, 512, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1))
+                          (6): InstanceNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+                        )
+                      )
+                      (4): ReLU(inplace=True)
+                      (5): ConvTranspose2d(1024, 512, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1))
+                      (6): InstanceNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+                    )
+                  )
+                  (4): ReLU(inplace=True)
+                  (5): ConvTranspose2d(1024, 256, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1))
+                  (6): InstanceNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+                )
+              )
+              (4): ReLU(inplace=True)
+              (5): ConvTranspose2d(512, 128, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1))
+              (6): InstanceNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            )
+          )
+          (4): ReLU(inplace=True)
+          (5): ConvTranspose2d(256, 64, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1))
+          (6): InstanceNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+        )
+      )
+      (2): ReLU(inplace=True)
+      (3): ConvTranspose2d(128, 3, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1))
+      (4): Tanh()
+    )
+  )
+)
+Total number of parameters: 54419459
+NLayerDiscriminator(
+  (model): Sequential(
+    (0): Conv2d(3, 64, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1))
+    (1): LeakyReLU(negative_slope=0.2, inplace=True)
+    (2): Conv2d(64, 128, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1))
+    (3): InstanceNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+    (4): LeakyReLU(negative_slope=0.2, inplace=True)
+    (5): Conv2d(128, 256, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1))
+    (6): InstanceNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+    (7): LeakyReLU(negative_slope=0.2, inplace=True)
+    (8): Conv2d(256, 512, kernel_size=(4, 4), stride=(1, 1), padding=(1, 1))
+    (9): InstanceNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+    (10): LeakyReLU(negative_slope=0.2, inplace=True)
+    (11): Conv2d(512, 1, kernel_size=(4, 4), stride=(1, 1), padding=(1, 1))
+  )
+)
+Total number of parameters: 2766529
+PFDiscriminator(
+  (model): Sequential(
+    (0): Conv2d(256, 512, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1))
+    (1): LeakyReLU(negative_slope=0.2, inplace=True)
+    (2): Conv2d(512, 512, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1))
+    (3): InstanceNorm2d(512, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+    (4): LeakyReLU(negative_slope=0.2, inplace=True)
+    (5): Conv2d(512, 512, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1))
+  )
+)
+Total number of parameters: 10487296
+-----------------------------------------------
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 超参数设定</span>
+<span class="c1">## 固定参数</span>
+<span class="n">epochs</span> <span class="o">=</span> <span class="mi">500</span>
+<span class="n">display_freq</span> <span class="o">=</span> <span class="mi">49</span>
+<span class="n">save_epoch_freq</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="c1">## 模型参数</span>
+<span class="n">alpha</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">beta</span> <span class="o">=</span> <span class="mi">1</span>
+
+
+<span class="n">model_name</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;CSA-crop-</span><span class="si">{</span><span class="n">alpha</span><span class="si">}</span><span class="s1">-</span><span class="si">{</span><span class="n">beta</span><span class="si">}</span><span class="s1">&#39;</span>
+<span class="n">image_save_dir</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">save_dir</span> <span class="o">/</span> <span class="s1">&#39;images&#39;</span>
+<span class="n">mkdir</span><span class="p">(</span><span class="n">image_save_dir</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 训练阶段</span>
+<span class="n">start_epoch</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">total_steps</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">iter_start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">start_epoch</span><span class="p">,</span> <span class="n">epochs</span><span class="p">):</span>
+    <span class="n">epoch_start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+    <span class="n">epoch_iter</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="c1"># 初始化数据集</span>
+    <span class="n">trainset</span> <span class="o">=</span> <span class="n">loader</span><span class="o">.</span><span class="n">trainset</span><span class="p">()</span> <span class="c1"># 训练集</span>
+    <span class="n">maskset</span> <span class="o">=</span> <span class="n">loader</span><span class="o">.</span><span class="n">maskset</span><span class="p">()</span> <span class="c1"># mask 数据集</span>
+    <span class="k">for</span> <span class="n">image</span><span class="p">,</span> <span class="n">mask</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">trainset</span><span class="p">,</span> <span class="n">maskset</span><span class="p">):</span>
+        <span class="n">mask</span> <span class="o">=</span> <span class="n">mask_op</span><span class="p">(</span><span class="n">mask</span><span class="p">)</span>
+        <span class="n">total_steps</span> <span class="o">+=</span> <span class="n">model</span><span class="o">.</span><span class="n">batch_size</span>
+        <span class="n">epoch_iter</span> <span class="o">+=</span> <span class="n">model</span><span class="o">.</span><span class="n">batch_size</span>
+        <span class="c1"># it not only sets the input data with mask,</span>
+        <span class="c1">#  but also sets the latent mask.</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">set_input</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">mask</span><span class="p">)</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">set_gt_latent</span><span class="p">()</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">optimize_parameters</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">total_steps</span> <span class="o">%</span> <span class="n">display_freq</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">real_A</span><span class="p">,</span> <span class="n">real_B</span><span class="p">,</span> <span class="n">fake_B</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">get_current_visuals</span><span class="p">()</span>
+            <span class="c1"># real_A=input, real_B=ground truth fake_b=output</span>
+            <span class="n">pic</span> <span class="o">=</span> <span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">([</span><span class="n">real_A</span><span class="p">,</span> <span class="n">real_B</span><span class="p">,</span> <span class="n">fake_B</span><span class="p">],</span> <span class="n">dim</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="mf">2.0</span>
+            <span class="n">image_name</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;epoch</span><span class="si">{</span><span class="n">epoch</span><span class="si">}</span><span class="s2">-</span><span class="si">{</span><span class="n">total_steps</span><span class="si">}</span><span class="s2">-</span><span class="si">{</span><span class="n">alpha</span><span class="si">}</span><span class="s2">.png&quot;</span>
+            <span class="n">save_image</span><span class="p">(</span><span class="n">pic</span><span class="p">,</span> <span class="n">image_save_dir</span><span class="o">/</span><span class="n">image_name</span><span class="p">,</span> <span class="n">ncol</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">total_steps</span> <span class="o">%</span> <span class="mi">100</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">errors</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">get_current_errors</span><span class="p">()</span>
+            <span class="n">t</span> <span class="o">=</span> <span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">iter_start_time</span><span class="p">)</span> <span class="o">/</span> <span class="n">model</span><span class="o">.</span><span class="n">batch_size</span>
+            <span class="nb">print</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;Epoch/total_steps/alpha-beta: </span><span class="si">{</span><span class="n">epoch</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">total_steps</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">alpha</span><span class="si">}</span><span class="s2">-</span><span class="si">{</span><span class="n">beta</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="nb">dict</span><span class="p">(</span><span class="n">errors</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">epoch</span> <span class="o">%</span> <span class="n">save_epoch_freq</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;保存模型 Epoch </span><span class="si">{</span><span class="n">epoch</span><span class="si">}</span><span class="s1">, iters </span><span class="si">{</span><span class="n">total_steps</span><span class="si">}</span><span class="s1"> 在 </span><span class="si">{</span><span class="n">model</span><span class="o">.</span><span class="n">save_dir</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">epoch</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span>
+        <span class="sa">f</span><span class="s1">&#39;Epoch/Epochs </span><span class="si">{</span><span class="n">epoch</span><span class="si">}</span><span class="s1">/</span><span class="si">{</span><span class="n">epochs</span><span class="o">-</span><span class="mi">1</span><span class="si">}</span><span class="s1"> 花费时间：</span><span class="si">{</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">epoch_start_time</span><span class="si">}</span><span class="s1">s&#39;</span><span class="p">)</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">update_learning_rate</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch/total_steps/alpha-beta: 0/100/1-1 {&#39;G_GAN&#39;: 5.221343040466309, &#39;G_L1&#39;: 83.26774597167969, &#39;D&#39;: 0.9441598653793335, &#39;F&#39;: 0.09473539888858795}
+Epoch/total_steps/alpha-beta: 0/200/1-1 {&#39;G_GAN&#39;: 6.02549409866333, &#39;G_L1&#39;: 88.67796325683594, &#39;D&#39;: 0.6372508406639099, &#39;F&#39;: 0.0793766900897026}
+Epoch/total_steps/alpha-beta: 0/300/1-1 {&#39;G_GAN&#39;: 4.67491340637207, &#39;G_L1&#39;: 36.42228698730469, &#39;D&#39;: 1.3195266723632812, &#39;F&#39;: 0.07199794799089432}
+Epoch/total_steps/alpha-beta: 0/400/1-1 {&#39;G_GAN&#39;: 5.666728496551514, &#39;G_L1&#39;: 39.03691864013672, &#39;D&#39;: 0.7498090267181396, &#39;F&#39;: 0.08707728981971741}
+Epoch/total_steps/alpha-beta: 0/500/1-1 {&#39;G_GAN&#39;: 5.690249443054199, &#39;G_L1&#39;: 27.417320251464844, &#39;D&#39;: 0.6784244775772095, &#39;F&#39;: 0.045412614941596985}
+Epoch/total_steps/alpha-beta: 0/600/1-1 {&#39;G_GAN&#39;: 5.835867404937744, &#39;G_L1&#39;: 31.030555725097656, &#39;D&#39;: 0.8857784867286682, &#39;F&#39;: 0.018567200750112534}
+Epoch/total_steps/alpha-beta: 0/700/1-1 {&#39;G_GAN&#39;: 6.8938679695129395, &#39;G_L1&#39;: 45.42488479614258, &#39;D&#39;: 0.33176398277282715, &#39;F&#39;: 0.02051556296646595}
+Epoch/total_steps/alpha-beta: 0/800/1-1 {&#39;G_GAN&#39;: 7.6654510498046875, &#39;G_L1&#39;: 34.450374603271484, &#39;D&#39;: 0.24411700665950775, &#39;F&#39;: 0.021021751686930656}
+Epoch/total_steps/alpha-beta: 0/900/1-1 {&#39;G_GAN&#39;: 8.043259620666504, &#39;G_L1&#39;: 28.344371795654297, &#39;D&#39;: 0.24667289853096008, &#39;F&#39;: 0.031281478703022}
+Epoch/total_steps/alpha-beta: 0/1000/1-1 {&#39;G_GAN&#39;: 8.244274139404297, &#39;G_L1&#39;: 58.94884490966797, &#39;D&#39;: 0.07295916229486465, &#39;F&#39;: 0.015268329530954361}
+Epoch/total_steps/alpha-beta: 0/1100/1-1 {&#39;G_GAN&#39;: 7.475423812866211, &#39;G_L1&#39;: 64.9913101196289, &#39;D&#39;: 0.9109933376312256, &#39;F&#39;: 0.0534551739692688}
+Epoch/total_steps/alpha-beta: 0/1200/1-1 {&#39;G_GAN&#39;: 7.870408058166504, &#39;G_L1&#39;: 55.5320930480957, &#39;D&#39;: 0.14485427737236023, &#39;F&#39;: 0.022697502747178078}
+Epoch/total_steps/alpha-beta: 0/1300/1-1 {&#39;G_GAN&#39;: 6.356100082397461, &#39;G_L1&#39;: 28.52899169921875, &#39;D&#39;: 0.5241336226463318, &#39;F&#39;: 0.011945163831114769}
+Epoch/total_steps/alpha-beta: 0/1400/1-1 {&#39;G_GAN&#39;: 8.270318984985352, &#39;G_L1&#39;: 39.172969818115234, &#39;D&#39;: 0.06343703716993332, &#39;F&#39;: 0.013185725547373295}
+Epoch/total_steps/alpha-beta: 0/1500/1-1 {&#39;G_GAN&#39;: 7.316861152648926, &#39;G_L1&#39;: 70.0155029296875, &#39;D&#39;: 0.11426566541194916, &#39;F&#39;: 0.022038616240024567}
+保存模型 Epoch 0, iters 1510 在 D:\BaiduNetdiskWorkspace\result\CSA-256
+Epoch/Epochs 0/499 花费时间：3534.625502347946s
+learning rate = 0.0002
+Epoch/total_steps/alpha-beta: 1/1600/1-1 {&#39;G_GAN&#39;: 8.428166389465332, &#39;G_L1&#39;: 64.00923919677734, &#39;D&#39;: 0.10753804445266724, &#39;F&#39;: 0.020115915685892105}
+Epoch/total_steps/alpha-beta: 1/1700/1-1 {&#39;G_GAN&#39;: 7.818538665771484, &#39;G_L1&#39;: 26.48402976989746, &#39;D&#39;: 0.1380319744348526, &#39;F&#39;: 0.010761091485619545}
+Epoch/total_steps/alpha-beta: 1/1800/1-1 {&#39;G_GAN&#39;: 7.536784648895264, &#39;G_L1&#39;: 30.91518211364746, &#39;D&#39;: 0.07562602311372757, &#39;F&#39;: 0.011779479682445526}
+Epoch/total_steps/alpha-beta: 1/1900/1-1 {&#39;G_GAN&#39;: 7.988578796386719, &#39;G_L1&#39;: 46.62509536743164, &#39;D&#39;: 0.10079941153526306, &#39;F&#39;: 0.011966878548264503}
+Epoch/total_steps/alpha-beta: 1/2000/1-1 {&#39;G_GAN&#39;: 6.264012813568115, &#39;G_L1&#39;: 30.52324104309082, &#39;D&#39;: 0.5651882290840149, &#39;F&#39;: 0.007982879877090454}
+Epoch/total_steps/alpha-beta: 1/2100/1-1 {&#39;G_GAN&#39;: 6.512102127075195, &#39;G_L1&#39;: 37.93498992919922, &#39;D&#39;: 0.37565556168556213, &#39;F&#39;: 0.009405240416526794}
+Epoch/total_steps/alpha-beta: 1/2200/1-1 {&#39;G_GAN&#39;: 8.427682876586914, &#39;G_L1&#39;: 32.051002502441406, &#39;D&#39;: 0.1625453382730484, &#39;F&#39;: 0.010284006595611572}
+Epoch/total_steps/alpha-beta: 1/2300/1-1 {&#39;G_GAN&#39;: 8.593223571777344, &#39;G_L1&#39;: 33.66913604736328, &#39;D&#39;: 0.14964205026626587, &#39;F&#39;: 0.007105847354978323}
+Epoch/total_steps/alpha-beta: 1/2400/1-1 {&#39;G_GAN&#39;: 8.189874649047852, &#39;G_L1&#39;: 33.00751876831055, &#39;D&#39;: 0.07679690420627594, &#39;F&#39;: 0.010635076090693474}
+Epoch/total_steps/alpha-beta: 1/2500/1-1 {&#39;G_GAN&#39;: 7.370434761047363, &#39;G_L1&#39;: 29.66301155090332, &#39;D&#39;: 0.19138029217720032, &#39;F&#39;: 0.008423855528235435}
+Epoch/total_steps/alpha-beta: 1/2600/1-1 {&#39;G_GAN&#39;: 8.103010177612305, &#39;G_L1&#39;: 36.30322265625, &#39;D&#39;: 0.1136893630027771, &#39;F&#39;: 0.007825993932783604}
+Epoch/total_steps/alpha-beta: 1/2700/1-1 {&#39;G_GAN&#39;: 7.271125793457031, &#39;G_L1&#39;: 46.809757232666016, &#39;D&#39;: 0.15606406331062317, &#39;F&#39;: 0.012355662882328033}
+Epoch/total_steps/alpha-beta: 1/2800/1-1 {&#39;G_GAN&#39;: 7.263396263122559, &#39;G_L1&#39;: 63.121498107910156, &#39;D&#39;: 0.215505450963974, &#39;F&#39;: 0.009749582037329674}
+Epoch/total_steps/alpha-beta: 1/2900/1-1 {&#39;G_GAN&#39;: 7.939448356628418, &#39;G_L1&#39;: 44.44766616821289, &#39;D&#39;: 0.08629480004310608, &#39;F&#39;: 0.006927476730197668}
+Epoch/total_steps/alpha-beta: 1/3000/1-1 {&#39;G_GAN&#39;: 8.316481590270996, &#39;G_L1&#39;: 33.41863250732422, &#39;D&#39;: 0.0997159332036972, &#39;F&#39;: 0.004561701323837042}
+保存模型 Epoch 1, iters 3020 在 D:\BaiduNetdiskWorkspace\result\CSA-256
+Epoch/Epochs 1/499 花费时间：5446.630384683609s
+learning rate = 0.0002
+Epoch/total_steps/alpha-beta: 2/3100/1-1 {&#39;G_GAN&#39;: 8.299691200256348, &#39;G_L1&#39;: 28.7686710357666, &#39;D&#39;: 0.04245103895664215, &#39;F&#39;: 0.004737226292490959}
+Epoch/total_steps/alpha-beta: 2/3200/1-1 {&#39;G_GAN&#39;: 7.823990821838379, &#39;G_L1&#39;: 43.53765106201172, &#39;D&#39;: 0.08205348998308182, &#39;F&#39;: 0.009919518604874611}
+Epoch/total_steps/alpha-beta: 2/3300/1-1 {&#39;G_GAN&#39;: 8.66282844543457, &#39;G_L1&#39;: 27.7099609375, &#39;D&#39;: 0.13705968856811523, &#39;F&#39;: 0.015051471069455147}
+Epoch/total_steps/alpha-beta: 2/3400/1-1 {&#39;G_GAN&#39;: 7.666674613952637, &#39;G_L1&#39;: 46.43721389770508, &#39;D&#39;: 0.05737607181072235, &#39;F&#39;: 0.013067970052361488}
+Epoch/total_steps/alpha-beta: 2/3500/1-1 {&#39;G_GAN&#39;: 6.780804634094238, &#39;G_L1&#39;: 68.08843994140625, &#39;D&#39;: 0.38170725107192993, &#39;F&#39;: 0.019334472715854645}
+Epoch/total_steps/alpha-beta: 2/3600/1-1 {&#39;G_GAN&#39;: 7.848910331726074, &#39;G_L1&#39;: 25.976961135864258, &#39;D&#39;: 0.043474599719047546, &#39;F&#39;: 0.011373501271009445}
+Epoch/total_steps/alpha-beta: 2/3700/1-1 {&#39;G_GAN&#39;: 5.818130970001221, &#39;G_L1&#39;: 26.702903747558594, &#39;D&#39;: 0.6249629855155945, &#39;F&#39;: 0.041573621332645416}
+Epoch/total_steps/alpha-beta: 2/3800/1-1 {&#39;G_GAN&#39;: 8.388033866882324, &#39;G_L1&#39;: 29.35028648376465, &#39;D&#39;: 0.060524988919496536, &#39;F&#39;: 0.007243450731039047}
+Epoch/total_steps/alpha-beta: 2/3900/1-1 {&#39;G_GAN&#39;: 7.244366645812988, &#39;G_L1&#39;: 39.51932144165039, &#39;D&#39;: 0.11009237915277481, &#39;F&#39;: 0.005274617113173008}
+Epoch/total_steps/alpha-beta: 2/4000/1-1 {&#39;G_GAN&#39;: 6.482147216796875, &#39;G_L1&#39;: 29.623138427734375, &#39;D&#39;: 0.2992338538169861, &#39;F&#39;: 0.014674166217446327}
+Epoch/total_steps/alpha-beta: 2/4100/1-1 {&#39;G_GAN&#39;: 8.158270835876465, &#39;G_L1&#39;: 40.543521881103516, &#39;D&#39;: 0.04596415162086487, &#39;F&#39;: 0.012680762447416782}
+Epoch/total_steps/alpha-beta: 2/4200/1-1 {&#39;G_GAN&#39;: 7.52288818359375, &#39;G_L1&#39;: 32.21968078613281, &#39;D&#39;: 0.09348257631063461, &#39;F&#39;: 0.010263110511004925}
+Epoch/total_steps/alpha-beta: 2/4300/1-1 {&#39;G_GAN&#39;: 6.868775844573975, &#39;G_L1&#39;: 20.360374450683594, &#39;D&#39;: 0.25589117407798767, &#39;F&#39;: 0.009662169963121414}
+Epoch/total_steps/alpha-beta: 2/4400/1-1 {&#39;G_GAN&#39;: 6.815614700317383, &#39;G_L1&#39;: 20.120643615722656, &#39;D&#39;: 0.18305104970932007, &#39;F&#39;: 0.012116104364395142}
+Epoch/total_steps/alpha-beta: 2/4500/1-1 {&#39;G_GAN&#39;: 7.946298599243164, &#39;G_L1&#39;: 62.33978271484375, &#39;D&#39;: 0.24830372631549835, &#39;F&#39;: 0.006963749416172504}
+保存模型 Epoch 2, iters 4530 在 D:\BaiduNetdiskWorkspace\result\CSA-256
+Epoch/Epochs 2/499 花费时间：7209.666450738907s
+learning rate = 0.0002
+Epoch/total_steps/alpha-beta: 3/4600/1-1 {&#39;G_GAN&#39;: 8.565166473388672, &#39;G_L1&#39;: 27.058393478393555, &#39;D&#39;: 0.08892261981964111, &#39;F&#39;: 0.005170776508748531}
+Epoch/total_steps/alpha-beta: 3/4700/1-1 {&#39;G_GAN&#39;: 7.297205924987793, &#39;G_L1&#39;: 28.403705596923828, &#39;D&#39;: 0.13894546031951904, &#39;F&#39;: 0.00994197092950344}
+Epoch/total_steps/alpha-beta: 3/4800/1-1 {&#39;G_GAN&#39;: 7.884485721588135, &#39;G_L1&#39;: 48.436607360839844, &#39;D&#39;: 0.03568413853645325, &#39;F&#39;: 0.006153199356049299}
+Epoch/total_steps/alpha-beta: 3/4900/1-1 {&#39;G_GAN&#39;: 8.00999927520752, &#39;G_L1&#39;: 23.159881591796875, &#39;D&#39;: 0.03934673219919205, &#39;F&#39;: 0.006490173749625683}
+Epoch/total_steps/alpha-beta: 3/5000/1-1 {&#39;G_GAN&#39;: 7.727204322814941, &#39;G_L1&#39;: 47.38936996459961, &#39;D&#39;: 0.09008850157260895, &#39;F&#39;: 0.0064593893475830555}
+Epoch/total_steps/alpha-beta: 3/5100/1-1 {&#39;G_GAN&#39;: 6.849704742431641, &#39;G_L1&#39;: 27.8806095123291, &#39;D&#39;: 0.1583128571510315, &#39;F&#39;: 0.01854669488966465}
+Epoch/total_steps/alpha-beta: 3/5200/1-1 {&#39;G_GAN&#39;: 8.161042213439941, &#39;G_L1&#39;: 23.691923141479492, &#39;D&#39;: 0.04428713023662567, &#39;F&#39;: 0.02426164411008358}
+Epoch/total_steps/alpha-beta: 3/5300/1-1 {&#39;G_GAN&#39;: 7.351716995239258, &#39;G_L1&#39;: 46.74689865112305, &#39;D&#39;: 0.1647501289844513, &#39;F&#39;: 0.011301878839731216}
+Epoch/total_steps/alpha-beta: 3/5400/1-1 {&#39;G_GAN&#39;: 8.07183837890625, &#39;G_L1&#39;: 30.018646240234375, &#39;D&#39;: 0.05703483521938324, &#39;F&#39;: 0.004858609288930893}
+Epoch/total_steps/alpha-beta: 3/5500/1-1 {&#39;G_GAN&#39;: 7.646499156951904, &#39;G_L1&#39;: 22.73050308227539, &#39;D&#39;: 0.12465661764144897, &#39;F&#39;: 0.005663757678121328}
+Epoch/total_steps/alpha-beta: 3/5600/1-1 {&#39;G_GAN&#39;: 7.807973861694336, &#39;G_L1&#39;: 35.29584503173828, &#39;D&#39;: 0.03137323632836342, &#39;F&#39;: 0.00973778497427702}
+Epoch/total_steps/alpha-beta: 3/5700/1-1 {&#39;G_GAN&#39;: 8.429466247558594, &#39;G_L1&#39;: 56.23924255371094, &#39;D&#39;: 0.45957648754119873, &#39;F&#39;: 0.01484852097928524}
+Epoch/total_steps/alpha-beta: 3/5800/1-1 {&#39;G_GAN&#39;: 7.97641658782959, &#39;G_L1&#39;: 42.733394622802734, &#39;D&#39;: 0.06819362938404083, &#39;F&#39;: 0.009337061084806919}
+Epoch/total_steps/alpha-beta: 3/5900/1-1 {&#39;G_GAN&#39;: 8.390377044677734, &#39;G_L1&#39;: 31.32245635986328, &#39;D&#39;: 0.0972868949174881, &#39;F&#39;: 0.012103542685508728}
+Epoch/total_steps/alpha-beta: 3/6000/1-1 {&#39;G_GAN&#39;: 8.447383880615234, &#39;G_L1&#39;: 27.842920303344727, &#39;D&#39;: 0.11219148337841034, &#39;F&#39;: 0.004981164820492268}
+保存模型 Epoch 3, iters 6040 在 D:\BaiduNetdiskWorkspace\result\CSA-256
+Epoch/Epochs 3/499 花费时间：7528.545564413071s
+learning rate = 0.0002
+Epoch/total_steps/alpha-beta: 4/6100/1-1 {&#39;G_GAN&#39;: 8.566417694091797, &#39;G_L1&#39;: 45.29093551635742, &#39;D&#39;: 0.0941094160079956, &#39;F&#39;: 0.008840909227728844}
+Epoch/total_steps/alpha-beta: 4/6200/1-1 {&#39;G_GAN&#39;: 7.6873087882995605, &#39;G_L1&#39;: 20.321151733398438, &#39;D&#39;: 0.06237989291548729, &#39;F&#39;: 0.018412264063954353}
+Epoch/total_steps/alpha-beta: 4/6300/1-1 {&#39;G_GAN&#39;: 7.405055046081543, &#39;G_L1&#39;: 37.15827178955078, &#39;D&#39;: 0.0660867691040039, &#39;F&#39;: 0.011548178270459175}
+Epoch/total_steps/alpha-beta: 4/6400/1-1 {&#39;G_GAN&#39;: 6.960352897644043, &#39;G_L1&#39;: 40.310272216796875, &#39;D&#39;: 0.18959826231002808, &#39;F&#39;: 0.022615835070610046}
+Epoch/total_steps/alpha-beta: 4/6500/1-1 {&#39;G_GAN&#39;: 8.573577880859375, &#39;G_L1&#39;: 44.57759094238281, &#39;D&#39;: 0.0696132481098175, &#39;F&#39;: 0.02339193969964981}
+Epoch/total_steps/alpha-beta: 4/6600/1-1 {&#39;G_GAN&#39;: 6.568777084350586, &#39;G_L1&#39;: 24.576114654541016, &#39;D&#39;: 0.2346973866224289, &#39;F&#39;: 0.013700888492166996}
+Epoch/total_steps/alpha-beta: 4/6700/1-1 {&#39;G_GAN&#39;: 7.094670295715332, &#39;G_L1&#39;: 40.851253509521484, &#39;D&#39;: 0.1264205276966095, &#39;F&#39;: 0.013660675846040249}
+Epoch/total_steps/alpha-beta: 4/6800/1-1 {&#39;G_GAN&#39;: 6.803456783294678, &#39;G_L1&#39;: 27.008426666259766, &#39;D&#39;: 0.17449578642845154, &#39;F&#39;: 0.006756983231753111}
+Epoch/total_steps/alpha-beta: 4/6900/1-1 {&#39;G_GAN&#39;: 7.921754837036133, &#39;G_L1&#39;: 34.20774459838867, &#39;D&#39;: 0.09775635600090027, &#39;F&#39;: 0.010304803028702736}
+Epoch/total_steps/alpha-beta: 4/7000/1-1 {&#39;G_GAN&#39;: 7.02370023727417, &#39;G_L1&#39;: 32.70384979248047, &#39;D&#39;: 0.16883787512779236, &#39;F&#39;: 0.006673095282167196}
+Epoch/total_steps/alpha-beta: 4/7100/1-1 {&#39;G_GAN&#39;: 6.841863632202148, &#39;G_L1&#39;: 30.871217727661133, &#39;D&#39;: 0.24002349376678467, &#39;F&#39;: 0.00897135678678751}
+Epoch/total_steps/alpha-beta: 4/7200/1-1 {&#39;G_GAN&#39;: 8.16363525390625, &#39;G_L1&#39;: 64.0650634765625, &#39;D&#39;: 0.025036532431840897, &#39;F&#39;: 0.01065028179436922}
+Epoch/total_steps/alpha-beta: 4/7300/1-1 {&#39;G_GAN&#39;: 7.502173900604248, &#39;G_L1&#39;: 20.20645523071289, &#39;D&#39;: 0.10947255790233612, &#39;F&#39;: 0.006755325943231583}
+Epoch/total_steps/alpha-beta: 4/7400/1-1 {&#39;G_GAN&#39;: 8.01827621459961, &#39;G_L1&#39;: 65.2905502319336, &#39;D&#39;: 0.03082120046019554, &#39;F&#39;: 0.007592176087200642}
+Epoch/total_steps/alpha-beta: 4/7500/1-1 {&#39;G_GAN&#39;: 6.88211727142334, &#39;G_L1&#39;: 30.366382598876953, &#39;D&#39;: 0.2959393262863159, &#39;F&#39;: 0.005728885065764189}
+保存模型 Epoch 4, iters 7550 在 D:\BaiduNetdiskWorkspace\result\CSA-256
+Epoch/Epochs 4/499 花费时间：7526.910454750061s
+learning rate = 0.0002
+Epoch/total_steps/alpha-beta: 5/7600/1-1 {&#39;G_GAN&#39;: 8.678319931030273, &#39;G_L1&#39;: 43.121280670166016, &#39;D&#39;: 0.12183922529220581, &#39;F&#39;: 0.004068032838404179}
+Epoch/total_steps/alpha-beta: 5/7700/1-1 {&#39;G_GAN&#39;: 7.031343460083008, &#39;G_L1&#39;: 19.14370346069336, &#39;D&#39;: 0.16885197162628174, &#39;F&#39;: 0.006844268646091223}
+Epoch/total_steps/alpha-beta: 5/7800/1-1 {&#39;G_GAN&#39;: 7.658452987670898, &#39;G_L1&#39;: 31.821609497070312, &#39;D&#39;: 0.08585581183433533, &#39;F&#39;: 0.004138667602092028}
+Epoch/total_steps/alpha-beta: 5/7900/1-1 {&#39;G_GAN&#39;: 8.024579048156738, &#39;G_L1&#39;: 23.567441940307617, &#39;D&#39;: 0.032432034611701965, &#39;F&#39;: 0.003352242987602949}
+Epoch/total_steps/alpha-beta: 5/8000/1-1 {&#39;G_GAN&#39;: 7.145682334899902, &#39;G_L1&#39;: 64.53060150146484, &#39;D&#39;: 0.10972775518894196, &#39;F&#39;: 0.004059918690472841}
+Epoch/total_steps/alpha-beta: 5/8100/1-1 {&#39;G_GAN&#39;: 7.538158416748047, &#39;G_L1&#39;: 41.6198616027832, &#39;D&#39;: 0.08403092622756958, &#39;F&#39;: 0.009180136024951935}
+Epoch/total_steps/alpha-beta: 5/8200/1-1 {&#39;G_GAN&#39;: 6.8745527267456055, &#39;G_L1&#39;: 31.91886329650879, &#39;D&#39;: 0.2023436427116394, &#39;F&#39;: 0.00541455764323473}
+Epoch/total_steps/alpha-beta: 5/8300/1-1 {&#39;G_GAN&#39;: 8.066884994506836, &#39;G_L1&#39;: 33.72520065307617, &#39;D&#39;: 0.05716874450445175, &#39;F&#39;: 0.024386577308177948}
+Epoch/total_steps/alpha-beta: 5/8400/1-1 {&#39;G_GAN&#39;: 6.480495452880859, &#39;G_L1&#39;: 32.784385681152344, &#39;D&#39;: 0.5478055477142334, &#39;F&#39;: 0.004083499312400818}
+Epoch/total_steps/alpha-beta: 5/8500/1-1 {&#39;G_GAN&#39;: 7.754925727844238, &#39;G_L1&#39;: 42.15970993041992, &#39;D&#39;: 0.028500564396381378, &#39;F&#39;: 0.0034901758190244436}
+Epoch/total_steps/alpha-beta: 5/8600/1-1 {&#39;G_GAN&#39;: 6.155020713806152, &#39;G_L1&#39;: 30.938831329345703, &#39;D&#39;: 0.6596901416778564, &#39;F&#39;: 0.01026422530412674}
+Epoch/total_steps/alpha-beta: 5/8700/1-1 {&#39;G_GAN&#39;: 8.023233413696289, &#39;G_L1&#39;: 50.472225189208984, &#39;D&#39;: 0.030791763216257095, &#39;F&#39;: 0.011800339445471764}
+Epoch/total_steps/alpha-beta: 5/8800/1-1 {&#39;G_GAN&#39;: 7.095969200134277, &#39;G_L1&#39;: 65.7837142944336, &#39;D&#39;: 0.12785720825195312, &#39;F&#39;: 0.005544520448893309}
+Epoch/total_steps/alpha-beta: 5/8900/1-1 {&#39;G_GAN&#39;: 7.541990280151367, &#39;G_L1&#39;: 51.231842041015625, &#39;D&#39;: 0.09195239841938019, &#39;F&#39;: 0.006881514564156532}
+Epoch/total_steps/alpha-beta: 5/9000/1-1 {&#39;G_GAN&#39;: 7.963187217712402, &#39;G_L1&#39;: 35.39965057373047, &#39;D&#39;: 0.038617558777332306, &#39;F&#39;: 0.004773148335516453}
+保存模型 Epoch 5, iters 9060 在 D:\BaiduNetdiskWorkspace\result\CSA-256
+Epoch/Epochs 5/499 花费时间：7529.390153646469s
+learning rate = 0.0002
+Epoch/total_steps/alpha-beta: 6/9100/1-1 {&#39;G_GAN&#39;: 7.732253074645996, &#39;G_L1&#39;: 43.7108268737793, &#39;D&#39;: 0.04830791428685188, &#39;F&#39;: 0.011754848062992096}
+Epoch/total_steps/alpha-beta: 6/9200/1-1 {&#39;G_GAN&#39;: 7.649668216705322, &#39;G_L1&#39;: 25.209569931030273, &#39;D&#39;: 0.06097712367773056, &#39;F&#39;: 0.007976915687322617}
+Epoch/total_steps/alpha-beta: 6/9300/1-1 {&#39;G_GAN&#39;: 7.233345985412598, &#39;G_L1&#39;: 26.073062896728516, &#39;D&#39;: 0.10236751288175583, &#39;F&#39;: 0.007357308641076088}
+Epoch/total_steps/alpha-beta: 6/9400/1-1 {&#39;G_GAN&#39;: 5.937966823577881, &#39;G_L1&#39;: 23.520549774169922, &#39;D&#39;: 0.5277791023254395, &#39;F&#39;: 0.004812457598745823}
+Epoch/total_steps/alpha-beta: 6/9500/1-1 {&#39;G_GAN&#39;: 8.15849494934082, &#39;G_L1&#39;: 31.517017364501953, &#39;D&#39;: 0.02653360180556774, &#39;F&#39;: 0.0025087168905884027}
+Epoch/total_steps/alpha-beta: 6/9600/1-1 {&#39;G_GAN&#39;: 7.462815761566162, &#39;G_L1&#39;: 50.260154724121094, &#39;D&#39;: 0.11497488617897034, &#39;F&#39;: 0.006912964396178722}
+Epoch/total_steps/alpha-beta: 6/9700/1-1 {&#39;G_GAN&#39;: 7.60418701171875, &#39;G_L1&#39;: 21.591787338256836, &#39;D&#39;: 0.07773880660533905, &#39;F&#39;: 0.008419658988714218}
+Epoch/total_steps/alpha-beta: 6/9800/1-1 {&#39;G_GAN&#39;: 7.258673191070557, &#39;G_L1&#39;: 21.102819442749023, &#39;D&#39;: 0.07398585975170135, &#39;F&#39;: 0.012293145060539246}
+Epoch/total_steps/alpha-beta: 6/9900/1-1 {&#39;G_GAN&#39;: 7.0645599365234375, &#39;G_L1&#39;: 20.439132690429688, &#39;D&#39;: 0.12476161867380142, &#39;F&#39;: 0.004790159873664379}
+Epoch/total_steps/alpha-beta: 6/10000/1-1 {&#39;G_GAN&#39;: 6.818017959594727, &#39;G_L1&#39;: 38.52790069580078, &#39;D&#39;: 0.1876761019229889, &#39;F&#39;: 0.005086769349873066}
+Epoch/total_steps/alpha-beta: 6/10100/1-1 {&#39;G_GAN&#39;: 8.039544105529785, &#39;G_L1&#39;: 36.776611328125, &#39;D&#39;: 0.021089140325784683, &#39;F&#39;: 0.005143746733665466}
+Epoch/total_steps/alpha-beta: 6/10200/1-1 {&#39;G_GAN&#39;: 7.527528762817383, &#39;G_L1&#39;: 55.46781921386719, &#39;D&#39;: 0.09542284160852432, &#39;F&#39;: 0.004555689170956612}
+Epoch/total_steps/alpha-beta: 6/10300/1-1 {&#39;G_GAN&#39;: 7.450767517089844, &#39;G_L1&#39;: 33.21209716796875, &#39;D&#39;: 0.04556446522474289, &#39;F&#39;: 0.0031931549310684204}
+Epoch/total_steps/alpha-beta: 6/10400/1-1 {&#39;G_GAN&#39;: 8.198694229125977, &#39;G_L1&#39;: 33.35210418701172, &#39;D&#39;: 0.01950738951563835, &#39;F&#39;: 0.0034179033245891333}
+Epoch/total_steps/alpha-beta: 6/10500/1-1 {&#39;G_GAN&#39;: 7.967572212219238, &#39;G_L1&#39;: 33.59809112548828, &#39;D&#39;: 0.05338810011744499, &#39;F&#39;: 0.005474750883877277}
+保存模型 Epoch 6, iters 10570 在 D:\BaiduNetdiskWorkspace\result\CSA-256
+Epoch/Epochs 6/499 花费时间：7495.528801679611s
+learning rate = 0.0002
+Epoch/total_steps/alpha-beta: 7/10600/1-1 {&#39;G_GAN&#39;: 7.6248779296875, &#39;G_L1&#39;: 29.228878021240234, &#39;D&#39;: 0.06279444694519043, &#39;F&#39;: 0.003956685774028301}
+Epoch/total_steps/alpha-beta: 7/10700/1-1 {&#39;G_GAN&#39;: 8.623394012451172, &#39;G_L1&#39;: 48.77614212036133, &#39;D&#39;: 0.1212463453412056, &#39;F&#39;: 0.0038354680873453617}
+Epoch/total_steps/alpha-beta: 7/10800/1-1 {&#39;G_GAN&#39;: 8.535538673400879, &#39;G_L1&#39;: 23.573339462280273, &#39;D&#39;: 0.26092103123664856, &#39;F&#39;: 0.02034822106361389}
+Epoch/total_steps/alpha-beta: 7/10900/1-1 {&#39;G_GAN&#39;: 7.304739952087402, &#39;G_L1&#39;: 52.720272064208984, &#39;D&#39;: 0.17319446802139282, &#39;F&#39;: 0.004917722661048174}
+Epoch/total_steps/alpha-beta: 7/11000/1-1 {&#39;G_GAN&#39;: 8.496955871582031, &#39;G_L1&#39;: 32.15869140625, &#39;D&#39;: 0.19627061486244202, &#39;F&#39;: 0.0034651909954845905}
+Epoch/total_steps/alpha-beta: 7/11100/1-1 {&#39;G_GAN&#39;: 7.4414286613464355, &#39;G_L1&#39;: 22.528148651123047, &#39;D&#39;: 0.12145271897315979, &#39;F&#39;: 0.0053456611931324005}
+Epoch/total_steps/alpha-beta: 7/11200/1-1 {&#39;G_GAN&#39;: 8.624886512756348, &#39;G_L1&#39;: 26.956111907958984, &#39;D&#39;: 0.12476585060358047, &#39;F&#39;: 0.006073706317692995}
+Epoch/total_steps/alpha-beta: 7/11300/1-1 {&#39;G_GAN&#39;: 6.48762845993042, &#39;G_L1&#39;: 41.00849914550781, &#39;D&#39;: 0.2993772625923157, &#39;F&#39;: 0.005646781995892525}
+Epoch/total_steps/alpha-beta: 7/11400/1-1 {&#39;G_GAN&#39;: 8.186914443969727, &#39;G_L1&#39;: 49.16712188720703, &#39;D&#39;: 0.05381361395120621, &#39;F&#39;: 0.008214539848268032}
+Epoch/total_steps/alpha-beta: 7/11500/1-1 {&#39;G_GAN&#39;: 7.721314430236816, &#39;G_L1&#39;: 42.0952033996582, &#39;D&#39;: 0.08224791288375854, &#39;F&#39;: 0.003950752317905426}
+Epoch/total_steps/alpha-beta: 7/11600/1-1 {&#39;G_GAN&#39;: 7.064647674560547, &#39;G_L1&#39;: 31.448291778564453, &#39;D&#39;: 0.15998078882694244, &#39;F&#39;: 0.01009608618915081}
+Epoch/total_steps/alpha-beta: 7/11700/1-1 {&#39;G_GAN&#39;: 7.954371929168701, &#39;G_L1&#39;: 42.78851318359375, &#39;D&#39;: 0.025792140513658524, &#39;F&#39;: 0.006111938506364822}
+Epoch/total_steps/alpha-beta: 7/11800/1-1 {&#39;G_GAN&#39;: 7.923455238342285, &#39;G_L1&#39;: 30.544158935546875, &#39;D&#39;: 0.05312065780162811, &#39;F&#39;: 0.012242168188095093}
+Epoch/total_steps/alpha-beta: 7/11900/1-1 {&#39;G_GAN&#39;: 7.227481842041016, &#39;G_L1&#39;: 36.183536529541016, &#39;D&#39;: 0.12282086908817291, &#39;F&#39;: 0.005290444009006023}
+Epoch/total_steps/alpha-beta: 7/12000/1-1 {&#39;G_GAN&#39;: 7.887233734130859, &#39;G_L1&#39;: 24.613788604736328, &#39;D&#39;: 0.11584547162055969, &#39;F&#39;: 0.0029767751693725586}
+保存模型 Epoch 7, iters 12080 在 D:\BaiduNetdiskWorkspace\result\CSA-256
+Epoch/Epochs 7/499 花费时间：7413.103918552399s
+learning rate = 0.0002
+Epoch/total_steps/alpha-beta: 8/12100/1-1 {&#39;G_GAN&#39;: 7.581682205200195, &#39;G_L1&#39;: 34.474464416503906, &#39;D&#39;: 0.05790848284959793, &#39;F&#39;: 0.0035234112292528152}
+Epoch/total_steps/alpha-beta: 8/12200/1-1 {&#39;G_GAN&#39;: 7.024021148681641, &#39;G_L1&#39;: 41.65107727050781, &#39;D&#39;: 0.15041401982307434, &#39;F&#39;: 0.004791233688592911}
+Epoch/total_steps/alpha-beta: 8/12300/1-1 {&#39;G_GAN&#39;: 7.7638258934021, &#39;G_L1&#39;: 38.13228225708008, &#39;D&#39;: 0.01719258539378643, &#39;F&#39;: 0.005442150868475437}
+Epoch/total_steps/alpha-beta: 8/12400/1-1 {&#39;G_GAN&#39;: 7.288402557373047, &#39;G_L1&#39;: 58.10588455200195, &#39;D&#39;: 0.10702061653137207, &#39;F&#39;: 0.0029621128924191}
+Epoch/total_steps/alpha-beta: 8/12500/1-1 {&#39;G_GAN&#39;: 7.613567352294922, &#39;G_L1&#39;: 41.18113708496094, &#39;D&#39;: 0.12718082964420319, &#39;F&#39;: 0.003136741928756237}
+Epoch/total_steps/alpha-beta: 8/12600/1-1 {&#39;G_GAN&#39;: 7.533107280731201, &#39;G_L1&#39;: 45.24429702758789, &#39;D&#39;: 0.06324156373739243, &#39;F&#39;: 0.00745246559381485}
+Epoch/total_steps/alpha-beta: 8/12700/1-1 {&#39;G_GAN&#39;: 7.9813103675842285, &#39;G_L1&#39;: 23.749958038330078, &#39;D&#39;: 0.020820695906877518, &#39;F&#39;: 0.009065713733434677}
+Epoch/total_steps/alpha-beta: 8/12800/1-1 {&#39;G_GAN&#39;: 7.772655487060547, &#39;G_L1&#39;: 67.95085906982422, &#39;D&#39;: 0.0983620211482048, &#39;F&#39;: 0.004236478824168444}
+Epoch/total_steps/alpha-beta: 8/12900/1-1 {&#39;G_GAN&#39;: 7.928244590759277, &#39;G_L1&#39;: 19.054906845092773, &#39;D&#39;: 0.06631708145141602, &#39;F&#39;: 0.0064378827810287476}
+Epoch/total_steps/alpha-beta: 8/13000/1-1 {&#39;G_GAN&#39;: 8.357902526855469, &#39;G_L1&#39;: 36.96731185913086, &#39;D&#39;: 0.037195317447185516, &#39;F&#39;: 0.005653058178722858}
+Epoch/total_steps/alpha-beta: 8/13100/1-1 {&#39;G_GAN&#39;: 6.973226070404053, &#39;G_L1&#39;: 26.47764015197754, &#39;D&#39;: 0.17010092735290527, &#39;F&#39;: 0.00506189651787281}
+Epoch/total_steps/alpha-beta: 8/13200/1-1 {&#39;G_GAN&#39;: 5.7928314208984375, &#39;G_L1&#39;: 15.053328514099121, &#39;D&#39;: 0.625880777835846, &#39;F&#39;: 0.004256725776940584}
+Epoch/total_steps/alpha-beta: 8/13300/1-1 {&#39;G_GAN&#39;: 8.065481185913086, &#39;G_L1&#39;: 71.77478790283203, &#39;D&#39;: 0.23177891969680786, &#39;F&#39;: 0.0064806207083165646}
+Epoch/total_steps/alpha-beta: 8/13400/1-1 {&#39;G_GAN&#39;: 7.936908721923828, &#39;G_L1&#39;: 30.626007080078125, &#39;D&#39;: 0.02110428735613823, &#39;F&#39;: 0.0026462457608431578}
+Epoch/total_steps/alpha-beta: 8/13500/1-1 {&#39;G_GAN&#39;: 8.294858932495117, &#39;G_L1&#39;: 40.485496520996094, &#39;D&#39;: 0.10770836472511292, &#39;F&#39;: 0.004948494955897331}
+保存模型 Epoch 8, iters 13590 在 D:\BaiduNetdiskWorkspace\result\CSA-256
+Epoch/Epochs 8/499 花费时间：6497.949520349503s
+learning rate = 0.0002
+Epoch/total_steps/alpha-beta: 9/13600/1-1 {&#39;G_GAN&#39;: 7.967746257781982, &#39;G_L1&#39;: 29.19915008544922, &#39;D&#39;: 0.02591315470635891, &#39;F&#39;: 0.004626010544598103}
+Epoch/total_steps/alpha-beta: 9/13700/1-1 {&#39;G_GAN&#39;: 7.723950386047363, &#39;G_L1&#39;: 18.31588363647461, &#39;D&#39;: 0.026470214128494263, &#39;F&#39;: 0.004633272998034954}
+Epoch/total_steps/alpha-beta: 9/13800/1-1 {&#39;G_GAN&#39;: 8.364426612854004, &#39;G_L1&#39;: 38.08037185668945, &#39;D&#39;: 0.05775924772024155, &#39;F&#39;: 0.00221813190728426}
+Epoch/total_steps/alpha-beta: 9/13900/1-1 {&#39;G_GAN&#39;: 6.015634536743164, &#39;G_L1&#39;: 21.672826766967773, &#39;D&#39;: 0.6788519620895386, &#39;F&#39;: 0.0037434487603604794}
+Epoch/total_steps/alpha-beta: 9/14000/1-1 {&#39;G_GAN&#39;: 5.877560138702393, &#39;G_L1&#39;: 21.45376968383789, &#39;D&#39;: 0.6974241733551025, &#39;F&#39;: 0.0118287093937397}
+Epoch/total_steps/alpha-beta: 9/14100/1-1 {&#39;G_GAN&#39;: 6.6283440589904785, &#39;G_L1&#39;: 20.299779891967773, &#39;D&#39;: 0.7582746744155884, &#39;F&#39;: 0.04505133628845215}
+Epoch/total_steps/alpha-beta: 9/14200/1-1 {&#39;G_GAN&#39;: 6.308126449584961, &#39;G_L1&#39;: 49.737205505371094, &#39;D&#39;: 0.4797475337982178, &#39;F&#39;: 0.010836103931069374}
+Epoch/total_steps/alpha-beta: 9/14300/1-1 {&#39;G_GAN&#39;: 7.847025394439697, &#39;G_L1&#39;: 41.917701721191406, &#39;D&#39;: 0.032135751098394394, &#39;F&#39;: 0.0046108197420835495}
+Epoch/total_steps/alpha-beta: 9/14400/1-1 {&#39;G_GAN&#39;: 8.002569198608398, &#39;G_L1&#39;: 71.05892181396484, &#39;D&#39;: 0.10304535925388336, &#39;F&#39;: 0.0036131732631474733}
+Epoch/total_steps/alpha-beta: 9/14500/1-1 {&#39;G_GAN&#39;: 7.617059707641602, &#39;G_L1&#39;: 27.433788299560547, &#39;D&#39;: 0.06742973625659943, &#39;F&#39;: 0.006724053993821144}
+Epoch/total_steps/alpha-beta: 9/14600/1-1 {&#39;G_GAN&#39;: 7.740251541137695, &#39;G_L1&#39;: 22.695158004760742, &#39;D&#39;: 0.06543239951133728, &#39;F&#39;: 0.008162463083863258}
+Epoch/total_steps/alpha-beta: 9/14700/1-1 {&#39;G_GAN&#39;: 7.137923240661621, &#39;G_L1&#39;: 46.50149917602539, &#39;D&#39;: 0.13832157850265503, &#39;F&#39;: 0.003222073893994093}
+Epoch/total_steps/alpha-beta: 9/14800/1-1 {&#39;G_GAN&#39;: 8.158252716064453, &#39;G_L1&#39;: 19.84181022644043, &#39;D&#39;: 0.05569646134972572, &#39;F&#39;: 0.005258960649371147}
+Epoch/total_steps/alpha-beta: 9/14900/1-1 {&#39;G_GAN&#39;: 5.5509443283081055, &#39;G_L1&#39;: 20.219554901123047, &#39;D&#39;: 0.8138083815574646, &#39;F&#39;: 0.00522975530475378}
+Epoch/total_steps/alpha-beta: 9/15000/1-1 {&#39;G_GAN&#39;: 6.772518157958984, &#39;G_L1&#39;: 21.713930130004883, &#39;D&#39;: 0.22800469398498535, &#39;F&#39;: 0.008440765552222729}
+Epoch/total_steps/alpha-beta: 9/15100/1-1 {&#39;G_GAN&#39;: 7.7085113525390625, &#39;G_L1&#39;: 49.46350860595703, &#39;D&#39;: 0.026264747604727745, &#39;F&#39;: 0.005190309137105942}
+保存模型 Epoch 9, iters 15100 在 D:\BaiduNetdiskWorkspace\result\CSA-256
+Epoch/Epochs 9/499 花费时间：6301.597240447998s
+learning rate = 0.0002
+Epoch/total_steps/alpha-beta: 10/15200/1-1 {&#39;G_GAN&#39;: 8.44527816772461, &#39;G_L1&#39;: 38.36606216430664, &#39;D&#39;: 0.0737876296043396, &#39;F&#39;: 0.003391744801774621}
+Epoch/total_steps/alpha-beta: 10/15300/1-1 {&#39;G_GAN&#39;: 7.854788303375244, &#39;G_L1&#39;: 36.78287887573242, &#39;D&#39;: 0.02683226391673088, &#39;F&#39;: 0.0076011549681425095}
+Epoch/total_steps/alpha-beta: 10/15400/1-1 {&#39;G_GAN&#39;: 7.852246284484863, &#39;G_L1&#39;: 43.75490951538086, &#39;D&#39;: 0.022484688088297844, &#39;F&#39;: 0.0051782140508294106}
+Epoch/total_steps/alpha-beta: 10/15500/1-1 {&#39;G_GAN&#39;: 6.319469451904297, &#39;G_L1&#39;: 15.495850563049316, &#39;D&#39;: 0.41958701610565186, &#39;F&#39;: 0.006682357285171747}
+Epoch/total_steps/alpha-beta: 10/15600/1-1 {&#39;G_GAN&#39;: 8.627874374389648, &#39;G_L1&#39;: 33.9821891784668, &#39;D&#39;: 0.10430874675512314, &#39;F&#39;: 0.005523717496544123}
+Epoch/total_steps/alpha-beta: 10/15700/1-1 {&#39;G_GAN&#39;: 8.77853775024414, &#39;G_L1&#39;: 28.33699607849121, &#39;D&#39;: 0.14931735396385193, &#39;F&#39;: 0.004621438682079315}
+Epoch/total_steps/alpha-beta: 10/15800/1-1 {&#39;G_GAN&#39;: 8.67558479309082, &#39;G_L1&#39;: 17.034799575805664, &#39;D&#39;: 0.06679384410381317, &#39;F&#39;: 0.0033715341705828905}
+Epoch/total_steps/alpha-beta: 10/15900/1-1 {&#39;G_GAN&#39;: 7.480027198791504, &#39;G_L1&#39;: 29.66385269165039, &#39;D&#39;: 0.04866645485162735, &#39;F&#39;: 0.005316977854818106}
+Epoch/total_steps/alpha-beta: 10/16000/1-1 {&#39;G_GAN&#39;: 8.516335487365723, &#39;G_L1&#39;: 45.27458953857422, &#39;D&#39;: 0.05196388438344002, &#39;F&#39;: 0.002884333487600088}
+Epoch/total_steps/alpha-beta: 10/16100/1-1 {&#39;G_GAN&#39;: 6.917342185974121, &#39;G_L1&#39;: 36.28127670288086, &#39;D&#39;: 0.17571738362312317, &#39;F&#39;: 0.00514273252338171}
+Epoch/total_steps/alpha-beta: 10/16200/1-1 {&#39;G_GAN&#39;: 8.234661102294922, &#39;G_L1&#39;: 28.959156036376953, &#39;D&#39;: 0.0452435240149498, &#39;F&#39;: 0.009862104430794716}
+Epoch/total_steps/alpha-beta: 10/16300/1-1 {&#39;G_GAN&#39;: 7.725302696228027, &#39;G_L1&#39;: 22.832731246948242, &#39;D&#39;: 0.1762731969356537, &#39;F&#39;: 0.010282410308718681}
+Epoch/total_steps/alpha-beta: 10/16400/1-1 {&#39;G_GAN&#39;: 7.675027847290039, &#39;G_L1&#39;: 37.1957893371582, &#39;D&#39;: 0.07404058426618576, &#39;F&#39;: 0.004590428434312344}
+Epoch/total_steps/alpha-beta: 10/16500/1-1 {&#39;G_GAN&#39;: 8.026204109191895, &#39;G_L1&#39;: 64.67173767089844, &#39;D&#39;: 0.05610287934541702, &#39;F&#39;: 0.011983966454863548}
+Epoch/total_steps/alpha-beta: 10/16600/1-1 {&#39;G_GAN&#39;: 8.001333236694336, &#39;G_L1&#39;: 39.6786994934082, &#39;D&#39;: 0.02330709621310234, &#39;F&#39;: 0.005099699832499027}
+保存模型 Epoch 10, iters 16610 在 D:\BaiduNetdiskWorkspace\result\CSA-256
+Epoch/Epochs 10/499 花费时间：6475.059796094894s
+learning rate = 0.0002
+Epoch/total_steps/alpha-beta: 11/16700/1-1 {&#39;G_GAN&#39;: 8.382673263549805, &#39;G_L1&#39;: 60.174591064453125, &#39;D&#39;: 0.1334056854248047, &#39;F&#39;: 0.004445503931492567}
+Epoch/total_steps/alpha-beta: 11/16800/1-1 {&#39;G_GAN&#39;: 7.793785095214844, &#39;G_L1&#39;: 27.951732635498047, &#39;D&#39;: 0.1080295518040657, &#39;F&#39;: 0.0075932652689516544}
+</pre></div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "SanstyleLab/pytorch-book",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./use"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By xinetzone<br/>
+        
+          <div class="extra_footer">
+            <p class="w3-card w3-pale-blue w3-padding">
+  Copyright © 2021
+  <a href="https://sanstylelab.github.io/">SanstyleLab</a> | 
+  Powered by <a href="https://github.com/executablebooks/jupyter-book">Jupyter Book</a>.
+</p>
+
+          </div>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

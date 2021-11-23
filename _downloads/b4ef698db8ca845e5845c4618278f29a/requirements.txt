@@ -10,7 +10,7 @@ sphinx-click
 # sphinxext-rediraffe
 # sympy
 # statsmodels
-# jupyter-dash
+jupyter-dash
 plotly
 # gunicorn
 # dash-xinet -i https://pypi.org/simple/
