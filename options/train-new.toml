@@ -26,6 +26,6 @@ overlap = 4
 niter = 20
 niter_decay = 100
 beta1 = 0.5
-lr = 0.002
+lr = 0.0002
 lr_policy = 'lambda'
 lr_decay_iters = 50
