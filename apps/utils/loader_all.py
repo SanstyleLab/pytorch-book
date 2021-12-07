@@ -18,4 +18,4 @@ class Record:
         # 如果存在 RGBA，则转换为 RGB
         # print(name)
         image = Image.open(name).convert('RGB')
-        return image
+        return image, name

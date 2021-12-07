@@ -1,4 +1,4 @@
-fine_size = 256 # image size
+fine_size = 512 # image size
 norm = 'instance'
 use_dropout = false
 init_type = 'normal'

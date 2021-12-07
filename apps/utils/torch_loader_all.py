@@ -18,7 +18,7 @@ class CustomDataset(Dataset, Record):
         image = Image.open(name).convert('RGB')
         if self.transform:
             image = self.transform(image)
-        return image
+        return image, name
 
 
 class Loader:
