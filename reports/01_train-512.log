@@ -17,46 +17,26 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-import time
-from pathlib import Path
-
-from random import randint
-from matplotlib import pyplot as plt
-
-import torch as np
 from torchvision.utils import save_image
-
-from models.CSA import CSA
-from tools.toml import load_option
-from opt.dataset import init_dataset
+import torch
+import time
+from matplotlib import pyplot as plt 
 
 from tools.file import mkdir
-from utils.torch_loader import Loader
-
-
-def array2image(x):
-    x *= 255
-    x = x.detach().cpu().numpy()
-    return x.astype('uint8').transpose((1, 2, 0))
-
-def mask_op(mask):
-    mask = mask.cuda()
-    mask = mask[0][0]
-    mask = np.unsqueeze(mask, 0)
-    mask = np.unsqueeze(mask, 1)
-    mask = mask.byte()
-    return mask
+from utils.torch_loader_all import Loader
+from tools.toml import load_option
+from app import  init, mask_op, array2image
 ------------------
 
 [0;31m---------------------------------------------------------------------------[0m
 [0;31mModuleNotFoundError[0m                       Traceback (most recent call last)
-[0;32m/tmp/ipykernel_2926/4279646055.py[0m in [0;36m<module>[0;34m[0m
-[1;32m      5[0m [0;32mfrom[0m [0mmatplotlib[0m [0;32mimport[0m [0mpyplot[0m [0;32mas[0m [0mplt[0m[0;34m[0m[0;34m[0m[0m
-[1;32m      6[0m [0;34m[0m[0m
-[0;32m----> 7[0;31m [0;32mimport[0m [0mtorch[0m [0;32mas[0m [0mnp[0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m      8[0m [0;32mfrom[0m [0mtorchvision[0m[0;34m.[0m[0mutils[0m [0;32mimport[0m [0msave_image[0m[0;34m[0m[0;34m[0m[0m
-[1;32m      9[0m [0;34m[0m[0m
+[0;32m/tmp/ipykernel_2782/537171601.py[0m in [0;36m<module>[0;34m[0m
+[0;32m----> 1[0;31m [0;32mfrom[0m [0mtorchvision[0m[0;34m.[0m[0mutils[0m [0;32mimport[0m [0msave_image[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m      2[0m [0;32mimport[0m [0mtorch[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      3[0m [0;32mimport[0m [0mtime[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      4[0m [0;32mfrom[0m [0mmatplotlib[0m [0;32mimport[0m [0mpyplot[0m [0;32mas[0m [0mplt[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      5[0m [0;34m[0m[0m
 
-[0;31mModuleNotFoundError[0m: No module named 'torch'
-ModuleNotFoundError: No module named 'torch'
+[0;31mModuleNotFoundError[0m: No module named 'torchvision'
+ModuleNotFoundError: No module named 'torchvision'
 

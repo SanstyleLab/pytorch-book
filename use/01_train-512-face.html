@@ -93,7 +93,7 @@ commentsRunWhenDOMLoaded(addUtterances);
         const thebe_selector_output = ".output,.cell_output"
     </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <link rel="canonical" href="https://SanstyleLab.github.io/sanstyle-starter/use/02_test.html" />
+    <link rel="canonical" href="https://SanstyleLab.github.io/sanstyle-starter/use/01_train-512-face.html" />
     <link rel="shortcut icon" href="../_static/page-logo.jfif"/>
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="搜索" href="../search.html" />
@@ -299,7 +299,7 @@ commentsRunWhenDOMLoaded(addUtterances);
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/use/02_test.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/use/01_train-512-face.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
@@ -319,7 +319,7 @@ commentsRunWhenDOMLoaded(addUtterances);
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/SanstyleLab/pytorch-book/issues/new?title=Issue%20on%20page%20%2Fuse/02_test.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/SanstyleLab/pytorch-book/issues/new?title=Issue%20on%20page%20%2Fuse/01_train-512-face.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -340,7 +340,7 @@ commentsRunWhenDOMLoaded(addUtterances);
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/SanstyleLab/pytorch-book/main?urlpath=tree/docs/use/02_test.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/SanstyleLab/pytorch-book/main?urlpath=tree/docs/use/01_train-512-face.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="../_static/images/logo_binder.svg"
@@ -348,7 +348,7 @@ commentsRunWhenDOMLoaded(addUtterances);
         
         
         
-        <a class="colab-button" href="https://colab.research.google.com/github/SanstyleLab/pytorch-book/blob/main/docs/use/02_test.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+        <a class="colab-button" href="https://colab.research.google.com/github/SanstyleLab/pytorch-book/blob/main/docs/use/01_train-512-face.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
                 title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
                     src="../_static/images/logo_colab.png"
                     alt="Interact on Colab">Colab</button></a>
@@ -383,10 +383,12 @@ commentsRunWhenDOMLoaded(addUtterances);
                 
   <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
-
-<span class="n">root</span> <span class="o">=</span> <span class="s1">&#39;../..&#39;</span>
-<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">root</span><span class="si">}</span><span class="s1">/apps&#39;</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">../../</span><span class="n">apps</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>e:\kaggle\pytorch-book\apps
 </pre></div>
 </div>
 </div>
@@ -395,11 +397,11 @@ commentsRunWhenDOMLoaded(addUtterances);
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">torchvision.utils</span> <span class="kn">import</span> <span class="n">save_image</span>
 <span class="kn">import</span> <span class="nn">torch</span>
-<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">import</span> <span class="nn">time</span>
 <span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span> 
 
 <span class="kn">from</span> <span class="nn">tools.file</span> <span class="kn">import</span> <span class="n">mkdir</span>
-<span class="kn">from</span> <span class="nn">utils.torch_loader_all</span> <span class="kn">import</span> <span class="n">LoaderTest</span>
+<span class="kn">from</span> <span class="nn">utils.torch_loader_all</span> <span class="kn">import</span> <span class="n">Loader</span>
 <span class="kn">from</span> <span class="nn">tools.toml</span> <span class="kn">import</span> <span class="n">load_option</span>
 <span class="kn">from</span> <span class="nn">app</span> <span class="kn">import</span>  <span class="n">init</span><span class="p">,</span> <span class="n">mask_op</span><span class="p">,</span> <span class="n">array2image</span>
 </pre></div>
@@ -408,40 +410,25 @@ commentsRunWhenDOMLoaded(addUtterances);
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_opt</span><span class="p">(</span><span class="n">opt_name</span><span class="p">,</span> <span class="n">base_name</span><span class="p">,</span> <span class="n">train_name</span><span class="p">):</span>
-    <span class="n">opt</span> <span class="o">=</span> <span class="n">load_option</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">root</span><span class="si">}</span><span class="s1">/origin/</span><span class="si">{</span><span class="n">opt_name</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-    <span class="n">base_opt</span> <span class="o">=</span> <span class="n">load_option</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">root</span><span class="si">}</span><span class="s1">/options/</span><span class="si">{</span><span class="n">base_name</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-    <span class="n">model_opt</span> <span class="o">=</span> <span class="n">load_option</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">root</span><span class="si">}</span><span class="s1">/options/</span><span class="si">{</span><span class="n">train_name</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">opt</span><span class="p">,</span> <span class="n">base_opt</span><span class="p">,</span> <span class="n">model_opt</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">opt</span><span class="p">,</span> <span class="n">base_opt</span><span class="p">,</span> <span class="n">model_opt</span> <span class="o">=</span> <span class="n">get_opt</span><span class="p">(</span><span class="s1">&#39;test.toml&#39;</span><span class="p">,</span>
-                                   <span class="s1">&#39;base512.toml&#39;</span><span class="p">,</span>
-                                   <span class="s1">&#39;train-new.toml&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">opt</span> <span class="o">=</span> <span class="n">load_option</span><span class="p">(</span><span class="s1">&#39;../origin/train-512-face.toml&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">opt</span><span class="p">)</span>
-<span class="n">loader</span> <span class="o">=</span> <span class="n">LoaderTest</span><span class="p">(</span><span class="o">**</span><span class="n">opt</span><span class="p">)</span>
+<span class="n">loader</span> <span class="o">=</span> <span class="n">Loader</span><span class="p">(</span><span class="o">**</span><span class="n">opt</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;root&#39;: &#39;E:/kaggle/datasets/tests&#39;, &#39;mask&#39;: &#39;D:/kaggle/dataset/mask/testing_mask_dataset&#39;, &#39;fine_size&#39;: 512, &#39;batch_size&#39;: 1}
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;root&#39;: &#39;E:/kaggle/datasets/CelebA/Img/img_align_celeba&#39;, &#39;mask&#39;: &#39;D:/kaggle/dataset/mask/testing_mask_dataset&#39;, &#39;fine_size&#39;: 512, &#39;batch_size&#39;: 1}
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model_name</span> <span class="o">=</span> <span class="s1">&#39;CSA-512&#39;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model_name</span> <span class="o">=</span> <span class="s1">&#39;CSA-512-face&#39;</span>
 <span class="n">beta</span> <span class="o">=</span> <span class="mi">1</span>
-
+<span class="n">base_opt</span> <span class="o">=</span> <span class="n">load_option</span><span class="p">(</span><span class="s1">&#39;../options/base512.toml&#39;</span><span class="p">)</span>
+<span class="n">model_opt</span> <span class="o">=</span> <span class="n">load_option</span><span class="p">(</span><span class="s1">&#39;../options/train-new.toml&#39;</span><span class="p">)</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">init</span><span class="p">(</span><span class="n">model_name</span><span class="p">,</span> <span class="n">beta</span><span class="p">,</span> <span class="n">model_opt</span><span class="p">,</span> <span class="n">base_opt</span><span class="p">)</span>
-
-<span class="n">save_dir</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;D:/BaiduNetdiskWorkspace/result/measure/</span><span class="si">{</span><span class="n">model_name</span><span class="si">}</span><span class="s1">&#39;</span>
-<span class="n">mkdir</span><span class="p">(</span><span class="n">save_dir</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -700,97 +687,93 @@ Total number of parameters: 10487296
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">valset</span> <span class="o">=</span> <span class="n">loader</span><span class="o">.</span><span class="n">valset</span><span class="p">()</span>
-<span class="n">maskset</span> <span class="o">=</span> <span class="n">loader</span><span class="o">.</span><span class="n">maskset</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">epoch</span><span class="p">,</span> <span class="n">image</span><span class="p">,</span> <span class="n">image_name</span><span class="p">,</span> <span class="n">mask</span><span class="p">):</span>
-    <span class="n">model</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">epoch</span><span class="p">)</span>
-    <span class="n">image</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">cuda</span><span class="p">()</span>
-    <span class="n">mask</span> <span class="o">=</span> <span class="n">mask_op</span><span class="p">(</span><span class="n">mask</span><span class="p">)</span>
-    <span class="n">model</span><span class="o">.</span><span class="n">set_input</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">mask</span><span class="p">)</span>
-    <span class="n">model</span><span class="o">.</span><span class="n">set_gt_latent</span><span class="p">()</span>
-    <span class="n">model</span><span class="o">.</span><span class="n">test</span><span class="p">()</span>
-    <span class="n">real_A</span><span class="p">,</span> <span class="n">real_B</span><span class="p">,</span> <span class="n">fake_B</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">get_current_visuals</span><span class="p">()</span>
-    <span class="n">pic</span> <span class="o">=</span> <span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">([</span><span class="n">real_A</span><span class="p">,</span> <span class="n">real_B</span><span class="p">,</span> <span class="n">fake_B</span><span class="p">],</span> <span class="n">dim</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="mf">2.0</span>
-        
-    <span class="n">save_image</span><span class="p">(</span><span class="n">pic</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">save_dir</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">image_name</span><span class="si">}</span><span class="s2">-epoch</span><span class="si">{</span><span class="n">epoch</span><span class="si">}</span><span class="s2">.jpg&quot;</span><span class="p">,</span> <span class="n">nrow</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 超参数设定</span>
+<span class="c1">## 固定参数</span>
+<span class="n">epochs</span> <span class="o">=</span> <span class="mi">500</span>
+<span class="n">display_freq</span> <span class="o">=</span> <span class="mi">49</span>
+<span class="n">save_epoch_freq</span> <span class="o">=</span> <span class="mi">1</span>
 
-    <span class="k">if</span> <span class="n">epoch</span> <span class="o">%</span> <span class="mi">50</span> <span class="o">==</span><span class="mi">0</span><span class="p">:</span>
-        <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
-        <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-        <span class="n">x</span> <span class="o">=</span> <span class="n">array2image</span><span class="p">(</span><span class="n">real_A</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-        <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-        <span class="n">x</span> <span class="o">=</span> <span class="n">array2image</span><span class="p">(</span><span class="n">real_B</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-        <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-        <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-        <span class="n">x</span> <span class="o">=</span> <span class="n">array2image</span><span class="p">(</span><span class="n">fake_B</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-        <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
-        <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-        <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="c1">## 模型参数</span>
+<span class="n">alpha</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">beta</span> <span class="o">=</span> <span class="mi">1</span>
+
+
+<span class="n">model_name</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;CSA-crop-</span><span class="si">{</span><span class="n">alpha</span><span class="si">}</span><span class="s1">-</span><span class="si">{</span><span class="n">beta</span><span class="si">}</span><span class="s1">&#39;</span>
+<span class="n">image_save_dir</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">save_dir</span> <span class="o">/</span> <span class="s1">&#39;images&#39;</span>
+<span class="n">mkdir</span><span class="p">(</span><span class="n">image_save_dir</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">path</span><span class="p">),</span> <span class="n">mask</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">valset</span><span class="p">,</span> <span class="n">maskset</span><span class="p">):</span>
-    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">120</span><span class="p">):</span>
-        <span class="n">test</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">image</span><span class="p">,</span> <span class="n">Path</span><span class="p">(</span><span class="n">path</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">mask</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 训练阶段</span>
+<span class="n">start_epoch</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">total_steps</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">iter_start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">start_epoch</span><span class="p">,</span> <span class="n">epochs</span><span class="p">):</span>
+    <span class="n">epoch_start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+    <span class="n">epoch_iter</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">epoch_iter</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="c1"># 初始化数据集</span>
+    <span class="n">trainset</span> <span class="o">=</span> <span class="n">loader</span><span class="o">.</span><span class="n">trainset</span><span class="p">()</span> <span class="c1"># 训练集</span>
+    <span class="n">maskset</span> <span class="o">=</span> <span class="n">loader</span><span class="o">.</span><span class="n">maskset</span><span class="p">()</span> <span class="c1"># mask 数据集</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">_</span><span class="p">),</span> <span class="n">mask</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">trainset</span><span class="p">,</span> <span class="n">maskset</span><span class="p">):</span>
+        <span class="n">mask</span> <span class="o">=</span> <span class="n">mask_op</span><span class="p">(</span><span class="n">mask</span><span class="p">)</span>
+        <span class="n">total_steps</span> <span class="o">+=</span> <span class="n">model</span><span class="o">.</span><span class="n">batch_size</span>
+        <span class="n">epoch_iter</span> <span class="o">+=</span> <span class="n">model</span><span class="o">.</span><span class="n">batch_size</span>
+        <span class="c1"># it not only sets the input data with mask,</span>
+        <span class="c1">#  but also sets the latent mask.</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">set_input</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">mask</span><span class="p">)</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">set_gt_latent</span><span class="p">()</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">optimize_parameters</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">total_steps</span> <span class="o">%</span> <span class="n">display_freq</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">real_A</span><span class="p">,</span> <span class="n">real_B</span><span class="p">,</span> <span class="n">fake_B</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">get_current_visuals</span><span class="p">()</span>
+            <span class="c1"># real_A=input, real_B=ground truth fake_b=output</span>
+            <span class="n">pic</span> <span class="o">=</span> <span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">([</span><span class="n">real_A</span><span class="p">,</span> <span class="n">real_B</span><span class="p">,</span> <span class="n">fake_B</span><span class="p">],</span> <span class="n">dim</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="mf">2.0</span>
+            <span class="n">image_name</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;epoch</span><span class="si">{</span><span class="n">epoch</span><span class="si">}</span><span class="s2">-</span><span class="si">{</span><span class="n">total_steps</span><span class="si">}</span><span class="s2">-</span><span class="si">{</span><span class="n">alpha</span><span class="si">}</span><span class="s2">.png&quot;</span>
+            <span class="n">save_image</span><span class="p">(</span><span class="n">pic</span><span class="p">,</span> <span class="n">image_save_dir</span><span class="o">/</span><span class="n">image_name</span><span class="p">,</span> <span class="n">ncol</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">total_steps</span> <span class="o">%</span> <span class="mi">100</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">errors</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">get_current_errors</span><span class="p">()</span>
+            <span class="n">t</span> <span class="o">=</span> <span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">iter_start_time</span><span class="p">)</span> <span class="o">/</span> <span class="n">model</span><span class="o">.</span><span class="n">batch_size</span>
+            <span class="nb">print</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;Epoch/total_steps/alpha-beta: </span><span class="si">{</span><span class="n">epoch</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">total_steps</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">alpha</span><span class="si">}</span><span class="s2">-</span><span class="si">{</span><span class="n">beta</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="nb">dict</span><span class="p">(</span><span class="n">errors</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">epoch</span> <span class="o">%</span> <span class="n">save_epoch_freq</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;保存模型 Epoch </span><span class="si">{</span><span class="n">epoch</span><span class="si">}</span><span class="s1">, iters </span><span class="si">{</span><span class="n">total_steps</span><span class="si">}</span><span class="s1"> 在 </span><span class="si">{</span><span class="n">model</span><span class="o">.</span><span class="n">save_dir</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">epoch</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span>
+        <span class="sa">f</span><span class="s1">&#39;Epoch/Epochs </span><span class="si">{</span><span class="n">epoch</span><span class="si">}</span><span class="s1">/</span><span class="si">{</span><span class="n">epochs</span><span class="o">-</span><span class="mi">1</span><span class="si">}</span><span class="s1"> 花费时间：</span><span class="si">{</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">epoch_start_time</span><span class="si">}</span><span class="s1">s&#39;</span><span class="p">)</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">update_learning_rate</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/02_test_7_0.png" src="../_images/02_test_7_0.png" />
-<img alt="../_images/02_test_7_1.png" src="../_images/02_test_7_1.png" />
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">RuntimeError</span><span class="g g-Whitespace">                              </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">8</span><span class="o">-</span><span class="mi">88709</span><span class="n">f6af401</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="k">for</span> <span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">path</span><span class="p">),</span> <span class="n">mask</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">valset</span><span class="p">,</span> <span class="n">maskset</span><span class="p">):</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span>     <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">120</span><span class="p">):</span>
-<span class="ne">----&gt; </span><span class="mi">3</span>         <span class="n">test</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">image</span><span class="p">,</span> <span class="n">Path</span><span class="p">(</span><span class="n">path</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">mask</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> 
-
-<span class="nn">&lt;ipython-input-7-818acf9f0e3f&gt;</span> in <span class="ni">test</span><span class="nt">(model, epoch, image, image_name, mask)</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="k">def</span> <span class="nf">test</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">epoch</span><span class="p">,</span> <span class="n">image</span><span class="p">,</span> <span class="n">image_name</span><span class="p">,</span> <span class="n">mask</span><span class="p">):</span>
-<span class="ne">----&gt; </span><span class="mi">2</span>     <span class="n">model</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">epoch</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span>     <span class="n">image</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">cuda</span><span class="p">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span>     <span class="n">mask</span> <span class="o">=</span> <span class="n">mask_op</span><span class="p">(</span><span class="n">mask</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span>     <span class="n">model</span><span class="o">.</span><span class="n">set_input</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">mask</span><span class="p">)</span>
-
-<span class="nn">e:\kaggle\pytorch-book\docs\use\../../apps\models\CSA.py</span> in <span class="ni">load</span><span class="nt">(self, epoch)</span>
-<span class="g g-Whitespace">    </span><span class="mi">296</span>     <span class="k">def</span> <span class="nf">load</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">epoch</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">297</span>         <span class="bp">self</span><span class="o">.</span><span class="n">load_network</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">netG</span><span class="p">,</span> <span class="s1">&#39;G&#39;</span><span class="p">,</span> <span class="n">epoch</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">298</span>         <span class="bp">self</span><span class="o">.</span><span class="n">load_network</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">netP</span><span class="p">,</span> <span class="s1">&#39;P&#39;</span><span class="p">,</span> <span class="n">epoch</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">299</span>         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">beta</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">300</span>             <span class="bp">self</span><span class="o">.</span><span class="n">load_network</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">netP</span><span class="p">,</span> <span class="s1">&#39;R&#39;</span><span class="p">,</span> <span class="n">epoch</span><span class="p">)</span>
-
-<span class="nn">e:\kaggle\pytorch-book\docs\use\../../apps\models\base_model.py</span> in <span class="ni">load_network</span><span class="nt">(self, network, network_label, epoch_label)</span>
-<span class="g g-Whitespace">     </span><span class="mi">31</span>     <span class="k">def</span> <span class="nf">load_network</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">network</span><span class="p">,</span> <span class="n">network_label</span><span class="p">,</span> <span class="n">epoch_label</span><span class="p">):</span>
-<span class="g g-Whitespace">     </span><span class="mi">32</span>         <span class="n">save_path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">set_save_path</span><span class="p">(</span><span class="n">network_label</span><span class="p">,</span> <span class="n">epoch_label</span><span class="p">)</span>
-<span class="ne">---&gt; </span><span class="mi">33</span>         <span class="n">network</span><span class="o">.</span><span class="n">load_state_dict</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">save_path</span><span class="p">))</span>
-<span class="g g-Whitespace">     </span><span class="mi">34</span> 
-<span class="g g-Whitespace">     </span><span class="mi">35</span>     <span class="k">def</span> <span class="nf">update_learning_rate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-
-<span class="nn">~\.conda\envs\torch\lib\site-packages\torch\serialization.py</span> in <span class="ni">load</span><span class="nt">(f, map_location, pickle_module, **pickle_load_args)</span>
-<span class="g g-Whitespace">    </span><span class="mi">598</span>             <span class="c1"># reset back to the original position.</span>
-<span class="g g-Whitespace">    </span><span class="mi">599</span>             <span class="n">orig_position</span> <span class="o">=</span> <span class="n">opened_file</span><span class="o">.</span><span class="n">tell</span><span class="p">()</span>
-<span class="ne">--&gt; </span><span class="mi">600</span>             <span class="k">with</span> <span class="n">_open_zipfile_reader</span><span class="p">(</span><span class="n">opened_file</span><span class="p">)</span> <span class="k">as</span> <span class="n">opened_zipfile</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">601</span>                 <span class="k">if</span> <span class="n">_is_torchscript_zip</span><span class="p">(</span><span class="n">opened_zipfile</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">602</span>                     <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;&#39;torch.load&#39; received a zip file that looks like a TorchScript archive&quot;</span>
-
-<span class="nn">~\.conda\envs\torch\lib\site-packages\torch\serialization.py</span> in <span class="ni">__init__</span><span class="nt">(self, name_or_buffer)</span>
-<span class="g g-Whitespace">    </span><span class="mi">240</span> <span class="k">class</span> <span class="nc">_open_zipfile_reader</span><span class="p">(</span><span class="n">_opener</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">241</span>     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name_or_buffer</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">242</span>         <span class="nb">super</span><span class="p">(</span><span class="n">_open_zipfile_reader</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">_C</span><span class="o">.</span><span class="n">PyTorchFileReader</span><span class="p">(</span><span class="n">name_or_buffer</span><span class="p">))</span>
-<span class="g g-Whitespace">    </span><span class="mi">243</span> 
-<span class="g g-Whitespace">    </span><span class="mi">244</span> 
-
-<span class="ne">RuntimeError</span>: PytorchStreamReader failed reading zip archive: failed finding central directory
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch/total_steps/alpha-beta: 0/100/1-1 {&#39;G_GAN&#39;: 5.674766540527344, &#39;G_L1&#39;: 82.69174194335938, &#39;D&#39;: 0.8737938404083252, &#39;F&#39;: 0.11914195865392685}
+Epoch/total_steps/alpha-beta: 0/200/1-1 {&#39;G_GAN&#39;: 6.374797821044922, &#39;G_L1&#39;: 94.81090545654297, &#39;D&#39;: 0.49556198716163635, &#39;F&#39;: 0.0632593184709549}
+Epoch/total_steps/alpha-beta: 0/300/1-1 {&#39;G_GAN&#39;: 5.32965087890625, &#39;G_L1&#39;: 53.254173278808594, &#39;D&#39;: 0.8827108144760132, &#39;F&#39;: 0.036601416766643524}
+Epoch/total_steps/alpha-beta: 0/400/1-1 {&#39;G_GAN&#39;: 5.552875995635986, &#39;G_L1&#39;: 72.80084228515625, &#39;D&#39;: 0.9750968217849731, &#39;F&#39;: 0.1065833568572998}
+Epoch/total_steps/alpha-beta: 0/500/1-1 {&#39;G_GAN&#39;: 6.736172676086426, &#39;G_L1&#39;: 52.51408386230469, &#39;D&#39;: 0.4093303084373474, &#39;F&#39;: 0.025163184851408005}
+Epoch/total_steps/alpha-beta: 0/600/1-1 {&#39;G_GAN&#39;: 7.541547775268555, &#39;G_L1&#39;: 112.79335021972656, &#39;D&#39;: 0.12005992233753204, &#39;F&#39;: 0.01236003264784813}
+Epoch/total_steps/alpha-beta: 0/700/1-1 {&#39;G_GAN&#39;: 6.069731712341309, &#39;G_L1&#39;: 47.136253356933594, &#39;D&#39;: 0.7534974813461304, &#39;F&#39;: 0.020309582352638245}
+Epoch/total_steps/alpha-beta: 0/800/1-1 {&#39;G_GAN&#39;: 5.450955390930176, &#39;G_L1&#39;: 65.66997528076172, &#39;D&#39;: 0.8705061674118042, &#39;F&#39;: 0.060515161603689194}
+Epoch/total_steps/alpha-beta: 0/900/1-1 {&#39;G_GAN&#39;: 6.46990966796875, &#39;G_L1&#39;: 75.23210144042969, &#39;D&#39;: 0.5232571363449097, &#39;F&#39;: 0.013653963804244995}
+Epoch/total_steps/alpha-beta: 0/1000/1-1 {&#39;G_GAN&#39;: 6.787680625915527, &#39;G_L1&#39;: 50.51403045654297, &#39;D&#39;: 0.5192381143569946, &#39;F&#39;: 0.04075857624411583}
+Epoch/total_steps/alpha-beta: 0/1100/1-1 {&#39;G_GAN&#39;: 6.793991565704346, &#39;G_L1&#39;: 49.92967224121094, &#39;D&#39;: 0.2963847517967224, &#39;F&#39;: 0.0138858025893569}
+Epoch/total_steps/alpha-beta: 0/1200/1-1 {&#39;G_GAN&#39;: 6.908201694488525, &#39;G_L1&#39;: 46.24758529663086, &#39;D&#39;: 0.4864062964916229, &#39;F&#39;: 0.04695504158735275}
+Epoch/total_steps/alpha-beta: 0/1300/1-1 {&#39;G_GAN&#39;: 7.270747184753418, &#39;G_L1&#39;: 39.49330520629883, &#39;D&#39;: 0.31095367670059204, &#39;F&#39;: 0.01762988604605198}
+Epoch/total_steps/alpha-beta: 0/1400/1-1 {&#39;G_GAN&#39;: 7.141920566558838, &#39;G_L1&#39;: 90.7420883178711, &#39;D&#39;: 0.6246428489685059, &#39;F&#39;: 0.01644831895828247}
+Epoch/total_steps/alpha-beta: 0/1500/1-1 {&#39;G_GAN&#39;: 7.252217769622803, &#39;G_L1&#39;: 80.00102233886719, &#39;D&#39;: 0.35810133814811707, &#39;F&#39;: 0.009534837678074837}
+Epoch/total_steps/alpha-beta: 0/1600/1-1 {&#39;G_GAN&#39;: 6.656037330627441, &#39;G_L1&#39;: 78.57904815673828, &#39;D&#39;: 0.2720087170600891, &#39;F&#39;: 0.07613863795995712}
+Epoch/total_steps/alpha-beta: 0/1700/1-1 {&#39;G_GAN&#39;: 6.747368812561035, &#39;G_L1&#39;: 53.054107666015625, &#39;D&#39;: 0.3349810242652893, &#39;F&#39;: 0.014762762933969498}
+Epoch/total_steps/alpha-beta: 0/1800/1-1 {&#39;G_GAN&#39;: 7.704248428344727, &#39;G_L1&#39;: 49.09436798095703, &#39;D&#39;: 0.4437968134880066, &#39;F&#39;: 0.00922537874430418}
+Epoch/total_steps/alpha-beta: 0/1900/1-1 {&#39;G_GAN&#39;: 7.979488372802734, &#39;G_L1&#39;: 38.44279479980469, &#39;D&#39;: 0.04135489463806152, &#39;F&#39;: 0.018109498545527458}
+Epoch/total_steps/alpha-beta: 0/2000/1-1 {&#39;G_GAN&#39;: 8.089262962341309, &#39;G_L1&#39;: 29.569683074951172, &#39;D&#39;: 0.4374288320541382, &#39;F&#39;: 0.017628138884902}
+Epoch/total_steps/alpha-beta: 0/2100/1-1 {&#39;G_GAN&#39;: 7.554396152496338, &#39;G_L1&#39;: 56.426353454589844, &#39;D&#39;: 0.5255504846572876, &#39;F&#39;: 0.012429237365722656}
+Epoch/total_steps/alpha-beta: 0/2200/1-1 {&#39;G_GAN&#39;: 6.848667144775391, &#39;G_L1&#39;: 77.50362396240234, &#39;D&#39;: 0.3149612545967102, &#39;F&#39;: 0.01767728291451931}
+Epoch/total_steps/alpha-beta: 0/2300/1-1 {&#39;G_GAN&#39;: 7.116144180297852, &#39;G_L1&#39;: 66.12065124511719, &#39;D&#39;: 0.15158146619796753, &#39;F&#39;: 0.01847725175321102}
+Epoch/total_steps/alpha-beta: 0/2400/1-1 {&#39;G_GAN&#39;: 7.701614856719971, &#39;G_L1&#39;: 50.05036544799805, &#39;D&#39;: 0.35271155834198, &#39;F&#39;: 0.013561561703681946}
+Epoch/total_steps/alpha-beta: 0/2500/1-1 {&#39;G_GAN&#39;: 8.142476081848145, &#39;G_L1&#39;: 56.733131408691406, &#39;D&#39;: 0.09474793076515198, &#39;F&#39;: 0.029223527759313583}
+Epoch/total_steps/alpha-beta: 0/2600/1-1 {&#39;G_GAN&#39;: 7.383360862731934, &#39;G_L1&#39;: 66.50104522705078, &#39;D&#39;: 0.17739753425121307, &#39;F&#39;: 0.008837783709168434}
 </pre></div>
 </div>
 </div>
