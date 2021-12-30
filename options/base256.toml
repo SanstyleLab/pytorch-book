@@ -1,0 +1,8 @@
+fine_size = 256  # image size
+norm = 'instance'
+use_dropout = false
+init_type = 'normal'
+init_gain = 0.02
+input_nc = 3  # input channel size for first stage
+input_nc_g = 6  # input channel size for second stage
+output_nc = 3  # output channel size
