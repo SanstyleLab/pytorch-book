@@ -1,0 +1,1643 @@
+
+<!DOCTYPE html>
+
+<html lang="zh_CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>&lt;no title&gt; &#8212; Sanstyle Demo</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/tabs.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/page.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/w3css/4/w3.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/w3css/4/w3pro.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/w3css/4/w3mobile.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/xin-css/main.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/tabs.js"></script>
+    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
+    <script kind="utterances">
+
+    var commentsRunWhenDOMLoaded = cb => {
+    if (document.readyState != 'loading') {
+        cb()
+    } else if (document.addEventListener) {
+        document.addEventListener('DOMContentLoaded', cb)
+    } else {
+        document.attachEvent('onreadystatechange', function() {
+        if (document.readyState == 'complete') cb()
+        })
+    }
+}
+
+var addUtterances = () => {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src = "https://utteranc.es/client.js";
+    script.async = "async";
+
+    script.setAttribute("repo", "SanstyleLab/pytorch-book");
+    script.setAttribute("issue-term", "pathname");
+    script.setAttribute("theme", "github-light");
+    script.setAttribute("label", "💬 comment");
+    script.setAttribute("crossorigin", "anonymous");
+
+    sections = document.querySelectorAll("div.section");
+    if (sections !== null) {
+        section = sections[sections.length-1];
+        section.appendChild(script);
+    }
+}
+commentsRunWhenDOMLoaded(addUtterances);
+</script>
+    <script src="../_static/translations.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="canonical" href="https://SanstyleLab.github.io/sanstyle-starter/use/01_train-512-0.5.html" />
+    <link rel="shortcut icon" href="../_static/page-logo.jfif"/>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="zh_CN">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.jpg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Sanstyle Demo</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  教程
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../start/index.html">
+   快速上手
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../start/00_extract.html">
+     解压数据集
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../start/01_dataset.html">
+     处理数据
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../start/02_train.html">
+     模型定义
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../start/02_train2.html">
+     模型定义
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../start/03_dataset-mix.html">
+     处理数据
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../start/raw.html">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       rcParams
+      </span>
+     </code>
+     &amp;
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       cycler
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  混沌
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../about/index.html">
+   关于
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../about/architecture.html">
+     项目架构
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../about/how.html">
+     如何启动项目
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../about/zreferences.html">
+     参考文献
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../CHANGELOG.html">
+     变更日志
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference external" href="https://xinetzone.github.io/sanstyle-book/">
+     Sanstyle Book
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  <div class="w3-padding w3-card-4 w3-pale-green">
+  <a href="https://github.com/xinetzone" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub"
+      data-position="top" data-delay="50">
+      <i class="fab fa-github"></i>
+  </a>
+  <a href="mailto:q735613050@163.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top"
+      data-delay="50">
+      <i class="fas fa-envelope-open"></i>
+  </a>
+  <a href="tencent://AddContact/?fromId=50&amp;fromSubId=1&amp;subcmd=all&amp;uin=735613050" class="tooltipped"
+      target="_blank" data-tooltip="QQ联系我: 735613050" data-position="top" data-delay="50">
+      <i class="fab fa-qq"></i>
+  </a>
+  <a href="https://www.zhihu.com/people/liu-xin-wei-55" class="tooltipped" target="_blank"
+      data-tooltip="关注我的知乎: liu-xin-wei-55" data-position="top" data-delay="50">
+      <i class="fab fa-zhihu1">知</i>
+  </a>
+  <a target="_blank" rel="noopener" href="https://www.linkedin.com/in/xinet" class="tooltipped"
+      data-tooltip="领英联系我: xinet" data-position="top" data-delay="50">
+      <i class="fab fa-linkedin"></i>
+  </a>
+  <div><a href="https://github.com/xinetzone/sanstyle">上善若水</a> 版权所有</div>
+</div>
+
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/use/01_train-512-0.5.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/SanstyleLab/pytorch-book"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/SanstyleLab/pytorch-book/issues/new?title=Issue%20on%20page%20%2Fuse/01_train-512-0.5.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/SanstyleLab/pytorch-book/main?urlpath=tree/docs/use/01_train-512-0.5.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/SanstyleLab/pytorch-book/blob/main/docs/use/01_train-512-0.5.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="simple visible nav section-nav flex-column">
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">../../</span><span class="n">apps</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>e:\kaggle\pytorch-book\apps
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">torchvision.utils</span> <span class="kn">import</span> <span class="n">save_image</span>
+<span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span> 
+
+<span class="kn">from</span> <span class="nn">tools.file</span> <span class="kn">import</span> <span class="n">mkdir</span>
+<span class="kn">from</span> <span class="nn">utils.torch_loader_all</span> <span class="kn">import</span> <span class="n">Loader</span>
+<span class="kn">from</span> <span class="nn">tools.toml</span> <span class="kn">import</span> <span class="n">load_option</span>
+<span class="kn">from</span> <span class="nn">app</span> <span class="kn">import</span>  <span class="n">init</span><span class="p">,</span> <span class="n">mask_op</span><span class="p">,</span> <span class="n">array2image</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">opt</span> <span class="o">=</span> <span class="n">load_option</span><span class="p">(</span><span class="s1">&#39;../origin/train-512.toml&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">opt</span><span class="p">)</span>
+<span class="n">loader</span> <span class="o">=</span> <span class="n">Loader</span><span class="p">(</span><span class="o">**</span><span class="n">opt</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;root&#39;: &#39;E:/kaggle/datasets/tune&#39;, &#39;mask&#39;: &#39;D:/kaggle/dataset/mask/testing_mask_dataset&#39;, &#39;fine_size&#39;: 512, &#39;batch_size&#39;: 1}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 超参数设定</span>
+<span class="c1">## 固定参数</span>
+<span class="n">epochs</span> <span class="o">=</span> <span class="mi">500</span>
+<span class="n">display_freq</span> <span class="o">=</span> <span class="mi">49</span>
+<span class="n">save_epoch_freq</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="c1">## 模型参数</span>
+<span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.9</span>
+<span class="n">beta</span> <span class="o">=</span> <span class="mf">0.5</span>
+
+<span class="n">model_name</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;CSA-512-</span><span class="si">{</span><span class="n">beta</span><span class="si">}</span><span class="s1">-</span><span class="si">{</span><span class="n">alpha</span><span class="si">}</span><span class="s1">&#39;</span>
+<span class="n">base_opt</span> <span class="o">=</span> <span class="n">load_option</span><span class="p">(</span><span class="s1">&#39;../options/base512.toml&#39;</span><span class="p">)</span>
+<span class="n">model_opt</span> <span class="o">=</span> <span class="n">load_option</span><span class="p">(</span><span class="s1">&#39;../options/train-new.toml&#39;</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">init</span><span class="p">(</span><span class="n">model_name</span><span class="p">,</span> <span class="n">beta</span><span class="p">,</span> <span class="n">model_opt</span><span class="p">,</span> <span class="n">base_opt</span><span class="p">)</span>
+<span class="n">image_save_dir</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">save_dir</span> <span class="o">/</span> <span class="s1">&#39;images&#39;</span>
+<span class="n">mkdir</span><span class="p">(</span><span class="n">image_save_dir</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>initialize network with normal
+initialize network with normal
+initialize network with normal
+initialize network with normal
+---------- Networks initialized -------------
+UnetGeneratorCSA(
+  (model): UnetSkipConnectionBlock_3(
+    (model): Sequential(
+      (0): Conv2d(6, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (1): UnetSkipConnectionBlock_3(
+        (model): Sequential(
+          (0): LeakyReLU(negative_slope=0.2, inplace=True)
+          (1): Conv2d(64, 64, kernel_size=(4, 4), stride=(2, 2), padding=(3, 3), dilation=(2, 2))
+          (2): InstanceNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+          (3): LeakyReLU(negative_slope=0.2, inplace=True)
+          (4): Conv2d(64, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+          (5): InstanceNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+          (6): UnetSkipConnectionBlock_3(
+            (model): Sequential(
+              (0): LeakyReLU(negative_slope=0.2, inplace=True)
+              (1): Conv2d(128, 128, kernel_size=(4, 4), stride=(2, 2), padding=(3, 3), dilation=(2, 2))
+              (2): InstanceNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+              (3): LeakyReLU(negative_slope=0.2, inplace=True)
+              (4): Conv2d(128, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+              (5): InstanceNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+              (6): CSA(
+                (model): Sequential(
+                  (0): LeakyReLU(negative_slope=0.2, inplace=True)
+                  (1): Conv2d(256, 256, kernel_size=(4, 4), stride=(2, 2), padding=(3, 3), dilation=(2, 2))
+                  (2): InstanceNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+                  (3): LeakyReLU(negative_slope=0.2, inplace=True)
+                  (4): Conv2d(256, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                  (5): CSA_model(threshold: 0.3125 ,triple_weight 1)
+                  (6): InnerCos(skip: True ,strength: 1)
+                  (7): InstanceNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+                  (8): UnetSkipConnectionBlock_3(
+                    (model): Sequential(
+                      (0): LeakyReLU(negative_slope=0.2, inplace=True)
+                      (1): Conv2d(512, 512, kernel_size=(4, 4), stride=(2, 2), padding=(3, 3), dilation=(2, 2))
+                      (2): InstanceNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+                      (3): LeakyReLU(negative_slope=0.2, inplace=True)
+                      (4): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                      (5): InstanceNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+                      (6): UnetSkipConnectionBlock_3(
+                        (model): Sequential(
+                          (0): LeakyReLU(negative_slope=0.2, inplace=True)
+                          (1): Conv2d(512, 512, kernel_size=(4, 4), stride=(2, 2), padding=(3, 3), dilation=(2, 2))
+                          (2): InstanceNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+                          (3): LeakyReLU(negative_slope=0.2, inplace=True)
+                          (4): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                          (5): InstanceNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+                          (6): UnetSkipConnectionBlock_3(
+                            (model): Sequential(
+                              (0): LeakyReLU(negative_slope=0.2, inplace=True)
+                              (1): Conv2d(512, 512, kernel_size=(4, 4), stride=(2, 2), padding=(3, 3), dilation=(2, 2))
+                              (2): InstanceNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+                              (3): LeakyReLU(negative_slope=0.2, inplace=True)
+                              (4): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                              (5): InstanceNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+                              (6): UnetSkipConnectionBlock_3(
+                                (model): Sequential(
+                                  (0): LeakyReLU(negative_slope=0.2, inplace=True)
+                                  (1): Conv2d(512, 512, kernel_size=(4, 4), stride=(2, 2), padding=(3, 3), dilation=(2, 2))
+                                  (2): InstanceNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+                                  (3): LeakyReLU(negative_slope=0.2, inplace=True)
+                                  (4): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                                  (5): InstanceNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+                                  (6): UnetSkipConnectionBlock_3(
+                                    (model): Sequential(
+                                      (0): LeakyReLU(negative_slope=0.2, inplace=True)
+                                      (1): Conv2d(512, 512, kernel_size=(4, 4), stride=(2, 2), padding=(3, 3), dilation=(2, 2))
+                                      (2): ReLU(inplace=True)
+                                      (3): ConvTranspose2d(512, 512, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1))
+                                      (4): InstanceNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+                                    )
+                                  )
+                                  (7): ReLU(inplace=True)
+                                  (8): ConvTranspose2d(1024, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                                  (9): InstanceNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+                                  (10): ReLU(inplace=True)
+                                  (11): ConvTranspose2d(512, 512, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1))
+                                  (12): InstanceNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+                                )
+                              )
+                              (7): ReLU(inplace=True)
+                              (8): ConvTranspose2d(1024, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                              (9): InstanceNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+                              (10): ReLU(inplace=True)
+                              (11): ConvTranspose2d(512, 512, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1))
+                              (12): InstanceNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+                            )
+                          )
+                          (7): ReLU(inplace=True)
+                          (8): ConvTranspose2d(1024, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                          (9): InstanceNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+                          (10): ReLU(inplace=True)
+                          (11): ConvTranspose2d(512, 512, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1))
+                          (12): InstanceNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+                        )
+                      )
+                      (7): ReLU(inplace=True)
+                      (8): ConvTranspose2d(1024, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                      (9): InstanceNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+                      (10): ReLU(inplace=True)
+                      (11): ConvTranspose2d(512, 512, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1))
+                      (12): InstanceNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+                    )
+                  )
+                  (9): InnerCos2(skip: True ,strength: 1)
+                  (10): ReLU(inplace=True)
+                  (11): ConvTranspose2d(1024, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                  (12): InstanceNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+                  (13): ReLU(inplace=True)
+                  (14): ConvTranspose2d(256, 256, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1))
+                  (15): InstanceNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+                )
+              )
+              (7): ReLU(inplace=True)
+              (8): ConvTranspose2d(512, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+              (9): InstanceNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+              (10): ReLU(inplace=True)
+              (11): ConvTranspose2d(128, 128, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1))
+              (12): InstanceNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            )
+          )
+          (7): ReLU(inplace=True)
+          (8): ConvTranspose2d(256, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+          (9): InstanceNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+          (10): ReLU(inplace=True)
+          (11): ConvTranspose2d(64, 64, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1))
+          (12): InstanceNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+        )
+      )
+      (2): ReLU(inplace=True)
+      (3): ConvTranspose2d(128, 3, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    )
+  )
+)
+Total number of parameters: 77692291
+UnetGenerator(
+  (model): UnetSkipConnectionBlock(
+    (model): Sequential(
+      (0): Conv2d(3, 64, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1))
+      (1): UnetSkipConnectionBlock(
+        (model): Sequential(
+          (0): LeakyReLU(negative_slope=0.2, inplace=True)
+          (1): Conv2d(64, 128, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1))
+          (2): InstanceNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+          (3): UnetSkipConnectionBlock(
+            (model): Sequential(
+              (0): LeakyReLU(negative_slope=0.2, inplace=True)
+              (1): Conv2d(128, 256, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1))
+              (2): InstanceNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+              (3): UnetSkipConnectionBlock(
+                (model): Sequential(
+                  (0): LeakyReLU(negative_slope=0.2, inplace=True)
+                  (1): Conv2d(256, 512, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1))
+                  (2): InstanceNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+                  (3): UnetSkipConnectionBlock(
+                    (model): Sequential(
+                      (0): LeakyReLU(negative_slope=0.2, inplace=True)
+                      (1): Conv2d(512, 512, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1))
+                      (2): InstanceNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+                      (3): UnetSkipConnectionBlock(
+                        (model): Sequential(
+                          (0): LeakyReLU(negative_slope=0.2, inplace=True)
+                          (1): Conv2d(512, 512, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1))
+                          (2): InstanceNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+                          (3): UnetSkipConnectionBlock(
+                            (model): Sequential(
+                              (0): LeakyReLU(negative_slope=0.2, inplace=True)
+                              (1): Conv2d(512, 512, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1))
+                              (2): InstanceNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+                              (3): UnetSkipConnectionBlock(
+                                (model): Sequential(
+                                  (0): LeakyReLU(negative_slope=0.2, inplace=True)
+                                  (1): Conv2d(512, 512, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1))
+                                  (2): ReLU(inplace=True)
+                                  (3): ConvTranspose2d(512, 512, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1))
+                                  (4): InstanceNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+                                )
+                              )
+                              (4): ReLU(inplace=True)
+                              (5): ConvTranspose2d(1024, 512, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1))
+                              (6): InstanceNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+                            )
+                          )
+                          (4): ReLU(inplace=True)
+                          (5): ConvTranspose2d(1024, 512, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1))
+                          (6): InstanceNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+                        )
+                      )
+                      (4): ReLU(inplace=True)
+                      (5): ConvTranspose2d(1024, 512, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1))
+                      (6): InstanceNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+                    )
+                  )
+                  (4): ReLU(inplace=True)
+                  (5): ConvTranspose2d(1024, 256, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1))
+                  (6): InstanceNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+                )
+              )
+              (4): ReLU(inplace=True)
+              (5): ConvTranspose2d(512, 128, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1))
+              (6): InstanceNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            )
+          )
+          (4): ReLU(inplace=True)
+          (5): ConvTranspose2d(256, 64, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1))
+          (6): InstanceNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+        )
+      )
+      (2): ReLU(inplace=True)
+      (3): ConvTranspose2d(128, 3, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1))
+      (4): Tanh()
+    )
+  )
+)
+Total number of parameters: 54419459
+NLayerDiscriminator(
+  (model): Sequential(
+    (0): Conv2d(3, 64, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1))
+    (1): LeakyReLU(negative_slope=0.2, inplace=True)
+    (2): Conv2d(64, 128, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1))
+    (3): InstanceNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+    (4): LeakyReLU(negative_slope=0.2, inplace=True)
+    (5): Conv2d(128, 256, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1))
+    (6): InstanceNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+    (7): LeakyReLU(negative_slope=0.2, inplace=True)
+    (8): Conv2d(256, 512, kernel_size=(4, 4), stride=(1, 1), padding=(1, 1))
+    (9): InstanceNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+    (10): LeakyReLU(negative_slope=0.2, inplace=True)
+    (11): Conv2d(512, 1, kernel_size=(4, 4), stride=(1, 1), padding=(1, 1))
+  )
+)
+Total number of parameters: 2766529
+PFDiscriminator(
+  (model): Sequential(
+    (0): Conv2d(256, 512, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1))
+    (1): LeakyReLU(negative_slope=0.2, inplace=True)
+    (2): Conv2d(512, 512, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1))
+    (3): InstanceNorm2d(512, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+    (4): LeakyReLU(negative_slope=0.2, inplace=True)
+    (5): Conv2d(512, 512, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1))
+  )
+)
+Total number of parameters: 10487296
+-----------------------------------------------
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 训练阶段</span>
+<span class="n">start_epoch</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">total_steps</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">iter_start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">start_epoch</span><span class="p">,</span> <span class="n">epochs</span><span class="p">):</span>
+    <span class="n">epoch_start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+    <span class="n">epoch_iter</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">epoch_iter</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="c1"># 初始化数据集</span>
+    <span class="n">trainset</span> <span class="o">=</span> <span class="n">loader</span><span class="o">.</span><span class="n">trainset</span><span class="p">()</span> <span class="c1"># 训练集</span>
+    <span class="n">maskset</span> <span class="o">=</span> <span class="n">loader</span><span class="o">.</span><span class="n">maskset</span><span class="p">()</span> <span class="c1"># mask 数据集</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">_</span><span class="p">),</span> <span class="n">mask</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">trainset</span><span class="p">,</span> <span class="n">maskset</span><span class="p">):</span>
+        <span class="n">mask</span> <span class="o">=</span> <span class="n">mask_op</span><span class="p">(</span><span class="n">mask</span><span class="p">)</span>
+        <span class="n">total_steps</span> <span class="o">+=</span> <span class="n">model</span><span class="o">.</span><span class="n">batch_size</span>
+        <span class="n">epoch_iter</span> <span class="o">+=</span> <span class="n">model</span><span class="o">.</span><span class="n">batch_size</span>
+        <span class="c1"># it not only sets the input data with mask,</span>
+        <span class="c1">#  but also sets the latent mask.</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">set_input</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">mask</span><span class="p">)</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">set_gt_latent</span><span class="p">()</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">optimize_parameters</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">total_steps</span> <span class="o">%</span> <span class="n">display_freq</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">real_A</span><span class="p">,</span> <span class="n">real_B</span><span class="p">,</span> <span class="n">fake_B</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">get_current_visuals</span><span class="p">()</span>
+            <span class="c1"># real_A=input, real_B=ground truth fake_b=output</span>
+            <span class="n">pic</span> <span class="o">=</span> <span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">([</span><span class="n">real_A</span><span class="p">,</span> <span class="n">real_B</span><span class="p">,</span> <span class="n">fake_B</span><span class="p">],</span> <span class="n">dim</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="mf">2.0</span>
+            <span class="n">image_name</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;epoch</span><span class="si">{</span><span class="n">epoch</span><span class="si">}</span><span class="s2">-</span><span class="si">{</span><span class="n">total_steps</span><span class="si">}</span><span class="s2">-</span><span class="si">{</span><span class="n">alpha</span><span class="si">}</span><span class="s2">.png&quot;</span>
+            <span class="n">save_image</span><span class="p">(</span><span class="n">pic</span><span class="p">,</span> <span class="n">image_save_dir</span><span class="o">/</span><span class="n">image_name</span><span class="p">,</span> <span class="n">ncol</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">total_steps</span> <span class="o">%</span> <span class="mi">100</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">errors</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">get_current_errors</span><span class="p">()</span>
+            <span class="n">t</span> <span class="o">=</span> <span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">iter_start_time</span><span class="p">)</span> <span class="o">/</span> <span class="n">model</span><span class="o">.</span><span class="n">batch_size</span>
+            <span class="nb">print</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;Epoch/total_steps/alpha-beta: </span><span class="si">{</span><span class="n">epoch</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">total_steps</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">alpha</span><span class="si">}</span><span class="s2">-</span><span class="si">{</span><span class="n">beta</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="nb">dict</span><span class="p">(</span><span class="n">errors</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">epoch</span> <span class="o">%</span> <span class="n">save_epoch_freq</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;保存模型 Epoch </span><span class="si">{</span><span class="n">epoch</span><span class="si">}</span><span class="s1">, iters </span><span class="si">{</span><span class="n">total_steps</span><span class="si">}</span><span class="s1"> 在 </span><span class="si">{</span><span class="n">model</span><span class="o">.</span><span class="n">save_dir</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">epoch</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span>
+        <span class="sa">f</span><span class="s1">&#39;Epoch/Epochs </span><span class="si">{</span><span class="n">epoch</span><span class="si">}</span><span class="s1">/</span><span class="si">{</span><span class="n">epochs</span><span class="o">-</span><span class="mi">1</span><span class="si">}</span><span class="s1"> 花费时间：</span><span class="si">{</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">epoch_start_time</span><span class="si">}</span><span class="s1">s&#39;</span><span class="p">)</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">update_learning_rate</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch/total_steps/alpha-beta: 0/100/0.9-0.5 {&#39;G_GAN&#39;: 5.409248352050781, &#39;G_L1&#39;: 33.90773010253906, &#39;D&#39;: 2.0820250511169434, &#39;F&#39;: 0.14168374240398407}
+Epoch/total_steps/alpha-beta: 0/200/0.9-0.5 {&#39;G_GAN&#39;: 5.6377434730529785, &#39;G_L1&#39;: 51.773250579833984, &#39;D&#39;: 0.7724679708480835, &#39;F&#39;: 0.07713226228952408}
+Epoch/total_steps/alpha-beta: 0/300/0.9-0.5 {&#39;G_GAN&#39;: 5.309425354003906, &#39;G_L1&#39;: 44.628448486328125, &#39;D&#39;: 0.9752075672149658, &#39;F&#39;: 0.12170133739709854}
+Epoch/total_steps/alpha-beta: 0/400/0.9-0.5 {&#39;G_GAN&#39;: 6.047932147979736, &#39;G_L1&#39;: 47.86695098876953, &#39;D&#39;: 0.5354692935943604, &#39;F&#39;: 0.039668940007686615}
+Epoch/total_steps/alpha-beta: 0/500/0.9-0.5 {&#39;G_GAN&#39;: 6.290190696716309, &#39;G_L1&#39;: 67.63125610351562, &#39;D&#39;: 0.4583389461040497, &#39;F&#39;: 0.04126107320189476}
+Epoch/total_steps/alpha-beta: 0/600/0.9-0.5 {&#39;G_GAN&#39;: 5.363611221313477, &#39;G_L1&#39;: 33.21626663208008, &#39;D&#39;: 0.7681414484977722, &#39;F&#39;: 0.03574194014072418}
+Epoch/total_steps/alpha-beta: 0/700/0.9-0.5 {&#39;G_GAN&#39;: 6.307660102844238, &#39;G_L1&#39;: 31.106605529785156, &#39;D&#39;: 0.8813512921333313, &#39;F&#39;: 0.041474297642707825}
+Epoch/total_steps/alpha-beta: 0/800/0.9-0.5 {&#39;G_GAN&#39;: 5.988091945648193, &#39;G_L1&#39;: 35.60372543334961, &#39;D&#39;: 0.8064672350883484, &#39;F&#39;: 0.03432736173272133}
+保存模型 Epoch 0, iters 827 在 D:\BaiduNetdiskWorkspace\result\CSA-512-0.5-0.9
+Epoch/Epochs 0/499 花费时间：6813.00918674469s
+learning rate = 0.0002
+Epoch/total_steps/alpha-beta: 1/900/0.9-0.5 {&#39;G_GAN&#39;: 7.436169147491455, &#39;G_L1&#39;: 46.155460357666016, &#39;D&#39;: 0.5699762105941772, &#39;F&#39;: 0.03985295444726944}
+Epoch/total_steps/alpha-beta: 1/1000/0.9-0.5 {&#39;G_GAN&#39;: 7.370819091796875, &#39;G_L1&#39;: 52.9259147644043, &#39;D&#39;: 0.17587339878082275, &#39;F&#39;: 0.029292253777384758}
+Epoch/total_steps/alpha-beta: 1/1100/0.9-0.5 {&#39;G_GAN&#39;: 6.320847034454346, &#39;G_L1&#39;: 38.02191162109375, &#39;D&#39;: 0.4764963984489441, &#39;F&#39;: 0.019982172176241875}
+Epoch/total_steps/alpha-beta: 1/1200/0.9-0.5 {&#39;G_GAN&#39;: 8.096248626708984, &#39;G_L1&#39;: 23.729585647583008, &#39;D&#39;: 0.10902562737464905, &#39;F&#39;: 0.029836442321538925}
+Epoch/total_steps/alpha-beta: 1/1300/0.9-0.5 {&#39;G_GAN&#39;: 6.751603603363037, &#39;G_L1&#39;: 37.94362258911133, &#39;D&#39;: 0.2649887800216675, &#39;F&#39;: 0.028173023834824562}
+Epoch/total_steps/alpha-beta: 1/1400/0.9-0.5 {&#39;G_GAN&#39;: 5.049705505371094, &#39;G_L1&#39;: 29.216463088989258, &#39;D&#39;: 1.178149700164795, &#39;F&#39;: 0.019787222146987915}
+Epoch/total_steps/alpha-beta: 1/1500/0.9-0.5 {&#39;G_GAN&#39;: 5.444047927856445, &#39;G_L1&#39;: 42.71308517456055, &#39;D&#39;: 0.8088862895965576, &#39;F&#39;: 0.020428437739610672}
+Epoch/total_steps/alpha-beta: 1/1600/0.9-0.5 {&#39;G_GAN&#39;: 6.664847373962402, &#39;G_L1&#39;: 40.18258285522461, &#39;D&#39;: 0.27974963188171387, &#39;F&#39;: 0.010234813205897808}
+保存模型 Epoch 1, iters 1654 在 D:\BaiduNetdiskWorkspace\result\CSA-512-0.5-0.9
+Epoch/Epochs 1/499 花费时间：6786.036400794983s
+learning rate = 0.0002
+Epoch/total_steps/alpha-beta: 2/1700/0.9-0.5 {&#39;G_GAN&#39;: 6.159112930297852, &#39;G_L1&#39;: 29.789710998535156, &#39;D&#39;: 0.5591034889221191, &#39;F&#39;: 0.020456425845623016}
+Epoch/total_steps/alpha-beta: 2/1800/0.9-0.5 {&#39;G_GAN&#39;: 6.432100296020508, &#39;G_L1&#39;: 25.242515563964844, &#39;D&#39;: 0.40946412086486816, &#39;F&#39;: 0.009803992696106434}
+Epoch/total_steps/alpha-beta: 2/1900/0.9-0.5 {&#39;G_GAN&#39;: 6.1931867599487305, &#39;G_L1&#39;: 26.197063446044922, &#39;D&#39;: 0.4602828025817871, &#39;F&#39;: 0.013640660792589188}
+Epoch/total_steps/alpha-beta: 2/2000/0.9-0.5 {&#39;G_GAN&#39;: 7.048646926879883, &#39;G_L1&#39;: 24.971162796020508, &#39;D&#39;: 0.6281251907348633, &#39;F&#39;: 0.011502075009047985}
+Epoch/total_steps/alpha-beta: 2/2100/0.9-0.5 {&#39;G_GAN&#39;: 8.352214813232422, &#39;G_L1&#39;: 34.53860092163086, &#39;D&#39;: 0.0916643962264061, &#39;F&#39;: 0.01114591769874096}
+Epoch/total_steps/alpha-beta: 2/2200/0.9-0.5 {&#39;G_GAN&#39;: 7.942427635192871, &#39;G_L1&#39;: 37.83269500732422, &#39;D&#39;: 0.092500701546669, &#39;F&#39;: 0.007511422038078308}
+Epoch/total_steps/alpha-beta: 2/2300/0.9-0.5 {&#39;G_GAN&#39;: 7.979589939117432, &#39;G_L1&#39;: 54.42087173461914, &#39;D&#39;: 0.08362477272748947, &#39;F&#39;: 0.0070302244275808334}
+Epoch/total_steps/alpha-beta: 2/2400/0.9-0.5 {&#39;G_GAN&#39;: 7.091722011566162, &#39;G_L1&#39;: 51.962913513183594, &#39;D&#39;: 0.26832038164138794, &#39;F&#39;: 0.013636061921715736}
+保存模型 Epoch 2, iters 2481 在 D:\BaiduNetdiskWorkspace\result\CSA-512-0.5-0.9
+Epoch/Epochs 2/499 花费时间：6777.529524564743s
+learning rate = 0.0002
+Epoch/total_steps/alpha-beta: 3/2500/0.9-0.5 {&#39;G_GAN&#39;: 7.667058944702148, &#39;G_L1&#39;: 40.05180358886719, &#39;D&#39;: 0.28123414516448975, &#39;F&#39;: 0.011777943931519985}
+Epoch/total_steps/alpha-beta: 3/2600/0.9-0.5 {&#39;G_GAN&#39;: 7.071081161499023, &#39;G_L1&#39;: 30.307220458984375, &#39;D&#39;: 0.13220342993736267, &#39;F&#39;: 0.018963364884257317}
+Epoch/total_steps/alpha-beta: 3/2700/0.9-0.5 {&#39;G_GAN&#39;: 6.51802396774292, &#39;G_L1&#39;: 17.660873413085938, &#39;D&#39;: 0.3186188340187073, &#39;F&#39;: 0.006991443689912558}
+Epoch/total_steps/alpha-beta: 3/2800/0.9-0.5 {&#39;G_GAN&#39;: 7.776033878326416, &#39;G_L1&#39;: 43.86768341064453, &#39;D&#39;: 0.08356140553951263, &#39;F&#39;: 0.006631865631788969}
+Epoch/total_steps/alpha-beta: 3/2900/0.9-0.5 {&#39;G_GAN&#39;: 8.311712265014648, &#39;G_L1&#39;: 35.78364562988281, &#39;D&#39;: 0.05111914128065109, &#39;F&#39;: 0.00664531672373414}
+Epoch/total_steps/alpha-beta: 3/3000/0.9-0.5 {&#39;G_GAN&#39;: 8.446085929870605, &#39;G_L1&#39;: 26.241445541381836, &#39;D&#39;: 0.10417798161506653, &#39;F&#39;: 0.008525095880031586}
+Epoch/total_steps/alpha-beta: 3/3100/0.9-0.5 {&#39;G_GAN&#39;: 7.635172367095947, &#39;G_L1&#39;: 38.515098571777344, &#39;D&#39;: 0.11832837760448456, &#39;F&#39;: 0.007085253484547138}
+Epoch/total_steps/alpha-beta: 3/3200/0.9-0.5 {&#39;G_GAN&#39;: 7.8042988777160645, &#39;G_L1&#39;: 35.18030548095703, &#39;D&#39;: 0.1379566639661789, &#39;F&#39;: 0.008117342367768288}
+Epoch/total_steps/alpha-beta: 3/3300/0.9-0.5 {&#39;G_GAN&#39;: 7.7849578857421875, &#39;G_L1&#39;: 26.702800750732422, &#39;D&#39;: 0.10290628671646118, &#39;F&#39;: 0.025961056351661682}
+保存模型 Epoch 3, iters 3308 在 D:\BaiduNetdiskWorkspace\result\CSA-512-0.5-0.9
+Epoch/Epochs 3/499 花费时间：6788.604752540588s
+learning rate = 0.0002
+Epoch/total_steps/alpha-beta: 4/3400/0.9-0.5 {&#39;G_GAN&#39;: 7.699705600738525, &#39;G_L1&#39;: 37.642704010009766, &#39;D&#39;: 0.2761737108230591, &#39;F&#39;: 0.008778274059295654}
+Epoch/total_steps/alpha-beta: 4/3500/0.9-0.5 {&#39;G_GAN&#39;: 5.953607559204102, &#39;G_L1&#39;: 51.72099304199219, &#39;D&#39;: 0.538589596748352, &#39;F&#39;: 0.008033568039536476}
+Epoch/total_steps/alpha-beta: 4/3600/0.9-0.5 {&#39;G_GAN&#39;: 7.70731258392334, &#39;G_L1&#39;: 48.873844146728516, &#39;D&#39;: 0.06263446062803268, &#39;F&#39;: 0.009654372930526733}
+Epoch/total_steps/alpha-beta: 4/3700/0.9-0.5 {&#39;G_GAN&#39;: 6.999847888946533, &#39;G_L1&#39;: 47.00495147705078, &#39;D&#39;: 0.24080795049667358, &#39;F&#39;: 0.014201031066477299}
+Epoch/total_steps/alpha-beta: 4/3800/0.9-0.5 {&#39;G_GAN&#39;: 6.539188385009766, &#39;G_L1&#39;: 43.956790924072266, &#39;D&#39;: 0.30787336826324463, &#39;F&#39;: 0.005237921141088009}
+Epoch/total_steps/alpha-beta: 4/3900/0.9-0.5 {&#39;G_GAN&#39;: 7.639068126678467, &#39;G_L1&#39;: 31.096073150634766, &#39;D&#39;: 0.3686158061027527, &#39;F&#39;: 0.009868914261460304}
+Epoch/total_steps/alpha-beta: 4/4000/0.9-0.5 {&#39;G_GAN&#39;: 8.484001159667969, &#39;G_L1&#39;: 35.96018981933594, &#39;D&#39;: 0.12550316751003265, &#39;F&#39;: 0.009922917932271957}
+Epoch/total_steps/alpha-beta: 4/4100/0.9-0.5 {&#39;G_GAN&#39;: 7.721094131469727, &#39;G_L1&#39;: 48.706172943115234, &#39;D&#39;: 0.3613801598548889, &#39;F&#39;: 0.006954425945878029}
+保存模型 Epoch 4, iters 4135 在 D:\BaiduNetdiskWorkspace\result\CSA-512-0.5-0.9
+Epoch/Epochs 4/499 花费时间：6774.1482474803925s
+learning rate = 0.0002
+Epoch/total_steps/alpha-beta: 5/4200/0.9-0.5 {&#39;G_GAN&#39;: 7.622547626495361, &#39;G_L1&#39;: 24.758018493652344, &#39;D&#39;: 0.09242908656597137, &#39;F&#39;: 0.0048347460106015205}
+Epoch/total_steps/alpha-beta: 5/4300/0.9-0.5 {&#39;G_GAN&#39;: 7.154876708984375, &#39;G_L1&#39;: 33.686180114746094, &#39;D&#39;: 0.1409502923488617, &#39;F&#39;: 0.014452938921749592}
+Epoch/total_steps/alpha-beta: 5/4400/0.9-0.5 {&#39;G_GAN&#39;: 8.023694038391113, &#39;G_L1&#39;: 45.725196838378906, &#39;D&#39;: 0.047478966414928436, &#39;F&#39;: 0.005641734227538109}
+Epoch/total_steps/alpha-beta: 5/4500/0.9-0.5 {&#39;G_GAN&#39;: 7.032341957092285, &#39;G_L1&#39;: 46.07564926147461, &#39;D&#39;: 0.20399901270866394, &#39;F&#39;: 0.007119969464838505}
+Epoch/total_steps/alpha-beta: 5/4600/0.9-0.5 {&#39;G_GAN&#39;: 8.03126335144043, &#39;G_L1&#39;: 19.635757446289062, &#39;D&#39;: 0.06750072538852692, &#39;F&#39;: 0.010271846316754818}
+Epoch/total_steps/alpha-beta: 5/4700/0.9-0.5 {&#39;G_GAN&#39;: 7.0008416175842285, &#39;G_L1&#39;: 19.98448371887207, &#39;D&#39;: 0.28503385186195374, &#39;F&#39;: 0.004539463669061661}
+Epoch/total_steps/alpha-beta: 5/4800/0.9-0.5 {&#39;G_GAN&#39;: 7.143646240234375, &#39;G_L1&#39;: 21.151473999023438, &#39;D&#39;: 0.12703369557857513, &#39;F&#39;: 0.0057978881523013115}
+Epoch/total_steps/alpha-beta: 5/4900/0.9-0.5 {&#39;G_GAN&#39;: 7.915787696838379, &#39;G_L1&#39;: 31.706058502197266, &#39;D&#39;: 0.03437984734773636, &#39;F&#39;: 0.009018564596772194}
+保存模型 Epoch 5, iters 4962 在 D:\BaiduNetdiskWorkspace\result\CSA-512-0.5-0.9
+Epoch/Epochs 5/499 花费时间：6777.0918781757355s
+learning rate = 0.0002
+Epoch/total_steps/alpha-beta: 6/5000/0.9-0.5 {&#39;G_GAN&#39;: 8.148920059204102, &#39;G_L1&#39;: 83.73516845703125, &#39;D&#39;: 0.10188345611095428, &#39;F&#39;: 0.006065537687391043}
+Epoch/total_steps/alpha-beta: 6/5100/0.9-0.5 {&#39;G_GAN&#39;: 5.759549140930176, &#39;G_L1&#39;: 61.98967742919922, &#39;D&#39;: 0.7074906826019287, &#39;F&#39;: 0.00651203840970993}
+Epoch/total_steps/alpha-beta: 6/5200/0.9-0.5 {&#39;G_GAN&#39;: 7.318782329559326, &#39;G_L1&#39;: 30.690628051757812, &#39;D&#39;: 0.09777363389730453, &#39;F&#39;: 0.006230796687304974}
+Epoch/total_steps/alpha-beta: 6/5300/0.9-0.5 {&#39;G_GAN&#39;: 7.648138046264648, &#39;G_L1&#39;: 20.829303741455078, &#39;D&#39;: 0.0968385711312294, &#39;F&#39;: 0.0043220906518399715}
+Epoch/total_steps/alpha-beta: 6/5400/0.9-0.5 {&#39;G_GAN&#39;: 6.785637855529785, &#39;G_L1&#39;: 30.250993728637695, &#39;D&#39;: 1.6339821815490723, &#39;F&#39;: 0.005666874349117279}
+Epoch/total_steps/alpha-beta: 6/5500/0.9-0.5 {&#39;G_GAN&#39;: 8.173049926757812, &#39;G_L1&#39;: 58.28797149658203, &#39;D&#39;: 0.029381688684225082, &#39;F&#39;: 0.006883067544549704}
+Epoch/total_steps/alpha-beta: 6/5600/0.9-0.5 {&#39;G_GAN&#39;: 5.919060707092285, &#39;G_L1&#39;: 17.646392822265625, &#39;D&#39;: 0.48918795585632324, &#39;F&#39;: 0.003636002540588379}
+Epoch/total_steps/alpha-beta: 6/5700/0.9-0.5 {&#39;G_GAN&#39;: 6.298710823059082, &#39;G_L1&#39;: 32.41096115112305, &#39;D&#39;: 0.46269816160202026, &#39;F&#39;: 0.007005385588854551}
+保存模型 Epoch 6, iters 5789 在 D:\BaiduNetdiskWorkspace\result\CSA-512-0.5-0.9
+Epoch/Epochs 6/499 花费时间：6781.826925039291s
+learning rate = 0.0002
+Epoch/total_steps/alpha-beta: 7/5800/0.9-0.5 {&#39;G_GAN&#39;: 6.913520812988281, &#39;G_L1&#39;: 19.911041259765625, &#39;D&#39;: 0.1450732797384262, &#39;F&#39;: 0.006942898966372013}
+Epoch/total_steps/alpha-beta: 7/5900/0.9-0.5 {&#39;G_GAN&#39;: 8.814628601074219, &#39;G_L1&#39;: 23.971900939941406, &#39;D&#39;: 0.09812057018280029, &#39;F&#39;: 0.00851923692971468}
+Epoch/total_steps/alpha-beta: 7/6000/0.9-0.5 {&#39;G_GAN&#39;: 7.241381645202637, &#39;G_L1&#39;: 40.317909240722656, &#39;D&#39;: 0.10142555087804794, &#39;F&#39;: 0.0052534472197294235}
+Epoch/total_steps/alpha-beta: 7/6100/0.9-0.5 {&#39;G_GAN&#39;: 8.072312355041504, &#39;G_L1&#39;: 16.79322052001953, &#39;D&#39;: 0.059612937271595, &#39;F&#39;: 0.00403076084330678}
+Epoch/total_steps/alpha-beta: 7/6200/0.9-0.5 {&#39;G_GAN&#39;: 7.552011966705322, &#39;G_L1&#39;: 70.29322052001953, &#39;D&#39;: 0.09851159155368805, &#39;F&#39;: 0.006596486084163189}
+Epoch/total_steps/alpha-beta: 7/6300/0.9-0.5 {&#39;G_GAN&#39;: 8.286888122558594, &#39;G_L1&#39;: 35.9044189453125, &#39;D&#39;: 0.06387712061405182, &#39;F&#39;: 0.0039511555805802345}
+Epoch/total_steps/alpha-beta: 7/6400/0.9-0.5 {&#39;G_GAN&#39;: 8.06470012664795, &#39;G_L1&#39;: 63.2031364440918, &#39;D&#39;: 0.03563246876001358, &#39;F&#39;: 0.0032012774609029293}
+Epoch/total_steps/alpha-beta: 7/6500/0.9-0.5 {&#39;G_GAN&#39;: 6.473563194274902, &#39;G_L1&#39;: 18.09478759765625, &#39;D&#39;: 0.3614931106567383, &#39;F&#39;: 0.0030872623901814222}
+Epoch/total_steps/alpha-beta: 7/6600/0.9-0.5 {&#39;G_GAN&#39;: 7.9771037101745605, &#39;G_L1&#39;: 31.031078338623047, &#39;D&#39;: 0.03992782533168793, &#39;F&#39;: 0.00438742246478796}
+保存模型 Epoch 7, iters 6616 在 D:\BaiduNetdiskWorkspace\result\CSA-512-0.5-0.9
+Epoch/Epochs 7/499 花费时间：6773.3173151016235s
+learning rate = 0.0002
+Epoch/total_steps/alpha-beta: 8/6700/0.9-0.5 {&#39;G_GAN&#39;: 7.7321906089782715, &#39;G_L1&#39;: 30.92119026184082, &#39;D&#39;: 0.06005842238664627, &#39;F&#39;: 0.006190757732838392}
+Epoch/total_steps/alpha-beta: 8/6800/0.9-0.5 {&#39;G_GAN&#39;: 7.149310111999512, &#39;G_L1&#39;: 27.402240753173828, &#39;D&#39;: 0.14502623677253723, &#39;F&#39;: 0.005991397425532341}
+Epoch/total_steps/alpha-beta: 8/6900/0.9-0.5 {&#39;G_GAN&#39;: 7.815258979797363, &#39;G_L1&#39;: 40.366573333740234, &#39;D&#39;: 0.061157599091529846, &#39;F&#39;: 0.00870441272854805}
+Epoch/total_steps/alpha-beta: 8/7000/0.9-0.5 {&#39;G_GAN&#39;: 6.975753307342529, &#39;G_L1&#39;: 45.269386291503906, &#39;D&#39;: 0.1871495544910431, &#39;F&#39;: 0.004687923938035965}
+Epoch/total_steps/alpha-beta: 8/7100/0.9-0.5 {&#39;G_GAN&#39;: 8.246347427368164, &#39;G_L1&#39;: 43.201297760009766, &#39;D&#39;: 0.06970406323671341, &#39;F&#39;: 0.012463031336665154}
+Epoch/total_steps/alpha-beta: 8/7200/0.9-0.5 {&#39;G_GAN&#39;: 9.121713638305664, &#39;G_L1&#39;: 37.736995697021484, &#39;D&#39;: 0.15299037098884583, &#39;F&#39;: 0.00705857016146183}
+Epoch/total_steps/alpha-beta: 8/7300/0.9-0.5 {&#39;G_GAN&#39;: 8.071829795837402, &#39;G_L1&#39;: 36.75869369506836, &#39;D&#39;: 0.04194892197847366, &#39;F&#39;: 0.006406948436051607}
+Epoch/total_steps/alpha-beta: 8/7400/0.9-0.5 {&#39;G_GAN&#39;: 7.312784671783447, &#39;G_L1&#39;: 18.400426864624023, &#39;D&#39;: 0.07405907660722733, &#39;F&#39;: 0.0038121878169476986}
+保存模型 Epoch 8, iters 7443 在 D:\BaiduNetdiskWorkspace\result\CSA-512-0.5-0.9
+Epoch/Epochs 8/499 花费时间：6791.492373466492s
+learning rate = 0.0002
+Epoch/total_steps/alpha-beta: 9/7500/0.9-0.5 {&#39;G_GAN&#39;: 7.836668014526367, &#39;G_L1&#39;: 53.08887481689453, &#39;D&#39;: 0.029234230518341064, &#39;F&#39;: 0.004567001014947891}
+Epoch/total_steps/alpha-beta: 9/7600/0.9-0.5 {&#39;G_GAN&#39;: 8.146086692810059, &#39;G_L1&#39;: 32.06071853637695, &#39;D&#39;: 0.10044416040182114, &#39;F&#39;: 0.004144768230617046}
+Epoch/total_steps/alpha-beta: 9/7700/0.9-0.5 {&#39;G_GAN&#39;: 7.920024394989014, &#39;G_L1&#39;: 27.11161994934082, &#39;D&#39;: 0.03248041123151779, &#39;F&#39;: 0.004286234732717276}
+Epoch/total_steps/alpha-beta: 9/7800/0.9-0.5 {&#39;G_GAN&#39;: 8.260774612426758, &#39;G_L1&#39;: 28.742691040039062, &#39;D&#39;: 0.07630749046802521, &#39;F&#39;: 0.003280680626630783}
+Epoch/total_steps/alpha-beta: 9/7900/0.9-0.5 {&#39;G_GAN&#39;: 7.74901008605957, &#39;G_L1&#39;: 29.316139221191406, &#39;D&#39;: 0.04807543382048607, &#39;F&#39;: 0.0037031350657343864}
+Epoch/total_steps/alpha-beta: 9/8000/0.9-0.5 {&#39;G_GAN&#39;: 7.862907409667969, &#39;G_L1&#39;: 50.16592788696289, &#39;D&#39;: 0.03385338932275772, &#39;F&#39;: 0.0035877954214811325}
+Epoch/total_steps/alpha-beta: 9/8100/0.9-0.5 {&#39;G_GAN&#39;: 7.760428428649902, &#39;G_L1&#39;: 44.054893493652344, &#39;D&#39;: 0.037786856293678284, &#39;F&#39;: 0.004139220807701349}
+Epoch/total_steps/alpha-beta: 9/8200/0.9-0.5 {&#39;G_GAN&#39;: 7.262025356292725, &#39;G_L1&#39;: 48.47160720825195, &#39;D&#39;: 0.10192269086837769, &#39;F&#39;: 0.004287574905902147}
+保存模型 Epoch 9, iters 8270 在 D:\BaiduNetdiskWorkspace\result\CSA-512-0.5-0.9
+Epoch/Epochs 9/499 花费时间：6790.975118637085s
+learning rate = 0.0002
+Epoch/total_steps/alpha-beta: 10/8300/0.9-0.5 {&#39;G_GAN&#39;: 7.788383483886719, &#39;G_L1&#39;: 35.641380310058594, &#39;D&#39;: 0.06416705250740051, &#39;F&#39;: 0.007420504465699196}
+Epoch/total_steps/alpha-beta: 10/8400/0.9-0.5 {&#39;G_GAN&#39;: 7.8357415199279785, &#39;G_L1&#39;: 29.81028175354004, &#39;D&#39;: 0.0630260705947876, &#39;F&#39;: 0.015883125364780426}
+Epoch/total_steps/alpha-beta: 10/8500/0.9-0.5 {&#39;G_GAN&#39;: 5.846796035766602, &#39;G_L1&#39;: 23.393115997314453, &#39;D&#39;: 0.6406505107879639, &#39;F&#39;: 0.005018001887947321}
+Epoch/total_steps/alpha-beta: 10/8600/0.9-0.5 {&#39;G_GAN&#39;: 8.256778717041016, &#39;G_L1&#39;: 57.96815872192383, &#39;D&#39;: 0.05069582164287567, &#39;F&#39;: 0.029368363320827484}
+Epoch/total_steps/alpha-beta: 10/8700/0.9-0.5 {&#39;G_GAN&#39;: 6.482592582702637, &#39;G_L1&#39;: 30.84264373779297, &#39;D&#39;: 0.3039470613002777, &#39;F&#39;: 0.010647042654454708}
+Epoch/total_steps/alpha-beta: 10/8800/0.9-0.5 {&#39;G_GAN&#39;: 7.582629680633545, &#39;G_L1&#39;: 28.539878845214844, &#39;D&#39;: 0.07590296864509583, &#39;F&#39;: 0.003236661199480295}
+Epoch/total_steps/alpha-beta: 10/8900/0.9-0.5 {&#39;G_GAN&#39;: 8.003486633300781, &#39;G_L1&#39;: 48.031639099121094, &#39;D&#39;: 0.05932467058300972, &#39;F&#39;: 0.005987613927572966}
+Epoch/total_steps/alpha-beta: 10/9000/0.9-0.5 {&#39;G_GAN&#39;: 7.392724990844727, &#39;G_L1&#39;: 36.10276412963867, &#39;D&#39;: 0.06796669214963913, &#39;F&#39;: 0.00649836054071784}
+保存模型 Epoch 10, iters 9097 在 D:\BaiduNetdiskWorkspace\result\CSA-512-0.5-0.9
+Epoch/Epochs 10/499 花费时间：6786.234878778458s
+learning rate = 0.0002
+Epoch/total_steps/alpha-beta: 11/9100/0.9-0.5 {&#39;G_GAN&#39;: 7.863040447235107, &#39;G_L1&#39;: 31.265836715698242, &#39;D&#39;: 0.08037514984607697, &#39;F&#39;: 0.00868511013686657}
+Epoch/total_steps/alpha-beta: 11/9200/0.9-0.5 {&#39;G_GAN&#39;: 7.651375770568848, &#39;G_L1&#39;: 70.62728881835938, &#39;D&#39;: 0.04744876176118851, &#39;F&#39;: 0.005462178960442543}
+Epoch/total_steps/alpha-beta: 11/9300/0.9-0.5 {&#39;G_GAN&#39;: 8.511176109313965, &#39;G_L1&#39;: 45.3182258605957, &#39;D&#39;: 0.28164467215538025, &#39;F&#39;: 0.00405585952103138}
+Epoch/total_steps/alpha-beta: 11/9400/0.9-0.5 {&#39;G_GAN&#39;: 8.30099868774414, &#39;G_L1&#39;: 30.841995239257812, &#39;D&#39;: 0.04300222545862198, &#39;F&#39;: 0.0024685864336788654}
+Epoch/total_steps/alpha-beta: 11/9500/0.9-0.5 {&#39;G_GAN&#39;: 7.89030122756958, &#39;G_L1&#39;: 20.254596710205078, &#39;D&#39;: 0.03222215175628662, &#39;F&#39;: 0.004825015552341938}
+Epoch/total_steps/alpha-beta: 11/9600/0.9-0.5 {&#39;G_GAN&#39;: 8.29232406616211, &#39;G_L1&#39;: 24.993762969970703, &#39;D&#39;: 0.043913584202528, &#39;F&#39;: 0.006343472748994827}
+Epoch/total_steps/alpha-beta: 11/9700/0.9-0.5 {&#39;G_GAN&#39;: 9.096555709838867, &#39;G_L1&#39;: 61.87065124511719, &#39;D&#39;: 0.2401297390460968, &#39;F&#39;: 0.006295406259596348}
+Epoch/total_steps/alpha-beta: 11/9800/0.9-0.5 {&#39;G_GAN&#39;: 8.186397552490234, &#39;G_L1&#39;: 26.21844482421875, &#39;D&#39;: 0.05871649086475372, &#39;F&#39;: 0.008220924064517021}
+Epoch/total_steps/alpha-beta: 11/9900/0.9-0.5 {&#39;G_GAN&#39;: 6.205671787261963, &#39;G_L1&#39;: 15.170282363891602, &#39;D&#39;: 0.4745340049266815, &#39;F&#39;: 0.004096081480383873}
+保存模型 Epoch 11, iters 9924 在 D:\BaiduNetdiskWorkspace\result\CSA-512-0.5-0.9
+Epoch/Epochs 11/499 花费时间：6786.975668430328s
+learning rate = 0.0002
+Epoch/total_steps/alpha-beta: 12/10000/0.9-0.5 {&#39;G_GAN&#39;: 8.221858024597168, &#39;G_L1&#39;: 58.39773941040039, &#39;D&#39;: 0.04274068400263786, &#39;F&#39;: 0.003395872889086604}
+Epoch/total_steps/alpha-beta: 12/10100/0.9-0.5 {&#39;G_GAN&#39;: 8.338459014892578, &#39;G_L1&#39;: 32.30035400390625, &#39;D&#39;: 0.03969718515872955, &#39;F&#39;: 0.006363560911267996}
+Epoch/total_steps/alpha-beta: 12/10200/0.9-0.5 {&#39;G_GAN&#39;: 7.381308555603027, &#39;G_L1&#39;: 35.16847610473633, &#39;D&#39;: 0.32127028703689575, &#39;F&#39;: 0.005490068346261978}
+Epoch/total_steps/alpha-beta: 12/10300/0.9-0.5 {&#39;G_GAN&#39;: 8.569868087768555, &#39;G_L1&#39;: 41.0230712890625, &#39;D&#39;: 0.07366685569286346, &#39;F&#39;: 0.0035020478535443544}
+Epoch/total_steps/alpha-beta: 12/10400/0.9-0.5 {&#39;G_GAN&#39;: 8.170859336853027, &#39;G_L1&#39;: 23.515491485595703, &#39;D&#39;: 0.015204706229269505, &#39;F&#39;: 0.004275064915418625}
+Epoch/total_steps/alpha-beta: 12/10500/0.9-0.5 {&#39;G_GAN&#39;: 8.1604642868042, &#39;G_L1&#39;: 33.63529586791992, &#39;D&#39;: 0.041998911648988724, &#39;F&#39;: 0.004481879994273186}
+Epoch/total_steps/alpha-beta: 12/10600/0.9-0.5 {&#39;G_GAN&#39;: 8.962553024291992, &#39;G_L1&#39;: 25.042512893676758, &#39;D&#39;: 0.09728536009788513, &#39;F&#39;: 0.0038445161189883947}
+Epoch/total_steps/alpha-beta: 12/10700/0.9-0.5 {&#39;G_GAN&#39;: 7.276715278625488, &#39;G_L1&#39;: 34.38473892211914, &#39;D&#39;: 0.13832862675189972, &#39;F&#39;: 0.00244366517290473}
+保存模型 Epoch 12, iters 10751 在 D:\BaiduNetdiskWorkspace\result\CSA-512-0.5-0.9
+Epoch/Epochs 12/499 花费时间：6819.4363486766815s
+learning rate = 0.0002
+Epoch/total_steps/alpha-beta: 13/10800/0.9-0.5 {&#39;G_GAN&#39;: 8.03681468963623, &#39;G_L1&#39;: 31.401479721069336, &#39;D&#39;: 0.024243872612714767, &#39;F&#39;: 0.0026359963230788708}
+Epoch/total_steps/alpha-beta: 13/10900/0.9-0.5 {&#39;G_GAN&#39;: 7.1262359619140625, &#39;G_L1&#39;: 30.038379669189453, &#39;D&#39;: 0.1015794426202774, &#39;F&#39;: 0.006040133535861969}
+Epoch/total_steps/alpha-beta: 13/11000/0.9-0.5 {&#39;G_GAN&#39;: 6.573057651519775, &#39;G_L1&#39;: 32.43838882446289, &#39;D&#39;: 0.23280316591262817, &#39;F&#39;: 0.003708750009536743}
+Epoch/total_steps/alpha-beta: 13/11100/0.9-0.5 {&#39;G_GAN&#39;: 6.432238578796387, &#39;G_L1&#39;: 18.442340850830078, &#39;D&#39;: 0.4277501106262207, &#39;F&#39;: 0.0034202453680336475}
+Epoch/total_steps/alpha-beta: 13/11200/0.9-0.5 {&#39;G_GAN&#39;: 8.292144775390625, &#39;G_L1&#39;: 25.798559188842773, &#39;D&#39;: 0.03876882791519165, &#39;F&#39;: 0.003809876274317503}
+Epoch/total_steps/alpha-beta: 13/11300/0.9-0.5 {&#39;G_GAN&#39;: 6.988429069519043, &#39;G_L1&#39;: 24.707275390625, &#39;D&#39;: 0.2072637677192688, &#39;F&#39;: 0.004373699426651001}
+Epoch/total_steps/alpha-beta: 13/11400/0.9-0.5 {&#39;G_GAN&#39;: 7.723523139953613, &#39;G_L1&#39;: 56.04231262207031, &#39;D&#39;: 0.039557404816150665, &#39;F&#39;: 0.002857917919754982}
+Epoch/total_steps/alpha-beta: 13/11500/0.9-0.5 {&#39;G_GAN&#39;: 7.227463722229004, &#39;G_L1&#39;: 28.476232528686523, &#39;D&#39;: 0.08901273459196091, &#39;F&#39;: 0.013223119080066681}
+保存模型 Epoch 13, iters 11578 在 D:\BaiduNetdiskWorkspace\result\CSA-512-0.5-0.9
+Epoch/Epochs 13/499 花费时间：6803.318855762482s
+learning rate = 0.0002
+Epoch/total_steps/alpha-beta: 14/11600/0.9-0.5 {&#39;G_GAN&#39;: 6.9345221519470215, &#39;G_L1&#39;: 33.22389221191406, &#39;D&#39;: 0.1272229552268982, &#39;F&#39;: 0.0021429057233035564}
+Epoch/total_steps/alpha-beta: 14/11700/0.9-0.5 {&#39;G_GAN&#39;: 7.869429588317871, &#39;G_L1&#39;: 32.6778678894043, &#39;D&#39;: 0.05452558025717735, &#39;F&#39;: 0.0062105776742100716}
+Epoch/total_steps/alpha-beta: 14/11800/0.9-0.5 {&#39;G_GAN&#39;: 6.674973011016846, &#39;G_L1&#39;: 30.8380126953125, &#39;D&#39;: 0.2287043184041977, &#39;F&#39;: 0.005044952966272831}
+Epoch/total_steps/alpha-beta: 14/11900/0.9-0.5 {&#39;G_GAN&#39;: 7.935940265655518, &#39;G_L1&#39;: 38.49858093261719, &#39;D&#39;: 0.012168779969215393, &#39;F&#39;: 0.0043455129489302635}
+Epoch/total_steps/alpha-beta: 14/12000/0.9-0.5 {&#39;G_GAN&#39;: 8.205708503723145, &#39;G_L1&#39;: 32.16767120361328, &#39;D&#39;: 0.03448421508073807, &#39;F&#39;: 0.0033777765929698944}
+Epoch/total_steps/alpha-beta: 14/12100/0.9-0.5 {&#39;G_GAN&#39;: 8.01247787475586, &#39;G_L1&#39;: 27.415355682373047, &#39;D&#39;: 0.09599627554416656, &#39;F&#39;: 0.0055315508507192135}
+Epoch/total_steps/alpha-beta: 14/12200/0.9-0.5 {&#39;G_GAN&#39;: 5.841674327850342, &#39;G_L1&#39;: 11.122085571289062, &#39;D&#39;: 0.514307975769043, &#39;F&#39;: 0.0035178279504179955}
+Epoch/total_steps/alpha-beta: 14/12300/0.9-0.5 {&#39;G_GAN&#39;: 7.423697471618652, &#39;G_L1&#39;: 18.238248825073242, &#39;D&#39;: 0.16437190771102905, &#39;F&#39;: 0.003994152415543795}
+Epoch/total_steps/alpha-beta: 14/12400/0.9-0.5 {&#39;G_GAN&#39;: 7.905242443084717, &#39;G_L1&#39;: 23.872133255004883, &#39;D&#39;: 0.02268359810113907, &#39;F&#39;: 0.0035723187029361725}
+保存模型 Epoch 14, iters 12405 在 D:\BaiduNetdiskWorkspace\result\CSA-512-0.5-0.9
+Epoch/Epochs 14/499 花费时间：6808.761435031891s
+learning rate = 0.0002
+Epoch/total_steps/alpha-beta: 15/12500/0.9-0.5 {&#39;G_GAN&#39;: 8.011314392089844, &#39;G_L1&#39;: 42.592803955078125, &#39;D&#39;: 0.029730141162872314, &#39;F&#39;: 0.006191079504787922}
+Epoch/total_steps/alpha-beta: 15/12600/0.9-0.5 {&#39;G_GAN&#39;: 6.9253315925598145, &#39;G_L1&#39;: 60.96406555175781, &#39;D&#39;: 0.28206947445869446, &#39;F&#39;: 0.0032312420662492514}
+Epoch/total_steps/alpha-beta: 15/12700/0.9-0.5 {&#39;G_GAN&#39;: 7.370575428009033, &#39;G_L1&#39;: 28.466272354125977, &#39;D&#39;: 0.04636296257376671, &#39;F&#39;: 0.0061095356941223145}
+Epoch/total_steps/alpha-beta: 15/12800/0.9-0.5 {&#39;G_GAN&#39;: 8.494792938232422, &#39;G_L1&#39;: 33.6013069152832, &#39;D&#39;: 0.039481692016124725, &#39;F&#39;: 0.0034385877661406994}
+Epoch/total_steps/alpha-beta: 15/12900/0.9-0.5 {&#39;G_GAN&#39;: 7.426103591918945, &#39;G_L1&#39;: 25.17296028137207, &#39;D&#39;: 0.07927794754505157, &#39;F&#39;: 0.0031376036349684}
+Epoch/total_steps/alpha-beta: 15/13000/0.9-0.5 {&#39;G_GAN&#39;: 7.438826560974121, &#39;G_L1&#39;: 26.867050170898438, &#39;D&#39;: 0.09493200480937958, &#39;F&#39;: 0.003008883912116289}
+Epoch/total_steps/alpha-beta: 15/13100/0.9-0.5 {&#39;G_GAN&#39;: 7.649531364440918, &#39;G_L1&#39;: 34.654300689697266, &#39;D&#39;: 0.05770464241504669, &#39;F&#39;: 0.017351774498820305}
+Epoch/total_steps/alpha-beta: 15/13200/0.9-0.5 {&#39;G_GAN&#39;: 6.508932113647461, &#39;G_L1&#39;: 43.502037048339844, &#39;D&#39;: 0.2478455752134323, &#39;F&#39;: 0.007912680506706238}
+保存模型 Epoch 15, iters 13232 在 D:\BaiduNetdiskWorkspace\result\CSA-512-0.5-0.9
+Epoch/Epochs 15/499 花费时间：6802.136234045029s
+learning rate = 0.0002
+Epoch/total_steps/alpha-beta: 16/13300/0.9-0.5 {&#39;G_GAN&#39;: 8.71888256072998, &#39;G_L1&#39;: 25.636524200439453, &#39;D&#39;: 0.023579653352499008, &#39;F&#39;: 0.03641069680452347}
+Epoch/total_steps/alpha-beta: 16/13400/0.9-0.5 {&#39;G_GAN&#39;: 8.100519180297852, &#39;G_L1&#39;: 42.669029235839844, &#39;D&#39;: 0.02718113362789154, &#39;F&#39;: 0.001569485990330577}
+Epoch/total_steps/alpha-beta: 16/13500/0.9-0.5 {&#39;G_GAN&#39;: 8.761972427368164, &#39;G_L1&#39;: 24.049715042114258, &#39;D&#39;: 0.07249115407466888, &#39;F&#39;: 0.004012751393020153}
+Epoch/total_steps/alpha-beta: 16/13600/0.9-0.5 {&#39;G_GAN&#39;: 7.501696586608887, &#39;G_L1&#39;: 42.651092529296875, &#39;D&#39;: 0.036632318049669266, &#39;F&#39;: 0.0026460406370460987}
+Epoch/total_steps/alpha-beta: 16/13700/0.9-0.5 {&#39;G_GAN&#39;: 8.823953628540039, &#39;G_L1&#39;: 36.49910354614258, &#39;D&#39;: 0.07754261046648026, &#39;F&#39;: 0.007524034008383751}
+Epoch/total_steps/alpha-beta: 16/13800/0.9-0.5 {&#39;G_GAN&#39;: 8.370309829711914, &#39;G_L1&#39;: 35.851539611816406, &#39;D&#39;: 0.03227117657661438, &#39;F&#39;: 0.004052022472023964}
+Epoch/total_steps/alpha-beta: 16/13900/0.9-0.5 {&#39;G_GAN&#39;: 7.596550464630127, &#39;G_L1&#39;: 71.96427917480469, &#39;D&#39;: 0.04708678275346756, &#39;F&#39;: 0.0022930719424039125}
+Epoch/total_steps/alpha-beta: 16/14000/0.9-0.5 {&#39;G_GAN&#39;: 7.912850379943848, &#39;G_L1&#39;: 26.72654151916504, &#39;D&#39;: 0.021397706121206284, &#39;F&#39;: 0.003353205043822527}
+保存模型 Epoch 16, iters 14059 在 D:\BaiduNetdiskWorkspace\result\CSA-512-0.5-0.9
+Epoch/Epochs 16/499 花费时间：6789.618250846863s
+learning rate = 0.0002
+Epoch/total_steps/alpha-beta: 17/14100/0.9-0.5 {&#39;G_GAN&#39;: 7.13350772857666, &#39;G_L1&#39;: 51.35102844238281, &#39;D&#39;: 0.0856294333934784, &#39;F&#39;: 0.005889656487852335}
+Epoch/total_steps/alpha-beta: 17/14200/0.9-0.5 {&#39;G_GAN&#39;: 8.191527366638184, &#39;G_L1&#39;: 42.018577575683594, &#39;D&#39;: 0.027299080044031143, &#39;F&#39;: 0.007582319900393486}
+Epoch/total_steps/alpha-beta: 17/14300/0.9-0.5 {&#39;G_GAN&#39;: 8.32451057434082, &#39;G_L1&#39;: 38.54008865356445, &#39;D&#39;: 0.03022206574678421, &#39;F&#39;: 0.0025178887881338596}
+Epoch/total_steps/alpha-beta: 17/14400/0.9-0.5 {&#39;G_GAN&#39;: 7.241067886352539, &#39;G_L1&#39;: 25.179784774780273, &#39;D&#39;: 0.12429271638393402, &#39;F&#39;: 0.006401214748620987}
+Epoch/total_steps/alpha-beta: 17/14500/0.9-0.5 {&#39;G_GAN&#39;: 7.657114028930664, &#39;G_L1&#39;: 22.305797576904297, &#39;D&#39;: 0.044334106147289276, &#39;F&#39;: 0.007971864193677902}
+Epoch/total_steps/alpha-beta: 17/14600/0.9-0.5 {&#39;G_GAN&#39;: 9.210762023925781, &#39;G_L1&#39;: 37.79163360595703, &#39;D&#39;: 0.18621352314949036, &#39;F&#39;: 0.0026624775491654873}
+Epoch/total_steps/alpha-beta: 17/14700/0.9-0.5 {&#39;G_GAN&#39;: 7.877732276916504, &#39;G_L1&#39;: 39.09435272216797, &#39;D&#39;: 0.057669498026371, &#39;F&#39;: 0.0024853101931512356}
+Epoch/total_steps/alpha-beta: 17/14800/0.9-0.5 {&#39;G_GAN&#39;: 7.437236309051514, &#39;G_L1&#39;: 47.83285140991211, &#39;D&#39;: 0.05851081758737564, &#39;F&#39;: 0.0036749467253684998}
+保存模型 Epoch 17, iters 14886 在 D:\BaiduNetdiskWorkspace\result\CSA-512-0.5-0.9
+Epoch/Epochs 17/499 花费时间：6798.307459592819s
+learning rate = 0.0002
+Epoch/total_steps/alpha-beta: 18/14900/0.9-0.5 {&#39;G_GAN&#39;: 7.461752891540527, &#39;G_L1&#39;: 33.42121124267578, &#39;D&#39;: 0.07919140160083771, &#39;F&#39;: 0.004293618258088827}
+Epoch/total_steps/alpha-beta: 18/15000/0.9-0.5 {&#39;G_GAN&#39;: 7.681082725524902, &#39;G_L1&#39;: 22.56085205078125, &#39;D&#39;: 0.03382027894258499, &#39;F&#39;: 0.003223470877856016}
+Epoch/total_steps/alpha-beta: 18/15100/0.9-0.5 {&#39;G_GAN&#39;: 8.584573745727539, &#39;G_L1&#39;: 36.03574752807617, &#39;D&#39;: 0.057229138910770416, &#39;F&#39;: 0.0034561597276479006}
+Epoch/total_steps/alpha-beta: 18/15200/0.9-0.5 {&#39;G_GAN&#39;: 8.49069881439209, &#39;G_L1&#39;: 53.5417366027832, &#39;D&#39;: 0.0407845601439476, &#39;F&#39;: 0.005406171083450317}
+Epoch/total_steps/alpha-beta: 18/15300/0.9-0.5 {&#39;G_GAN&#39;: 7.474222660064697, &#39;G_L1&#39;: 22.31317710876465, &#39;D&#39;: 0.05721896141767502, &#39;F&#39;: 0.005894982255995274}
+Epoch/total_steps/alpha-beta: 18/15400/0.9-0.5 {&#39;G_GAN&#39;: 8.371959686279297, &#39;G_L1&#39;: 20.44105339050293, &#39;D&#39;: 0.3068917393684387, &#39;F&#39;: 0.003614653367549181}
+Epoch/total_steps/alpha-beta: 18/15500/0.9-0.5 {&#39;G_GAN&#39;: 7.384899139404297, &#39;G_L1&#39;: 19.077713012695312, &#39;D&#39;: 0.05730544775724411, &#39;F&#39;: 0.0019652352202683687}
+Epoch/total_steps/alpha-beta: 18/15600/0.9-0.5 {&#39;G_GAN&#39;: 7.8303704261779785, &#39;G_L1&#39;: 19.897165298461914, &#39;D&#39;: 0.11454857140779495, &#39;F&#39;: 0.0024445881135761738}
+Epoch/total_steps/alpha-beta: 18/15700/0.9-0.5 {&#39;G_GAN&#39;: 8.539322853088379, &#39;G_L1&#39;: 24.918367385864258, &#39;D&#39;: 0.060316260904073715, &#39;F&#39;: 0.00297196744941175}
+保存模型 Epoch 18, iters 15713 在 D:\BaiduNetdiskWorkspace\result\CSA-512-0.5-0.9
+Epoch/Epochs 18/499 花费时间：6800.903076887131s
+learning rate = 0.0001980198
+Epoch/total_steps/alpha-beta: 19/15800/0.9-0.5 {&#39;G_GAN&#39;: 8.353011131286621, &#39;G_L1&#39;: 33.5028076171875, &#39;D&#39;: 0.18419021368026733, &#39;F&#39;: 0.0025978428311645985}
+Epoch/total_steps/alpha-beta: 19/15900/0.9-0.5 {&#39;G_GAN&#39;: 8.266363143920898, &#39;G_L1&#39;: 31.698490142822266, &#39;D&#39;: 0.052870914340019226, &#39;F&#39;: 0.00537492660805583}
+Epoch/total_steps/alpha-beta: 19/16000/0.9-0.5 {&#39;G_GAN&#39;: 7.625064849853516, &#39;G_L1&#39;: 51.91288757324219, &#39;D&#39;: 0.07776127755641937, &#39;F&#39;: 0.002217440865933895}
+Epoch/total_steps/alpha-beta: 19/16100/0.9-0.5 {&#39;G_GAN&#39;: 8.029701232910156, &#39;G_L1&#39;: 22.986072540283203, &#39;D&#39;: 0.021711889654397964, &#39;F&#39;: 0.0034074033610522747}
+Epoch/total_steps/alpha-beta: 19/16200/0.9-0.5 {&#39;G_GAN&#39;: 7.687446594238281, &#39;G_L1&#39;: 24.99774932861328, &#39;D&#39;: 0.044073790311813354, &#39;F&#39;: 0.0030163584742695093}
+Epoch/total_steps/alpha-beta: 19/16300/0.9-0.5 {&#39;G_GAN&#39;: 7.132212162017822, &#39;G_L1&#39;: 29.21772003173828, &#39;D&#39;: 0.08760139346122742, &#39;F&#39;: 0.004562173038721085}
+Epoch/total_steps/alpha-beta: 19/16400/0.9-0.5 {&#39;G_GAN&#39;: 7.811280250549316, &#39;G_L1&#39;: 37.75373077392578, &#39;D&#39;: 0.05717430263757706, &#39;F&#39;: 0.005174565128982067}
+Epoch/total_steps/alpha-beta: 19/16500/0.9-0.5 {&#39;G_GAN&#39;: 8.151956558227539, &#39;G_L1&#39;: 23.835399627685547, &#39;D&#39;: 0.017153332009911537, &#39;F&#39;: 0.005333166569471359}
+保存模型 Epoch 19, iters 16540 在 D:\BaiduNetdiskWorkspace\result\CSA-512-0.5-0.9
+Epoch/Epochs 19/499 花费时间：6786.796108722687s
+learning rate = 0.0001960396
+Epoch/total_steps/alpha-beta: 20/16600/0.9-0.5 {&#39;G_GAN&#39;: 8.045878410339355, &#39;G_L1&#39;: 20.758373260498047, &#39;D&#39;: 0.03130459785461426, &#39;F&#39;: 0.004805720876902342}
+Epoch/total_steps/alpha-beta: 20/16700/0.9-0.5 {&#39;G_GAN&#39;: 8.136820793151855, &#39;G_L1&#39;: 43.48854446411133, &#39;D&#39;: 0.05945216119289398, &#39;F&#39;: 0.002720846328884363}
+Epoch/total_steps/alpha-beta: 20/16800/0.9-0.5 {&#39;G_GAN&#39;: 6.95311164855957, &#39;G_L1&#39;: 41.75174331665039, &#39;D&#39;: 0.13309377431869507, &#39;F&#39;: 0.009623212739825249}
+Epoch/total_steps/alpha-beta: 20/16900/0.9-0.5 {&#39;G_GAN&#39;: 8.787895202636719, &#39;G_L1&#39;: 45.689720153808594, &#39;D&#39;: 0.0872056633234024, &#39;F&#39;: 0.0031395144760608673}
+Epoch/total_steps/alpha-beta: 20/17000/0.9-0.5 {&#39;G_GAN&#39;: 6.763820648193359, &#39;G_L1&#39;: 24.510604858398438, &#39;D&#39;: 0.2232387214899063, &#39;F&#39;: 0.0053203958086669445}
+Epoch/total_steps/alpha-beta: 20/17100/0.9-0.5 {&#39;G_GAN&#39;: 6.274659156799316, &#39;G_L1&#39;: 65.09680938720703, &#39;D&#39;: 0.33346495032310486, &#39;F&#39;: 0.004293633624911308}
+Epoch/total_steps/alpha-beta: 20/17200/0.9-0.5 {&#39;G_GAN&#39;: 6.593164920806885, &#39;G_L1&#39;: 14.950984954833984, &#39;D&#39;: 0.23268261551856995, &#39;F&#39;: 0.005217349156737328}
+Epoch/total_steps/alpha-beta: 20/17300/0.9-0.5 {&#39;G_GAN&#39;: 7.555028438568115, &#39;G_L1&#39;: 29.79930877685547, &#39;D&#39;: 0.03699396550655365, &#39;F&#39;: 0.006537396460771561}
+保存模型 Epoch 20, iters 17367 在 D:\BaiduNetdiskWorkspace\result\CSA-512-0.5-0.9
+Epoch/Epochs 20/499 花费时间：6775.1251401901245s
+learning rate = 0.0001940594
+Epoch/total_steps/alpha-beta: 21/17400/0.9-0.5 {&#39;G_GAN&#39;: 7.297855854034424, &#39;G_L1&#39;: 16.829051971435547, &#39;D&#39;: 0.057525694370269775, &#39;F&#39;: 0.0030261212959885597}
+Epoch/total_steps/alpha-beta: 21/17500/0.9-0.5 {&#39;G_GAN&#39;: 7.174908638000488, &#39;G_L1&#39;: 26.332927703857422, &#39;D&#39;: 0.07560013979673386, &#39;F&#39;: 0.008245086297392845}
+Epoch/total_steps/alpha-beta: 21/17600/0.9-0.5 {&#39;G_GAN&#39;: 7.698434829711914, &#39;G_L1&#39;: 30.929100036621094, &#39;D&#39;: 0.08060818165540695, &#39;F&#39;: 0.003922923468053341}
+Epoch/total_steps/alpha-beta: 21/17700/0.9-0.5 {&#39;G_GAN&#39;: 8.786184310913086, &#39;G_L1&#39;: 59.72559356689453, &#39;D&#39;: 0.14045435190200806, &#39;F&#39;: 0.0023819156922399998}
+Epoch/total_steps/alpha-beta: 21/17800/0.9-0.5 {&#39;G_GAN&#39;: 7.476130962371826, &#39;G_L1&#39;: 37.215309143066406, &#39;D&#39;: 0.14845171570777893, &#39;F&#39;: 0.001712435856461525}
+Epoch/total_steps/alpha-beta: 21/17900/0.9-0.5 {&#39;G_GAN&#39;: 7.1959381103515625, &#39;G_L1&#39;: 46.26994705200195, &#39;D&#39;: 0.07900677621364594, &#39;F&#39;: 0.0026293930131942034}
+Epoch/total_steps/alpha-beta: 21/18000/0.9-0.5 {&#39;G_GAN&#39;: 5.837569236755371, &#39;G_L1&#39;: 38.64576721191406, &#39;D&#39;: 0.6046030521392822, &#39;F&#39;: 0.0033045411109924316}
+Epoch/total_steps/alpha-beta: 21/18100/0.9-0.5 {&#39;G_GAN&#39;: 7.682284355163574, &#39;G_L1&#39;: 30.167177200317383, &#39;D&#39;: 0.03873357176780701, &#39;F&#39;: 0.0023298892192542553}
+保存模型 Epoch 21, iters 18194 在 D:\BaiduNetdiskWorkspace\result\CSA-512-0.5-0.9
+Epoch/Epochs 21/499 花费时间：6774.648673057556s
+learning rate = 0.0001920792
+Epoch/total_steps/alpha-beta: 22/18200/0.9-0.5 {&#39;G_GAN&#39;: 6.970770359039307, &#39;G_L1&#39;: 30.98396873474121, &#39;D&#39;: 0.13382962346076965, &#39;F&#39;: 0.004154740832746029}
+Epoch/total_steps/alpha-beta: 22/18300/0.9-0.5 {&#39;G_GAN&#39;: 8.247663497924805, &#39;G_L1&#39;: 24.688451766967773, &#39;D&#39;: 0.031794942915439606, &#39;F&#39;: 0.0031351535581052303}
+Epoch/total_steps/alpha-beta: 22/18400/0.9-0.5 {&#39;G_GAN&#39;: 8.62978744506836, &#39;G_L1&#39;: 60.467018127441406, &#39;D&#39;: 0.16840827465057373, &#39;F&#39;: 0.005408646538853645}
+Epoch/total_steps/alpha-beta: 22/18500/0.9-0.5 {&#39;G_GAN&#39;: 7.2825140953063965, &#39;G_L1&#39;: 40.219268798828125, &#39;D&#39;: 0.07527589797973633, &#39;F&#39;: 0.0016416775761172175}
+Epoch/total_steps/alpha-beta: 22/18600/0.9-0.5 {&#39;G_GAN&#39;: 6.805292129516602, &#39;G_L1&#39;: 29.545488357543945, &#39;D&#39;: 0.19570937752723694, &#39;F&#39;: 0.0021449706982821226}
+Epoch/total_steps/alpha-beta: 22/18700/0.9-0.5 {&#39;G_GAN&#39;: 6.874628067016602, &#39;G_L1&#39;: 56.77292251586914, &#39;D&#39;: 0.15686830878257751, &#39;F&#39;: 0.002574570942670107}
+Epoch/total_steps/alpha-beta: 22/18800/0.9-0.5 {&#39;G_GAN&#39;: 8.007011413574219, &#39;G_L1&#39;: 23.24610710144043, &#39;D&#39;: 0.015423323027789593, &#39;F&#39;: 0.005580136552453041}
+Epoch/total_steps/alpha-beta: 22/18900/0.9-0.5 {&#39;G_GAN&#39;: 8.490453720092773, &#39;G_L1&#39;: 26.95191192626953, &#39;D&#39;: 0.08019255101680756, &#39;F&#39;: 0.0029981788247823715}
+Epoch/total_steps/alpha-beta: 22/19000/0.9-0.5 {&#39;G_GAN&#39;: 7.914027690887451, &#39;G_L1&#39;: 50.55291748046875, &#39;D&#39;: 0.03370454162359238, &#39;F&#39;: 0.002508030040189624}
+保存模型 Epoch 22, iters 19021 在 D:\BaiduNetdiskWorkspace\result\CSA-512-0.5-0.9
+Epoch/Epochs 22/499 花费时间：6763.957652330399s
+learning rate = 0.000190099
+Epoch/total_steps/alpha-beta: 23/19100/0.9-0.5 {&#39;G_GAN&#39;: 7.616194725036621, &#39;G_L1&#39;: 41.30731201171875, &#39;D&#39;: 0.028030268847942352, &#39;F&#39;: 0.0033243128564208746}
+Epoch/total_steps/alpha-beta: 23/19200/0.9-0.5 {&#39;G_GAN&#39;: 6.566293239593506, &#39;G_L1&#39;: 16.608922958374023, &#39;D&#39;: 0.18591663241386414, &#39;F&#39;: 0.003458509687334299}
+Epoch/total_steps/alpha-beta: 23/19300/0.9-0.5 {&#39;G_GAN&#39;: 7.603038311004639, &#39;G_L1&#39;: 20.62608528137207, &#39;D&#39;: 0.03618089109659195, &#39;F&#39;: 0.004350718110799789}
+Epoch/total_steps/alpha-beta: 23/19400/0.9-0.5 {&#39;G_GAN&#39;: 5.640690803527832, &#39;G_L1&#39;: 33.21731185913086, &#39;D&#39;: 0.6518927812576294, &#39;F&#39;: 0.002340516075491905}
+Epoch/total_steps/alpha-beta: 23/19500/0.9-0.5 {&#39;G_GAN&#39;: 7.659463882446289, &#39;G_L1&#39;: 29.363113403320312, &#39;D&#39;: 0.04566925764083862, &#39;F&#39;: 0.0029260178562253714}
+Epoch/total_steps/alpha-beta: 23/19600/0.9-0.5 {&#39;G_GAN&#39;: 8.461130142211914, &#39;G_L1&#39;: 33.122642517089844, &#39;D&#39;: 0.06426571309566498, &#39;F&#39;: 0.002419154392555356}
+Epoch/total_steps/alpha-beta: 23/19700/0.9-0.5 {&#39;G_GAN&#39;: 5.9628801345825195, &#39;G_L1&#39;: 24.535429000854492, &#39;D&#39;: 0.41141277551651, &#39;F&#39;: 0.003959213383495808}
+Epoch/total_steps/alpha-beta: 23/19800/0.9-0.5 {&#39;G_GAN&#39;: 7.40686559677124, &#39;G_L1&#39;: 29.108190536499023, &#39;D&#39;: 0.06609594821929932, &#39;F&#39;: 0.010821801610291004}
+保存模型 Epoch 23, iters 19848 在 D:\BaiduNetdiskWorkspace\result\CSA-512-0.5-0.9
+Epoch/Epochs 23/499 花费时间：6767.999155759811s
+learning rate = 0.0001881188
+Epoch/total_steps/alpha-beta: 24/19900/0.9-0.5 {&#39;G_GAN&#39;: 7.825462341308594, &#39;G_L1&#39;: 53.41889953613281, &#39;D&#39;: 0.03581652790307999, &#39;F&#39;: 0.004530113190412521}
+Epoch/total_steps/alpha-beta: 24/20000/0.9-0.5 {&#39;G_GAN&#39;: 8.254587173461914, &#39;G_L1&#39;: 21.413908004760742, &#39;D&#39;: 0.0220788661390543, &#39;F&#39;: 0.00331525388173759}
+Epoch/total_steps/alpha-beta: 24/20100/0.9-0.5 {&#39;G_GAN&#39;: 6.426697731018066, &#39;G_L1&#39;: 37.05735778808594, &#39;D&#39;: 0.394780695438385, &#39;F&#39;: 0.019589360803365707}
+Epoch/total_steps/alpha-beta: 24/20200/0.9-0.5 {&#39;G_GAN&#39;: 8.435117721557617, &#39;G_L1&#39;: 20.806028366088867, &#39;D&#39;: 0.05612243711948395, &#39;F&#39;: 0.0056602321565151215}
+Epoch/total_steps/alpha-beta: 24/20300/0.9-0.5 {&#39;G_GAN&#39;: 7.323681831359863, &#39;G_L1&#39;: 40.05857849121094, &#39;D&#39;: 0.06711658090353012, &#39;F&#39;: 0.004326717462390661}
+Epoch/total_steps/alpha-beta: 24/20400/0.9-0.5 {&#39;G_GAN&#39;: 6.427642822265625, &#39;G_L1&#39;: 31.140010833740234, &#39;D&#39;: 0.26785218715667725, &#39;F&#39;: 0.0035397533793002367}
+Epoch/total_steps/alpha-beta: 24/20500/0.9-0.5 {&#39;G_GAN&#39;: 7.63197135925293, &#39;G_L1&#39;: 24.888154983520508, &#39;D&#39;: 0.124347984790802, &#39;F&#39;: 0.002977671567350626}
+Epoch/total_steps/alpha-beta: 24/20600/0.9-0.5 {&#39;G_GAN&#39;: 7.479349136352539, &#39;G_L1&#39;: 26.176494598388672, &#39;D&#39;: 0.052094966173172, &#39;F&#39;: 0.0018503878964111209}
+保存模型 Epoch 24, iters 20675 在 D:\BaiduNetdiskWorkspace\result\CSA-512-0.5-0.9
+Epoch/Epochs 24/499 花费时间：6769.401423931122s
+learning rate = 0.0001861386
+Epoch/total_steps/alpha-beta: 25/20700/0.9-0.5 {&#39;G_GAN&#39;: 6.59188175201416, &#39;G_L1&#39;: 12.194856643676758, &#39;D&#39;: 0.17777158319950104, &#39;F&#39;: 0.001265777857042849}
+Epoch/total_steps/alpha-beta: 25/20800/0.9-0.5 {&#39;G_GAN&#39;: 7.380364894866943, &#39;G_L1&#39;: 41.269649505615234, &#39;D&#39;: 0.06011714041233063, &#39;F&#39;: 0.003191971918568015}
+Epoch/total_steps/alpha-beta: 25/20900/0.9-0.5 {&#39;G_GAN&#39;: 6.670109748840332, &#39;G_L1&#39;: 47.01636505126953, &#39;D&#39;: 0.4206867218017578, &#39;F&#39;: 0.007429394405335188}
+Epoch/total_steps/alpha-beta: 25/21000/0.9-0.5 {&#39;G_GAN&#39;: 6.990577697753906, &#39;G_L1&#39;: 22.87676239013672, &#39;D&#39;: 0.14858409762382507, &#39;F&#39;: 0.005694723222404718}
+Epoch/total_steps/alpha-beta: 25/21100/0.9-0.5 {&#39;G_GAN&#39;: 8.235091209411621, &#39;G_L1&#39;: 30.224491119384766, &#39;D&#39;: 0.01709597185254097, &#39;F&#39;: 0.003555470611900091}
+Epoch/total_steps/alpha-beta: 25/21200/0.9-0.5 {&#39;G_GAN&#39;: 8.197136878967285, &#39;G_L1&#39;: 13.231554985046387, &#39;D&#39;: 0.04343771934509277, &#39;F&#39;: 0.022607967257499695}
+Epoch/total_steps/alpha-beta: 25/21300/0.9-0.5 {&#39;G_GAN&#39;: 8.608126640319824, &#39;G_L1&#39;: 18.71723747253418, &#39;D&#39;: 0.037106696516275406, &#39;F&#39;: 0.00142719317227602}
+Epoch/total_steps/alpha-beta: 25/21400/0.9-0.5 {&#39;G_GAN&#39;: 6.097785949707031, &#39;G_L1&#39;: 17.24883270263672, &#39;D&#39;: 0.36889415979385376, &#39;F&#39;: 0.004510874859988689}
+Epoch/total_steps/alpha-beta: 25/21500/0.9-0.5 {&#39;G_GAN&#39;: 7.610466003417969, &#39;G_L1&#39;: 32.61397933959961, &#39;D&#39;: 0.03915176913142204, &#39;F&#39;: 0.002775519620627165}
+保存模型 Epoch 25, iters 21502 在 D:\BaiduNetdiskWorkspace\result\CSA-512-0.5-0.9
+Epoch/Epochs 25/499 花费时间：6765.979492664337s
+learning rate = 0.0001841584
+Epoch/total_steps/alpha-beta: 26/21600/0.9-0.5 {&#39;G_GAN&#39;: 8.451667785644531, &#39;G_L1&#39;: 23.48810386657715, &#39;D&#39;: 0.05807744339108467, &#39;F&#39;: 0.0023031369782984257}
+Epoch/total_steps/alpha-beta: 26/21700/0.9-0.5 {&#39;G_GAN&#39;: 7.384877681732178, &#39;G_L1&#39;: 45.8265495300293, &#39;D&#39;: 0.05199006199836731, &#39;F&#39;: 0.0021049869246780872}
+Epoch/total_steps/alpha-beta: 26/21800/0.9-0.5 {&#39;G_GAN&#39;: 7.460213661193848, &#39;G_L1&#39;: 20.57246208190918, &#39;D&#39;: 0.05455111712217331, &#39;F&#39;: 0.00521370954811573}
+Epoch/total_steps/alpha-beta: 26/21900/0.9-0.5 {&#39;G_GAN&#39;: 7.06008768081665, &#39;G_L1&#39;: 29.037269592285156, &#39;D&#39;: 0.32226577401161194, &#39;F&#39;: 0.0029446263797581196}
+Epoch/total_steps/alpha-beta: 26/22000/0.9-0.5 {&#39;G_GAN&#39;: 7.345628261566162, &#39;G_L1&#39;: 34.71586227416992, &#39;D&#39;: 0.07459389418363571, &#39;F&#39;: 0.002741139382123947}
+Epoch/total_steps/alpha-beta: 26/22100/0.9-0.5 {&#39;G_GAN&#39;: 7.6773576736450195, &#39;G_L1&#39;: 44.47035217285156, &#39;D&#39;: 0.041171178221702576, &#39;F&#39;: 0.0021312932949513197}
+Epoch/total_steps/alpha-beta: 26/22200/0.9-0.5 {&#39;G_GAN&#39;: 7.803988456726074, &#39;G_L1&#39;: 38.667972564697266, &#39;D&#39;: 0.034471698105335236, &#39;F&#39;: 0.002779010683298111}
+Epoch/total_steps/alpha-beta: 26/22300/0.9-0.5 {&#39;G_GAN&#39;: 8.273411750793457, &#39;G_L1&#39;: 23.34932518005371, &#39;D&#39;: 0.04939376562833786, &#39;F&#39;: 0.0016123494133353233}
+保存模型 Epoch 26, iters 22329 在 D:\BaiduNetdiskWorkspace\result\CSA-512-0.5-0.9
+Epoch/Epochs 26/499 花费时间：6765.113813877106s
+learning rate = 0.0001821782
+Epoch/total_steps/alpha-beta: 27/22400/0.9-0.5 {&#39;G_GAN&#39;: 5.6739702224731445, &#39;G_L1&#39;: 26.269128799438477, &#39;D&#39;: 0.609128475189209, &#39;F&#39;: 0.0017013032920658588}
+Epoch/total_steps/alpha-beta: 27/22500/0.9-0.5 {&#39;G_GAN&#39;: 7.482792854309082, &#39;G_L1&#39;: 29.397064208984375, &#39;D&#39;: 0.029145553708076477, &#39;F&#39;: 0.005640833638608456}
+Epoch/total_steps/alpha-beta: 27/22600/0.9-0.5 {&#39;G_GAN&#39;: 7.196035861968994, &#39;G_L1&#39;: 32.547576904296875, &#39;D&#39;: 0.12214761227369308, &#39;F&#39;: 0.002540991874411702}
+Epoch/total_steps/alpha-beta: 27/22700/0.9-0.5 {&#39;G_GAN&#39;: 7.0617523193359375, &#39;G_L1&#39;: 28.24578857421875, &#39;D&#39;: 0.1052730530500412, &#39;F&#39;: 0.0030142783652991056}
+Epoch/total_steps/alpha-beta: 27/22800/0.9-0.5 {&#39;G_GAN&#39;: 8.413466453552246, &#39;G_L1&#39;: 21.909757614135742, &#39;D&#39;: 0.04524590075016022, &#39;F&#39;: 0.002099720062687993}
+Epoch/total_steps/alpha-beta: 27/22900/0.9-0.5 {&#39;G_GAN&#39;: 5.481387138366699, &#39;G_L1&#39;: 13.929411888122559, &#39;D&#39;: 0.7303512096405029, &#39;F&#39;: 0.002637780737131834}
+Epoch/total_steps/alpha-beta: 27/23000/0.9-0.5 {&#39;G_GAN&#39;: 7.318869590759277, &#39;G_L1&#39;: 29.746585845947266, &#39;D&#39;: 0.0711638331413269, &#39;F&#39;: 0.003856128081679344}
+Epoch/total_steps/alpha-beta: 27/23100/0.9-0.5 {&#39;G_GAN&#39;: 8.033937454223633, &#39;G_L1&#39;: 32.497802734375, &#39;D&#39;: 0.020233962684869766, &#39;F&#39;: 0.002528985496610403}
+保存模型 Epoch 27, iters 23156 在 D:\BaiduNetdiskWorkspace\result\CSA-512-0.5-0.9
+Epoch/Epochs 27/499 花费时间：6773.489539861679s
+learning rate = 0.000180198
+Epoch/total_steps/alpha-beta: 28/23200/0.9-0.5 {&#39;G_GAN&#39;: 8.297750473022461, &#39;G_L1&#39;: 52.88398742675781, &#39;D&#39;: 0.02544316276907921, &#39;F&#39;: 0.0036003352142870426}
+Epoch/total_steps/alpha-beta: 28/23300/0.9-0.5 {&#39;G_GAN&#39;: 8.337584495544434, &#39;G_L1&#39;: 42.85406494140625, &#39;D&#39;: 0.021234728395938873, &#39;F&#39;: 0.0015833580400794744}
+Epoch/total_steps/alpha-beta: 28/23400/0.9-0.5 {&#39;G_GAN&#39;: 7.560100555419922, &#39;G_L1&#39;: 54.4736328125, &#39;D&#39;: 0.061176106333732605, &#39;F&#39;: 0.0029383753426373005}
+Epoch/total_steps/alpha-beta: 28/23500/0.9-0.5 {&#39;G_GAN&#39;: 7.744263648986816, &#39;G_L1&#39;: 19.681682586669922, &#39;D&#39;: 0.026990965008735657, &#39;F&#39;: 0.014088844880461693}
+Epoch/total_steps/alpha-beta: 28/23600/0.9-0.5 {&#39;G_GAN&#39;: 7.112642288208008, &#39;G_L1&#39;: 25.398853302001953, &#39;D&#39;: 0.09806635975837708, &#39;F&#39;: 0.00863985437899828}
+Epoch/total_steps/alpha-beta: 28/23700/0.9-0.5 {&#39;G_GAN&#39;: 8.976161003112793, &#39;G_L1&#39;: 20.30777359008789, &#39;D&#39;: 0.09782825410366058, &#39;F&#39;: 0.001353355823084712}
+Epoch/total_steps/alpha-beta: 28/23800/0.9-0.5 {&#39;G_GAN&#39;: 7.875063419342041, &#39;G_L1&#39;: 70.25277709960938, &#39;D&#39;: 0.029719557613134384, &#39;F&#39;: 0.0052916728891432285}
+Epoch/total_steps/alpha-beta: 28/23900/0.9-0.5 {&#39;G_GAN&#39;: 8.362138748168945, &#39;G_L1&#39;: 23.614444732666016, &#39;D&#39;: 0.033390261232852936, &#39;F&#39;: 0.0020141047425568104}
+保存模型 Epoch 28, iters 23983 在 D:\BaiduNetdiskWorkspace\result\CSA-512-0.5-0.9
+Epoch/Epochs 28/499 花费时间：6765.273316860199s
+learning rate = 0.0001782178
+Epoch/total_steps/alpha-beta: 29/24000/0.9-0.5 {&#39;G_GAN&#39;: 8.138509750366211, &#39;G_L1&#39;: 62.47996520996094, &#39;D&#39;: 0.03158126771450043, &#39;F&#39;: 0.001985624898225069}
+Epoch/total_steps/alpha-beta: 29/24100/0.9-0.5 {&#39;G_GAN&#39;: 7.061115264892578, &#39;G_L1&#39;: 39.59502410888672, &#39;D&#39;: 0.13542401790618896, &#39;F&#39;: 0.0013383218320086598}
+Epoch/total_steps/alpha-beta: 29/24200/0.9-0.5 {&#39;G_GAN&#39;: 7.608036041259766, &#39;G_L1&#39;: 25.372638702392578, &#39;D&#39;: 0.041465528309345245, &#39;F&#39;: 0.0019728313200175762}
+Epoch/total_steps/alpha-beta: 29/24300/0.9-0.5 {&#39;G_GAN&#39;: 6.237184524536133, &#39;G_L1&#39;: 38.26776885986328, &#39;D&#39;: 0.41408225893974304, &#39;F&#39;: 0.0022783027961850166}
+Epoch/total_steps/alpha-beta: 29/24400/0.9-0.5 {&#39;G_GAN&#39;: 9.126633644104004, &#39;G_L1&#39;: 43.97465133666992, &#39;D&#39;: 0.12847058475017548, &#39;F&#39;: 0.002885232213884592}
+Epoch/total_steps/alpha-beta: 29/24500/0.9-0.5 {&#39;G_GAN&#39;: 6.722497940063477, &#39;G_L1&#39;: 34.38404083251953, &#39;D&#39;: 0.17865979671478271, &#39;F&#39;: 0.002853809157386422}
+Epoch/total_steps/alpha-beta: 29/24600/0.9-0.5 {&#39;G_GAN&#39;: 7.126957893371582, &#39;G_L1&#39;: 35.93321990966797, &#39;D&#39;: 0.09181252121925354, &#39;F&#39;: 0.003144437214359641}
+Epoch/total_steps/alpha-beta: 29/24700/0.9-0.5 {&#39;G_GAN&#39;: 8.674348831176758, &#39;G_L1&#39;: 44.23182678222656, &#39;D&#39;: 0.27835214138031006, &#39;F&#39;: 0.003323719836771488}
+Epoch/total_steps/alpha-beta: 29/24800/0.9-0.5 {&#39;G_GAN&#39;: 6.78919792175293, &#39;G_L1&#39;: 28.33651351928711, &#39;D&#39;: 0.17102280259132385, &#39;F&#39;: 0.003682804759591818}
+保存模型 Epoch 29, iters 24810 在 D:\BaiduNetdiskWorkspace\result\CSA-512-0.5-0.9
+Epoch/Epochs 29/499 花费时间：6771.0659720897675s
+learning rate = 0.0001762376
+Epoch/total_steps/alpha-beta: 30/24900/0.9-0.5 {&#39;G_GAN&#39;: 6.825908660888672, &#39;G_L1&#39;: 34.62801742553711, &#39;D&#39;: 0.1411811113357544, &#39;F&#39;: 0.001970052719116211}
+Epoch/total_steps/alpha-beta: 30/25000/0.9-0.5 {&#39;G_GAN&#39;: 8.958829879760742, &#39;G_L1&#39;: 61.34583282470703, &#39;D&#39;: 0.12503162026405334, &#39;F&#39;: 0.0021760831587016582}
+Epoch/total_steps/alpha-beta: 30/25100/0.9-0.5 {&#39;G_GAN&#39;: 7.917686462402344, &#39;G_L1&#39;: 26.4981632232666, &#39;D&#39;: 0.013605018146336079, &#39;F&#39;: 0.0015446222387254238}
+Epoch/total_steps/alpha-beta: 30/25200/0.9-0.5 {&#39;G_GAN&#39;: 7.257119178771973, &#39;G_L1&#39;: 38.27092742919922, &#39;D&#39;: 0.06925707310438156, &#39;F&#39;: 0.00200551631860435}
+Epoch/total_steps/alpha-beta: 30/25300/0.9-0.5 {&#39;G_GAN&#39;: 7.913896083831787, &#39;G_L1&#39;: 19.19582176208496, &#39;D&#39;: 0.018573954701423645, &#39;F&#39;: 0.0025486922822892666}
+Epoch/total_steps/alpha-beta: 30/25400/0.9-0.5 {&#39;G_GAN&#39;: 6.044898509979248, &#39;G_L1&#39;: 44.8992805480957, &#39;D&#39;: 0.5062981843948364, &#39;F&#39;: 0.0033921804279088974}
+Epoch/total_steps/alpha-beta: 30/25500/0.9-0.5 {&#39;G_GAN&#39;: 7.127214431762695, &#39;G_L1&#39;: 35.139644622802734, &#39;D&#39;: 0.21401652693748474, &#39;F&#39;: 0.0011205484624952078}
+Epoch/total_steps/alpha-beta: 30/25600/0.9-0.5 {&#39;G_GAN&#39;: 7.225975036621094, &#39;G_L1&#39;: 40.868465423583984, &#39;D&#39;: 0.07378360629081726, &#39;F&#39;: 0.005037464201450348}
+保存模型 Epoch 30, iters 25637 在 D:\BaiduNetdiskWorkspace\result\CSA-512-0.5-0.9
+Epoch/Epochs 30/499 花费时间：6770.295544862747s
+learning rate = 0.0001742574
+Epoch/total_steps/alpha-beta: 31/25700/0.9-0.5 {&#39;G_GAN&#39;: 7.0793328285217285, &#39;G_L1&#39;: 37.99086380004883, &#39;D&#39;: 0.1046256422996521, &#39;F&#39;: 0.001161470776423812}
+Epoch/total_steps/alpha-beta: 31/25800/0.9-0.5 {&#39;G_GAN&#39;: 7.860636234283447, &#39;G_L1&#39;: 31.928205490112305, &#39;D&#39;: 0.01575201004743576, &#39;F&#39;: 0.009746739640831947}
+Epoch/total_steps/alpha-beta: 31/25900/0.9-0.5 {&#39;G_GAN&#39;: 7.3841094970703125, &#39;G_L1&#39;: 20.13387680053711, &#39;D&#39;: 0.05377154424786568, &#39;F&#39;: 0.002435461850836873}
+Epoch/total_steps/alpha-beta: 31/26000/0.9-0.5 {&#39;G_GAN&#39;: 6.834259986877441, &#39;G_L1&#39;: 65.89615631103516, &#39;D&#39;: 0.19988280534744263, &#39;F&#39;: 0.0012133651180192828}
+Epoch/total_steps/alpha-beta: 31/26100/0.9-0.5 {&#39;G_GAN&#39;: 6.623254299163818, &#39;G_L1&#39;: 24.908580780029297, &#39;D&#39;: 0.1850106418132782, &#39;F&#39;: 0.0034613453317433596}
+Epoch/total_steps/alpha-beta: 31/26200/0.9-0.5 {&#39;G_GAN&#39;: 6.4092020988464355, &#39;G_L1&#39;: 27.648990631103516, &#39;D&#39;: 0.2519826889038086, &#39;F&#39;: 0.00624117674306035}
+Epoch/total_steps/alpha-beta: 31/26300/0.9-0.5 {&#39;G_GAN&#39;: 6.564701080322266, &#39;G_L1&#39;: 32.55998611450195, &#39;D&#39;: 0.24952498078346252, &#39;F&#39;: 0.0033665806986391544}
+Epoch/total_steps/alpha-beta: 31/26400/0.9-0.5 {&#39;G_GAN&#39;: 6.015918731689453, &#39;G_L1&#39;: 30.183536529541016, &#39;D&#39;: 0.39034953713417053, &#39;F&#39;: 0.0025883601047098637}
+保存模型 Epoch 31, iters 26464 在 D:\BaiduNetdiskWorkspace\result\CSA-512-0.5-0.9
+Epoch/Epochs 31/499 花费时间：6768.334487915039s
+learning rate = 0.0001722772
+Epoch/total_steps/alpha-beta: 32/26500/0.9-0.5 {&#39;G_GAN&#39;: 8.40498161315918, &#39;G_L1&#39;: 23.582189559936523, &#39;D&#39;: 0.04159769415855408, &#39;F&#39;: 0.0023712958209216595}
+Epoch/total_steps/alpha-beta: 32/26600/0.9-0.5 {&#39;G_GAN&#39;: 7.898259162902832, &#39;G_L1&#39;: 32.61737060546875, &#39;D&#39;: 0.018945835530757904, &#39;F&#39;: 0.002275631297379732}
+Epoch/total_steps/alpha-beta: 32/26700/0.9-0.5 {&#39;G_GAN&#39;: 7.523112773895264, &#39;G_L1&#39;: 23.926300048828125, &#39;D&#39;: 0.06800813227891922, &#39;F&#39;: 0.0034434099216014147}
+Epoch/total_steps/alpha-beta: 32/26800/0.9-0.5 {&#39;G_GAN&#39;: 5.130762100219727, &#39;G_L1&#39;: 33.662288665771484, &#39;D&#39;: 1.233412742614746, &#39;F&#39;: 0.002148866653442383}
+Epoch/total_steps/alpha-beta: 32/26900/0.9-0.5 {&#39;G_GAN&#39;: 6.066115379333496, &#39;G_L1&#39;: 22.709672927856445, &#39;D&#39;: 0.5066252946853638, &#39;F&#39;: 0.0019663204438984394}
+Epoch/total_steps/alpha-beta: 32/27000/0.9-0.5 {&#39;G_GAN&#39;: 8.448875427246094, &#39;G_L1&#39;: 44.079654693603516, &#39;D&#39;: 0.027691323310136795, &#39;F&#39;: 0.0029191202484071255}
+Epoch/total_steps/alpha-beta: 32/27100/0.9-0.5 {&#39;G_GAN&#39;: 7.656261444091797, &#39;G_L1&#39;: 20.178001403808594, &#39;D&#39;: 0.02883358672261238, &#39;F&#39;: 0.002259376924484968}
+Epoch/total_steps/alpha-beta: 32/27200/0.9-0.5 {&#39;G_GAN&#39;: 8.353605270385742, &#39;G_L1&#39;: 68.07930755615234, &#39;D&#39;: 0.028753388673067093, &#39;F&#39;: 0.0022707025054842234}
+保存模型 Epoch 32, iters 27291 在 D:\BaiduNetdiskWorkspace\result\CSA-512-0.5-0.9
+Epoch/Epochs 32/499 花费时间：6763.033237218857s
+learning rate = 0.000170297
+Epoch/total_steps/alpha-beta: 33/27300/0.9-0.5 {&#39;G_GAN&#39;: 7.996091842651367, &#39;G_L1&#39;: 26.09173583984375, &#39;D&#39;: 0.019488081336021423, &#39;F&#39;: 0.004514683969318867}
+Epoch/total_steps/alpha-beta: 33/27400/0.9-0.5 {&#39;G_GAN&#39;: 9.12545394897461, &#39;G_L1&#39;: 22.892349243164062, &#39;D&#39;: 0.11748524010181427, &#39;F&#39;: 0.0013021875638514757}
+Epoch/total_steps/alpha-beta: 33/27500/0.9-0.5 {&#39;G_GAN&#39;: 6.1825056076049805, &#39;G_L1&#39;: 12.564706802368164, &#39;D&#39;: 0.33011043071746826, &#39;F&#39;: 0.002414555288851261}
+Epoch/total_steps/alpha-beta: 33/27600/0.9-0.5 {&#39;G_GAN&#39;: 8.932090759277344, &#39;G_L1&#39;: 55.73721694946289, &#39;D&#39;: 0.1268215924501419, &#39;F&#39;: 0.008505025878548622}
+Epoch/total_steps/alpha-beta: 33/27700/0.9-0.5 {&#39;G_GAN&#39;: 9.128802299499512, &#39;G_L1&#39;: 26.72850799560547, &#39;D&#39;: 0.1291467696428299, &#39;F&#39;: 0.0036761038936674595}
+Epoch/total_steps/alpha-beta: 33/27800/0.9-0.5 {&#39;G_GAN&#39;: 7.378269195556641, &#39;G_L1&#39;: 30.215532302856445, &#39;D&#39;: 0.04156672954559326, &#39;F&#39;: 0.0016449568793177605}
+Epoch/total_steps/alpha-beta: 33/27900/0.9-0.5 {&#39;G_GAN&#39;: 6.935635566711426, &#39;G_L1&#39;: 17.777353286743164, &#39;D&#39;: 0.14917348325252533, &#39;F&#39;: 0.004098752047866583}
+Epoch/total_steps/alpha-beta: 33/28000/0.9-0.5 {&#39;G_GAN&#39;: 6.945228099822998, &#39;G_L1&#39;: 30.676156997680664, &#39;D&#39;: 0.1506539285182953, &#39;F&#39;: 0.0017060181125998497}
+Epoch/total_steps/alpha-beta: 33/28100/0.9-0.5 {&#39;G_GAN&#39;: 7.610401153564453, &#39;G_L1&#39;: 15.932244300842285, &#39;D&#39;: 0.049408141523599625, &#39;F&#39;: 0.002865344751626253}
+保存模型 Epoch 33, iters 28118 在 D:\BaiduNetdiskWorkspace\result\CSA-512-0.5-0.9
+Epoch/Epochs 33/499 花费时间：6764.758624792099s
+learning rate = 0.0001683168
+Epoch/total_steps/alpha-beta: 34/28200/0.9-0.5 {&#39;G_GAN&#39;: 8.210803985595703, &#39;G_L1&#39;: 30.061477661132812, &#39;D&#39;: 0.03281664848327637, &#39;F&#39;: 0.0020527539309114218}
+Epoch/total_steps/alpha-beta: 34/28300/0.9-0.5 {&#39;G_GAN&#39;: 8.280672073364258, &#39;G_L1&#39;: 29.476362228393555, &#39;D&#39;: 0.02100718952715397, &#39;F&#39;: 0.0016560539370402694}
+Epoch/total_steps/alpha-beta: 34/28400/0.9-0.5 {&#39;G_GAN&#39;: 9.871755599975586, &#39;G_L1&#39;: 20.257600784301758, &#39;D&#39;: 0.30730366706848145, &#39;F&#39;: 0.0015044115716591477}
+Epoch/total_steps/alpha-beta: 34/28500/0.9-0.5 {&#39;G_GAN&#39;: 7.311694622039795, &#39;G_L1&#39;: 72.1871566772461, &#39;D&#39;: 0.11744903773069382, &#39;F&#39;: 0.005152082070708275}
+Epoch/total_steps/alpha-beta: 34/28600/0.9-0.5 {&#39;G_GAN&#39;: 7.761594772338867, &#39;G_L1&#39;: 27.08198356628418, &#39;D&#39;: 0.015462281182408333, &#39;F&#39;: 0.0016500186175107956}
+Epoch/total_steps/alpha-beta: 34/28700/0.9-0.5 {&#39;G_GAN&#39;: 7.550940036773682, &#39;G_L1&#39;: 73.19200897216797, &#39;D&#39;: 0.06839192658662796, &#39;F&#39;: 0.0023658552672713995}
+Epoch/total_steps/alpha-beta: 34/28800/0.9-0.5 {&#39;G_GAN&#39;: 7.96760368347168, &#39;G_L1&#39;: 23.555049896240234, &#39;D&#39;: 0.021693918853998184, &#39;F&#39;: 0.0016347795026376843}
+Epoch/total_steps/alpha-beta: 34/28900/0.9-0.5 {&#39;G_GAN&#39;: 7.355356693267822, &#39;G_L1&#39;: 43.92864227294922, &#39;D&#39;: 0.09152796864509583, &#39;F&#39;: 0.002596078207716346}
+保存模型 Epoch 34, iters 28945 在 D:\BaiduNetdiskWorkspace\result\CSA-512-0.5-0.9
+Epoch/Epochs 34/499 花费时间：6780.795922040939s
+learning rate = 0.0001663366
+Epoch/total_steps/alpha-beta: 35/29000/0.9-0.5 {&#39;G_GAN&#39;: 7.760156154632568, &#39;G_L1&#39;: 68.84896850585938, &#39;D&#39;: 0.04661938548088074, &#39;F&#39;: 0.005649080965667963}
+Epoch/total_steps/alpha-beta: 35/29100/0.9-0.5 {&#39;G_GAN&#39;: 7.8718061447143555, &#39;G_L1&#39;: 51.839637756347656, &#39;D&#39;: 0.02482820674777031, &#39;F&#39;: 0.0016171288443729281}
+Epoch/total_steps/alpha-beta: 35/29200/0.9-0.5 {&#39;G_GAN&#39;: 8.115022659301758, &#39;G_L1&#39;: 20.41702651977539, &#39;D&#39;: 0.010897669941186905, &#39;F&#39;: 0.008306257426738739}
+Epoch/total_steps/alpha-beta: 35/29300/0.9-0.5 {&#39;G_GAN&#39;: 8.06062126159668, &#39;G_L1&#39;: 49.348121643066406, &#39;D&#39;: 0.018917225301265717, &#39;F&#39;: 0.0019317921251058578}
+Epoch/total_steps/alpha-beta: 35/29400/0.9-0.5 {&#39;G_GAN&#39;: 8.253175735473633, &#39;G_L1&#39;: 21.7800350189209, &#39;D&#39;: 0.024169690907001495, &#39;F&#39;: 0.0028949836269021034}
+Epoch/total_steps/alpha-beta: 35/29500/0.9-0.5 {&#39;G_GAN&#39;: 8.105348587036133, &#39;G_L1&#39;: 39.226524353027344, &#39;D&#39;: 0.02018502540886402, &#39;F&#39;: 0.001995664555579424}
+Epoch/total_steps/alpha-beta: 35/29600/0.9-0.5 {&#39;G_GAN&#39;: 6.579477310180664, &#39;G_L1&#39;: 48.03616714477539, &#39;D&#39;: 0.33202624320983887, &#39;F&#39;: 0.0022719951812177896}
+Epoch/total_steps/alpha-beta: 35/29700/0.9-0.5 {&#39;G_GAN&#39;: 6.865046501159668, &#39;G_L1&#39;: 32.622642517089844, &#39;D&#39;: 0.22411614656448364, &#39;F&#39;: 0.0035151757765561342}
+保存模型 Epoch 35, iters 29772 在 D:\BaiduNetdiskWorkspace\result\CSA-512-0.5-0.9
+Epoch/Epochs 35/499 花费时间：6800.22031211853s
+learning rate = 0.0001643564
+Epoch/total_steps/alpha-beta: 36/29800/0.9-0.5 {&#39;G_GAN&#39;: 6.555212497711182, &#39;G_L1&#39;: 13.534551620483398, &#39;D&#39;: 0.2125656008720398, &#39;F&#39;: 0.0010700144339352846}
+Epoch/total_steps/alpha-beta: 36/29900/0.9-0.5 {&#39;G_GAN&#39;: 6.617974281311035, &#39;G_L1&#39;: 33.00921630859375, &#39;D&#39;: 0.2219388484954834, &#39;F&#39;: 0.0013130160514265299}
+Epoch/total_steps/alpha-beta: 36/30000/0.9-0.5 {&#39;G_GAN&#39;: 9.587106704711914, &#39;G_L1&#39;: 20.102581024169922, &#39;D&#39;: 0.2191236913204193, &#39;F&#39;: 0.0015024455497041345}
+Epoch/total_steps/alpha-beta: 36/30100/0.9-0.5 {&#39;G_GAN&#39;: 8.326995849609375, &#39;G_L1&#39;: 21.414106369018555, &#39;D&#39;: 0.01895647495985031, &#39;F&#39;: 0.0022927895188331604}
+Epoch/total_steps/alpha-beta: 36/30200/0.9-0.5 {&#39;G_GAN&#39;: 7.693169116973877, &#39;G_L1&#39;: 30.91021156311035, &#39;D&#39;: 0.021765854209661484, &#39;F&#39;: 0.0026486411225050688}
+Epoch/total_steps/alpha-beta: 36/30300/0.9-0.5 {&#39;G_GAN&#39;: 8.339655876159668, &#39;G_L1&#39;: 78.16806030273438, &#39;D&#39;: 0.19610266387462616, &#39;F&#39;: 0.0017256024293601513}
+Epoch/total_steps/alpha-beta: 36/30400/0.9-0.5 {&#39;G_GAN&#39;: 7.370501518249512, &#39;G_L1&#39;: 32.65719985961914, &#39;D&#39;: 0.06012985110282898, &#39;F&#39;: 0.00997251644730568}
+Epoch/total_steps/alpha-beta: 36/30500/0.9-0.5 {&#39;G_GAN&#39;: 6.6423187255859375, &#39;G_L1&#39;: 14.219747543334961, &#39;D&#39;: 0.21196088194847107, &#39;F&#39;: 0.0012729144655168056}
+保存模型 Epoch 36, iters 30599 在 D:\BaiduNetdiskWorkspace\result\CSA-512-0.5-0.9
+Epoch/Epochs 36/499 花费时间：6802.874406576157s
+learning rate = 0.0001623762
+Epoch/total_steps/alpha-beta: 37/30600/0.9-0.5 {&#39;G_GAN&#39;: 8.232429504394531, &#39;G_L1&#39;: 22.45737648010254, &#39;D&#39;: 0.018834274262189865, &#39;F&#39;: 0.0009361352422274649}
+Epoch/total_steps/alpha-beta: 37/30700/0.9-0.5 {&#39;G_GAN&#39;: 7.546594619750977, &#39;G_L1&#39;: 34.257747650146484, &#39;D&#39;: 0.041607487946748734, &#39;F&#39;: 0.0047887833788990974}
+Epoch/total_steps/alpha-beta: 37/30800/0.9-0.5 {&#39;G_GAN&#39;: 8.838293075561523, &#39;G_L1&#39;: 34.878013610839844, &#39;D&#39;: 0.08862319588661194, &#39;F&#39;: 0.0017759384354576468}
+Epoch/total_steps/alpha-beta: 37/30900/0.9-0.5 {&#39;G_GAN&#39;: 5.501800060272217, &#39;G_L1&#39;: 11.010954856872559, &#39;D&#39;: 0.759513795375824, &#39;F&#39;: 0.0052440715953707695}
+Epoch/total_steps/alpha-beta: 37/31000/0.9-0.5 {&#39;G_GAN&#39;: 7.020544528961182, &#39;G_L1&#39;: 39.732421875, &#39;D&#39;: 0.14410626888275146, &#39;F&#39;: 0.006577975116670132}
+Epoch/total_steps/alpha-beta: 37/31100/0.9-0.5 {&#39;G_GAN&#39;: 8.250043869018555, &#39;G_L1&#39;: 38.620853424072266, &#39;D&#39;: 0.012640831060707569, &#39;F&#39;: 0.003057667054235935}
+Epoch/total_steps/alpha-beta: 37/31200/0.9-0.5 {&#39;G_GAN&#39;: 6.479883670806885, &#39;G_L1&#39;: 23.08650016784668, &#39;D&#39;: 0.2506035268306732, &#39;F&#39;: 0.0015525554772466421}
+Epoch/total_steps/alpha-beta: 37/31300/0.9-0.5 {&#39;G_GAN&#39;: 8.364545822143555, &#39;G_L1&#39;: 38.659786224365234, &#39;D&#39;: 0.023721307516098022, &#39;F&#39;: 0.0020904105622321367}
+Epoch/total_steps/alpha-beta: 37/31400/0.9-0.5 {&#39;G_GAN&#39;: 6.378159523010254, &#39;G_L1&#39;: 21.037376403808594, &#39;D&#39;: 0.400871217250824, &#39;F&#39;: 0.013381332159042358}
+保存模型 Epoch 37, iters 31426 在 D:\BaiduNetdiskWorkspace\result\CSA-512-0.5-0.9
+Epoch/Epochs 37/499 花费时间：6803.1758580207825s
+learning rate = 0.000160396
+Epoch/total_steps/alpha-beta: 38/31500/0.9-0.5 {&#39;G_GAN&#39;: 7.405961513519287, &#39;G_L1&#39;: 26.68047332763672, &#39;D&#39;: 0.043665751814842224, &#39;F&#39;: 0.0026935026980936527}
+Epoch/total_steps/alpha-beta: 38/31600/0.9-0.5 {&#39;G_GAN&#39;: 8.504351615905762, &#39;G_L1&#39;: 37.094486236572266, &#39;D&#39;: 0.03697576746344566, &#39;F&#39;: 0.00981795135885477}
+Epoch/total_steps/alpha-beta: 38/31700/0.9-0.5 {&#39;G_GAN&#39;: 7.617918968200684, &#39;G_L1&#39;: 50.510902404785156, &#39;D&#39;: 0.046402931213378906, &#39;F&#39;: 0.0015179812908172607}
+Epoch/total_steps/alpha-beta: 38/31800/0.9-0.5 {&#39;G_GAN&#39;: 6.445013999938965, &#39;G_L1&#39;: 39.17274475097656, &#39;D&#39;: 0.27759718894958496, &#39;F&#39;: 0.005148187279701233}
+Epoch/total_steps/alpha-beta: 38/31900/0.9-0.5 {&#39;G_GAN&#39;: 7.283418655395508, &#39;G_L1&#39;: 16.699737548828125, &#39;D&#39;: 0.06362386047840118, &#39;F&#39;: 0.00364261819049716}
+Epoch/total_steps/alpha-beta: 38/32000/0.9-0.5 {&#39;G_GAN&#39;: 8.378015518188477, &#39;G_L1&#39;: 36.072784423828125, &#39;D&#39;: 0.027212275192141533, &#39;F&#39;: 0.0017251785611733794}
+Epoch/total_steps/alpha-beta: 38/32100/0.9-0.5 {&#39;G_GAN&#39;: 8.030309677124023, &#39;G_L1&#39;: 75.05158996582031, &#39;D&#39;: 0.01370948739349842, &#39;F&#39;: 0.0026639492716640234}
+Epoch/total_steps/alpha-beta: 38/32200/0.9-0.5 {&#39;G_GAN&#39;: 9.157533645629883, &#39;G_L1&#39;: 24.339656829833984, &#39;D&#39;: 0.14618557691574097, &#39;F&#39;: 0.0019315665122121572}
+保存模型 Epoch 38, iters 32253 在 D:\BaiduNetdiskWorkspace\result\CSA-512-0.5-0.9
+Epoch/Epochs 38/499 花费时间：6803.686592340469s
+learning rate = 0.0001584158
+Epoch/total_steps/alpha-beta: 39/32300/0.9-0.5 {&#39;G_GAN&#39;: 9.492426872253418, &#39;G_L1&#39;: 54.710208892822266, &#39;D&#39;: 0.20924490690231323, &#39;F&#39;: 0.0017328570829704404}
+Epoch/total_steps/alpha-beta: 39/32400/0.9-0.5 {&#39;G_GAN&#39;: 8.059385299682617, &#39;G_L1&#39;: 34.6679801940918, &#39;D&#39;: 0.043235473334789276, &#39;F&#39;: 0.0017770326230674982}
+Epoch/total_steps/alpha-beta: 39/32500/0.9-0.5 {&#39;G_GAN&#39;: 7.425334930419922, &#39;G_L1&#39;: 15.107912063598633, &#39;D&#39;: 0.03834258392453194, &#39;F&#39;: 0.008250434882938862}
+Epoch/total_steps/alpha-beta: 39/32600/0.9-0.5 {&#39;G_GAN&#39;: 7.360328197479248, &#39;G_L1&#39;: 50.19729232788086, &#39;D&#39;: 0.060482583940029144, &#39;F&#39;: 0.0025159302167594433}
+Epoch/total_steps/alpha-beta: 39/32700/0.9-0.5 {&#39;G_GAN&#39;: 6.8858642578125, &#39;G_L1&#39;: 15.552982330322266, &#39;D&#39;: 0.13098575174808502, &#39;F&#39;: 0.004032892640680075}
+Epoch/total_steps/alpha-beta: 39/32800/0.9-0.5 {&#39;G_GAN&#39;: 7.892518520355225, &#39;G_L1&#39;: 20.275068283081055, &#39;D&#39;: 0.017535407096147537, &#39;F&#39;: 0.002149438951164484}
+Epoch/total_steps/alpha-beta: 39/32900/0.9-0.5 {&#39;G_GAN&#39;: 8.327486038208008, &#39;G_L1&#39;: 30.6707820892334, &#39;D&#39;: 0.016491686925292015, &#39;F&#39;: 0.00291554257273674}
+Epoch/total_steps/alpha-beta: 39/33000/0.9-0.5 {&#39;G_GAN&#39;: 8.898174285888672, &#39;G_L1&#39;: 20.051578521728516, &#39;D&#39;: 0.08058588206768036, &#39;F&#39;: 0.0027126390486955643}
+保存模型 Epoch 39, iters 33080 在 D:\BaiduNetdiskWorkspace\result\CSA-512-0.5-0.9
+Epoch/Epochs 39/499 花费时间：6774.6631553173065s
+learning rate = 0.0001564356
+Epoch/total_steps/alpha-beta: 40/33100/0.9-0.5 {&#39;G_GAN&#39;: 8.54172420501709, &#39;G_L1&#39;: 36.547576904296875, &#39;D&#39;: 0.03625750541687012, &#39;F&#39;: 0.005982621572911739}
+Epoch/total_steps/alpha-beta: 40/33200/0.9-0.5 {&#39;G_GAN&#39;: 7.956376552581787, &#39;G_L1&#39;: 29.736509323120117, &#39;D&#39;: 0.2014816403388977, &#39;F&#39;: 0.0033231223933398724}
+Epoch/total_steps/alpha-beta: 40/33300/0.9-0.5 {&#39;G_GAN&#39;: 7.237751483917236, &#39;G_L1&#39;: 32.1040153503418, &#39;D&#39;: 0.08729031682014465, &#39;F&#39;: 0.0020110777113586664}
+Epoch/total_steps/alpha-beta: 40/33400/0.9-0.5 {&#39;G_GAN&#39;: 7.817587852478027, &#39;G_L1&#39;: 30.51276206970215, &#39;D&#39;: 0.031005866825580597, &#39;F&#39;: 0.0010982078965753317}
+Epoch/total_steps/alpha-beta: 40/33500/0.9-0.5 {&#39;G_GAN&#39;: 8.181768417358398, &#39;G_L1&#39;: 35.63596725463867, &#39;D&#39;: 0.021032370626926422, &#39;F&#39;: 0.003277533920481801}
+Epoch/total_steps/alpha-beta: 40/33600/0.9-0.5 {&#39;G_GAN&#39;: 8.564386367797852, &#39;G_L1&#39;: 17.6267032623291, &#39;D&#39;: 0.05307044833898544, &#39;F&#39;: 0.0010775038972496986}
+Epoch/total_steps/alpha-beta: 40/33700/0.9-0.5 {&#39;G_GAN&#39;: 7.230051040649414, &#39;G_L1&#39;: 16.285043716430664, &#39;D&#39;: 0.06309369206428528, &#39;F&#39;: 0.0030779631342738867}
+Epoch/total_steps/alpha-beta: 40/33800/0.9-0.5 {&#39;G_GAN&#39;: 7.106054782867432, &#39;G_L1&#39;: 17.025257110595703, &#39;D&#39;: 0.09066490828990936, &#39;F&#39;: 0.0011693532578647137}
+Epoch/total_steps/alpha-beta: 40/33900/0.9-0.5 {&#39;G_GAN&#39;: 7.492405414581299, &#39;G_L1&#39;: 26.71455192565918, &#39;D&#39;: 0.044394783675670624, &#39;F&#39;: 0.004576936364173889}
+保存模型 Epoch 40, iters 33907 在 D:\BaiduNetdiskWorkspace\result\CSA-512-0.5-0.9
+Epoch/Epochs 40/499 花费时间：6766.88841676712s
+learning rate = 0.0001544554
+Epoch/total_steps/alpha-beta: 41/34000/0.9-0.5 {&#39;G_GAN&#39;: 7.5575079917907715, &#39;G_L1&#39;: 34.59932327270508, &#39;D&#39;: 0.025728914886713028, &#39;F&#39;: 0.0016484279185533524}
+Epoch/total_steps/alpha-beta: 41/34100/0.9-0.5 {&#39;G_GAN&#39;: 8.80419921875, &#39;G_L1&#39;: 31.330251693725586, &#39;D&#39;: 0.06527435034513474, &#39;F&#39;: 0.0031488011591136456}
+Epoch/total_steps/alpha-beta: 41/34200/0.9-0.5 {&#39;G_GAN&#39;: 7.936069965362549, &#39;G_L1&#39;: 41.22774124145508, &#39;D&#39;: 0.019362516701221466, &#39;F&#39;: 0.011974357068538666}
+Epoch/total_steps/alpha-beta: 41/34300/0.9-0.5 {&#39;G_GAN&#39;: 7.774462699890137, &#39;G_L1&#39;: 21.850303649902344, &#39;D&#39;: 0.020601142197847366, &#39;F&#39;: 0.0021115776617079973}
+Epoch/total_steps/alpha-beta: 41/34400/0.9-0.5 {&#39;G_GAN&#39;: 6.771709442138672, &#39;G_L1&#39;: 25.300771713256836, &#39;D&#39;: 0.3089492917060852, &#39;F&#39;: 0.0025389837101101875}
+Epoch/total_steps/alpha-beta: 41/34500/0.9-0.5 {&#39;G_GAN&#39;: 6.979758262634277, &#39;G_L1&#39;: 31.98813247680664, &#39;D&#39;: 0.1621907353401184, &#39;F&#39;: 0.0030660468619316816}
+Epoch/total_steps/alpha-beta: 41/34600/0.9-0.5 {&#39;G_GAN&#39;: 7.993752956390381, &#39;G_L1&#39;: 28.05865478515625, &#39;D&#39;: 0.010815326124429703, &#39;F&#39;: 0.002152093220502138}
+Epoch/total_steps/alpha-beta: 41/34700/0.9-0.5 {&#39;G_GAN&#39;: 7.610927104949951, &#39;G_L1&#39;: 31.34148406982422, &#39;D&#39;: 0.02741163782775402, &#39;F&#39;: 0.003796825185418129}
+保存模型 Epoch 41, iters 34734 在 D:\BaiduNetdiskWorkspace\result\CSA-512-0.5-0.9
+Epoch/Epochs 41/499 花费时间：6777.761656999588s
+learning rate = 0.0001524752
+Epoch/total_steps/alpha-beta: 42/34800/0.9-0.5 {&#39;G_GAN&#39;: 7.92563533782959, &#39;G_L1&#39;: 26.99935531616211, &#39;D&#39;: 0.013322068378329277, &#39;F&#39;: 0.002327485242858529}
+Epoch/total_steps/alpha-beta: 42/34900/0.9-0.5 {&#39;G_GAN&#39;: 7.445284843444824, &#39;G_L1&#39;: 42.228572845458984, &#39;D&#39;: 0.05848283693194389, &#39;F&#39;: 0.002475334797054529}
+Epoch/total_steps/alpha-beta: 42/35000/0.9-0.5 {&#39;G_GAN&#39;: 8.139280319213867, &#39;G_L1&#39;: 21.975183486938477, &#39;D&#39;: 0.018851803615689278, &#39;F&#39;: 0.0014740980695933104}
+Epoch/total_steps/alpha-beta: 42/35100/0.9-0.5 {&#39;G_GAN&#39;: 7.389184474945068, &#39;G_L1&#39;: 30.320852279663086, &#39;D&#39;: 0.054219212383031845, &#39;F&#39;: 0.001073399093002081}
+Epoch/total_steps/alpha-beta: 42/35200/0.9-0.5 {&#39;G_GAN&#39;: 7.601536750793457, &#39;G_L1&#39;: 35.64316177368164, &#39;D&#39;: 0.02978358417749405, &#39;F&#39;: 0.0020192358642816544}
+Epoch/total_steps/alpha-beta: 42/35300/0.9-0.5 {&#39;G_GAN&#39;: 7.706495761871338, &#39;G_L1&#39;: 41.44792556762695, &#39;D&#39;: 0.02921457216143608, &#39;F&#39;: 0.0010945596732199192}
+Epoch/total_steps/alpha-beta: 42/35400/0.9-0.5 {&#39;G_GAN&#39;: 7.4727935791015625, &#39;G_L1&#39;: 41.25681686401367, &#39;D&#39;: 0.06246969476342201, &#39;F&#39;: 0.001373939448967576}
+Epoch/total_steps/alpha-beta: 42/35500/0.9-0.5 {&#39;G_GAN&#39;: 7.269736289978027, &#39;G_L1&#39;: 30.383556365966797, &#39;D&#39;: 0.21247920393943787, &#39;F&#39;: 0.003497441066429019}
+保存模型 Epoch 42, iters 35561 在 D:\BaiduNetdiskWorkspace\result\CSA-512-0.5-0.9
+Epoch/Epochs 42/499 花费时间：6772.41015124321s
+learning rate = 0.000150495
+Epoch/total_steps/alpha-beta: 43/35600/0.9-0.5 {&#39;G_GAN&#39;: 6.962624549865723, &#39;G_L1&#39;: 14.039623260498047, &#39;D&#39;: 0.09932421147823334, &#39;F&#39;: 0.0034856984857469797}
+Epoch/total_steps/alpha-beta: 43/35700/0.9-0.5 {&#39;G_GAN&#39;: 7.97047233581543, &#39;G_L1&#39;: 37.8774299621582, &#39;D&#39;: 0.017217060551047325, &#39;F&#39;: 0.003769157687202096}
+Epoch/total_steps/alpha-beta: 43/35800/0.9-0.5 {&#39;G_GAN&#39;: 7.5706892013549805, &#39;G_L1&#39;: 84.506591796875, &#39;D&#39;: 0.04031011089682579, &#39;F&#39;: 0.002739726798608899}
+Epoch/total_steps/alpha-beta: 43/35900/0.9-0.5 {&#39;G_GAN&#39;: 8.449518203735352, &#39;G_L1&#39;: 35.889923095703125, &#39;D&#39;: 0.048033662140369415, &#39;F&#39;: 0.002387130167335272}
+Epoch/total_steps/alpha-beta: 43/36000/0.9-0.5 {&#39;G_GAN&#39;: 5.537579536437988, &#39;G_L1&#39;: 46.098785400390625, &#39;D&#39;: 0.6968342065811157, &#39;F&#39;: 0.0016230647452175617}
+Epoch/total_steps/alpha-beta: 43/36100/0.9-0.5 {&#39;G_GAN&#39;: 7.342740535736084, &#39;G_L1&#39;: 44.25940704345703, &#39;D&#39;: 0.05462808907032013, &#39;F&#39;: 0.0034877110738307238}
+Epoch/total_steps/alpha-beta: 43/36200/0.9-0.5 {&#39;G_GAN&#39;: 7.727047920227051, &#39;G_L1&#39;: 30.1120662689209, &#39;D&#39;: 0.03223027288913727, &#39;F&#39;: 0.010562221519649029}
+Epoch/total_steps/alpha-beta: 43/36300/0.9-0.5 {&#39;G_GAN&#39;: 6.761722564697266, &#39;G_L1&#39;: 29.010814666748047, &#39;D&#39;: 0.17236143350601196, &#39;F&#39;: 0.0018374202772974968}
+保存模型 Epoch 43, iters 36388 在 D:\BaiduNetdiskWorkspace\result\CSA-512-0.5-0.9
+Epoch/Epochs 43/499 花费时间：6766.498400688171s
+learning rate = 0.0001485149
+Epoch/total_steps/alpha-beta: 44/36400/0.9-0.5 {&#39;G_GAN&#39;: 8.10251235961914, &#39;G_L1&#39;: 91.68453216552734, &#39;D&#39;: 0.02037900872528553, &#39;F&#39;: 0.0021262895315885544}
+Epoch/total_steps/alpha-beta: 44/36500/0.9-0.5 {&#39;G_GAN&#39;: 7.297356605529785, &#39;G_L1&#39;: 33.0409049987793, &#39;D&#39;: 0.053377386182546616, &#39;F&#39;: 0.0027579455636441708}
+Epoch/total_steps/alpha-beta: 44/36600/0.9-0.5 {&#39;G_GAN&#39;: 8.444684028625488, &#39;G_L1&#39;: 29.9625244140625, &#39;D&#39;: 0.03797198832035065, &#39;F&#39;: 0.0016435796860605478}
+Epoch/total_steps/alpha-beta: 44/36700/0.9-0.5 {&#39;G_GAN&#39;: 8.915096282958984, &#39;G_L1&#39;: 33.581703186035156, &#39;D&#39;: 0.12129846215248108, &#39;F&#39;: 0.004349887371063232}
+Epoch/total_steps/alpha-beta: 44/36800/0.9-0.5 {&#39;G_GAN&#39;: 8.267925262451172, &#39;G_L1&#39;: 19.181407928466797, &#39;D&#39;: 0.018777012825012207, &#39;F&#39;: 0.0025836401619017124}
+Epoch/total_steps/alpha-beta: 44/36900/0.9-0.5 {&#39;G_GAN&#39;: 8.563000679016113, &#39;G_L1&#39;: 37.62660598754883, &#39;D&#39;: 0.07919717580080032, &#39;F&#39;: 0.0017489908495917916}
+Epoch/total_steps/alpha-beta: 44/37000/0.9-0.5 {&#39;G_GAN&#39;: 7.128453254699707, &#39;G_L1&#39;: 32.902442932128906, &#39;D&#39;: 0.0944153368473053, &#39;F&#39;: 0.0018781274557113647}
+Epoch/total_steps/alpha-beta: 44/37100/0.9-0.5 {&#39;G_GAN&#39;: 6.700021743774414, &#39;G_L1&#39;: 32.79508972167969, &#39;D&#39;: 0.19405163824558258, &#39;F&#39;: 0.0018326928839087486}
+Epoch/total_steps/alpha-beta: 44/37200/0.9-0.5 {&#39;G_GAN&#39;: 8.494832992553711, &#39;G_L1&#39;: 25.633577346801758, &#39;D&#39;: 0.04328696429729462, &#39;F&#39;: 0.0036118589341640472}
+保存模型 Epoch 44, iters 37215 在 D:\BaiduNetdiskWorkspace\result\CSA-512-0.5-0.9
+Epoch/Epochs 44/499 花费时间：6768.404901027679s
+learning rate = 0.0001465347
+Epoch/total_steps/alpha-beta: 45/37300/0.9-0.5 {&#39;G_GAN&#39;: 8.111540794372559, &#39;G_L1&#39;: 20.17669105529785, &#39;D&#39;: 0.01642833836376667, &#39;F&#39;: 0.0011672339169308543}
+Epoch/total_steps/alpha-beta: 45/37400/0.9-0.5 {&#39;G_GAN&#39;: 7.955394744873047, &#39;G_L1&#39;: 51.40013122558594, &#39;D&#39;: 0.01324611809104681, &#39;F&#39;: 0.0019076501484960318}
+Epoch/total_steps/alpha-beta: 45/37500/0.9-0.5 {&#39;G_GAN&#39;: 7.842077255249023, &#39;G_L1&#39;: 39.718788146972656, &#39;D&#39;: 0.013379634357988834, &#39;F&#39;: 0.004792080260813236}
+Epoch/total_steps/alpha-beta: 45/37600/0.9-0.5 {&#39;G_GAN&#39;: 6.218676567077637, &#39;G_L1&#39;: 38.59297180175781, &#39;D&#39;: 0.3539467453956604, &#39;F&#39;: 0.0024017347022891045}
+Epoch/total_steps/alpha-beta: 45/37700/0.9-0.5 {&#39;G_GAN&#39;: 7.820038795471191, &#39;G_L1&#39;: 26.596290588378906, &#39;D&#39;: 0.015734031796455383, &#39;F&#39;: 0.0013641726691275835}
+Epoch/total_steps/alpha-beta: 45/37800/0.9-0.5 {&#39;G_GAN&#39;: 6.951674461364746, &#39;G_L1&#39;: 44.57832336425781, &#39;D&#39;: 0.11159142851829529, &#39;F&#39;: 0.0014423014363273978}
+Epoch/total_steps/alpha-beta: 45/37900/0.9-0.5 {&#39;G_GAN&#39;: 6.906512260437012, &#39;G_L1&#39;: 36.107261657714844, &#39;D&#39;: 0.13953255116939545, &#39;F&#39;: 0.0020344231743365526}
+Epoch/total_steps/alpha-beta: 45/38000/0.9-0.5 {&#39;G_GAN&#39;: 7.149404525756836, &#39;G_L1&#39;: 18.09873390197754, &#39;D&#39;: 0.09705850481987, &#39;F&#39;: 0.0014202354941517115}
+保存模型 Epoch 45, iters 38042 在 D:\BaiduNetdiskWorkspace\result\CSA-512-0.5-0.9
+Epoch/Epochs 45/499 花费时间：6773.1383600234985s
+learning rate = 0.0001445545
+Epoch/total_steps/alpha-beta: 46/38100/0.9-0.5 {&#39;G_GAN&#39;: 8.539608001708984, &#39;G_L1&#39;: 31.94788360595703, &#39;D&#39;: 0.054280176758766174, &#39;F&#39;: 0.0018464697059243917}
+Epoch/total_steps/alpha-beta: 46/38200/0.9-0.5 {&#39;G_GAN&#39;: 7.374629020690918, &#39;G_L1&#39;: 18.90107536315918, &#39;D&#39;: 0.0491887591779232, &#39;F&#39;: 0.0018926264019683003}
+Epoch/total_steps/alpha-beta: 46/38300/0.9-0.5 {&#39;G_GAN&#39;: 8.030448913574219, &#39;G_L1&#39;: 22.582786560058594, &#39;D&#39;: 0.014909454621374607, &#39;F&#39;: 0.004608714021742344}
+Epoch/total_steps/alpha-beta: 46/38400/0.9-0.5 {&#39;G_GAN&#39;: 7.592055320739746, &#39;G_L1&#39;: 23.55611801147461, &#39;D&#39;: 0.10031765699386597, &#39;F&#39;: 0.002357944380491972}
+Epoch/total_steps/alpha-beta: 46/38500/0.9-0.5 {&#39;G_GAN&#39;: 8.077789306640625, &#39;G_L1&#39;: 24.099302291870117, &#39;D&#39;: 0.016937503591179848, &#39;F&#39;: 0.0008738290634937584}
+Epoch/total_steps/alpha-beta: 46/38600/0.9-0.5 {&#39;G_GAN&#39;: 8.281438827514648, &#39;G_L1&#39;: 34.101478576660156, &#39;D&#39;: 0.0615447461605072, &#39;F&#39;: 0.001384142553433776}
+Epoch/total_steps/alpha-beta: 46/38700/0.9-0.5 {&#39;G_GAN&#39;: 8.070465087890625, &#39;G_L1&#39;: 33.396141052246094, &#39;D&#39;: 0.017530832439661026, &#39;F&#39;: 0.005354658700525761}
+Epoch/total_steps/alpha-beta: 46/38800/0.9-0.5 {&#39;G_GAN&#39;: 7.611465930938721, &#39;G_L1&#39;: 23.246543884277344, &#39;D&#39;: 0.03671778738498688, &#39;F&#39;: 0.0006138450116850436}
+保存模型 Epoch 46, iters 38869 在 D:\BaiduNetdiskWorkspace\result\CSA-512-0.5-0.9
+Epoch/Epochs 46/499 花费时间：6768.155444145203s
+learning rate = 0.0001425743
+Epoch/total_steps/alpha-beta: 47/38900/0.9-0.5 {&#39;G_GAN&#39;: 5.384117603302002, &#39;G_L1&#39;: 24.77845573425293, &#39;D&#39;: 0.7581191062927246, &#39;F&#39;: 0.001304701087065041}
+Epoch/total_steps/alpha-beta: 47/39000/0.9-0.5 {&#39;G_GAN&#39;: 7.680811882019043, &#39;G_L1&#39;: 32.97514343261719, &#39;D&#39;: 0.02019977569580078, &#39;F&#39;: 0.002497411333024502}
+Epoch/total_steps/alpha-beta: 47/39100/0.9-0.5 {&#39;G_GAN&#39;: 8.09141731262207, &#39;G_L1&#39;: 26.799297332763672, &#39;D&#39;: 0.024151649326086044, &#39;F&#39;: 0.001534132519736886}
+Epoch/total_steps/alpha-beta: 47/39200/0.9-0.5 {&#39;G_GAN&#39;: 6.989699363708496, &#39;G_L1&#39;: 21.78817367553711, &#39;D&#39;: 0.23902514576911926, &#39;F&#39;: 0.0018983304034918547}
+Epoch/total_steps/alpha-beta: 47/39300/0.9-0.5 {&#39;G_GAN&#39;: 8.248595237731934, &#39;G_L1&#39;: 51.52146911621094, &#39;D&#39;: 0.018476027995347977, &#39;F&#39;: 0.0015830667689442635}
+Epoch/total_steps/alpha-beta: 47/39400/0.9-0.5 {&#39;G_GAN&#39;: 4.939359188079834, &#39;G_L1&#39;: 18.028236389160156, &#39;D&#39;: 1.7847857475280762, &#39;F&#39;: 0.002250499092042446}
+Epoch/total_steps/alpha-beta: 47/39500/0.9-0.5 {&#39;G_GAN&#39;: 7.938840866088867, &#39;G_L1&#39;: 53.88483428955078, &#39;D&#39;: 0.009119225665926933, &#39;F&#39;: 0.0019217669032514095}
+Epoch/total_steps/alpha-beta: 47/39600/0.9-0.5 {&#39;G_GAN&#39;: 8.154109954833984, &#39;G_L1&#39;: 20.384294509887695, &#39;D&#39;: 0.021736357361078262, &#39;F&#39;: 0.0015445316676050425}
+保存模型 Epoch 47, iters 39696 在 D:\BaiduNetdiskWorkspace\result\CSA-512-0.5-0.9
+Epoch/Epochs 47/499 花费时间：6764.9193546772s
+learning rate = 0.0001405941
+Epoch/total_steps/alpha-beta: 48/39700/0.9-0.5 {&#39;G_GAN&#39;: 8.389522552490234, &#39;G_L1&#39;: 44.051841735839844, &#39;D&#39;: 0.024468112736940384, &#39;F&#39;: 0.0010270187631249428}
+Epoch/total_steps/alpha-beta: 48/39800/0.9-0.5 {&#39;G_GAN&#39;: 8.403275489807129, &#39;G_L1&#39;: 40.37342071533203, &#39;D&#39;: 0.042864181101322174, &#39;F&#39;: 0.0013112355954945087}
+Epoch/total_steps/alpha-beta: 48/39900/0.9-0.5 {&#39;G_GAN&#39;: 7.222668647766113, &#39;G_L1&#39;: 53.51753234863281, &#39;D&#39;: 0.07654738426208496, &#39;F&#39;: 0.0025842315517365932}
+Epoch/total_steps/alpha-beta: 48/40000/0.9-0.5 {&#39;G_GAN&#39;: 8.261728286743164, &#39;G_L1&#39;: 29.911645889282227, &#39;D&#39;: 0.02396925911307335, &#39;F&#39;: 0.001206154003739357}
+Epoch/total_steps/alpha-beta: 48/40100/0.9-0.5 {&#39;G_GAN&#39;: 8.23518180847168, &#39;G_L1&#39;: 17.044124603271484, &#39;D&#39;: 0.01832304149866104, &#39;F&#39;: 0.002945731393992901}
+Epoch/total_steps/alpha-beta: 48/40200/0.9-0.5 {&#39;G_GAN&#39;: 6.034615516662598, &#39;G_L1&#39;: 37.483428955078125, &#39;D&#39;: 0.38746851682662964, &#39;F&#39;: 0.0010646573500707746}
+Epoch/total_steps/alpha-beta: 48/40300/0.9-0.5 {&#39;G_GAN&#39;: 6.3593339920043945, &#39;G_L1&#39;: 25.242271423339844, &#39;D&#39;: 0.30765634775161743, &#39;F&#39;: 0.0017981284763664007}
+Epoch/total_steps/alpha-beta: 48/40400/0.9-0.5 {&#39;G_GAN&#39;: 7.830912113189697, &#39;G_L1&#39;: 17.896404266357422, &#39;D&#39;: 0.018733438104391098, &#39;F&#39;: 0.0034269988536834717}
+Epoch/total_steps/alpha-beta: 48/40500/0.9-0.5 {&#39;G_GAN&#39;: 7.784364223480225, &#39;G_L1&#39;: 35.173423767089844, &#39;D&#39;: 0.01428082026541233, &#39;F&#39;: 0.0033500581048429012}
+保存模型 Epoch 48, iters 40523 在 D:\BaiduNetdiskWorkspace\result\CSA-512-0.5-0.9
+Epoch/Epochs 48/499 花费时间：6764.22460269928s
+learning rate = 0.0001386139
+Epoch/total_steps/alpha-beta: 49/40600/0.9-0.5 {&#39;G_GAN&#39;: 8.360857009887695, &#39;G_L1&#39;: 47.69453430175781, &#39;D&#39;: 0.038900233805179596, &#39;F&#39;: 0.0027769976295530796}
+Epoch/total_steps/alpha-beta: 49/40700/0.9-0.5 {&#39;G_GAN&#39;: 7.007322311401367, &#39;G_L1&#39;: 18.198257446289062, &#39;D&#39;: 0.08900494873523712, &#39;F&#39;: 0.003953872248530388}
+Epoch/total_steps/alpha-beta: 49/40800/0.9-0.5 {&#39;G_GAN&#39;: 8.728693008422852, &#39;G_L1&#39;: 21.209806442260742, &#39;D&#39;: 0.0847885012626648, &#39;F&#39;: 0.0025132165756076574}
+Epoch/total_steps/alpha-beta: 49/40900/0.9-0.5 {&#39;G_GAN&#39;: 9.067243576049805, &#39;G_L1&#39;: 57.2913818359375, &#39;D&#39;: 0.16680312156677246, &#39;F&#39;: 0.005146778654307127}
+Epoch/total_steps/alpha-beta: 49/41000/0.9-0.5 {&#39;G_GAN&#39;: 6.954518795013428, &#39;G_L1&#39;: 45.11194610595703, &#39;D&#39;: 0.12820282578468323, &#39;F&#39;: 0.0046235788613557816}
+Epoch/total_steps/alpha-beta: 49/41100/0.9-0.5 {&#39;G_GAN&#39;: 8.768997192382812, &#39;G_L1&#39;: 22.705230712890625, &#39;D&#39;: 0.08605176210403442, &#39;F&#39;: 0.001746294554322958}
+Epoch/total_steps/alpha-beta: 49/41200/0.9-0.5 {&#39;G_GAN&#39;: 8.692829132080078, &#39;G_L1&#39;: 28.112388610839844, &#39;D&#39;: 0.09640873968601227, &#39;F&#39;: 0.0018229439156129956}
+Epoch/total_steps/alpha-beta: 49/41300/0.9-0.5 {&#39;G_GAN&#39;: 7.970520973205566, &#39;G_L1&#39;: 19.318349838256836, &#39;D&#39;: 0.015122618526220322, &#39;F&#39;: 0.0016816891729831696}
+保存模型 Epoch 49, iters 41350 在 D:\BaiduNetdiskWorkspace\result\CSA-512-0.5-0.9
+Epoch/Epochs 49/499 花费时间：6772.808098316193s
+learning rate = 0.0001366337
+Epoch/total_steps/alpha-beta: 50/41400/0.9-0.5 {&#39;G_GAN&#39;: 8.499478340148926, &#39;G_L1&#39;: 55.95225143432617, &#39;D&#39;: 0.042782220989465714, &#39;F&#39;: 0.001119618071243167}
+Epoch/total_steps/alpha-beta: 50/41500/0.9-0.5 {&#39;G_GAN&#39;: 8.753387451171875, &#39;G_L1&#39;: 29.030719757080078, &#39;D&#39;: 0.06822367757558823, &#39;F&#39;: 0.001425216905772686}
+Epoch/total_steps/alpha-beta: 50/41600/0.9-0.5 {&#39;G_GAN&#39;: 7.596317291259766, &#39;G_L1&#39;: 20.73520851135254, &#39;D&#39;: 0.034001171588897705, &#39;F&#39;: 0.0020731438416987658}
+Epoch/total_steps/alpha-beta: 50/41700/0.9-0.5 {&#39;G_GAN&#39;: 7.245866775512695, &#39;G_L1&#39;: 26.3179988861084, &#39;D&#39;: 0.07010909914970398, &#39;F&#39;: 0.002102423459291458}
+Epoch/total_steps/alpha-beta: 50/41800/0.9-0.5 {&#39;G_GAN&#39;: 8.158941268920898, &#39;G_L1&#39;: 31.41253662109375, &#39;D&#39;: 0.026624929159879684, &#39;F&#39;: 0.008607696741819382}
+Epoch/total_steps/alpha-beta: 50/41900/0.9-0.5 {&#39;G_GAN&#39;: 8.64494800567627, &#39;G_L1&#39;: 24.897663116455078, &#39;D&#39;: 0.07947815209627151, &#39;F&#39;: 0.0025131315924227238}
+Epoch/total_steps/alpha-beta: 50/42000/0.9-0.5 {&#39;G_GAN&#39;: 8.186412811279297, &#39;G_L1&#39;: 15.329059600830078, &#39;D&#39;: 0.07080948352813721, &#39;F&#39;: 0.0035317493602633476}
+Epoch/total_steps/alpha-beta: 50/42100/0.9-0.5 {&#39;G_GAN&#39;: 6.854772567749023, &#39;G_L1&#39;: 88.26810455322266, &#39;D&#39;: 0.22449764609336853, &#39;F&#39;: 0.0017049199668690562}
+保存模型 Epoch 50, iters 42177 在 D:\BaiduNetdiskWorkspace\result\CSA-512-0.5-0.9
+Epoch/Epochs 50/499 花费时间：6759.349726676941s
+learning rate = 0.0001346535
+Epoch/total_steps/alpha-beta: 51/42200/0.9-0.5 {&#39;G_GAN&#39;: 8.684395790100098, &#39;G_L1&#39;: 54.09003448486328, &#39;D&#39;: 0.2209593951702118, &#39;F&#39;: 0.001385992392897606}
+Epoch/total_steps/alpha-beta: 51/42300/0.9-0.5 {&#39;G_GAN&#39;: 8.10914421081543, &#39;G_L1&#39;: 20.53363609313965, &#39;D&#39;: 0.016256336122751236, &#39;F&#39;: 0.006210040301084518}
+Epoch/total_steps/alpha-beta: 51/42400/0.9-0.5 {&#39;G_GAN&#39;: 8.084345817565918, &#39;G_L1&#39;: 21.427690505981445, &#39;D&#39;: 0.014960281550884247, &#39;F&#39;: 0.001591571606695652}
+Epoch/total_steps/alpha-beta: 51/42500/0.9-0.5 {&#39;G_GAN&#39;: 7.269168853759766, &#39;G_L1&#39;: 40.872894287109375, &#39;D&#39;: 0.06240303814411163, &#39;F&#39;: 0.002742157084867358}
+Epoch/total_steps/alpha-beta: 51/42600/0.9-0.5 {&#39;G_GAN&#39;: 7.319230079650879, &#39;G_L1&#39;: 49.03833770751953, &#39;D&#39;: 0.049699001014232635, &#39;F&#39;: 0.0013970260042697191}
+Epoch/total_steps/alpha-beta: 51/42700/0.9-0.5 {&#39;G_GAN&#39;: 7.272912979125977, &#39;G_L1&#39;: 21.42607307434082, &#39;D&#39;: 0.058772973716259, &#39;F&#39;: 0.0054626259952783585}
+Epoch/total_steps/alpha-beta: 51/42800/0.9-0.5 {&#39;G_GAN&#39;: 8.447693824768066, &#39;G_L1&#39;: 44.16145324707031, &#39;D&#39;: 0.068250373005867, &#39;F&#39;: 0.004375595599412918}
+Epoch/total_steps/alpha-beta: 51/42900/0.9-0.5 {&#39;G_GAN&#39;: 6.691837310791016, &#39;G_L1&#39;: 13.987730026245117, &#39;D&#39;: 0.1759798228740692, &#39;F&#39;: 0.0012029549106955528}
+Epoch/total_steps/alpha-beta: 51/43000/0.9-0.5 {&#39;G_GAN&#39;: 8.612920761108398, &#39;G_L1&#39;: 30.869171142578125, &#39;D&#39;: 0.04990170896053314, &#39;F&#39;: 0.0012635947205126286}
+保存模型 Epoch 51, iters 43004 在 D:\BaiduNetdiskWorkspace\result\CSA-512-0.5-0.9
+Epoch/Epochs 51/499 花费时间：6763.056575059891s
+learning rate = 0.0001326733
+Epoch/total_steps/alpha-beta: 52/43100/0.9-0.5 {&#39;G_GAN&#39;: 8.427337646484375, &#39;G_L1&#39;: 41.97651290893555, &#39;D&#39;: 0.038193196058273315, &#39;F&#39;: 0.0010523130185902119}
+Epoch/total_steps/alpha-beta: 52/43200/0.9-0.5 {&#39;G_GAN&#39;: 7.584427833557129, &#39;G_L1&#39;: 36.28913879394531, &#39;D&#39;: 0.023514997214078903, &#39;F&#39;: 0.0027877402026206255}
+Epoch/total_steps/alpha-beta: 52/43300/0.9-0.5 {&#39;G_GAN&#39;: 7.229116439819336, &#39;G_L1&#39;: 14.193693161010742, &#39;D&#39;: 0.06350187957286835, &#39;F&#39;: 0.0014578956179320812}
+Epoch/total_steps/alpha-beta: 52/43400/0.9-0.5 {&#39;G_GAN&#39;: 6.335868835449219, &#39;G_L1&#39;: 69.88671875, &#39;D&#39;: 0.5340335369110107, &#39;F&#39;: 0.0011787546100094914}
+Epoch/total_steps/alpha-beta: 52/43500/0.9-0.5 {&#39;G_GAN&#39;: 7.343947887420654, &#39;G_L1&#39;: 24.496131896972656, &#39;D&#39;: 0.09014539420604706, &#39;F&#39;: 0.016930026933550835}
+Epoch/total_steps/alpha-beta: 52/43600/0.9-0.5 {&#39;G_GAN&#39;: 8.670450210571289, &#39;G_L1&#39;: 57.710445404052734, &#39;D&#39;: 0.06524629145860672, &#39;F&#39;: 0.00112123042345047}
+Epoch/total_steps/alpha-beta: 52/43700/0.9-0.5 {&#39;G_GAN&#39;: 8.595226287841797, &#39;G_L1&#39;: 60.706459045410156, &#39;D&#39;: 0.07732701301574707, &#39;F&#39;: 0.001374482992105186}
+Epoch/total_steps/alpha-beta: 52/43800/0.9-0.5 {&#39;G_GAN&#39;: 8.214654922485352, &#39;G_L1&#39;: 24.30849266052246, &#39;D&#39;: 0.02580682933330536, &#39;F&#39;: 0.0024456395767629147}
+保存模型 Epoch 52, iters 43831 在 D:\BaiduNetdiskWorkspace\result\CSA-512-0.5-0.9
+Epoch/Epochs 52/499 花费时间：6764.075522184372s
+learning rate = 0.0001306931
+Epoch/total_steps/alpha-beta: 53/43900/0.9-0.5 {&#39;G_GAN&#39;: 7.455556869506836, &#39;G_L1&#39;: 34.718685150146484, &#39;D&#39;: 0.0470321848988533, &#39;F&#39;: 0.0007186834118328989}
+Epoch/total_steps/alpha-beta: 53/44000/0.9-0.5 {&#39;G_GAN&#39;: 7.343498706817627, &#39;G_L1&#39;: 39.907615661621094, &#39;D&#39;: 0.08202134072780609, &#39;F&#39;: 0.0009001846192404628}
+Epoch/total_steps/alpha-beta: 53/44100/0.9-0.5 {&#39;G_GAN&#39;: 6.207795143127441, &#39;G_L1&#39;: 27.53462791442871, &#39;D&#39;: 0.31195273995399475, &#39;F&#39;: 0.0011078872485086322}
+Epoch/total_steps/alpha-beta: 53/44200/0.9-0.5 {&#39;G_GAN&#39;: 8.393182754516602, &#39;G_L1&#39;: 22.87810516357422, &#39;D&#39;: 0.025638066232204437, &#39;F&#39;: 0.0021761013194918633}
+Epoch/total_steps/alpha-beta: 53/44300/0.9-0.5 {&#39;G_GAN&#39;: 7.583334445953369, &#39;G_L1&#39;: 23.7797908782959, &#39;D&#39;: 0.028044138103723526, &#39;F&#39;: 0.0007746939081698656}
+Epoch/total_steps/alpha-beta: 53/44400/0.9-0.5 {&#39;G_GAN&#39;: 8.838966369628906, &#39;G_L1&#39;: 25.878292083740234, &#39;D&#39;: 0.0605403371155262, &#39;F&#39;: 0.001020694267936051}
+Epoch/total_steps/alpha-beta: 53/44500/0.9-0.5 {&#39;G_GAN&#39;: 6.079145431518555, &#39;G_L1&#39;: 12.760276794433594, &#39;D&#39;: 0.3506256937980652, &#39;F&#39;: 0.002220530528575182}
+Epoch/total_steps/alpha-beta: 53/44600/0.9-0.5 {&#39;G_GAN&#39;: 8.192184448242188, &#39;G_L1&#39;: 44.1507453918457, &#39;D&#39;: 0.02706989273428917, &#39;F&#39;: 0.006747782696038485}
+保存模型 Epoch 53, iters 44658 在 D:\BaiduNetdiskWorkspace\result\CSA-512-0.5-0.9
+Epoch/Epochs 53/499 花费时间：6759.117193222046s
+learning rate = 0.0001287129
+Epoch/total_steps/alpha-beta: 54/44700/0.9-0.5 {&#39;G_GAN&#39;: 8.362821578979492, &#39;G_L1&#39;: 25.843120574951172, &#39;D&#39;: 0.028590237721800804, &#39;F&#39;: 0.0007319137221202254}
+Epoch/total_steps/alpha-beta: 54/44800/0.9-0.5 {&#39;G_GAN&#39;: 5.728325366973877, &#39;G_L1&#39;: 21.119462966918945, &#39;D&#39;: 0.6087989807128906, &#39;F&#39;: 0.0012081381864845753}
+Epoch/total_steps/alpha-beta: 54/44900/0.9-0.5 {&#39;G_GAN&#39;: 7.388898849487305, &#39;G_L1&#39;: 28.24346351623535, &#39;D&#39;: 0.053674325346946716, &#39;F&#39;: 0.0019070666749030352}
+Epoch/total_steps/alpha-beta: 54/45000/0.9-0.5 {&#39;G_GAN&#39;: 8.322469711303711, &#39;G_L1&#39;: 29.18460464477539, &#39;D&#39;: 0.021766450256109238, &#39;F&#39;: 0.0015673298621550202}
+Epoch/total_steps/alpha-beta: 54/45100/0.9-0.5 {&#39;G_GAN&#39;: 6.162585258483887, &#39;G_L1&#39;: 21.77648162841797, &#39;D&#39;: 0.34357693791389465, &#39;F&#39;: 0.00214048707857728}
+Epoch/total_steps/alpha-beta: 54/45200/0.9-0.5 {&#39;G_GAN&#39;: 7.196111679077148, &#39;G_L1&#39;: 65.92658233642578, &#39;D&#39;: 0.08047452569007874, &#39;F&#39;: 0.0010609449818730354}
+Epoch/total_steps/alpha-beta: 54/45300/0.9-0.5 {&#39;G_GAN&#39;: 8.25864028930664, &#39;G_L1&#39;: 40.19385528564453, &#39;D&#39;: 0.02319510281085968, &#39;F&#39;: 0.0016729794442653656}
+Epoch/total_steps/alpha-beta: 54/45400/0.9-0.5 {&#39;G_GAN&#39;: 7.629249572753906, &#39;G_L1&#39;: 74.56746673583984, &#39;D&#39;: 0.02899629808962345, &#39;F&#39;: 0.0009748106240294874}
+保存模型 Epoch 54, iters 45485 在 D:\BaiduNetdiskWorkspace\result\CSA-512-0.5-0.9
+Epoch/Epochs 54/499 花费时间：6761.8618586063385s
+learning rate = 0.0001267327
+Epoch/total_steps/alpha-beta: 55/45500/0.9-0.5 {&#39;G_GAN&#39;: 7.007287502288818, &#39;G_L1&#39;: 12.693982124328613, &#39;D&#39;: 0.0992385745048523, &#39;F&#39;: 0.0009802832501009107}
+Epoch/total_steps/alpha-beta: 55/45600/0.9-0.5 {&#39;G_GAN&#39;: 8.14605712890625, &#39;G_L1&#39;: 73.5613021850586, &#39;D&#39;: 0.027257602661848068, &#39;F&#39;: 0.0035637724213302135}
+Epoch/total_steps/alpha-beta: 55/45700/0.9-0.5 {&#39;G_GAN&#39;: 7.213319301605225, &#39;G_L1&#39;: 30.980327606201172, &#39;D&#39;: 0.08609287440776825, &#39;F&#39;: 0.0016145599074661732}
+Epoch/total_steps/alpha-beta: 55/45800/0.9-0.5 {&#39;G_GAN&#39;: 8.340415954589844, &#39;G_L1&#39;: 32.842918395996094, &#39;D&#39;: 0.02799283154308796, &#39;F&#39;: 0.0009474923135712743}
+Epoch/total_steps/alpha-beta: 55/45900/0.9-0.5 {&#39;G_GAN&#39;: 5.8809356689453125, &#39;G_L1&#39;: 11.389313697814941, &#39;D&#39;: 0.5005943179130554, &#39;F&#39;: 0.001954304985702038}
+Epoch/total_steps/alpha-beta: 55/46000/0.9-0.5 {&#39;G_GAN&#39;: 7.6443047523498535, &#39;G_L1&#39;: 19.518503189086914, &#39;D&#39;: 0.025039788335561752, &#39;F&#39;: 0.001255459152162075}
+Epoch/total_steps/alpha-beta: 55/46100/0.9-0.5 {&#39;G_GAN&#39;: 7.529770374298096, &#39;G_L1&#39;: 16.610382080078125, &#39;D&#39;: 0.027515430003404617, &#39;F&#39;: 0.0014344742521643639}
+Epoch/total_steps/alpha-beta: 55/46200/0.9-0.5 {&#39;G_GAN&#39;: 9.774331092834473, &#39;G_L1&#39;: 18.29145050048828, &#39;D&#39;: 0.24583667516708374, &#39;F&#39;: 0.004713449627161026}
+Epoch/total_steps/alpha-beta: 55/46300/0.9-0.5 {&#39;G_GAN&#39;: 7.616386413574219, &#39;G_L1&#39;: 59.257568359375, &#39;D&#39;: 0.046564944088459015, &#39;F&#39;: 0.0011530768824741244}
+保存模型 Epoch 55, iters 46312 在 D:\BaiduNetdiskWorkspace\result\CSA-512-0.5-0.9
+Epoch/Epochs 55/499 花费时间：6756.860634565353s
+learning rate = 0.0001247525
+Epoch/total_steps/alpha-beta: 56/46400/0.9-0.5 {&#39;G_GAN&#39;: 8.157320976257324, &#39;G_L1&#39;: 26.228363037109375, &#39;D&#39;: 0.011334164999425411, &#39;F&#39;: 0.0029130661860108376}
+Epoch/total_steps/alpha-beta: 56/46500/0.9-0.5 {&#39;G_GAN&#39;: 8.280374526977539, &#39;G_L1&#39;: 23.03847312927246, &#39;D&#39;: 0.03452282026410103, &#39;F&#39;: 0.001253723632544279}
+Epoch/total_steps/alpha-beta: 56/46600/0.9-0.5 {&#39;G_GAN&#39;: 7.922418594360352, &#39;G_L1&#39;: 28.056093215942383, &#39;D&#39;: 0.016851695254445076, &#39;F&#39;: 0.0006956644938327372}
+Epoch/total_steps/alpha-beta: 56/46700/0.9-0.5 {&#39;G_GAN&#39;: 8.10788345336914, &#39;G_L1&#39;: 24.22105598449707, &#39;D&#39;: 0.017855528742074966, &#39;F&#39;: 0.001076767686754465}
+Epoch/total_steps/alpha-beta: 56/46800/0.9-0.5 {&#39;G_GAN&#39;: 7.479378700256348, &#39;G_L1&#39;: 31.1834774017334, &#39;D&#39;: 0.04468553513288498, &#39;F&#39;: 0.0017373795853927732}
+Epoch/total_steps/alpha-beta: 56/46900/0.9-0.5 {&#39;G_GAN&#39;: 7.961572170257568, &#39;G_L1&#39;: 33.54629135131836, &#39;D&#39;: 0.0190970990806818, &#39;F&#39;: 0.0013119915965944529}
+Epoch/total_steps/alpha-beta: 56/47000/0.9-0.5 {&#39;G_GAN&#39;: 7.685728073120117, &#39;G_L1&#39;: 19.314489364624023, &#39;D&#39;: 0.01924341544508934, &#39;F&#39;: 0.003581780241802335}
+Epoch/total_steps/alpha-beta: 56/47100/0.9-0.5 {&#39;G_GAN&#39;: 7.017533302307129, &#39;G_L1&#39;: 45.800392150878906, &#39;D&#39;: 0.10654367506504059, &#39;F&#39;: 0.0010333734098821878}
+保存模型 Epoch 56, iters 47139 在 D:\BaiduNetdiskWorkspace\result\CSA-512-0.5-0.9
+Epoch/Epochs 56/499 花费时间：6754.6128849983215s
+learning rate = 0.0001227723
+Epoch/total_steps/alpha-beta: 57/47200/0.9-0.5 {&#39;G_GAN&#39;: 7.971920013427734, &#39;G_L1&#39;: 27.76043701171875, &#39;D&#39;: 0.00909455306828022, &#39;F&#39;: 0.0014471083413809538}
+Epoch/total_steps/alpha-beta: 57/47300/0.9-0.5 {&#39;G_GAN&#39;: 8.417030334472656, &#39;G_L1&#39;: 23.4016056060791, &#39;D&#39;: 0.02859323099255562, &#39;F&#39;: 0.0016245837323367596}
+Epoch/total_steps/alpha-beta: 57/47400/0.9-0.5 {&#39;G_GAN&#39;: 7.350664138793945, &#39;G_L1&#39;: 39.54529571533203, &#39;D&#39;: 0.05305946618318558, &#39;F&#39;: 0.0018121623434126377}
+Epoch/total_steps/alpha-beta: 57/47500/0.9-0.5 {&#39;G_GAN&#39;: 8.902400970458984, &#39;G_L1&#39;: 24.410585403442383, &#39;D&#39;: 0.08254250884056091, &#39;F&#39;: 0.0037017976865172386}
+Epoch/total_steps/alpha-beta: 57/47600/0.9-0.5 {&#39;G_GAN&#39;: 8.32468032836914, &#39;G_L1&#39;: 19.553760528564453, &#39;D&#39;: 0.019481170922517776, &#39;F&#39;: 0.0008901633555069566}
+Epoch/total_steps/alpha-beta: 57/47700/0.9-0.5 {&#39;G_GAN&#39;: 7.83448600769043, &#39;G_L1&#39;: 29.682737350463867, &#39;D&#39;: 0.027714945375919342, &#39;F&#39;: 0.009310019202530384}
+Epoch/total_steps/alpha-beta: 57/47800/0.9-0.5 {&#39;G_GAN&#39;: 8.048505783081055, &#39;G_L1&#39;: 48.844547271728516, &#39;D&#39;: 0.014982609078288078, &#39;F&#39;: 0.0007234829245135188}
+Epoch/total_steps/alpha-beta: 57/47900/0.9-0.5 {&#39;G_GAN&#39;: 8.529857635498047, &#39;G_L1&#39;: 28.55914878845215, &#39;D&#39;: 0.0347243994474411, &#39;F&#39;: 0.0011137914843857288}
+保存模型 Epoch 57, iters 47966 在 D:\BaiduNetdiskWorkspace\result\CSA-512-0.5-0.9
+Epoch/Epochs 57/499 花费时间：6753.695901155472s
+learning rate = 0.0001207921
+Epoch/total_steps/alpha-beta: 58/48000/0.9-0.5 {&#39;G_GAN&#39;: 7.495498180389404, &#39;G_L1&#39;: 16.25288200378418, &#39;D&#39;: 0.059700094163417816, &#39;F&#39;: 0.0009668945567682385}
+Epoch/total_steps/alpha-beta: 58/48100/0.9-0.5 {&#39;G_GAN&#39;: 7.197303295135498, &#39;G_L1&#39;: 33.02947998046875, &#39;D&#39;: 0.08029237389564514, &#39;F&#39;: 0.0014215335249900818}
+Epoch/total_steps/alpha-beta: 58/48200/0.9-0.5 {&#39;G_GAN&#39;: 5.233651638031006, &#39;G_L1&#39;: 9.098532676696777, &#39;D&#39;: 0.9147707223892212, &#39;F&#39;: 0.0015068830689415336}
+Epoch/total_steps/alpha-beta: 58/48300/0.9-0.5 {&#39;G_GAN&#39;: 7.828310012817383, &#39;G_L1&#39;: 22.03610610961914, &#39;D&#39;: 0.011454084888100624, &#39;F&#39;: 0.01885051652789116}
+Epoch/total_steps/alpha-beta: 58/48400/0.9-0.5 {&#39;G_GAN&#39;: 7.0475897789001465, &#39;G_L1&#39;: 46.58464813232422, &#39;D&#39;: 0.11528288573026657, &#39;F&#39;: 0.002261063549667597}
+Epoch/total_steps/alpha-beta: 58/48500/0.9-0.5 {&#39;G_GAN&#39;: 7.068077087402344, &#39;G_L1&#39;: 39.951045989990234, &#39;D&#39;: 0.09659254550933838, &#39;F&#39;: 0.0035945670679211617}
+Epoch/total_steps/alpha-beta: 58/48600/0.9-0.5 {&#39;G_GAN&#39;: 7.62792444229126, &#39;G_L1&#39;: 17.071701049804688, &#39;D&#39;: 0.026398390531539917, &#39;F&#39;: 0.0015781226102262735}
+Epoch/total_steps/alpha-beta: 58/48700/0.9-0.5 {&#39;G_GAN&#39;: 7.622166633605957, &#39;G_L1&#39;: 19.32077407836914, &#39;D&#39;: 0.02589416690170765, &#39;F&#39;: 0.0008815645705908537}
+保存模型 Epoch 58, iters 48793 在 D:\BaiduNetdiskWorkspace\result\CSA-512-0.5-0.9
+Epoch/Epochs 58/499 花费时间：6761.709056377411s
+learning rate = 0.0001188119
+Epoch/total_steps/alpha-beta: 59/48800/0.9-0.5 {&#39;G_GAN&#39;: 7.413712978363037, &#39;G_L1&#39;: 15.54068660736084, &#39;D&#39;: 0.045107655227184296, &#39;F&#39;: 0.0037083071656525135}
+Epoch/total_steps/alpha-beta: 59/48900/0.9-0.5 {&#39;G_GAN&#39;: 6.719611644744873, &#39;G_L1&#39;: 32.11489486694336, &#39;D&#39;: 0.2134125977754593, &#39;F&#39;: 0.0009489085059612989}
+Epoch/total_steps/alpha-beta: 59/49000/0.9-0.5 {&#39;G_GAN&#39;: 6.021552085876465, &#39;G_L1&#39;: 33.72428512573242, &#39;D&#39;: 0.43133899569511414, &#39;F&#39;: 0.0017635547555983067}
+Epoch/total_steps/alpha-beta: 59/49100/0.9-0.5 {&#39;G_GAN&#39;: 6.137314796447754, &#39;G_L1&#39;: 15.083292007446289, &#39;D&#39;: 0.376628041267395, &#39;F&#39;: 0.0010760680306702852}
+Epoch/total_steps/alpha-beta: 59/49200/0.9-0.5 {&#39;G_GAN&#39;: 7.8833513259887695, &#39;G_L1&#39;: 19.543163299560547, &#39;D&#39;: 0.014760330319404602, &#39;F&#39;: 0.0023276787251234055}
+Epoch/total_steps/alpha-beta: 59/49300/0.9-0.5 {&#39;G_GAN&#39;: 7.339081764221191, &#39;G_L1&#39;: 31.160205841064453, &#39;D&#39;: 0.05672956258058548, &#39;F&#39;: 0.0012017835397273302}
+Epoch/total_steps/alpha-beta: 59/49400/0.9-0.5 {&#39;G_GAN&#39;: 8.354692459106445, &#39;G_L1&#39;: 25.730514526367188, &#39;D&#39;: 0.027140267193317413, &#39;F&#39;: 0.0015057115815579891}
+Epoch/total_steps/alpha-beta: 59/49500/0.9-0.5 {&#39;G_GAN&#39;: 8.210810661315918, &#39;G_L1&#39;: 32.12368392944336, &#39;D&#39;: 0.04487960785627365, &#39;F&#39;: 0.001976167317479849}
+Epoch/total_steps/alpha-beta: 59/49600/0.9-0.5 {&#39;G_GAN&#39;: 8.037915229797363, &#39;G_L1&#39;: 49.86448287963867, &#39;D&#39;: 0.01179380901157856, &#39;F&#39;: 0.001224369858391583}
+保存模型 Epoch 59, iters 49620 在 D:\BaiduNetdiskWorkspace\result\CSA-512-0.5-0.9
+Epoch/Epochs 59/499 花费时间：6780.009529829025s
+learning rate = 0.0001168317
+Epoch/total_steps/alpha-beta: 60/49700/0.9-0.5 {&#39;G_GAN&#39;: 8.072854042053223, &#39;G_L1&#39;: 30.48529624938965, &#39;D&#39;: 0.01615535095334053, &#39;F&#39;: 0.001011718064546585}
+Epoch/total_steps/alpha-beta: 60/49800/0.9-0.5 {&#39;G_GAN&#39;: 7.90522575378418, &#39;G_L1&#39;: 26.738759994506836, &#39;D&#39;: 0.02633044496178627, &#39;F&#39;: 0.0010175001807510853}
+Epoch/total_steps/alpha-beta: 60/49900/0.9-0.5 {&#39;G_GAN&#39;: 8.371841430664062, &#39;G_L1&#39;: 20.88230323791504, &#39;D&#39;: 0.02415960282087326, &#39;F&#39;: 0.001669510966166854}
+Epoch/total_steps/alpha-beta: 60/50000/0.9-0.5 {&#39;G_GAN&#39;: 7.0155181884765625, &#39;G_L1&#39;: 25.217866897583008, &#39;D&#39;: 0.16346240043640137, &#39;F&#39;: 0.002506641438230872}
+Epoch/total_steps/alpha-beta: 60/50100/0.9-0.5 {&#39;G_GAN&#39;: 6.045802593231201, &#39;G_L1&#39;: 41.35212326049805, &#39;D&#39;: 0.3921029567718506, &#39;F&#39;: 0.001096607418730855}
+Epoch/total_steps/alpha-beta: 60/50200/0.9-0.5 {&#39;G_GAN&#39;: 7.205227851867676, &#39;G_L1&#39;: 17.458030700683594, &#39;D&#39;: 0.07342549413442612, &#39;F&#39;: 0.0010713879019021988}
+Epoch/total_steps/alpha-beta: 60/50300/0.9-0.5 {&#39;G_GAN&#39;: 5.487685203552246, &#39;G_L1&#39;: 24.616092681884766, &#39;D&#39;: 0.7064906358718872, &#39;F&#39;: 0.0016002915799617767}
+Epoch/total_steps/alpha-beta: 60/50400/0.9-0.5 {&#39;G_GAN&#39;: 7.6009111404418945, &#39;G_L1&#39;: 26.21513557434082, &#39;D&#39;: 0.02102290466427803, &#39;F&#39;: 0.0023444825783371925}
+保存模型 Epoch 60, iters 50447 在 D:\BaiduNetdiskWorkspace\result\CSA-512-0.5-0.9
+Epoch/Epochs 60/499 花费时间：6781.742894649506s
+learning rate = 0.0001148515
+Epoch/total_steps/alpha-beta: 61/50500/0.9-0.5 {&#39;G_GAN&#39;: 6.376148700714111, &#39;G_L1&#39;: 20.251787185668945, &#39;D&#39;: 0.2580965757369995, &#39;F&#39;: 0.0012185054365545511}
+Epoch/total_steps/alpha-beta: 61/50600/0.9-0.5 {&#39;G_GAN&#39;: 7.290938854217529, &#39;G_L1&#39;: 42.83902359008789, &#39;D&#39;: 0.07907304167747498, &#39;F&#39;: 0.0017258442239835858}
+Epoch/total_steps/alpha-beta: 61/50700/0.9-0.5 {&#39;G_GAN&#39;: 7.2026047706604, &#39;G_L1&#39;: 39.51057815551758, &#39;D&#39;: 0.08433586359024048, &#39;F&#39;: 0.0008966609020717442}
+Epoch/total_steps/alpha-beta: 61/50800/0.9-0.5 {&#39;G_GAN&#39;: 6.873844623565674, &#39;G_L1&#39;: 37.662410736083984, &#39;D&#39;: 0.20935222506523132, &#39;F&#39;: 0.0008491596090607345}
+Epoch/total_steps/alpha-beta: 61/50900/0.9-0.5 {&#39;G_GAN&#39;: 8.554272651672363, &#39;G_L1&#39;: 23.42376136779785, &#39;D&#39;: 0.07119445502758026, &#39;F&#39;: 0.0008379393839277327}
+Epoch/total_steps/alpha-beta: 61/51000/0.9-0.5 {&#39;G_GAN&#39;: 7.670980453491211, &#39;G_L1&#39;: 50.75713348388672, &#39;D&#39;: 0.034542158246040344, &#39;F&#39;: 0.001771591487340629}
+Epoch/total_steps/alpha-beta: 61/51100/0.9-0.5 {&#39;G_GAN&#39;: 6.776754379272461, &#39;G_L1&#39;: 71.78466033935547, &#39;D&#39;: 0.15174606442451477, &#39;F&#39;: 0.0024442109279334545}
+Epoch/total_steps/alpha-beta: 61/51200/0.9-0.5 {&#39;G_GAN&#39;: 8.361515998840332, &#39;G_L1&#39;: 36.30998229980469, &#39;D&#39;: 0.0373992845416069, &#39;F&#39;: 0.0018919553840532899}
+保存模型 Epoch 61, iters 51274 在 D:\BaiduNetdiskWorkspace\result\CSA-512-0.5-0.9
+Epoch/Epochs 61/499 花费时间：6781.729976892471s
+learning rate = 0.0001128713
+Epoch/total_steps/alpha-beta: 62/51300/0.9-0.5 {&#39;G_GAN&#39;: 7.965579986572266, &#39;G_L1&#39;: 23.80763816833496, &#39;D&#39;: 0.022306285798549652, &#39;F&#39;: 0.0009614360751584172}
+Epoch/total_steps/alpha-beta: 62/51400/0.9-0.5 {&#39;G_GAN&#39;: 8.705312728881836, &#39;G_L1&#39;: 25.595394134521484, &#39;D&#39;: 0.04513503238558769, &#39;F&#39;: 0.0027619819156825542}
+Epoch/total_steps/alpha-beta: 62/51500/0.9-0.5 {&#39;G_GAN&#39;: 6.857588768005371, &#39;G_L1&#39;: 33.03593826293945, &#39;D&#39;: 0.11528855562210083, &#39;F&#39;: 0.01626121625304222}
+Epoch/total_steps/alpha-beta: 62/51600/0.9-0.5 {&#39;G_GAN&#39;: 8.243672370910645, &#39;G_L1&#39;: 34.031497955322266, &#39;D&#39;: 0.017613187432289124, &#39;F&#39;: 0.0012789801694452763}
+Epoch/total_steps/alpha-beta: 62/51700/0.9-0.5 {&#39;G_GAN&#39;: 7.146739959716797, &#39;G_L1&#39;: 33.34431076049805, &#39;D&#39;: 0.0921080932021141, &#39;F&#39;: 0.0022737085819244385}
+Epoch/total_steps/alpha-beta: 62/51800/0.9-0.5 {&#39;G_GAN&#39;: 7.728944301605225, &#39;G_L1&#39;: 15.331565856933594, &#39;D&#39;: 0.024601127952337265, &#39;F&#39;: 0.001646729069761932}
+Epoch/total_steps/alpha-beta: 62/51900/0.9-0.5 {&#39;G_GAN&#39;: 7.661176681518555, &#39;G_L1&#39;: 31.595314025878906, &#39;D&#39;: 0.02469492331147194, &#39;F&#39;: 0.002229649107903242}
+Epoch/total_steps/alpha-beta: 62/52000/0.9-0.5 {&#39;G_GAN&#39;: 6.584539890289307, &#39;G_L1&#39;: 39.396278381347656, &#39;D&#39;: 0.220439612865448, &#39;F&#39;: 0.0016152646858245134}
+Epoch/total_steps/alpha-beta: 62/52100/0.9-0.5 {&#39;G_GAN&#39;: 8.049354553222656, &#39;G_L1&#39;: 25.982431411743164, &#39;D&#39;: 0.010267462581396103, &#39;F&#39;: 0.0010696185054257512}
+保存模型 Epoch 62, iters 52101 在 D:\BaiduNetdiskWorkspace\result\CSA-512-0.5-0.9
+Epoch/Epochs 62/499 花费时间：6794.389196872711s
+learning rate = 0.0001108911
+Epoch/total_steps/alpha-beta: 63/52200/0.9-0.5 {&#39;G_GAN&#39;: 7.342306137084961, &#39;G_L1&#39;: 27.605545043945312, &#39;D&#39;: 0.05430835112929344, &#39;F&#39;: 0.0012851788196712732}
+Epoch/total_steps/alpha-beta: 63/52300/0.9-0.5 {&#39;G_GAN&#39;: 8.366992950439453, &#39;G_L1&#39;: 31.367206573486328, &#39;D&#39;: 0.03699074313044548, &#39;F&#39;: 0.0013297931291162968}
+Epoch/total_steps/alpha-beta: 63/52400/0.9-0.5 {&#39;G_GAN&#39;: 8.828944206237793, &#39;G_L1&#39;: 35.443843841552734, &#39;D&#39;: 0.08664903044700623, &#39;F&#39;: 0.0013549583964049816}
+Epoch/total_steps/alpha-beta: 63/52500/0.9-0.5 {&#39;G_GAN&#39;: 7.446364402770996, &#39;G_L1&#39;: 41.65620422363281, &#39;D&#39;: 0.04484528303146362, &#39;F&#39;: 0.0019118145573884249}
+Epoch/total_steps/alpha-beta: 63/52600/0.9-0.5 {&#39;G_GAN&#39;: 8.128800392150879, &#39;G_L1&#39;: 21.015531539916992, &#39;D&#39;: 0.016069483011960983, &#39;F&#39;: 0.003110778285190463}
+Epoch/total_steps/alpha-beta: 63/52700/0.9-0.5 {&#39;G_GAN&#39;: 6.606244087219238, &#39;G_L1&#39;: 39.37432861328125, &#39;D&#39;: 0.18823060393333435, &#39;F&#39;: 0.0011483546113595366}
+Epoch/total_steps/alpha-beta: 63/52800/0.9-0.5 {&#39;G_GAN&#39;: 7.382760047912598, &#39;G_L1&#39;: 22.529870986938477, &#39;D&#39;: 0.04802040010690689, &#39;F&#39;: 0.0012568093370646238}
+Epoch/total_steps/alpha-beta: 63/52900/0.9-0.5 {&#39;G_GAN&#39;: 8.928035736083984, &#39;G_L1&#39;: 26.60797882080078, &#39;D&#39;: 0.10090827941894531, &#39;F&#39;: 0.0032714970875531435}
+保存模型 Epoch 63, iters 52928 在 D:\BaiduNetdiskWorkspace\result\CSA-512-0.5-0.9
+Epoch/Epochs 63/499 花费时间：6795.069066286087s
+learning rate = 0.0001089109
+Epoch/total_steps/alpha-beta: 64/53000/0.9-0.5 {&#39;G_GAN&#39;: 8.196953773498535, &#39;G_L1&#39;: 32.52962112426758, &#39;D&#39;: 0.023270383477211, &#39;F&#39;: 0.0019428569357842207}
+Epoch/total_steps/alpha-beta: 64/53100/0.9-0.5 {&#39;G_GAN&#39;: 7.958752155303955, &#39;G_L1&#39;: 58.23126983642578, &#39;D&#39;: 0.013875054195523262, &#39;F&#39;: 0.0010063780937343836}
+Epoch/total_steps/alpha-beta: 64/53200/0.9-0.5 {&#39;G_GAN&#39;: 6.627065181732178, &#39;G_L1&#39;: 37.17301559448242, &#39;D&#39;: 0.19006657600402832, &#39;F&#39;: 0.002038327045738697}
+Epoch/total_steps/alpha-beta: 64/53300/0.9-0.5 {&#39;G_GAN&#39;: 7.994110107421875, &#39;G_L1&#39;: 25.01235580444336, &#39;D&#39;: 0.011672099120914936, &#39;F&#39;: 0.002317197620868683}
+Epoch/total_steps/alpha-beta: 64/53400/0.9-0.5 {&#39;G_GAN&#39;: 9.020550727844238, &#39;G_L1&#39;: 24.051469802856445, &#39;D&#39;: 0.09461075812578201, &#39;F&#39;: 0.0008266005315817893}
+Epoch/total_steps/alpha-beta: 64/53500/0.9-0.5 {&#39;G_GAN&#39;: 7.529772758483887, &#39;G_L1&#39;: 53.647953033447266, &#39;D&#39;: 0.03069143369793892, &#39;F&#39;: 0.0014636693522334099}
+Epoch/total_steps/alpha-beta: 64/53600/0.9-0.5 {&#39;G_GAN&#39;: 6.069867134094238, &#39;G_L1&#39;: 38.109657287597656, &#39;D&#39;: 0.3918219208717346, &#39;F&#39;: 0.0011063931742683053}
+Epoch/total_steps/alpha-beta: 64/53700/0.9-0.5 {&#39;G_GAN&#39;: 6.662880897521973, &#39;G_L1&#39;: 14.390191078186035, &#39;D&#39;: 0.16948626935482025, &#39;F&#39;: 0.0017206897027790546}
+保存模型 Epoch 64, iters 53755 在 D:\BaiduNetdiskWorkspace\result\CSA-512-0.5-0.9
+Epoch/Epochs 64/499 花费时间：6771.046146869659s
+learning rate = 0.0001069307
+Epoch/total_steps/alpha-beta: 65/53800/0.9-0.5 {&#39;G_GAN&#39;: 7.751692771911621, &#39;G_L1&#39;: 26.52329444885254, &#39;D&#39;: 0.02007143571972847, &#39;F&#39;: 0.0011157768312841654}
+Epoch/total_steps/alpha-beta: 65/53900/0.9-0.5 {&#39;G_GAN&#39;: 8.318641662597656, &#39;G_L1&#39;: 48.2671012878418, &#39;D&#39;: 0.08405277132987976, &#39;F&#39;: 0.0008933695498853922}
+Epoch/total_steps/alpha-beta: 65/54000/0.9-0.5 {&#39;G_GAN&#39;: 8.694536209106445, &#39;G_L1&#39;: 22.726673126220703, &#39;D&#39;: 0.09188991785049438, &#39;F&#39;: 0.001071693142876029}
+Epoch/total_steps/alpha-beta: 65/54100/0.9-0.5 {&#39;G_GAN&#39;: 8.224300384521484, &#39;G_L1&#39;: 16.794282913208008, &#39;D&#39;: 0.01500699482858181, &#39;F&#39;: 0.0035193481016904116}
+Epoch/total_steps/alpha-beta: 65/54200/0.9-0.5 {&#39;G_GAN&#39;: 6.25037956237793, &#39;G_L1&#39;: 15.805959701538086, &#39;D&#39;: 0.3508121371269226, &#39;F&#39;: 0.0023685158230364323}
+Epoch/total_steps/alpha-beta: 65/54300/0.9-0.5 {&#39;G_GAN&#39;: 5.069798469543457, &#39;G_L1&#39;: 15.578472137451172, &#39;D&#39;: 1.2748063802719116, &#39;F&#39;: 0.0012448035413399339}
+Epoch/total_steps/alpha-beta: 65/54400/0.9-0.5 {&#39;G_GAN&#39;: 8.021049499511719, &#39;G_L1&#39;: 23.361942291259766, &#39;D&#39;: 0.014643076807260513, &#39;F&#39;: 0.0021341778337955475}
+Epoch/total_steps/alpha-beta: 65/54500/0.9-0.5 {&#39;G_GAN&#39;: 6.390683174133301, &#39;G_L1&#39;: 14.906576156616211, &#39;D&#39;: 0.27298641204833984, &#39;F&#39;: 0.0011728628305718303}
+保存模型 Epoch 65, iters 54582 在 D:\BaiduNetdiskWorkspace\result\CSA-512-0.5-0.9
+Epoch/Epochs 65/499 花费时间：6768.111428976059s
+learning rate = 0.0001049505
+Epoch/total_steps/alpha-beta: 66/54600/0.9-0.5 {&#39;G_GAN&#39;: 7.879700183868408, &#39;G_L1&#39;: 29.05637550354004, &#39;D&#39;: 0.021371476352214813, &#39;F&#39;: 0.0015455689281225204}
+Epoch/total_steps/alpha-beta: 66/54700/0.9-0.5 {&#39;G_GAN&#39;: 7.197275161743164, &#39;G_L1&#39;: 25.744586944580078, &#39;D&#39;: 0.061882127076387405, &#39;F&#39;: 0.0048264930956065655}
+Epoch/total_steps/alpha-beta: 66/54800/0.9-0.5 {&#39;G_GAN&#39;: 5.433315277099609, &#39;G_L1&#39;: 14.008015632629395, &#39;D&#39;: 0.7786253690719604, &#39;F&#39;: 0.003808046691119671}
+Epoch/total_steps/alpha-beta: 66/54900/0.9-0.5 {&#39;G_GAN&#39;: 9.345367431640625, &#39;G_L1&#39;: 23.16252326965332, &#39;D&#39;: 0.17116573452949524, &#39;F&#39;: 0.0009314828785136342}
+Epoch/total_steps/alpha-beta: 66/55000/0.9-0.5 {&#39;G_GAN&#39;: 5.452606201171875, &#39;G_L1&#39;: 52.39902114868164, &#39;D&#39;: 0.9027211666107178, &#39;F&#39;: 0.001038308604620397}
+Epoch/total_steps/alpha-beta: 66/55100/0.9-0.5 {&#39;G_GAN&#39;: 8.330219268798828, &#39;G_L1&#39;: 17.00861358642578, &#39;D&#39;: 0.02714463882148266, &#39;F&#39;: 0.0010049697011709213}
+Epoch/total_steps/alpha-beta: 66/55200/0.9-0.5 {&#39;G_GAN&#39;: 7.241285800933838, &#39;G_L1&#39;: 18.379541397094727, &#39;D&#39;: 0.061921875923871994, &#39;F&#39;: 0.0006906402413733304}
+Epoch/total_steps/alpha-beta: 66/55300/0.9-0.5 {&#39;G_GAN&#39;: 8.075883865356445, &#39;G_L1&#39;: 25.097482681274414, &#39;D&#39;: 0.01555987074971199, &#39;F&#39;: 0.003610637504607439}
+Epoch/total_steps/alpha-beta: 66/55400/0.9-0.5 {&#39;G_GAN&#39;: 5.830979347229004, &#39;G_L1&#39;: 11.882124900817871, &#39;D&#39;: 0.43530383706092834, &#39;F&#39;: 0.0016177427023649216}
+保存模型 Epoch 66, iters 55409 在 D:\BaiduNetdiskWorkspace\result\CSA-512-0.5-0.9
+Epoch/Epochs 66/499 花费时间：6770.902935743332s
+learning rate = 0.0001029703
+Epoch/total_steps/alpha-beta: 67/55500/0.9-0.5 {&#39;G_GAN&#39;: 10.052459716796875, &#39;G_L1&#39;: 22.273719787597656, &#39;D&#39;: 0.39109373092651367, &#39;F&#39;: 0.0011746349046006799}
+Epoch/total_steps/alpha-beta: 67/55600/0.9-0.5 {&#39;G_GAN&#39;: 7.985515117645264, &#39;G_L1&#39;: 31.857830047607422, &#39;D&#39;: 0.09442953765392303, &#39;F&#39;: 0.0157421063631773}
+Epoch/total_steps/alpha-beta: 67/55700/0.9-0.5 {&#39;G_GAN&#39;: 8.079545974731445, &#39;G_L1&#39;: 68.7567138671875, &#39;D&#39;: 0.01770130917429924, &#39;F&#39;: 0.0012256535701453686}
+Epoch/total_steps/alpha-beta: 67/55800/0.9-0.5 {&#39;G_GAN&#39;: 7.759945869445801, &#39;G_L1&#39;: 44.38677215576172, &#39;D&#39;: 0.014375408180058002, &#39;F&#39;: 0.002746011596173048}
+Epoch/total_steps/alpha-beta: 67/55900/0.9-0.5 {&#39;G_GAN&#39;: 7.979716777801514, &#39;G_L1&#39;: 31.330907821655273, &#39;D&#39;: 0.021277248859405518, &#39;F&#39;: 0.0010012390557676554}
+Epoch/total_steps/alpha-beta: 67/56000/0.9-0.5 {&#39;G_GAN&#39;: 6.703822612762451, &#39;G_L1&#39;: 20.584047317504883, &#39;D&#39;: 0.18143700063228607, &#39;F&#39;: 0.0015884132590144873}
+Epoch/total_steps/alpha-beta: 67/56100/0.9-0.5 {&#39;G_GAN&#39;: 7.171627998352051, &#39;G_L1&#39;: 24.40296745300293, &#39;D&#39;: 0.07368331402540207, &#39;F&#39;: 0.0013774074614048004}
+Epoch/total_steps/alpha-beta: 67/56200/0.9-0.5 {&#39;G_GAN&#39;: 6.392445087432861, &#39;G_L1&#39;: 17.50107192993164, &#39;D&#39;: 0.2734408974647522, &#39;F&#39;: 0.0010548008140176535}
+保存模型 Epoch 67, iters 56236 在 D:\BaiduNetdiskWorkspace\result\CSA-512-0.5-0.9
+Epoch/Epochs 67/499 花费时间：6770.50909781456s
+learning rate = 0.0001009901
+Epoch/total_steps/alpha-beta: 68/56300/0.9-0.5 {&#39;G_GAN&#39;: 7.809243202209473, &#39;G_L1&#39;: 24.59335708618164, &#39;D&#39;: 0.01890939474105835, &#39;F&#39;: 0.0009686395060271025}
+Epoch/total_steps/alpha-beta: 68/56400/0.9-0.5 {&#39;G_GAN&#39;: 9.0183687210083, &#39;G_L1&#39;: 20.916410446166992, &#39;D&#39;: 0.09593641757965088, &#39;F&#39;: 0.0006561056943610311}
+Epoch/total_steps/alpha-beta: 68/56500/0.9-0.5 {&#39;G_GAN&#39;: 7.783534049987793, &#39;G_L1&#39;: 27.566492080688477, &#39;D&#39;: 0.01731741428375244, &#39;F&#39;: 0.0007928485283628106}
+Epoch/total_steps/alpha-beta: 68/56600/0.9-0.5 {&#39;G_GAN&#39;: 8.966598510742188, &#39;G_L1&#39;: 25.718271255493164, &#39;D&#39;: 0.10664217174053192, &#39;F&#39;: 0.0012532910332083702}
+Epoch/total_steps/alpha-beta: 68/56700/0.9-0.5 {&#39;G_GAN&#39;: 8.023569107055664, &#39;G_L1&#39;: 32.008026123046875, &#39;D&#39;: 0.012912873178720474, &#39;F&#39;: 0.0010050400160253048}
+Epoch/total_steps/alpha-beta: 68/56800/0.9-0.5 {&#39;G_GAN&#39;: 5.449462890625, &#39;G_L1&#39;: 11.895709037780762, &#39;D&#39;: 0.7886551022529602, &#39;F&#39;: 0.004695595242083073}
+Epoch/total_steps/alpha-beta: 68/56900/0.9-0.5 {&#39;G_GAN&#39;: 6.499753952026367, &#39;G_L1&#39;: 38.59015655517578, &#39;D&#39;: 0.23357579112052917, &#39;F&#39;: 0.0009891705121845007}
+Epoch/total_steps/alpha-beta: 68/57000/0.9-0.5 {&#39;G_GAN&#39;: 5.924617290496826, &#39;G_L1&#39;: 20.12933921813965, &#39;D&#39;: 0.46514061093330383, &#39;F&#39;: 0.0024831194896250963}
+保存模型 Epoch 68, iters 57063 在 D:\BaiduNetdiskWorkspace\result\CSA-512-0.5-0.9
+Epoch/Epochs 68/499 花费时间：6765.0777950286865s
+learning rate = 9.90099e-05
+Epoch/total_steps/alpha-beta: 69/57100/0.9-0.5 {&#39;G_GAN&#39;: 8.054828643798828, &#39;G_L1&#39;: 35.936275482177734, &#39;D&#39;: 0.013820616528391838, &#39;F&#39;: 0.001302346820011735}
+Epoch/total_steps/alpha-beta: 69/57200/0.9-0.5 {&#39;G_GAN&#39;: 8.510368347167969, &#39;G_L1&#39;: 83.30499267578125, &#39;D&#39;: 0.051704637706279755, &#39;F&#39;: 0.001144459587521851}
+Epoch/total_steps/alpha-beta: 69/57300/0.9-0.5 {&#39;G_GAN&#39;: 7.726816177368164, &#39;G_L1&#39;: 17.45627212524414, &#39;D&#39;: 0.02263341099023819, &#39;F&#39;: 0.001729454379528761}
+Epoch/total_steps/alpha-beta: 69/57400/0.9-0.5 {&#39;G_GAN&#39;: 7.786125183105469, &#39;G_L1&#39;: 59.71072769165039, &#39;D&#39;: 0.03589228540658951, &#39;F&#39;: 0.0015915620606392622}
+Epoch/total_steps/alpha-beta: 69/57500/0.9-0.5 {&#39;G_GAN&#39;: 7.619267463684082, &#39;G_L1&#39;: 28.353382110595703, &#39;D&#39;: 0.024607643485069275, &#39;F&#39;: 0.007316553965210915}
+Epoch/total_steps/alpha-beta: 69/57600/0.9-0.5 {&#39;G_GAN&#39;: 8.322254180908203, &#39;G_L1&#39;: 32.15039825439453, &#39;D&#39;: 0.028708286583423615, &#39;F&#39;: 0.0006543410709127784}
+Epoch/total_steps/alpha-beta: 69/57700/0.9-0.5 {&#39;G_GAN&#39;: 7.0834574699401855, &#39;G_L1&#39;: 12.25024127960205, &#39;D&#39;: 0.08781098574399948, &#39;F&#39;: 0.0021939207799732685}
+Epoch/total_steps/alpha-beta: 69/57800/0.9-0.5 {&#39;G_GAN&#39;: 6.69090461730957, &#39;G_L1&#39;: 33.30361557006836, &#39;D&#39;: 0.17482604086399078, &#39;F&#39;: 0.00240664416924119}
+保存模型 Epoch 69, iters 57890 在 D:\BaiduNetdiskWorkspace\result\CSA-512-0.5-0.9
+Epoch/Epochs 69/499 花费时间：6767.989950656891s
+learning rate = 9.70297e-05
+Epoch/total_steps/alpha-beta: 70/57900/0.9-0.5 {&#39;G_GAN&#39;: 6.899868011474609, &#39;G_L1&#39;: 16.850801467895508, &#39;D&#39;: 0.12526842951774597, &#39;F&#39;: 0.001243871171027422}
+Epoch/total_steps/alpha-beta: 70/58000/0.9-0.5 {&#39;G_GAN&#39;: 6.471846580505371, &#39;G_L1&#39;: 15.723175048828125, &#39;D&#39;: 0.28588759899139404, &#39;F&#39;: 0.0041595883667469025}
+Epoch/total_steps/alpha-beta: 70/58100/0.9-0.5 {&#39;G_GAN&#39;: 7.713548183441162, &#39;G_L1&#39;: 47.957122802734375, &#39;D&#39;: 0.021393006667494774, &#39;F&#39;: 0.0007237489335238934}
+Epoch/total_steps/alpha-beta: 70/58200/0.9-0.5 {&#39;G_GAN&#39;: 7.743223667144775, &#39;G_L1&#39;: 42.41666030883789, &#39;D&#39;: 0.018882203847169876, &#39;F&#39;: 0.001131667522713542}
+Epoch/total_steps/alpha-beta: 70/58300/0.9-0.5 {&#39;G_GAN&#39;: 9.661389350891113, &#39;G_L1&#39;: 30.824481964111328, &#39;D&#39;: 0.2435586303472519, &#39;F&#39;: 0.000851811608299613}
+Epoch/total_steps/alpha-beta: 70/58400/0.9-0.5 {&#39;G_GAN&#39;: 8.779866218566895, &#39;G_L1&#39;: 30.332305908203125, &#39;D&#39;: 0.05966469645500183, &#39;F&#39;: 0.0019619471859186888}
+Epoch/total_steps/alpha-beta: 70/58500/0.9-0.5 {&#39;G_GAN&#39;: 7.797774791717529, &#39;G_L1&#39;: 51.11587142944336, &#39;D&#39;: 0.015466894954442978, &#39;F&#39;: 0.0011621478479355574}
+Epoch/total_steps/alpha-beta: 70/58600/0.9-0.5 {&#39;G_GAN&#39;: 7.513718128204346, &#39;G_L1&#39;: 39.89677429199219, &#39;D&#39;: 0.03527035564184189, &#39;F&#39;: 0.0024496116675436497}
+Epoch/total_steps/alpha-beta: 70/58700/0.9-0.5 {&#39;G_GAN&#39;: 7.828291893005371, &#39;G_L1&#39;: 34.59600067138672, &#39;D&#39;: 0.02032233402132988, &#39;F&#39;: 0.0012266580015420914}
+保存模型 Epoch 70, iters 58717 在 D:\BaiduNetdiskWorkspace\result\CSA-512-0.5-0.9
+Epoch/Epochs 70/499 花费时间：6763.827220201492s
+learning rate = 9.50495e-05
+Epoch/total_steps/alpha-beta: 71/58800/0.9-0.5 {&#39;G_GAN&#39;: 6.946174621582031, &#39;G_L1&#39;: 67.14835357666016, &#39;D&#39;: 0.12168058753013611, &#39;F&#39;: 0.0010738412383943796}
+Epoch/total_steps/alpha-beta: 71/58900/0.9-0.5 {&#39;G_GAN&#39;: 7.5801849365234375, &#39;G_L1&#39;: 30.387104034423828, &#39;D&#39;: 0.027036627754569054, &#39;F&#39;: 0.0014763630460947752}
+Epoch/total_steps/alpha-beta: 71/59000/0.9-0.5 {&#39;G_GAN&#39;: 7.53169059753418, &#39;G_L1&#39;: 19.933347702026367, &#39;D&#39;: 0.03149660676717758, &#39;F&#39;: 0.001161115476861596}
+Epoch/total_steps/alpha-beta: 71/59100/0.9-0.5 {&#39;G_GAN&#39;: 8.098567962646484, &#39;G_L1&#39;: 40.56424331665039, &#39;D&#39;: 0.016223955899477005, &#39;F&#39;: 0.00043085304787382483}
+Epoch/total_steps/alpha-beta: 71/59200/0.9-0.5 {&#39;G_GAN&#39;: 8.787834167480469, &#39;G_L1&#39;: 45.36354064941406, &#39;D&#39;: 0.07855464518070221, &#39;F&#39;: 0.002130411798134446}
+Epoch/total_steps/alpha-beta: 71/59300/0.9-0.5 {&#39;G_GAN&#39;: 7.00847053527832, &#39;G_L1&#39;: 16.85950469970703, &#39;D&#39;: 0.11532103270292282, &#39;F&#39;: 0.001515761367045343}
+Epoch/total_steps/alpha-beta: 71/59400/0.9-0.5 {&#39;G_GAN&#39;: 8.56418228149414, &#39;G_L1&#39;: 26.120849609375, &#39;D&#39;: 0.04543234780430794, &#39;F&#39;: 0.0005503613501787186}
+Epoch/total_steps/alpha-beta: 71/59500/0.9-0.5 {&#39;G_GAN&#39;: 7.216287612915039, &#39;G_L1&#39;: 20.792001724243164, &#39;D&#39;: 0.05553625524044037, &#39;F&#39;: 0.0027574398554861546}
+保存模型 Epoch 71, iters 59544 在 D:\BaiduNetdiskWorkspace\result\CSA-512-0.5-0.9
+Epoch/Epochs 71/499 花费时间：6781.451194286346s
+learning rate = 9.306931e-05
+Epoch/total_steps/alpha-beta: 72/59600/0.9-0.5 {&#39;G_GAN&#39;: 8.285521507263184, &#39;G_L1&#39;: 39.83399200439453, &#39;D&#39;: 0.015507431700825691, &#39;F&#39;: 0.001641825307160616}
+Epoch/total_steps/alpha-beta: 72/59700/0.9-0.5 {&#39;G_GAN&#39;: 8.122762680053711, &#39;G_L1&#39;: 36.7968635559082, &#39;D&#39;: 0.01517854817211628, &#39;F&#39;: 0.0007640273543074727}
+Epoch/total_steps/alpha-beta: 72/59800/0.9-0.5 {&#39;G_GAN&#39;: 8.053234100341797, &#39;G_L1&#39;: 20.60396385192871, &#39;D&#39;: 0.007243082858622074, &#39;F&#39;: 0.0013210310135036707}
+Epoch/total_steps/alpha-beta: 72/59900/0.9-0.5 {&#39;G_GAN&#39;: 7.239321708679199, &#39;G_L1&#39;: 33.30991744995117, &#39;D&#39;: 0.06808586418628693, &#39;F&#39;: 0.0014328761026263237}
+Epoch/total_steps/alpha-beta: 72/60000/0.9-0.5 {&#39;G_GAN&#39;: 7.924217700958252, &#39;G_L1&#39;: 25.393449783325195, &#39;D&#39;: 0.01163485273718834, &#39;F&#39;: 0.00219428027048707}
+Epoch/total_steps/alpha-beta: 72/60100/0.9-0.5 {&#39;G_GAN&#39;: 9.295907974243164, &#39;G_L1&#39;: 20.65726089477539, &#39;D&#39;: 0.20623373985290527, &#39;F&#39;: 0.001959045883268118}
+Epoch/total_steps/alpha-beta: 72/60200/0.9-0.5 {&#39;G_GAN&#39;: 6.7422943115234375, &#39;G_L1&#39;: 36.77476119995117, &#39;D&#39;: 0.1432952880859375, &#39;F&#39;: 0.0012674350291490555}
+Epoch/total_steps/alpha-beta: 72/60300/0.9-0.5 {&#39;G_GAN&#39;: 7.028270721435547, &#39;G_L1&#39;: 33.706295013427734, &#39;D&#39;: 0.11149706691503525, &#39;F&#39;: 0.0015434378292411566}
+保存模型 Epoch 72, iters 60371 在 D:\BaiduNetdiskWorkspace\result\CSA-512-0.5-0.9
+Epoch/Epochs 72/499 花费时间：6794.636380434036s
+learning rate = 9.108911e-05
+Epoch/total_steps/alpha-beta: 73/60400/0.9-0.5 {&#39;G_GAN&#39;: 8.212068557739258, &#39;G_L1&#39;: 65.89781951904297, &#39;D&#39;: 0.02987128496170044, &#39;F&#39;: 0.0025987583212554455}
+Epoch/total_steps/alpha-beta: 73/60500/0.9-0.5 {&#39;G_GAN&#39;: 7.2664947509765625, &#39;G_L1&#39;: 33.13444137573242, &#39;D&#39;: 0.0786457359790802, &#39;F&#39;: 0.0015740420203655958}
+Epoch/total_steps/alpha-beta: 73/60600/0.9-0.5 {&#39;G_GAN&#39;: 7.321723937988281, &#39;G_L1&#39;: 24.372499465942383, &#39;D&#39;: 0.07610870897769928, &#39;F&#39;: 0.002782132476568222}
+Epoch/total_steps/alpha-beta: 73/60700/0.9-0.5 {&#39;G_GAN&#39;: 8.155403137207031, &#39;G_L1&#39;: 27.97372055053711, &#39;D&#39;: 0.01561184972524643, &#39;F&#39;: 0.0017527318559587002}
+Epoch/total_steps/alpha-beta: 73/60800/0.9-0.5 {&#39;G_GAN&#39;: 7.827278137207031, &#39;G_L1&#39;: 21.054834365844727, &#39;D&#39;: 0.01916470378637314, &#39;F&#39;: 0.0009452513186261058}
+Epoch/total_steps/alpha-beta: 73/60900/0.9-0.5 {&#39;G_GAN&#39;: 7.563392639160156, &#39;G_L1&#39;: 15.758037567138672, &#39;D&#39;: 0.03947491943836212, &#39;F&#39;: 0.0007359781884588301}
+Epoch/total_steps/alpha-beta: 73/61000/0.9-0.5 {&#39;G_GAN&#39;: 8.057225227355957, &#39;G_L1&#39;: 32.4393310546875, &#39;D&#39;: 0.020206591114401817, &#39;F&#39;: 0.0010325706098228693}
+Epoch/total_steps/alpha-beta: 73/61100/0.9-0.5 {&#39;G_GAN&#39;: 8.964319229125977, &#39;G_L1&#39;: 46.34973907470703, &#39;D&#39;: 0.12040917575359344, &#39;F&#39;: 0.0005388582358136773}
+保存模型 Epoch 73, iters 61198 在 D:\BaiduNetdiskWorkspace\result\CSA-512-0.5-0.9
+Epoch/Epochs 73/499 花费时间：6792.489933729172s
+learning rate = 8.910891e-05
+Epoch/total_steps/alpha-beta: 74/61200/0.9-0.5 {&#39;G_GAN&#39;: 8.343369483947754, &#39;G_L1&#39;: 23.669239044189453, &#39;D&#39;: 0.015514388680458069, &#39;F&#39;: 0.0009311824687756598}
+Epoch/total_steps/alpha-beta: 74/61300/0.9-0.5 {&#39;G_GAN&#39;: 7.389194488525391, &#39;G_L1&#39;: 29.107391357421875, &#39;D&#39;: 0.043890275061130524, &#39;F&#39;: 0.001228045905008912}
+Epoch/total_steps/alpha-beta: 74/61400/0.9-0.5 {&#39;G_GAN&#39;: 8.250995635986328, &#39;G_L1&#39;: 28.94759750366211, &#39;D&#39;: 0.012846266850829124, &#39;F&#39;: 0.0013970055151730776}
+Epoch/total_steps/alpha-beta: 74/61500/0.9-0.5 {&#39;G_GAN&#39;: 7.746279239654541, &#39;G_L1&#39;: 25.638843536376953, &#39;D&#39;: 0.027644168585538864, &#39;F&#39;: 0.0012419092236086726}
+Epoch/total_steps/alpha-beta: 74/61600/0.9-0.5 {&#39;G_GAN&#39;: 8.205514907836914, &#39;G_L1&#39;: 18.053674697875977, &#39;D&#39;: 0.031412407755851746, &#39;F&#39;: 0.0007527872803620994}
+Epoch/total_steps/alpha-beta: 74/61700/0.9-0.5 {&#39;G_GAN&#39;: 5.261197566986084, &#39;G_L1&#39;: 15.813565254211426, &#39;D&#39;: 0.9971873164176941, &#39;F&#39;: 0.0016547809354960918}
+Epoch/total_steps/alpha-beta: 74/61800/0.9-0.5 {&#39;G_GAN&#39;: 8.18617057800293, &#39;G_L1&#39;: 30.409425735473633, &#39;D&#39;: 0.015283234417438507, &#39;F&#39;: 0.0009266911656595767}
+Epoch/total_steps/alpha-beta: 74/61900/0.9-0.5 {&#39;G_GAN&#39;: 7.778201580047607, &#39;G_L1&#39;: 32.194305419921875, &#39;D&#39;: 0.017563138157129288, &#39;F&#39;: 0.0007065435638651252}
+</pre></div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "SanstyleLab/pytorch-book",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./use"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By xinetzone<br/>
+        
+          <div class="extra_footer">
+            <p class="w3-card w3-pale-blue w3-padding">
+  Copyright © 2021
+  <a href="https://sanstylelab.github.io/">SanstyleLab</a> | 
+  Powered by <a href="https://github.com/executablebooks/jupyter-book">Jupyter Book</a>.
+</p>
+
+          </div>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
