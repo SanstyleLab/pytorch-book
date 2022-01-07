@@ -93,7 +93,7 @@ commentsRunWhenDOMLoaded(addUtterances);
         const thebe_selector_output = ".output,.cell_output"
     </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <link rel="canonical" href="https://SanstyleLab.github.io/sanstyle-starter/new/01_train-256-0.4.html" />
+    <link rel="canonical" href="https://SanstyleLab.github.io/sanstyle-starter/new/test.html" />
     <link rel="shortcut icon" href="../_static/page-logo.jfif"/>
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="搜索" href="../search.html" />
@@ -299,7 +299,7 @@ commentsRunWhenDOMLoaded(addUtterances);
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/new/01_train-256-0.4.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/new/test.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="下载源文件" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
@@ -319,7 +319,7 @@ commentsRunWhenDOMLoaded(addUtterances);
                 data-toggle="tooltip" data-placement="left" title="源库"><i
                     class="fab fa-github"></i>资料库</button></a>
         <a class="issues-button"
-            href="https://github.com/SanstyleLab/pytorch-book/issues/new?title=Issue%20on%20page%20%2Fnew/01_train-256-0.4.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/SanstyleLab/pytorch-book/issues/new?title=Issue%20on%20page%20%2Fnew/test.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="打开一个问题"><i class="fas fa-lightbulb"></i>公开的问题</button></a>
         
@@ -340,7 +340,7 @@ commentsRunWhenDOMLoaded(addUtterances);
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/SanstyleLab/pytorch-book/main?urlpath=tree/docs/new/01_train-256-0.4.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/SanstyleLab/pytorch-book/main?urlpath=tree/docs/new/test.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="发射 Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="../_static/images/logo_binder.svg"
@@ -348,7 +348,7 @@ commentsRunWhenDOMLoaded(addUtterances);
         
         
         
-        <a class="colab-button" href="https://colab.research.google.com/github/SanstyleLab/pytorch-book/blob/main/docs/new/01_train-256-0.4.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+        <a class="colab-button" href="https://colab.research.google.com/github/SanstyleLab/pytorch-book/blob/main/docs/new/test.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
                 title="发射 Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
                     src="../_static/images/logo_colab.png"
                     alt="Interact on Colab">Colab</button></a>
@@ -401,41 +401,67 @@ commentsRunWhenDOMLoaded(addUtterances);
                 
   <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">../../</span><span class="n">apps</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="n">root</span> <span class="o">=</span> <span class="s1">&#39;../..&#39;</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">root</span><span class="si">}</span><span class="s1">/apps&#39;</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">train</span> <span class="kn">import</span> <span class="n">train_op</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span> <span class="nn">test_op</span> <span class="kn">import</span> <span class="n">Test</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 超参数设定</span>
-<span class="c1">## 固定参数</span>
-<span class="n">epochs</span> <span class="o">=</span> <span class="mi">120</span>
-<span class="n">display_freq</span> <span class="o">=</span> <span class="mi">100</span>
-<span class="n">save_epoch_freq</span> <span class="o">=</span> <span class="mi">1</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model_name</span> <span class="o">=</span> <span class="s1">&#39;CSA-256&#39;</span>
 
 <span class="c1">## 模型参数</span>
-<span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.9</span>
-<span class="n">beta</span> <span class="o">=</span> <span class="mf">0.4</span>
+<span class="n">alpha</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">beta</span> <span class="o">=</span> <span class="mf">0.8</span>
 
 <span class="n">fine_size</span> <span class="o">=</span> <span class="mi">256</span>
-<span class="n">gpu_id</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="n">checkpoints_dir</span> <span class="o">=</span> <span class="s1">&#39;D:/BaiduNetdiskWorkspace/result&#39;</span>
+<span class="n">save_dir</span> <span class="o">=</span> <span class="s2">&quot;D:/BaiduNetdiskWorkspace/result/measure&quot;</span>
+<span class="n">gpu_ids</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">which_epoch</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">train_op</span><span class="p">(</span><span class="n">alpha</span><span class="p">,</span> <span class="n">beta</span><span class="p">,</span> <span class="n">fine_size</span><span class="p">,</span> <span class="n">epochs</span><span class="p">,</span> <span class="n">display_freq</span><span class="p">,</span> <span class="n">save_epoch_freq</span><span class="p">,</span> <span class="n">gpu_id</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">test</span> <span class="o">=</span> <span class="n">Test</span><span class="p">(</span><span class="n">fine_size</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">image</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">mask</span> <span class="ow">in</span> <span class="n">test</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">120</span><span class="p">):</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">test</span><span class="o">.</span><span class="n">model</span><span class="p">(</span><span class="n">alpha</span><span class="p">,</span> <span class="n">beta</span><span class="p">,</span>
+                           <span class="n">checkpoints_dir</span><span class="p">,</span> <span class="n">gpu_ids</span><span class="p">,</span>
+                           <span class="n">which_epoch</span><span class="o">=</span><span class="n">epoch</span><span class="p">)</span>
+        <span class="n">test</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">epoch</span><span class="p">,</span> <span class="n">image</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">mask</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">save_dir</span><span class="p">)</span>
+        <span class="k">break</span>
+    <span class="k">break</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>initialize network with normal
+initialize network with normal
+Loading pre-trained network!
+</pre></div>
+</div>
+<img alt="../_images/test_4_1.png" src="../_images/test_4_1.png" />
 </div>
 </div>
 

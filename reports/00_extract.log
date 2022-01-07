@@ -27,12 +27,12 @@ print_zip_dataset(zip_root)
 
 [0;31m---------------------------------------------------------------------------[0m
 [0;31mFileNotFoundError[0m                         Traceback (most recent call last)
-[0;32m/tmp/ipykernel_3038/291183120.py[0m in [0;36m<module>[0;34m[0m
+[0;32m/tmp/ipykernel_2821/291183120.py[0m in [0;36m<module>[0;34m[0m
 [1;32m      4[0m         [0mprint[0m[0;34m([0m[0mzip_dir[0m[0;34m.[0m[0mname[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
 [1;32m      5[0m [0;34m[0m[0m
 [0;32m----> 6[0;31m [0mprint_zip_dataset[0m[0;34m([0m[0mzip_root[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
 [0m
-[0;32m/tmp/ipykernel_3038/291183120.py[0m in [0;36mprint_zip_dataset[0;34m(zip_root)[0m
+[0;32m/tmp/ipykernel_2821/291183120.py[0m in [0;36mprint_zip_dataset[0;34m(zip_root)[0m
 [1;32m      1[0m [0;32mdef[0m [0mprint_zip_dataset[0m[0;34m([0m[0mzip_root[0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
 [1;32m      2[0m     [0;34m'''打印压缩文件的名称'''[0m[0;34m[0m[0;34m[0m[0m
 [0;32m----> 3[0;31m     [0;32mfor[0m [0mzip_dir[0m [0;32min[0m [0mPath[0m[0;34m([0m[0mzip_root[0m[0;34m)[0m[0;34m.[0m[0miterdir[0m[0;34m([0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
