@@ -38,12 +38,12 @@ class Loader:
             transforms.RandomHorizontalFlip(),
             transforms.ToTensor(),
             transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])])
-        self._trainset = CustomDataset(
+        self._dataset = CustomDataset(
             self.bunch, transform=self.transform)
 
     @property
-    def trainset(self):
-        _loader = DataLoader(self._trainset,
+    def dataset(self):
+        _loader = DataLoader(self._dataset,
                              batch_size=self.batch_size,
                              shuffle=True)
         return _loader

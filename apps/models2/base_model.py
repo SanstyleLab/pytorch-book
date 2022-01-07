@@ -3,14 +3,15 @@ import torch
 
 
 class BaseModel:
-    def __init__(self, name, is_train, checkpoints_dir, gpu_ids, gpu_id=0):
-        self.gpu_ids = gpu_ids
-        self.gpu_id = gpu_id
+    def __init__(self, name, is_train, checkpoints_dir, gpu_id=-1):
         self.is_train = is_train
-
-        self.Tensor = torch.cuda.FloatTensor if self.gpu_ids else torch.Tensor
         self.name = name
         self.save_dir = Path(checkpoints_dir)/self.name
+        self.gpu_id = gpu_id
+        if self.gpu_id >= 0:
+            self.device = f"cuda:{self.gpu_id}"
+        else:
+            self.device = f"cpu"
         if not self.save_dir.exists():
             self.save_dir.mkdir(parents=True, exist_ok=True)
         # initialize optimizers
@@ -26,8 +27,7 @@ class BaseModel:
         save_path = self.set_save_path(network_label, epoch_label)
         # 保存模型
         torch.save(network.cpu().state_dict(), save_path)
-        if len(self.gpu_ids) and torch.cuda.is_available():
-            network.cuda(self.gpu_ids[self.gpu_id])
+        network.to(self.device)
 
     def load_network(self, network, network_label, epoch_label):
         save_path = self.set_save_path(network_label, epoch_label)

@@ -8,12 +8,6 @@ from .base_model import BaseModel
 from . import networks
 from .vgg16 import Vgg16
 
-def try_all_gpus():
-    """返回所有可用的GPU，如果没有GPU，则返回[cpu(),]"""
-    devices = [torch.device(f'cuda:{i}')
-             for i in range(torch.cuda.device_count())]
-    return devices if devices else [torch.device('cpu')]
-
 class ReliefCNN(nn.Module):
     def __init__(self, in_units, units):
         super().__init__()
@@ -32,35 +26,43 @@ class ReliefCNN(nn.Module):
 
 
 class CSA(BaseModel):
-    def __init__(self, beta, name, is_train, checkpoints_dir, gpu_ids,
+    def __init__(self, beta, name, is_train, checkpoints_dir,
                  lambda_A, gan_weight, cosis,
                  batch_size, mask_type, ngf, ndf,
                  which_model_netG, which_model_netP, which_model_netD, which_model_netF,
-                 gan_type, which_epoch, lr, beta1,
+                 gan_type, continue_train, which_epoch, lr, beta1,
                  lr_policy, niter, niter_decay, lr_decay_iters, epoch_count, overlap,
-                 fine_size, init_gain, input_nc, input_nc_g, output_nc, norm, use_dropout, init_type):
-        super().__init__(name, is_train, checkpoints_dir, gpu_ids)
+                 fine_size, init_gain, input_nc, input_nc_g, output_nc, norm, use_dropout, init_type, gpu_id=-1):
+        super().__init__(name, is_train, checkpoints_dir, gpu_id=-1)
         self.beta = beta # test 时，设置为 1
         self.lambda_A = lambda_A
         self.gan_weight = gan_weight
         self.cosis = cosis
-        self.device = try_all_gpus()[0]
+        self.Tensor = torch.cuda.FloatTensor if self.gpu_id>=0 else torch.Tensor
+        
         self._initialize(batch_size, mask_type, ngf, ndf,
                          which_model_netG, which_model_netP, which_model_netD, which_model_netF,
-                         gan_type, which_epoch, lr, beta1,
+                         gan_type, continue_train, which_epoch, lr, beta1,
                          lr_policy, niter, niter_decay, lr_decay_iters, epoch_count, overlap,
                          fine_size, init_gain, input_nc, input_nc_g, output_nc, norm, use_dropout, init_type)
 
     def _initialize(self, batch_size, mask_type, ngf, ndf,
                     which_model_netG, which_model_netP, which_model_netD, which_model_netF,
-                    gan_type, which_epoch, lr, beta1,
+                    gan_type, continue_train, which_epoch, lr, beta1,
                     lr_policy, niter, niter_decay, lr_decay_iters, epoch_count, overlap,
                     fine_size, init_gain, input_nc, input_nc_g, output_nc, norm, use_dropout, init_type):
         self.vgg = Vgg16(requires_grad=False)
+        self.vgg = self.vgg.to(self.device)
+        self.netR = ReliefCNN(3, 3).to(self.device) # relief net
+        self.input_A = self.Tensor(batch_size, input_nc,
+                                   fine_size, fine_size)
+        self.input_B = self.Tensor(batch_size, output_nc,
+                                   fine_size, fine_size)
         self.batch_size = batch_size
 
         # batchsize should be 1 for mask_global
         self.mask_global = torch.ByteTensor(1, 1, fine_size, fine_size)
+
         self.mask_global.zero_()
         self.mask_global[:, :, int(fine_size/4) + overlap: int(fine_size/2) + int(fine_size/4) - overlap,
                          int(fine_size/4) + overlap: int(fine_size/2) + int(fine_size/4) - overlap] = 1
@@ -68,32 +70,25 @@ class CSA(BaseModel):
         self.mask_type = mask_type
         self.gMask_opts = {}
 
-        if len(self.gpu_ids) > 0:
-            self.use_gpu = True
-            self.vgg = self.vgg.to(self.device)
-            self.netR = ReliefCNN(3, 3).to(self.device) # relief net
-            self.input_A = self.Tensor(batch_size, input_nc,
-                                    fine_size, fine_size).to(self.device)
-            self.input_B = self.Tensor(batch_size, output_nc,
-                                    fine_size, fine_size).to(self.device)
-            self.mask_global = self.mask_global.to(self.device)
-
+        self.mask_global = self.mask_global.to(self.device)
         self.netG, self.Cosis_list, self.Cosis_list2, self.CSA_model = networks.define_G(input_nc_g, output_nc, ngf,
                                                                                          which_model_netG, self.mask_global,
-                                                                                         norm, use_dropout, init_type, self.gpu_ids, init_gain)
+                                                                                         norm, use_dropout, init_type, init_gain, 
+                                                                                         self.device)
         self.netP, _, _, _ = networks.define_G(input_nc, output_nc, ngf,
                                                which_model_netP, self.mask_global,
-                                               norm, use_dropout, init_type, self.gpu_ids, init_gain)
+                                               norm, use_dropout, init_type, 
+                                               init_gain, self.device)
         if self.is_train:
             use_sigmoid = False
             if gan_type == 'vanilla':
                 use_sigmoid = True  # only vanilla GAN using BCECriterion
 
             self.netD = networks.define_D(input_nc, ndf, which_model_netD,
-                                          norm, use_sigmoid, init_type, self.gpu_ids, init_gain)
+                                          norm, use_sigmoid, init_type, init_gain, self.device)
             self.netF = networks.define_D(input_nc, ndf, which_model_netF,
-                                          norm, use_sigmoid, init_type, self.gpu_ids, init_gain)
-        if which_epoch >= 0:
+                                          norm, use_sigmoid, init_type, init_gain, self.device)
+        if not self.is_train or continue_train:
             print('Loading pre-trained network!')
             self.load_network(self.netG, 'G', which_epoch)
             self.load_network(self.netP, 'P', which_epoch)
@@ -127,13 +122,17 @@ class CSA(BaseModel):
                 self.schedulers.append(networks.get_scheduler(
                     optimizer, lr_policy, niter, niter_decay, lr_decay_iters, epoch_count))
 
-            # print('---------- Networks initialized -------------')
-            # networks.print_network(self.netG)
-            # networks.print_network(self.netP)
-            # if self.is_train:
-            #     networks.print_network(self.netD)
-            #     networks.print_network(self.netF)
-            # print('-----------------------------------------------')
+            print('---------- Networks initialized -------------')
+            networks.print_network(self.netG)
+            networks.print_network(self.netP)
+            if self.is_train:
+                networks.print_network(self.netD)
+                networks.print_network(self.netF)
+            print('-----------------------------------------------')
+
+        self.input_A.to(self.device)
+        self.input_B.to(self.device)
+        self.criterionGAN.to(self.device)
 
     def set_latent_mask(self, mask_global, layer_to_last, threshold):
         '''It is quite convinient, as one forward-pass, all the innerCos will get the GT_latent!
@@ -143,9 +142,11 @@ class CSA(BaseModel):
         self.Cosis_list2[0].set_mask(mask_global, threshold)
 
     def set_input(self, input, mask, mask_type='center', threshold=0.3125):
-        input_A = input.to(self.device)
-        input_B = input.clone().to(self.device)
-        input_mask = mask.to(self.device)
+        input = input.to(self.device)
+        mask = mask.to(self.device)
+        input_A = input
+        input_B = input.clone()
+        input_mask = mask
         self.input_A.resize_(input_A.size()).copy_(input_A)
         self.input_B.resize_(input_B.size()).copy_(input_B)
 
@@ -171,7 +172,7 @@ class CSA(BaseModel):
         self.set_latent_mask(self.mask_global, 3, threshold)
 
     def forward(self):
-        self.real_A = self.input_A #.to(self.device)
+        self.real_A = self.input_A.to(self.device)
         # 修改
         self.fake_P = self.beta*self.real_A + (1-self.beta)*self.netR(self.real_A)
         self.fake_P = self.netP(self.fake_P)
@@ -183,7 +184,7 @@ class CSA(BaseModel):
         self.Syn = self.Unknowregion+self.knownregion
         self.Middle = torch.cat((self.Syn, self.input_A), 1)
         self.fake_B = self.netG(self.Middle)
-        self.real_B = self.input_B#.to(self.device)
+        self.real_B = self.input_B.to(self.device)
 
     def set_gt_latent(self):
         gt_latent = self.vgg(Variable(self.input_B, requires_grad=False))
@@ -191,7 +192,7 @@ class CSA(BaseModel):
         self.Cosis_list2[0].set_target(gt_latent.relu4_3)
 
     def test(self):
-        self.real_A = self.input_A #.to(self.device)
+        self.real_A = self.input_A.to(self.device)
         self.fake_P = self.netP(self.real_A)
         self.un = self.fake_P.clone()
         self.Unknowregion = self.un.data.masked_fill_(
@@ -302,4 +303,4 @@ class CSA(BaseModel):
         self.load_network(self.netG, 'G', epoch)
         self.load_network(self.netP, 'P', epoch)
         if self.beta < 1:
-            self.load_network(self.netR, 'R', epoch)
+            self.load_network(self.netP, 'R', epoch)
